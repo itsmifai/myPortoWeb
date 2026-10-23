@@ -769,12 +769,14 @@
         <section id="profil" class="relative z-20 pt-2 pb-10 max-w-4xl">
             <!-- Overlapping Avatar -->
             <div class="flex flex-col sm:flex-row items-start sm:items-end gap-4 sm:gap-5 -mt-14 sm:-mt-16 md:-mt-20 mb-5">
-                <div class="relative">
+                <div class="relative inline-block flex-shrink-0">
                     <div class="avatar-box w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 flex-shrink-0 border-4 border-white" title="Foto Profil Miftahul Amri">
                         <img src="./profile.png" alt="Foto Profil Miftahul Amri" class="w-full h-full object-cover">
                     </div>
-                    <!-- Waving Hand Sticker -->
-                    <img src="./stickers/hand.png" alt="Halo!" class="absolute -right-3 -bottom-2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 sticker-wobble drop-shadow-md z-10 pointer-events-none select-none">
+                    <!-- Waving Hand Sticker (Tucked onto avatar border, waving outward) -->
+                    <div class="absolute bottom-0 -right-2 sm:bottom-1 sm:-right-3 md:bottom-2 md:-right-3 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 sticker-wobble pointer-events-none select-none z-20">
+                        <img src="./stickers/hand.png" alt="Halo!" class="w-full h-full object-contain filter drop-shadow-md">
+                    </div>
                 </div>
 
                 <!-- Status badge (Active Freelance) -->
@@ -939,16 +941,18 @@
              PROYEK PILIHAN SECTION
              ============================================== -->
         <section id="proyek" class="pt-12 pb-16">
-            <div class="pb-5 border-b border-line mb-6 flex items-center justify-between gap-4">
+            <div class="pb-5 border-b border-line mb-6 flex items-start sm:items-center justify-between gap-3">
                 <div>
                     <div class="flex items-center gap-2 mb-2">
                         <span class="w-2.5 h-2.5 rounded-full bg-v animate-pulse"></span>
                         <span class="text-xs font-bold text-v uppercase tracking-widest">Portofolio Produk Digital</span>
                     </div>
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-ink tracking-tight">Proyek Pilihan</h2>
-                    <p class="text-sm text-mut mt-2">Aplikasi web, platform sekolah &amp; organisasi, dan produk berbasis integrasi AI.</p>
+                    <p class="text-xs sm:text-sm text-mut mt-1.5 max-w-lg">Aplikasi web, platform sekolah &amp; organisasi, dan produk berbasis integrasi AI.</p>
                 </div>
-                <img src="./stickers/browser.png" alt="Code Project" class="hidden sm:block w-16 md:w-20 h-auto sticker-float flex-shrink-0 drop-shadow-md">
+                <div class="flex-shrink-0 sticker-float -mt-1 sm:mt-0">
+                    <img src="./stickers/browser.png" alt="Code Project" class="w-14 sm:w-18 md:w-22 h-auto drop-shadow-md pointer-events-none select-none">
+                </div>
             </div>
 
             <!-- List + Stage Container (Referebsibaru Style) -->
@@ -1240,8 +1244,8 @@
              ============================================== -->
         <section id="kontak" class="pt-8 pb-12">
             <div class="cta-card relative">
-                <!-- Flying Paper Airplane Sticker -->
-                <img src="./stickers/plane.png" alt="Kirim Pesan" class="absolute top-5 right-6 w-24 sm:w-28 md:w-36 h-auto sticker-wobble opacity-95 drop-shadow-xl pointer-events-none select-none hidden sm:block">
+                <!-- Flying Paper Airplane Sticker (Visible on mobile & desktop) -->
+                <img src="./stickers/plane.png" alt="Kirim Pesan" class="absolute top-4 right-4 sm:top-5 sm:right-6 w-16 sm:w-24 md:w-32 h-auto sticker-wobble opacity-95 drop-shadow-xl pointer-events-none select-none z-20 block">
 
                 <div class="max-w-2xl relative z-10">
                     <span class="text-xs font-bold text-lilac uppercase tracking-wider block mb-2">Konsultasi &amp; Kolaborasi</span>
