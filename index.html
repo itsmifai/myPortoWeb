@@ -786,7 +786,7 @@
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
                         </span>
-                        <span>Terbuka untuk proyek freelance & kolaborasi</span>
+                        <span id="txt-status">Terbuka untuk proyek freelance & kolaborasi</span>
                     </div>
                 </div>
             </div>
@@ -819,7 +819,7 @@
             </div>
 
             <!-- Bio Paragraph -->
-            <p class="mt-4 text-[15px] sm:text-[16px] text-[#3f3b5a] leading-relaxed max-w-2xl">
+            <p id="txt-bio" class="mt-4 text-[15px] sm:text-[16px] text-[#3f3b5a] leading-relaxed max-w-2xl">
                 Web developer yang antusias membangun aplikasi web modern dan mengintegrasikan kecerdasan buatan. Berfokus pada perancangan produk digital andal, sistem interaktif, dan solusi praktis yang memecahkan masalah nyata.
             </p>
 
@@ -849,13 +849,13 @@
                     <svg class="w-4 h-4 text-v" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/>
                     </svg>
-                    <span>Unduh CV</span>
+                    <span id="txt-cv">Unduh CV</span>
                 </a>
             </div>
 
             <!-- Skills & Tech Stack Chips -->
             <div class="mt-6 pt-5 border-t border-line">
-                <span class="text-xs font-bold text-mut uppercase tracking-wider block mb-2.5">Keahlian &amp; Tech Stack Utama</span>
+                <span id="txt-skills-title" class="text-xs font-bold text-mut uppercase tracking-wider block mb-2.5">Keahlian &amp; Tech Stack Utama</span>
                 <div class="flex flex-wrap gap-2">
                     <span class="text-xs font-semibold text-mut bg-soft hover:bg-v hover:text-white transition-colors px-3 py-1.5 rounded-full border border-line">Next.js 16</span>
                     <span class="text-xs font-semibold text-mut bg-soft hover:bg-v hover:text-white transition-colors px-3 py-1.5 rounded-full border border-line">React 19</span>
@@ -951,10 +951,10 @@
                 <div>
                     <div class="flex items-center gap-2 mb-2">
                         <span class="w-2.5 h-2.5 rounded-full bg-v animate-pulse"></span>
-                        <span class="text-xs font-bold text-v uppercase tracking-widest">Portofolio Produk Digital</span>
+                        <span id="txt-proj-badge" class="text-xs font-bold text-v uppercase tracking-widest">Portofolio Produk Digital</span>
                     </div>
-                    <h2 class="text-2xl sm:text-3xl font-extrabold text-ink tracking-tight">Proyek Pilihan</h2>
-                    <p class="text-xs sm:text-sm text-mut mt-1.5 max-w-lg">Aplikasi web, platform sekolah &amp; organisasi, dan produk berbasis integrasi AI.</p>
+                    <h2 id="txt-proj-title" class="text-2xl sm:text-3xl font-extrabold text-ink tracking-tight">Proyek Pilihan</h2>
+                    <p id="txt-proj-desc" class="text-xs sm:text-sm text-mut mt-1.5 max-w-lg">Aplikasi web, platform sekolah &amp; organisasi, dan produk berbasis integrasi AI.</p>
                 </div>
                 <div class="flex-shrink-0 sticker-float -mt-1 sm:mt-0">
                     <img src="./stickers/browser.png" alt="Code Project" class="w-14 sm:w-18 md:w-22 h-auto drop-shadow-md pointer-events-none select-none">
@@ -979,10 +979,10 @@
                 <div class="lg:col-span-7">
                     <div class="flex items-center justify-between pb-4 border-b border-line mb-6">
                         <h2 class="text-2xl font-extrabold text-ink tracking-tight flex items-center gap-2">
-                            <span>Pengalaman Kerja &amp; Mengajar</span>
+                            <span id="txt-exp-title">Pengalaman Kerja &amp; Mengajar</span>
                             <img src="./stickers/rocket.png" alt="Career Journey" class="w-7 h-auto sm:w-8 sticker-wobble inline-block drop-shadow-sm ml-1">
                         </h2>
-                        <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                        <span id="txt-exp-badge" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
                             Aktif Terkini di Atas
                         </span>
                     </div>
@@ -1145,7 +1145,7 @@
                     <!-- Education Section -->
                     <div>
                         <div class="pb-4 border-b border-line mb-6">
-                            <h2 class="text-xl font-extrabold text-ink tracking-tight">Pendidikan Formal</h2>
+                            <h2 id="txt-edu-title" class="text-xl font-extrabold text-ink tracking-tight">Pendidikan Formal</h2>
                         </div>
 
                         <div class="space-y-4">
@@ -1182,8 +1182,8 @@
                     <!-- Certifications Section -->
                     <div id="sertifikat">
                         <div class="pb-4 border-b border-line mb-6 flex items-center justify-between">
-                            <h2 class="text-xl font-extrabold text-ink tracking-tight">Sertifikasi &amp; Lisensi</h2>
-                            <span class="text-xs font-bold text-v bg-soft px-2.5 py-0.5 rounded-full">3 Lisensi</span>
+                            <h2 id="txt-cert-title" class="text-xl font-extrabold text-ink tracking-tight">Sertifikasi &amp; Lisensi</h2>
+                            <span id="txt-cert-badge" class="text-xs font-bold text-v bg-soft px-2.5 py-0.5 rounded-full">3 Lisensi</span>
                         </div>
 
                         <div class="space-y-3">
@@ -1254,17 +1254,17 @@
                 <img src="./stickers/plane.png" alt="Kirim Pesan" class="absolute top-4 right-4 sm:top-5 sm:right-6 w-16 sm:w-24 md:w-32 h-auto sticker-wobble opacity-95 drop-shadow-xl pointer-events-none select-none z-20 block">
 
                 <div class="max-w-2xl relative z-10">
-                    <span class="text-xs font-bold text-lilac uppercase tracking-wider block mb-2">Konsultasi &amp; Kolaborasi</span>
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-3">
+                    <span id="txt-cta-badge" class="text-xs font-bold text-lilac uppercase tracking-wider block mb-2">Konsultasi &amp; Kolaborasi</span>
+                    <h2 id="txt-cta-title" class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-3">
                         Punya rencana proyek? Ceritakan.
                     </h2>
-                    <p class="text-sm sm:text-base text-white/90 leading-relaxed mb-6">
+                    <p id="txt-cta-desc" class="text-sm sm:text-base text-white/90 leading-relaxed mb-6">
                         Website instansi sekolah, platform organisasi mahasiswa, portofolio personal, maupun solusi otomatisasi berbasis AI. Pesan akan langsung diarahkan ke WhatsApp.
                     </p>
 
                     <!-- Interactive Topic Chips -->
                     <div class="mb-5">
-                        <span class="text-xs font-semibold text-white/80 block mb-2.5">Pilih Kebutuhan Anda:</span>
+                        <span id="txt-cta-needs" class="text-xs font-semibold text-white/80 block mb-2.5">Pilih Kebutuhan Anda:</span>
                         <div class="flex flex-wrap gap-2" id="needs-chips">
                             <button class="chip" type="button" aria-pressed="true">Website Sekolah</button>
                             <button class="chip" type="button" aria-pressed="false">Platform Organisasi</button>
@@ -1279,7 +1279,7 @@
                     <div class="bg-white rounded-2xl p-2 sm:p-2.5 flex flex-col sm:flex-row gap-2 shadow-lg items-stretch sm:items-center">
                         <input type="text" id="wa-text-input" placeholder="Tulis catatan singkat kebutuhan Anda..." class="flex-1 border-0 outline-none text-ink text-sm px-3.5 py-2 font-medium bg-transparent focus:ring-0 placeholder:text-mut">
                         <button id="wa-send-btn" type="button" class="btn-pill btn-pill-primary py-3 px-6 text-sm font-bold justify-center rounded-xl sm:rounded-full">
-                            <span>Kirim ke WhatsApp</span>
+                            <span id="txt-cta-send">Kirim ke WhatsApp</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </button>
                     </div>
@@ -1319,30 +1319,33 @@
     <!-- ==============================================
          FLOATING DOCK NAVIGATION (Interactive Bottom Dock)
          ============================================== -->
+    <!-- ==============================================
+         FLOATING DOCK NAVIGATION (Interactive Bottom Dock)
+         ============================================== -->
     <nav class="dock" id="dock" aria-label="Navigasi Halaman">
         <a href="#profil" data-key="profil" class="on">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7v9H4z"/></svg>
-            <span>Profil</span>
+            <span id="dock-txt-profil">Profil</span>
         </a>
         <a href="#kolaborasi" data-key="kolaborasi">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            <span>Mitra</span>
+            <span id="dock-txt-mitra">Mitra</span>
         </a>
         <a href="#proyek" data-key="proyek">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>
-            <span>Proyek</span>
+            <span id="dock-txt-proyek">Proyek</span>
         </a>
         <a href="#perjalanan" data-key="perjalanan">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 6H15a3 3 0 010 6H9a3 3 0 000 6h6.5"/></svg>
-            <span>Perjalanan</span>
+            <span id="dock-txt-perjalanan">Perjalanan</span>
         </a>
         <a href="#sertifikat" data-key="sertifikat">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg>
-            <span>Sertifikat</span>
+            <span id="dock-txt-sertifikat">Sertifikat</span>
         </a>
         <a href="#kontak" data-key="kontak">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>
-            <span>Kontak</span>
+            <span id="dock-txt-kontak">Kontak</span>
         </a>
     </nav>
 
@@ -1377,15 +1380,201 @@
 
 
     <!-- ==============================================
-         JAVASCRIPT LOGIC
+         JAVASCRIPT LOGIC (With Bilingual i18n ID / EN)
          ============================================== -->
     <script>
-        // 0. Projects Showcase (Interactive List & Stage)
+        let currentLang = localStorage.getItem('portfolio_lang') || 'id';
+
+        const i18n = {
+            id: {
+                status: "Terbuka untuk proyek freelance & kolaborasi",
+                bio: "Web developer yang antusias membangun aplikasi web modern dan mengintegrasikan kecerdasan buatan. Berfokus pada perancangan produk digital andal, sistem interaktif, dan solusi praktis yang memecahkan masalah nyata.",
+                cv: "Unduh CV",
+                skillsTitle: "Keahlian & Tech Stack Utama",
+                projBadge: "Portofolio Produk Digital",
+                projTitle: "Proyek Pilihan",
+                projDesc: "Aplikasi web, platform sekolah & organisasi, dan produk berbasis integrasi AI.",
+                projOpen: "Buka Proyek",
+                projMore: "Lihat {count} Proyek Lainnya",
+                projLess: "Tampilkan Lebih Sedikit",
+                expTitle: "Pengalaman Kerja & Mengajar",
+                expBadge: "Aktif Terkini di Atas",
+                expMore: "Lihat 5 Pengalaman Lainnya",
+                expLess: "Tampilkan Lebih Sedikit",
+                eduTitle: "Pendidikan Formal",
+                certTitle: "Sertifikasi & Lisensi",
+                certBadge: "3 Lisensi",
+                viewCred: "Lihat Kredensial",
+                ctaBadge: "Konsultasi & Kolaborasi",
+                ctaTitle: "Punya rencana proyek? Ceritakan.",
+                ctaDesc: "Website instansi sekolah, platform organisasi mahasiswa, portofolio personal, maupun solusi otomatisasi berbasis AI. Pesan akan langsung diarahkan ke WhatsApp.",
+                ctaNeeds: "Pilih Kebutuhan Anda:",
+                ctaPlaceholder: "Tulis catatan singkat kebutuhan Anda...",
+                ctaSend: "Kirim ke WhatsApp",
+                dockProfil: "Profil",
+                dockMitra: "Mitra",
+                dockProyek: "Proyek",
+                dockPerjalanan: "Perjalanan",
+                dockSertifikat: "Sertifikat",
+                dockKontak: "Kontak",
+                experiences: [
+                    {
+                        date: "JULI 2026 — SEKARANG",
+                        role: "Pengajar Akademia Ruangguru Coding",
+                        company: "PT Ruang Raya Indonesia (Ruangguru) • Sragen",
+                        desc: "Mengajar materi coding secara hybrid (offline & online) untuk program Ruangguru Coding di sekolah-sekolah wilayah Kabupaten Sragen, membimbing siswa membangun kompetensi digital melalui kurikulum terstruktur."
+                    },
+                    {
+                        date: "AGT 2026 — SEKARANG",
+                        role: "Freelance Elite Educator (Coding Teacher)",
+                        company: "Al Azhar IIBS (by PT. Alhazen)",
+                        desc: "Melaksanakan bimbingan dan pengajaran materi dasar-dasar pengembangan web dalam kegiatan ekstrakurikuler coding untuk siswa kelas 7 - 9 SMP guna menumbuhkan daya kreasi teknologi sejak dini."
+                    },
+                    {
+                        date: "SEPT 2026 — SEKARANG",
+                        role: "Asisten Laboratorium Pemrograman Web",
+                        company: "Laboratorium PTI UMS",
+                        desc: "Membimbing praktikum mahasiswa dalam pengembangan web mulai dari dasar HTML, CSS, JavaScript hingga framework Django, serta membantu evaluasi tugas dan pengelolaan kegiatan praktikum di Laboratorium PTI UMS."
+                    },
+                    {
+                        date: "2023 — JULI 2026",
+                        role: "IT Helpdesk Staff (Internship)",
+                        company: "DSTI Universitas Muhammadiyah Surakarta",
+                        desc: "Melayani stakeholder terkait kendala akun SSO login, menangani pengajuan surat masuk dari lembaga terkait website, jaringan, dan IT, serta diberikan hak akses mengedit database mahasiswa UMS sesuai kebutuhan."
+                    },
+                    {
+                        date: "FEB — JULI 2026",
+                        role: "Asisten Laboratorium Basis Data",
+                        company: "Laboratorium Basis Data PTI UMS",
+                        desc: "Membimbing praktikum pemodelan ERD, SQL query lanjutan, perancangan skema relasional, dan asistensi proyek database mahasiswa."
+                    },
+                    {
+                        date: "JAN — FEB 2026",
+                        role: "Website Developer — Institusi Pendidikan",
+                        company: "MI Muhammadiyah Gambiranom",
+                        desc: "Membangun kembali website profil sekolah dasar dari nol menggunakan Next.js dan PostgreSQL untuk promosi publik dan pelatihan konten guru."
+                    },
+                    {
+                        date: "2026",
+                        role: "Website Developer — Organisasi Mahasiswa",
+                        company: "IMM Siti Munjiyah FKIP UMS",
+                        desc: "Membangun portal naskah, struktur pengurus, dan arsip digital kaderisasi berbasis Next.js dan Supabase."
+                    },
+                    {
+                        date: "SEPT 2025 — JAN 2026",
+                        role: "Asisten Laboratorium Sistem Operasi",
+                        company: "Laboratorium PTI UMS",
+                        desc: "Mengajar praktikum Linux OS, struktur file, permission, manajemen proses, perintah terminal CLI, dan shell scripting."
+                    }
+                ],
+                needs: [
+                    "Website Sekolah",
+                    "Platform Organisasi",
+                    "Web Portofolio",
+                    "Aplikasi AI & Tool",
+                    "Kontrak Freelance",
+                    "Lainnya"
+                ]
+            },
+            en: {
+                status: "Open for freelance projects & collaboration",
+                bio: "Web developer passionate about building modern web applications and integrating artificial intelligence. Focused on crafting reliable digital products, interactive systems, and practical solutions that solve real-world problems.",
+                cv: "Download CV",
+                skillsTitle: "Key Skills & Core Tech Stack",
+                projBadge: "Digital Product Portfolio",
+                projTitle: "Featured Projects",
+                projDesc: "Web applications, educational & community platforms, and AI-integrated products.",
+                projOpen: "Open Project",
+                projMore: "View {count} More Projects",
+                projLess: "Show Less",
+                expTitle: "Work & Teaching Experience",
+                expBadge: "Current Roles at Top",
+                expMore: "View 5 More Experiences",
+                expLess: "Show Less",
+                eduTitle: "Formal Education",
+                certTitle: "Certifications & Licenses",
+                certBadge: "3 Licenses",
+                viewCred: "View Credential",
+                ctaBadge: "Consultation & Collaboration",
+                ctaTitle: "Have a project in mind? Let's talk.",
+                ctaDesc: "School websites, student organization platforms, personal portfolios, or AI automation solutions. Messages will be directed straight to WhatsApp.",
+                ctaNeeds: "Select Your Needs:",
+                ctaPlaceholder: "Write a brief note about your project needs...",
+                ctaSend: "Send to WhatsApp",
+                dockProfil: "Profile",
+                dockMitra: "Partners",
+                dockProyek: "Projects",
+                dockPerjalanan: "Journey",
+                dockSertifikat: "Certificates",
+                dockKontak: "Contact",
+                experiences: [
+                    {
+                        date: "JULY 2026 — PRESENT",
+                        role: "Coding Educator — Akademia Ruangguru",
+                        company: "PT Ruang Raya Indonesia (Ruangguru) • Sragen",
+                        desc: "Teaching hybrid coding curriculum (offline & online) for Ruangguru Coding programs across primary & secondary schools in Sragen Regency, mentoring students in core digital skills."
+                    },
+                    {
+                        date: "AUG 2026 — PRESENT",
+                        role: "Freelance Elite Educator (Coding Teacher)",
+                        company: "Al Azhar IIBS (by PT. Alhazen)",
+                        desc: "Guiding junior high school students (grades 7-9) in foundational web development within coding extracurriculars to spark digital creativity and computational problem-solving."
+                    },
+                    {
+                        date: "SEPT 2026 — PRESENT",
+                        role: "Web Programming Teaching Assistant",
+                        company: "PTI UMS Laboratory",
+                        desc: "Supervising undergraduate lab practicums in web development from HTML, CSS, JavaScript fundamentals to Django, evaluating project assignments, and managing laboratory operations."
+                    },
+                    {
+                        date: "2023 — JULY 2026",
+                        role: "IT Helpdesk Staff (Internship)",
+                        company: "Information & Communication Technology Directorate (DSTI) UMS",
+                        desc: "Assisted university stakeholders with SSO credentials, processed official technical inquiries regarding institutional websites and networking, with authorized database administration."
+                    },
+                    {
+                        date: "FEB — JULY 2026",
+                        role: "Database Teaching Assistant",
+                        company: "Database Laboratory PTI UMS",
+                        desc: "Mentored student practicums covering ERD modeling, advanced relational SQL queries, schema normalization, and student capstone database implementations."
+                    },
+                    {
+                        date: "JAN — FEB 2026",
+                        role: "Web Developer — Primary Education",
+                        company: "MI Muhammadiyah Gambiranom",
+                        desc: "Re-engineered primary school profile website from scratch using Next.js and PostgreSQL for public relations, including interactive content management training for teachers."
+                    },
+                    {
+                        date: "2026",
+                        role: "Web Developer — Student Organization",
+                        company: "IMM Siti Munjiyah FKIP UMS",
+                        desc: "Engineered official publishing portal, leadership directory, and cadre digital archive with Next.js and Supabase."
+                    },
+                    {
+                        date: "SEPT 2025 — JAN 2026",
+                        role: "Operating Systems Teaching Assistant",
+                        company: "PTI UMS Laboratory",
+                        desc: "Instructed Linux OS lab modules: filesystem architecture, permissions, process lifecycle management, shell scripting, and terminal workflow."
+                    }
+                ],
+                needs: [
+                    "School Website",
+                    "Org Platform",
+                    "Portfolio Web",
+                    "AI Apps & Tools",
+                    "Freelance Contract",
+                    "Other"
+                ]
+            }
+        };
+
         const projectsData = [
             {
                 title: "Website IMM SIMUN",
-                short: "Portal organisasi kemahasiswaan IMM SIMUN FKIP UMS",
-                desc: "Portal informasi resmi dan arsip digital kaderisasi PK IMM Siti Munjiyah FKIP UMS berbasis Next.js 16 dan Supabase untuk pengelolaan naskah, agenda, dan struktur organisasi.",
+                short_id: "Portal organisasi kemahasiswaan IMM SIMUN FKIP UMS",
+                short_en: "Student organization portal for IMM SIMUN FKIP UMS",
+                desc_id: "Portal informasi resmi dan arsip digital kaderisasi PK IMM Siti Munjiyah FKIP UMS berbasis Next.js 16 dan Supabase untuk pengelolaan naskah, agenda, dan struktur organisasi.",
+                desc_en: "Official portal and digital archive for PK IMM Siti Munjiyah FKIP UMS built with Next.js 16 and Supabase for managing agendas, publications, and organization structure.",
                 url: "https://imm-simun.ums.ac.id/",
                 banner: "./project-image/imm.webp",
                 partner: "./partner/imm-simun.webp",
@@ -1393,8 +1582,10 @@
             },
             {
                 title: "VibeCal AI",
-                short: "Zero-effort AI calendar dari Google Vibe Hackathon",
-                desc: "Kalender pintar cerdas hasil Google Vibe Hackathon yang mengekstrak jadwal otomatis langsung dari kalimat bahasa alami pengguna via Gemini Flash dan Groq API.",
+                short_id: "Zero-effort AI calendar dari Google Vibe Hackathon",
+                short_en: "Zero-effort AI calendar built at Google Vibe Hackathon",
+                desc_id: "Kalender pintar cerdas hasil Google Vibe Hackathon yang mengekstrak jadwal otomatis langsung dari kalimat bahasa alami pengguna via Gemini Flash dan Groq API.",
+                desc_en: "Intelligent calendar built during Google Vibe Hackathon that extracts schedule events from natural language input using Gemini Flash and Groq API.",
                 url: "https://github.com/itsmifai/vibecal",
                 banner: "./project-image/vibecal.webp",
                 partner: "./partner/vibecal.webp",
@@ -1402,8 +1593,10 @@
             },
             {
                 title: "MIM Gambiranom",
-                short: "Website profil madrasah & CMS mandiri sekolah dasar",
-                desc: "Website profil dan sistem CMS mandiri untuk MI Muhammadiyah Gambiranom menggantikan blogspot lama, memudahkan dewan guru mempublikasikan prestasi dan kegiatan sekolah.",
+                short_id: "Website profil madrasah & CMS mandiri sekolah dasar",
+                short_en: "Primary school profile website & custom CMS",
+                desc_id: "Website profil dan sistem CMS mandiri untuk MI Muhammadiyah Gambiranom menggantikan blogspot lama, memudahkan dewan guru mempublikasikan prestasi dan kegiatan sekolah.",
+                desc_en: "School profile website and custom CMS for MI Muhammadiyah Gambiranom replacing legacy blogspot, empowering teachers to publish school news and student achievements.",
                 url: "https://mimgambiranom.site/",
                 banner: "./project-image/mim.webp",
                 partner: "./partner/mim-gambiranom.webp",
@@ -1411,8 +1604,10 @@
             },
             {
                 title: "Foundry Path",
-                short: "Personal learning path builder dengan graf dependensi skill tree",
-                desc: "Platform visual interaktif untuk merancang roadmap belajar personal dengan graf dependensi skill tree menggunakan React Flow dan didukung asisten AI kontekstual.",
+                short_id: "Personal learning path builder dengan graf dependensi skill tree",
+                short_en: "Interactive learning roadmap builder with skill tree graphs",
+                desc_id: "Platform visual interaktif untuk merancang roadmap belajar personal dengan graf dependensi skill tree menggunakan React Flow dan didukung asisten AI kontekstual.",
+                desc_en: "Interactive visual platform to design personalized learning roadmaps with skill-tree dependency graphs powered by React Flow and a contextual AI assistant.",
                 url: "https://github.com/itsmifai/foundry",
                 banner: "./project-image/foundry.webp",
                 partner: "./partner/foundry.webp",
@@ -1420,8 +1615,10 @@
             },
             {
                 title: "Barang-Bareng",
-                short: "Platform sewa barang peer-to-peer dua arah",
-                desc: "Platform persewaan barang P2P lengkap dengan negosiasi chat real-time, sistem booking kalender, manajemen deposit, dan alur konfirmasi transaksi dua arah.",
+                short_id: "Platform sewa barang peer-to-peer dua arah",
+                short_en: "Peer-to-peer item rental platform",
+                desc_id: "Platform persewaan barang P2P lengkap dengan negosiasi chat real-time, sistem booking kalender, manajemen deposit, dan alur konfirmasi transaksi dua arah.",
+                desc_en: "P2P equipment rental platform featuring real-time chat negotiation, calendar booking system, security deposit management, and two-way transaction flow.",
                 url: "https://barang-bareng.vercel.app/",
                 banner: "./project-image/barang-bareng.webp",
                 partner: "./partner/barang-bareng.webp",
@@ -1429,8 +1626,10 @@
             },
             {
                 title: "LayakBisnis AI",
-                short: "Kalkulator kelayakan finansial UMKM F&B + AI Advisor",
-                desc: "Tool analisis kelayakan usaha F&B untuk menghitung BEP, ROI, Payback Period otomatis, dilengkapi AI Advisor rekomendasi finansial dan integrasi payment gateway Midtrans.",
+                short_id: "Kalkulator kelayakan finansial UMKM F&B + AI Advisor",
+                short_en: "F&B SME financial feasibility calculator + AI Advisor",
+                desc_id: "Tool analisis kelayakan usaha F&B untuk menghitung BEP, ROI, Payback Period otomatis, dilengkapi AI Advisor rekomendasi finansial dan integrasi payment gateway Midtrans.",
+                desc_en: "Financial feasibility tool for F&B businesses calculating automated BEP, ROI, and Payback Period, equipped with an AI financial advisor and Midtrans integration.",
                 url: "https://www.layakbisnis.com/",
                 banner: "./project-image/layakbisnis.webp",
                 partner: "./partner/layakbisnis.webp",
@@ -1438,8 +1637,10 @@
             },
             {
                 title: "Setara Special Ed",
-                short: "AI asisten guru pendidikan khusus & penyusunan PPI otomatis",
-                desc: "Platform asisten berbasis AI untuk guru sekolah luar biasa dalam mengidentifikasi kebutuhan belajar siswa berkebutuhan khusus dan menyusun draft Program Pembelajaran Individual (PPI).",
+                short_id: "AI asisten guru pendidikan khusus & penyusunan PPI otomatis",
+                short_en: "AI assistant for special education teachers & IEP builder",
+                desc_id: "Platform asisten berbasis AI untuk guru sekolah luar biasa dalam mengidentifikasi kebutuhan belajar siswa berkebutuhan khusus dan menyusun draft Program Pembelajaran Individual (PPI).",
+                desc_en: "AI-powered assistant platform for special education teachers to assess special needs and generate draft Individualized Education Programs (IEP).",
                 url: "https://setara-deploy.vercel.app/",
                 banner: "./project-image/incluedu.webp",
                 partner: "./partner/setara.webp",
@@ -1447,8 +1648,10 @@
             },
             {
                 title: "CT Quiz Lab",
-                short: "Platform asesmen Computational Thinking interaktif",
-                desc: "Platform pembelajaran dan asesmen Computational Thinking (CT) interaktif untuk siswa dan guru, dilengkapi generator kuis berbasis AI dan laporan capaian 4 pilar CT.",
+                short_id: "Platform asesmen Computational Thinking interaktif",
+                short_en: "Interactive Computational Thinking assessment platform",
+                desc_id: "Platform pembelajaran dan asesmen Computational Thinking (CT) interaktif untuk siswa dan guru, dilengkapi generator kuis berbasis AI dan laporan capaian 4 pilar CT.",
+                desc_en: "Interactive Computational Thinking (CT) learning and assessment platform for students and educators with AI quiz generator and 4-pillar analytics.",
                 url: "https://ct-quiz-lab.vercel.app/",
                 banner: "./project-image/ct-quiz.webp",
                 partner: "./partner/ct-quiz.webp",
@@ -1459,17 +1662,28 @@
         const shotHtml = p => `<div class="shot"><img src="${p.banner}" alt="Tampilan ${p.title}" loading="lazy"></div>`;
         const chipsHtml = tags => tags.map(t => `<span>${t}</span>`).join("");
 
-        const projectsContainer = document.getElementById("projects-list");
-        if (projectsContainer) {
+        let isPjExpanded = false;
+        let isExpExpanded = false;
+        let activeProjectIndex = 0;
+
+        function renderProjects() {
+            const projectsContainer = document.getElementById("projects-list");
+            if (!projectsContainer) return;
             const isDesk = window.matchMedia("(min-width: 900px)").matches;
             const initialVisible = 4;
             const extraCount = projectsData.length - initialVisible;
-            
+            const t = i18n[currentLang];
+
             const projectsHtml = projectsData.map((p, i) => {
                 const cleanUrl = p.url ? p.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : '';
                 const isExtra = i >= initialVisible;
+                const pShort = currentLang === 'en' ? p.short_en : p.short_id;
+                const pDesc = currentLang === 'en' ? p.desc_en : p.desc_id;
+                const isHidden = isExtra && !isPjExpanded;
+                const isOpen = !isDesk && i === activeProjectIndex;
+
                 return `
-                <article class="pj ${!isDesk && i === 0 ? 'open' : ''} ${isExtra ? 'pj-extra hidden' : ''}" tabindex="0" data-i="${i}" data-url="${p.url}">
+                <article class="pj ${isOpen ? 'open' : ''} ${isDesk && i === activeProjectIndex ? 'on' : ''} ${isHidden ? 'pj-extra hidden' : (isExtra ? 'pj-extra' : '')}" tabindex="0" data-i="${i}" data-url="${p.url}">
                     <div class="pj-header-row">
                         <div style="min-width:0; flex:1">
                             <div class="flex items-center gap-2 mb-1">
@@ -1477,7 +1691,7 @@
                                 <span class="text-[10px] font-mono font-bold text-v uppercase">${p.tags[0]}</span>
                             </div>
                             <h3>${p.title}</h3>
-                            <p class="pj-short">${p.short}</p>
+                            <p class="pj-short">${pShort}</p>
                         </div>
                         <span class="ar" aria-hidden="true">&#x2197;</span>
                     </div>
@@ -1489,18 +1703,19 @@
                             </div>
                             ${shotHtml(p)}
                         </div>
-                        <p class="text-[13px] text-[#4a4668] leading-relaxed mb-3">${p.desc}</p>
+                        <p class="text-[13px] text-[#4a4668] leading-relaxed mb-3">${pDesc}</p>
                         <div class="stk mb-3">${chipsHtml(p.tags)}</div>
-                        ${p.url ? `<a class="go" href="${p.url}" target="_blank" rel="noopener">Buka Proyek <svg class="w-4 h-4 ml-1 inline" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></a>` : ''}
+                        ${p.url ? `<a class="go" href="${p.url}" target="_blank" rel="noopener">${t.projOpen} <svg class="w-4 h-4 ml-1 inline" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></a>` : ''}
                     </div>
                 </article>
             `}).join("");
 
+            const toggleBtnText = isPjExpanded ? t.projLess : t.projMore.replace('{count}', extraCount);
             const toggleBtnHtml = extraCount > 0 ? `
                 <div class="pt-3">
                     <button id="btn-toggle-projects" type="button" class="w-full py-3 px-4 rounded-xl border border-line bg-soft hover:bg-purple-100/70 text-ink hover:text-v font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer group">
-                        <span id="btn-toggle-pj-text">Lihat ${extraCount} Proyek Lainnya</span>
-                        <svg id="btn-toggle-pj-icon" class="w-4 h-4 transform transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <span id="btn-toggle-pj-text">${toggleBtnText}</span>
+                        <svg id="btn-toggle-pj-icon" class="w-4 h-4 transform transition-transform group-hover:translate-y-0.5" style="transform: ${isPjExpanded ? 'rotate(180deg)' : 'rotate(0deg)'}" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
@@ -1508,60 +1723,78 @@
             ` : '';
 
             projectsContainer.innerHTML = projectsHtml + toggleBtnHtml;
+            updateStage(activeProjectIndex);
+            attachProjectEvents();
+        }
+
+        function updateStage(i) {
+            const stage = document.getElementById("stage");
+            if (!stage) return;
+            activeProjectIndex = i;
+            const p = projectsData[i];
+            const t = i18n[currentLang];
+            const pDesc = currentLang === 'en' ? p.desc_en : p.desc_id;
+            const cleanUrl = p.url ? p.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : '';
+
+            stage.innerHTML = `
+                <div class="win">
+                    <div class="wb">
+                        <i></i><i></i><i></i>
+                        <span class="url">${cleanUrl}</span>
+                    </div>
+                    ${shotHtml(p)}
+                </div>
+                <div class="flex items-center gap-2 mt-5 mb-1">
+                    <img src="${p.partner}" alt="" class="w-5 h-5 object-contain flex-shrink-0" onerror="this.style.display='none'">
+                    <span class="text-xs font-mono font-bold text-v uppercase">${p.tags[0]}</span>
+                </div>
+                <h3>${p.title}</h3>
+                <p>${pDesc}</p>
+                <div class="stk">${chipsHtml(p.tags)}</div>
+                ${p.url ? `<a class="go" href="${p.url}" target="_blank" rel="noopener">${t.projOpen} <svg class="w-4 h-4 ml-1 inline" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></a>` : ''}
+            `;
+            stage.classList.remove("fade");
+            void stage.offsetWidth;
+            stage.classList.add("fade");
+        }
+
+        function attachProjectEvents() {
+            const projectsContainer = document.getElementById("projects-list");
+            if (!projectsContainer) return;
+            const isDesk = window.matchMedia("(min-width: 900px)").matches;
 
             const btnTogglePj = document.getElementById("btn-toggle-projects");
             if (btnTogglePj) {
-                let isPjExpanded = false;
                 btnTogglePj.addEventListener("click", (e) => {
                     e.stopPropagation();
                     isPjExpanded = !isPjExpanded;
                     document.querySelectorAll(".pj-extra").forEach(el => {
                         el.classList.toggle("hidden", !isPjExpanded);
                     });
+                    const t = i18n[currentLang];
                     const txt = document.getElementById("btn-toggle-pj-text");
                     const icon = document.getElementById("btn-toggle-pj-icon");
-                    if (txt) txt.textContent = isPjExpanded ? "Tampilkan Lebih Sedikit" : `Lihat ${extraCount} Proyek Lainnya`;
+                    if (txt) txt.textContent = isPjExpanded ? t.projLess : t.projMore.replace('{count}', projectsData.length - 4);
                     if (icon) icon.style.transform = isPjExpanded ? "rotate(180deg)" : "rotate(0deg)";
                 });
             }
 
-            function pickProject(i) {
-                document.querySelectorAll(".pj").forEach((r, k) => r.classList.toggle("on", k === i));
-                const p = projectsData[i];
-                const stage = document.getElementById("stage");
-                if (!stage) return;
-                const cleanUrl = p.url ? p.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : '';
-                stage.innerHTML = `
-                    <div class="win">
-                        <div class="wb">
-                            <i></i><i></i><i></i>
-                            <span class="url">${cleanUrl}</span>
-                        </div>
-                        ${shotHtml(p)}
-                    </div>
-                    <div class="flex items-center gap-2 mt-5 mb-1">
-                        <img src="${p.partner}" alt="" class="w-5 h-5 object-contain flex-shrink-0" onerror="this.style.display='none'">
-                        <span class="text-xs font-mono font-bold text-v uppercase">${p.tags[0]}</span>
-                    </div>
-                    <h3>${p.title}</h3>
-                    <p>${p.desc}</p>
-                    <div class="stk">${chipsHtml(p.tags)}</div>
-                    ${p.url ? `<a class="go" href="${p.url}" target="_blank" rel="noopener">Buka Proyek <svg class="w-4 h-4 ml-1 inline" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></a>` : ''}
-                `;
-                stage.classList.remove("fade");
-                void stage.offsetWidth;
-                stage.classList.add("fade");
-            }
-
             if (isDesk) {
-                pickProject(0);
-                projectsContainer.addEventListener("mouseover", e => {
-                    const r = e.target.closest(".pj");
-                    if (r && !r.classList.contains("on")) pickProject(+r.dataset.i);
-                });
-                projectsContainer.addEventListener("focusin", e => {
-                    const r = e.target.closest(".pj");
-                    if (r && !r.classList.contains("on")) pickProject(+r.dataset.i);
+                projectsContainer.querySelectorAll(".pj").forEach(r => {
+                    r.addEventListener("mouseover", () => {
+                        const idx = +r.dataset.i;
+                        if (activeProjectIndex !== idx) {
+                            document.querySelectorAll(".pj").forEach((el, k) => el.classList.toggle("on", k === idx));
+                            updateStage(idx);
+                        }
+                    });
+                    r.addEventListener("focusin", () => {
+                        const idx = +r.dataset.i;
+                        if (activeProjectIndex !== idx) {
+                            document.querySelectorAll(".pj").forEach((el, k) => el.classList.toggle("on", k === idx));
+                            updateStage(idx);
+                        }
+                    });
                 });
             }
 
@@ -1575,6 +1808,7 @@
                     document.querySelectorAll(".pj").forEach(el => el.classList.remove("open"));
                     if (!isOpen) {
                         r.classList.add("open");
+                        activeProjectIndex = +r.dataset.i;
                     }
                 }
             });
@@ -1586,18 +1820,118 @@
             });
         }
 
+        function updateExperiences() {
+            const expList = document.getElementById("exp-list");
+            if (!expList) return;
+            const items = expList.querySelectorAll("li");
+            const t = i18n[currentLang];
+            items.forEach((li, idx) => {
+                const data = t.experiences[idx];
+                if (!data) return;
+                const dateSpan = li.querySelector(".font-mono");
+                const companySpan = li.querySelector(".text-mut");
+                const roleH3 = li.querySelector("h3");
+                const descP = li.querySelector("p");
+                if (dateSpan) dateSpan.textContent = data.date;
+                if (companySpan) companySpan.textContent = data.company;
+                if (roleH3) roleH3.textContent = data.role;
+                if (descP) descP.textContent = data.desc;
+            });
+        }
+
+        function updateNeedsChips() {
+            const chips = document.querySelectorAll('#needs-chips .chip');
+            const t = i18n[currentLang];
+            chips.forEach((chip, i) => {
+                if (t.needs[i]) {
+                    chip.textContent = t.needs[i];
+                }
+            });
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('portfolio_lang', lang);
+            document.documentElement.lang = lang;
+            const t = i18n[lang];
+
+            // Update Switcher UI
+            const btnId = document.getElementById("btn-lang-id");
+            const btnEn = document.getElementById("btn-lang-en");
+            if (btnId && btnEn) {
+                if (lang === 'id') {
+                    btnId.className = "px-2.5 py-1 rounded-full text-xs font-bold transition-all flex items-center gap-1 bg-v text-white shadow-xs cursor-pointer";
+                    btnEn.className = "px-2.5 py-1 rounded-full text-xs font-bold text-mut hover:text-ink transition-all flex items-center gap-1 cursor-pointer";
+                } else {
+                    btnEn.className = "px-2.5 py-1 rounded-full text-xs font-bold transition-all flex items-center gap-1 bg-v text-white shadow-xs cursor-pointer";
+                    btnId.className = "px-2.5 py-1 rounded-full text-xs font-bold text-mut hover:text-ink transition-all flex items-center gap-1 cursor-pointer";
+                }
+            }
+
+            // Static Text updates
+            const map = {
+                "txt-status": t.status,
+                "txt-bio": t.bio,
+                "txt-cv": t.cv,
+                "txt-skills-title": t.skillsTitle,
+                "txt-proj-badge": t.projBadge,
+                "txt-proj-title": t.projTitle,
+                "txt-proj-desc": t.projDesc,
+                "txt-exp-title": t.expTitle,
+                "txt-exp-badge": t.expBadge,
+                "btn-toggle-exp-text": isExpExpanded ? t.expLess : t.expMore,
+                "txt-edu-title": t.eduTitle,
+                "txt-cert-title": t.certTitle,
+                "txt-cert-badge": t.certBadge,
+                "txt-cta-badge": t.ctaBadge,
+                "txt-cta-title": t.ctaTitle,
+                "txt-cta-desc": t.ctaDesc,
+                "txt-cta-needs": t.ctaNeeds,
+                "txt-cta-send": t.ctaSend,
+                "dock-txt-profil": t.dockProfil,
+                "dock-txt-mitra": t.dockMitra,
+                "dock-txt-proyek": t.dockProyek,
+                "dock-txt-perjalanan": t.dockPerjalanan,
+                "dock-txt-sertifikat": t.dockSertifikat,
+                "dock-txt-kontak": t.dockKontak
+            };
+
+            for (const [id, val] of Object.entries(map)) {
+                const el = document.getElementById(id);
+                if (el) el.textContent = val;
+            }
+
+            const waInput = document.getElementById("wa-text-input");
+            if (waInput) waInput.placeholder = t.ctaPlaceholder;
+
+            // Update Dynamic Sections
+            renderProjects();
+            updateExperiences();
+            updateNeedsChips();
+        }
+
+        // Initialize projects & language
+        renderProjects();
+        setLanguage(currentLang);
+
+        // Language button event listeners
+        const btnLangId = document.getElementById("btn-lang-id");
+        const btnLangEn = document.getElementById("btn-lang-en");
+        if (btnLangId) btnLangId.addEventListener("click", () => setLanguage('id'));
+        if (btnLangEn) btnLangEn.addEventListener("click", () => setLanguage('en'));
+
         // Toggle Experience Timeline
         const btnToggleExp = document.getElementById("btn-toggle-exp");
         if (btnToggleExp) {
-            let isExpExpanded = false;
             btnToggleExp.addEventListener("click", () => {
                 isExpExpanded = !isExpExpanded;
                 document.querySelectorAll(".exp-extra").forEach(el => {
                     el.classList.toggle("hidden", !isExpExpanded);
                 });
+                const t = i18n[currentLang];
                 const txt = document.getElementById("btn-toggle-exp-text");
                 const icon = document.getElementById("btn-toggle-exp-icon");
-                if (txt) txt.textContent = isExpExpanded ? "Tampilkan Lebih Sedikit" : "Lihat 5 Pengalaman Lainnya";
+                if (txt) txt.textContent = isExpExpanded ? t.expLess : t.expMore;
                 if (icon) icon.style.transform = isExpExpanded ? "rotate(180deg)" : "rotate(0deg)";
             });
         }
@@ -1617,24 +1951,47 @@
             });
         });
 
-        const waInput = document.getElementById('wa-text-input');
+        // 2. Direct WhatsApp Dispatch
         const waSendBtn = document.getElementById('wa-send-btn');
-        const WA_PHONE = "6285716823315";
+        const waTextInput = document.getElementById('wa-text-input');
 
-        waSendBtn.addEventListener('click', () => {
-            const note = waInput.value.trim();
-            let msg = `Halo Miftah, saya tertarik mendiskusikan proyek: *${selectedNeed}*.`;
-            if (note) {
-                msg += `\n\nCatatan Kebutuhan:\n${note}`;
-            }
-            const url = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`;
-            window.open(url, '_blank', 'noopener');
-        });
+        if (waSendBtn) {
+            waSendBtn.addEventListener('click', () => {
+                const customNotes = waTextInput ? waTextInput.value.trim() : '';
+                let message = "";
+                if (currentLang === 'en') {
+                    message = `Hello Miftahul Amri, I am interested in collaborating on: *${selectedNeed}*.`;
+                    if (customNotes) {
+                        message += `
 
-        // 3. Floating Dock Active Scroll Spy
-        const dockLinks = document.querySelectorAll('#dock a');
+Project Notes:
+"${customNotes}"`;
+                    }
+                    message += `
+
+Sent from your portfolio website.`;
+                } else {
+                    message = `Halo Miftahul Amri, saya tertarik berdiskusi mengenai proyek: *${selectedNeed}*.`;
+                    if (customNotes) {
+                        message += `
+
+Catatan:
+"${customNotes}"`;
+                    }
+                    message += `
+
+Dikirim dari portofolio web.`;
+                }
+                const phone = "6285716823315";
+                const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+                window.open(waUrl, '_blank', 'noopener');
+            });
+        }
+
+        // 3. Floating Dock Active Section Observer
         const sections = ['profil', 'kolaborasi', 'proyek', 'perjalanan', 'sertifikat', 'kontak'];
-        
+        const dockLinks = document.querySelectorAll('.dock a');
+
         window.addEventListener('scroll', () => {
             let current = 'profil';
             const scrollPos = window.scrollY + 200;
@@ -1647,48 +2004,52 @@
             });
 
             dockLinks.forEach(link => {
+                link.classList.remove('on');
                 if (link.dataset.key === current) {
                     link.classList.add('on');
-                } else {
-                    link.classList.remove('on');
                 }
+            });
+        }, { passive: true });
+
+        // 4. PDF Modal Certificate Preview
+        const pdfModal = document.getElementById('pdf-modal');
+        const pdfViewer = document.getElementById('pdf-viewer');
+        const pdfTitle = document.getElementById('pdf-modal-title');
+        const pdfClose = document.getElementById('pdf-modal-close');
+        const certTriggers = document.querySelectorAll('.cert-btn');
+
+        function openPdf(url, title) {
+            if (!pdfModal || !pdfViewer) return;
+            pdfViewer.src = url;
+            if (pdfTitle) pdfTitle.textContent = title;
+            pdfModal.classList.remove('opacity-0', 'pointer-events-none');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePdf() {
+            if (!pdfModal || !pdfViewer) return;
+            pdfModal.classList.add('opacity-0', 'pointer-events-none');
+            pdfViewer.src = '';
+            document.body.style.overflow = '';
+        }
+
+        certTriggers.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const pdf = btn.dataset.pdf;
+                const title = btn.dataset.title;
+                openPdf(pdf, title);
             });
         });
 
-        // 4. PDF Preview Modal Handlers
-        const pdfModal = document.getElementById('pdf-modal');
-        const pdfWindow = document.getElementById('pdf-window');
-        const pdfIframe = document.getElementById('pdf-iframe');
-        const pdfTitle = document.getElementById('pdf-title');
-        const pdfLoading = document.getElementById('pdf-loading');
-
-        function openPdfModal(url, title) {
-            pdfTitle.textContent = title;
-            pdfLoading.style.display = 'flex';
-            pdfIframe.src = url;
-            pdfModal.classList.remove('opacity-0', 'pointer-events-none');
-            pdfWindow.classList.remove('scale-95');
-            document.body.style.overflow = 'hidden';
-
-            pdfIframe.onload = () => {
-                pdfLoading.style.display = 'none';
-            };
+        if (pdfClose) pdfClose.addEventListener('click', closePdf);
+        if (pdfModal) {
+            pdfModal.addEventListener('click', (e) => {
+                if (e.target === pdfModal) closePdf();
+            });
         }
-
-        function closePdfModal() {
-            pdfModal.classList.add('opacity-0', 'pointer-events-none');
-            pdfWindow.classList.add('scale-95');
-            pdfIframe.src = '';
-            document.body.style.overflow = 'auto';
-        }
-
-        pdfModal.addEventListener('click', (e) => {
-            if (e.target === pdfModal) closePdfModal();
-        });
-
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                if (!pdfModal.classList.contains('pointer-events-none')) closePdfModal();
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && pdfModal && !pdfModal.classList.contains('pointer-events-none')) {
+                closePdf();
             }
         });
     </script>
