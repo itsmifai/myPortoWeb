@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Miftahul Amri — Web Developer & AI Enthusiast</title>
+<meta name="description" content="Portofolio Miftahul Amri, Web Developer & AI Enthusiast dari Surakarta.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#190d4b;--v:#5b2ff0;--v2:#8b5cf6;--lilac:#cdb9f5;--ink:#1c1733;--mut:#6f6b88;--soft:#f6f3ff;--line:#ece8f7;--W:1120px}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:15px;color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+:focus-visible{outline:3px solid var(--v2);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important}}
+
+/* banner */
+.banner{position:relative;height:200px;background:var(--deep);overflow:hidden}
+.banner svg{position:absolute;inset:0;width:100%;height:100%}
+.bar{position:relative;z-index:2;max-width:var(--W);margin:0 auto;padding:22px 40px;display:flex;justify-content:space-between;align-items:center}
+.lg{display:flex;align-items:center;gap:9px;color:#fff;font-weight:800;font-size:20px;letter-spacing:-.02em}
+.lg i{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,var(--v2),var(--v));display:grid;place-items:center;font-style:normal;font-size:15px}
+.acts{display:flex;gap:8px}
+.pill{background:#fff;color:var(--ink);border:0;border-radius:999px;padding:9px 18px;font:700 13px "Plus Jakarta Sans",sans-serif;cursor:pointer}
+.pill:hover{background:var(--soft)}
+
+/* page */
+.col{max-width:var(--W);margin:0 auto;padding:0 40px 130px}
+.av{width:128px;height:128px;margin-top:-64px;border-radius:50%;border:6px solid #fff;background:var(--lilac);overflow:hidden;display:grid;place-items:center;font-weight:800;font-size:48px;color:var(--v);position:relative}
+.av img{width:100%;height:100%;object-fit:cover}
+.row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-top:14px}
+h1{font-size:36px;font-weight:800;letter-spacing:-.025em;line-height:1.15}
+.role{color:var(--mut);font-size:17px}
+.soc{display:flex;gap:2px;margin:-4px -9px 0 0}
+.soc a{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:var(--mut)}
+.soc a:hover{background:var(--soft);color:var(--v)}
+.soc svg{width:22px;height:22px}
+.bio{margin-top:16px;max-width:64ch;font-size:16.5px;color:#3f3b5a}
+.stat{display:inline-flex;align-items:center;gap:7px;margin-top:14px;font-size:13px;font-weight:600;color:#0f7a4d}
+.stat:before{content:"";width:8px;height:8px;border-radius:50%;background:#22c55e}
+.stack{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.stack span,.stk span{font-size:12.5px;font-weight:600;color:var(--mut);background:var(--soft);padding:3px 11px;border-radius:999px}
+
+section{margin-top:84px}
+h2{font-size:20px;font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:8px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+h2 small{font-size:12px;font-weight:700;color:var(--v);background:var(--soft);padding:1px 9px;border-radius:999px}
+
+/* projects: list + stage */
+.pjw{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:64px;align-items:start;margin-top:12px}
+.pj{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:16px 0 16px 20px;border-bottom:1px solid var(--line);cursor:pointer}
+.pj:before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:3px;border-radius:3px;background:transparent;transition:background .15s}
+.pj.on:before{background:var(--v)}
+.pj h3{font-size:20px;font-weight:800;letter-spacing:-.02em;line-height:1.3;transition:color .15s}
+.pj p{font-size:13.5px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ar{font-weight:800;color:var(--lilac);transition:transform .2s,color .2s}
+.pj.on h3,.pj.on .ar{color:var(--v)}
+.pj.on .ar{transform:translate(3px,-3px)}
+.stage{position:sticky;top:28px;padding-top:16px}
+.fade{animation:fd .3s ease}
+@keyframes fd{from{opacity:0;transform:translateY(8px)}}
+.win{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 24px 60px rgba(25,13,75,.12)}
+.wb{display:flex;align-items:center;gap:6px;padding:11px 16px;background:#f6f4fb;border-bottom:1px solid var(--line)}
+.wb i{width:10px;height:10px;border-radius:50%;background:var(--lilac)}
+.url{margin-left:10px;flex:1;background:#fff;border-radius:999px;font-size:12px;color:var(--mut);padding:3px 14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.shot{position:relative;aspect-ratio:16/10;overflow:hidden;background:linear-gradient(135deg,var(--c1),var(--c2))}
+.shot:before{content:"";position:absolute;right:-30px;top:-30px;width:130px;height:130px;border-radius:50%;border:28px solid rgba(255,255,255,.22)}
+.shot:after{content:"";position:absolute;left:34px;bottom:-16px;border-left:58px solid transparent;border-right:58px solid transparent;border-bottom:96px solid rgba(255,255,255,.16);transform:rotate(-12deg)}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:1}
+.stage h3{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-top:22px}
+.stage p{color:#4a4668;margin-top:6px;max-width:58ch}
+.stk{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.go{display:inline-block;margin-top:16px;font-weight:700;font-size:14px;color:#fff;background:var(--v);padding:10px 20px;border-radius:999px}
+.pv{display:none}
+
+/* timeline as grid */
+.tl{list-style:none;padding:26px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 64px}
+.tl li{position:relative;border-top:2px solid var(--line);padding-top:16px}
+.tl li:before{content:"";position:absolute;left:0;top:-2px;width:40px;height:2px;background:var(--v)}
+.tl li.edu:before{background:var(--lilac)}
+.tl li.hide{display:none}
+.dt{font-size:12px;font-weight:700;color:var(--v)}
+.dt .k{color:var(--mut);font-weight:600;margin-left:8px}
+.tl h3{font-size:16px;font-weight:700;line-height:1.4;margin-top:2px}
+.tl .pl{font-size:13px;color:var(--mut)}
+.tl p{font-size:14px;color:#4a4668;margin-top:4px}
+.more{margin-top:28px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 20px;font-weight:700;font-size:13px;color:var(--v);cursor:pointer}
+.more:hover{background:var(--soft)}
+
+/* certs */
+.cts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px 64px;padding-top:26px}
+.ct{border-top:2px solid var(--line);padding-top:16px}
+.ct span{font-size:12px;font-weight:700;color:var(--v)}
+.ct b{display:block;font-size:16px;font-weight:700;line-height:1.4}
+.ct small{color:var(--mut);font-size:13px}
+
+/* contact */
+.cta{position:relative;overflow:hidden;border-radius:30px;padding:48px;background:linear-gradient(135deg,var(--v2),var(--v));color:#fff;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.cta:before{content:"";position:absolute;left:-40px;bottom:-60px;width:170px;height:170px;border-radius:50%;border:32px solid rgba(255,255,255,.12)}
+.cta>div{position:relative}
+.cta h2{border:0;padding:0;font-size:34px;letter-spacing:-.03em;line-height:1.15}
+.cta p{opacity:.9;margin-top:10px;max-width:40ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chip{border:1px solid rgba(255,255,255,.45);background:transparent;color:#fff;border-radius:999px;padding:7px 15px;font:600 13px "Plus Jakarta Sans",sans-serif;cursor:pointer}
+.chip[aria-pressed=true]{background:#fff;color:var(--v);border-color:#fff}
+.snd{display:flex;gap:8px;background:#fff;border-radius:20px;padding:7px 7px 7px 18px;align-items:flex-end}
+.snd textarea{flex:1;border:0;outline:0;resize:none;font:500 14px "Plus Jakarta Sans",sans-serif;padding:9px 0;min-height:76px;color:var(--ink)}
+.snd button{border:0;background:var(--v);color:#fff;font-weight:700;font-size:13px;padding:11px 20px;border-radius:14px;cursor:pointer}
+footer{margin-top:44px;text-align:center;color:var(--mut);font-size:12.5px}
+
+/* dock */
+.dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;gap:2px;padding:6px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:999px;box-shadow:0 10px 30px rgba(25,13,75,.14)}
+.dock a{display:flex;align-items:center;gap:7px;padding:10px 15px;border-radius:999px;font-weight:700;font-size:13px;color:var(--mut);transition:background .15s,color .15s}
+.dock a svg{width:19px;height:19px;flex:none}
+.dock a:hover{color:var(--ink)}
+.dock a.on{background:var(--v);color:#fff}
+
+/* tablet + mobile */
+@media(max-width:899px){
+  .col,.bar{padding-left:22px;padding-right:22px}
+  .banner{height:160px}
+  .av{width:96px;height:96px;margin-top:-48px;font-size:38px}
+  h1{font-size:28px}
+  section{margin-top:64px}
+  .pjw{grid-template-columns:1fr;gap:0}
+  .stage{display:none}
+  .pj{padding-left:0}
+  .pj:before{display:none}
+  .pj.open .pv{display:block;grid-column:1/-1;padding-top:10px}
+  .pv .shot{border-radius:14px}
+  .pv small{display:block;margin-top:10px;color:var(--mut);font-size:12.5px}
+  .pv .go{margin-top:10px;padding:8px 16px;font-size:13px}
+  .tl,.cts{grid-template-columns:1fr}
+  .cta{grid-template-columns:1fr;padding:30px;gap:24px}
+  .cta h2{font-size:26px}
+}
+@media(max-width:560px){
+  .dock a span{display:none}
+  .dock a.on span{display:inline}
+  .dock a{padding:10px 13px}
+}
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <svg viewBox="0 0 1200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path d="M60 70l24 24M84 70l-24 24" stroke="#8b5cf6" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="200" cy="150" r="8" fill="#cdb9f5"/>
+    <path d="M540 172l58-54v108z" fill="#36199a" opacity=".85"/>
+    <circle cx="740" cy="66" r="38" fill="none" stroke="#8b5cf6" stroke-width="24"/>
+    <path d="M900 96a50 50 0 1 1-9-60 36 36 0 1 0 9 60z" fill="#7c4df0"/>
+    <path d="M1050 156a42 42 0 1 0 42 42 33 33 0 0 1-42-42z" fill="#8b5cf6"/>
+    <path d="M1010 118q34-34 68 0t68 0" fill="none" stroke="#cdb9f5" stroke-width="18" stroke-linecap="round"/>
+    <circle cx="640" cy="40" r="8" fill="#cdb9f5"/>
+  </svg>
+  <div class="bar">
+    <a class="lg" href="#profil"><i>M</i>miftah</a>
+    <div class="acts"><a class="pill" id="cv" href="#">Unduh CV</a><button class="pill" id="share" type="button">Bagikan</button></div>
+  </div>
+</div>
+
+<main class="col">
+  <header id="profil">
+    <div class="av"><img src="avatar.png" alt="Foto profil Miftahul Amri" onerror="this.parentNode.textContent='M'"></div>
+    <div class="row">
+      <div><h1>Miftahul Amri</h1><div class="role">Web Developer & AI Enthusiast</div></div>
+      <div class="soc" id="soc"></div>
+    </div>
+    <p class="bio" id="bio"></p>
+    <span class="stat">Terbuka untuk proyek freelance</span>
+    <div class="stack" id="stack"></div>
+  </header>
+
+  <section id="proyek"><h2>Proyek <small id="pc"></small></h2><div class="pjw"><div id="projects"></div><div class="stage" id="stage"></div></div></section>
+  <section id="perjalanan"><h2>Perjalanan</h2><ol class="tl" id="tl"></ol><button class="more" id="more" type="button"></button></section>
+  <section id="sertifikat"><h2>Sertifikat</h2><div class="cts" id="certs"></div></section>
+
+  <section id="kontak">
+    <div class="cta">
+      <div><h2>Punya proyek? Ceritakan.</h2><p>Website sekolah, platform organisasi, atau aplikasi berbasis AI. Pesan dikirim lewat WhatsApp.</p></div>
+      <div>
+        <div class="chips" id="chips"></div>
+        <div class="snd"><textarea id="txt" placeholder="Tulis singkat kebutuhanmu..." aria-label="Pesan"></textarea><button id="send" type="button">Kirim</button></div>
+      </div>
+    </div>
+  </section>
+  <footer>© <span id="yr"></span> Miftahul Amri · Surakarta</footer>
+</main>
+
+<nav class="dock" id="dock" aria-label="Navigasi"></nav>
+
+<script>
+/* ====== EDIT DATA DI SINI ====== */
+const CV_URL = "";                 // mis. "cv.pdf" agar tombol Unduh CV muncul
+const WA = "6285716823315";
+const bio = "Mahasiswa Pendidikan Teknik Informatika UMS yang membangun aplikasi web modern dan mengintegrasikan AI. Bagi saya pemrograman adalah cara memecahkan masalah nyata, dari website sekolah sampai platform belajar.";
+const socials = [
+  ["Instagram","https://instagram.com/mifamrii","ig"],
+  ["GitHub","https://github.com/mifdev0","code"],
+  ["Email","mailto:mifthahulamri@gmail.com","mail"],
+  ["WhatsApp","https://wa.me/"+WA,"wa"]
+];
+const skills = ["Next.js","React","Tailwind CSS","Supabase","PostgreSQL","Prisma","Django","JavaScript","SQL","Linux CLI","Gemini","Groq","DeepSeek"];
+// [tanggal, judul, tempat, deskripsi, jenis: "kerja" | "edu"]
+const timeline = [
+  ["September 2026 – sekarang","Asisten Laboratorium Pemrograman Web","PTI UMS, Surakarta","Membimbing praktikum HTML, CSS, JavaScript, hingga Django, serta membantu evaluasi tugas.","kerja"],
+  ["Agustus 2026 – sekarang","Freelance Elite Educator (Coding Teacher)","Al Azhar International Islamic Boarding School","Mengajar dasar-dasar pengembangan web di ekstrakurikuler coding untuk siswa SMP kelas 7–9.","kerja"],
+  ["Juli 2026 – sekarang","Pengajar Akademia Ruangguru Coding","PT Ruang Raya Indonesia, Boyolali","Mengajar coding hybrid (offline dan online) di sekolah-sekolah Kabupaten Boyolali.","kerja"],
+  ["2026","Website Developer, IMM Siti Munjiyah FKIP UMS","Organisasi mahasiswa","Membangun ulang portal informasi, naskah, dan berita organisasi untuk koordinasi kader.","kerja"],
+  ["Januari – Februari 2026","Website Developer, MI Muhammadiyah Gambiranom","Institusi pendidikan","Membangun ulang website sekolah dengan Next.js dan PostgreSQL, serta melatih guru mengelola kontennya.","kerja"],
+  ["Februari – Juli 2026","Asisten Laboratorium Basis Data","PTI UMS, Surakarta","Membimbing praktikum pemodelan basis data, SQL, dan skema relasional.","kerja"],
+  ["September 2025 – Januari 2026","Asisten Laboratorium Sistem Operasi","PTI UMS, Surakarta","Mengajar Linux CLI, manajemen file dan permission, serta shell scripting.","kerja"],
+  ["2023 – Juli 2026","IT Helpdesk Staff","DSTI UMS, Surakarta","Melayani kendala akun SSO, surat masuk terkait website, jaringan, dan IT, serta mengelola data mahasiswa sesuai kebutuhan.","kerja"],
+  ["2023 – sekarang","S1 Pendidikan Teknik Informatika","Universitas Muhammadiyah Surakarta","","edu"],
+  ["2019 – 2022","Madrasah Aliyah","MAs Ibnu Taimiyah Bogor","","edu"],
+  ["2016 – 2019","Madrasah Tsanawiyah","MTs Arafah Bitung","","edu"]
+];
+const SHOW = 6;
+// [-, -, nama, deskripsi, stack, url, gambar]
+// gambar: taruh screenshot di folder img/ (rasio 16:10, bagian atas yang tampil). Kalau belum ada, tampil cover gradien.
+const projects = [
+  [0,"","Website IMM SIMUN","Portal PK IMM Siti Munjiyah FKIP UMS: struktur organisasi, artikel, galeri, kontak, dan pendaftaran anggota.","Next.js 16, React 19, Tailwind v4, Supabase","","img/imm-simun.png"],
+  [0,"","Website MIM Gambiranom","Website profil sekolah dasar dengan CMS admin mandiri untuk mengelola berita dan pengumuman.","Next.js 16, Prisma, PostgreSQL","","img/mim-gambiranom.png"],
+  [0,"","VibeCal","Kalender AI untuk Google Vibe Coding Competition. Buat jadwal lewat teks atau suara.","Gemini Flash, Next.js 16, Groq API","","img/vibecal.png"],
+  [0,"","LayakBisnis AI","Analisis kelayakan bisnis UMKM F&B (BEP, ROI, payback) dengan AI Business Advisor dan payment gateway.","Next.js 16, DeepSeek, Midtrans","","img/layakbisnis.png"],
+  [0,"","Setara","Platform AI untuk pendidikan khusus: tujuan PPI, analisis observasi, dan laporan naratif untuk guru.","Next.js 14, DeepSeek, Supabase","","img/setara.png"],
+  [0,"","Foundry","Pembuat learning path dengan skill tree berbasis dependensi dan AI Companion sebagai asisten belajar.","Next.js 14, React Flow, Supabase, DeepSeek","","img/foundry.png"],
+  [0,"","CT Quiz Lab","Platform Computational Thinking: guru membuat kuis (manual atau AI) dan menganalisis laporan siswa.","Next.js 14, Prisma, Groq API","","img/ct-quiz-lab.png"],
+  [0,"","Barang-Bareng","Marketplace sewa barang dua arah: chat nego, pesan, upload bukti bayar, dan kelola toko.","Next.js 16, Supabase, shadcn/ui","","img/barang-bareng.png"]
+];
+const covers = [["#190d4b","#5b2ff0"],["#5b2ff0","#8b5cf6"],["#2b1672","#7c4df0"],["#3a1fa0","#a78bfa"],["#190d4b","#7c4df0"],["#4b22a3","#8b5cf6"],["#2b1672","#5b2ff0"],["#36199a","#a78bfa"]];
+const certs = [["2026","Cloud Web Application Builder","AWS Academy Graduate"],["2024","Dasar Pemrograman Web","Dicoding Indonesia"],["2023","Introduction to JavaScript for Beginner","Harisenin.com"]];
+const needs = ["Website sekolah","Platform organisasi","Web portofolio","Aplikasi AI","Lainnya"];
+
+/* ====== RENDER ====== */
+const $ = id => document.getElementById(id);
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const P = {
+  home:'<path d="M4 11l8-7 8 7v9H4z"/>',
+  grid:'<rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/>',
+  path:'<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 6H15a3 3 0 010 6H9a3 3 0 000 6h6.5"/>',
+  badge:'<circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/>',
+  chat:'<path d="M4 5h16v11H9l-5 4z"/>',
+  ig:'<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/>',
+  code:'<path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/>',
+  mail:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/>',
+  wa:'<path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-4-1z"/><path d="M9 9c0 3 3 6 6 6l1-2-2-1-1 1c-1-.5-2-1.5-2.5-2.5l1-1-1-2z"/>'
+};
+const ico = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${P[k]}</svg>`;
+
+$("bio").textContent = bio;
+$("soc").innerHTML = socials.map(s => `<a href="${esc(s[1])}" target="_blank" rel="noopener" aria-label="${esc(s[0])}" title="${esc(s[0])}">${ico(s[2])}</a>`).join("");
+$("stack").innerHTML = skills.map(s => `<span>${esc(s)}</span>`).join("");
+$("pc").textContent = projects.length;
+
+/* proyek: daftar + panggung */
+const shot = (p,i) => `<div class="shot" style="--c1:${covers[i%8][0]};--c2:${covers[i%8][1]}"><img src="${esc(p[6])}" alt="Tampilan ${esc(p[2])}" loading="lazy" onerror="this.remove()"></div>`;
+const chips = p => p[4].split(", ").map(t => `<span>${esc(t)}</span>`).join("");
+$("projects").innerHTML = projects.map((p,i) => `<article class="pj" tabindex="0" data-i="${i}" data-url="${esc(p[5])}"><div style="min-width:0"><h3>${esc(p[2])}</h3><p>${esc(p[3])}</p></div><span class="ar" aria-hidden="true">\u2197</span><div class="pv">${shot(p,i)}<small>${esc(p[4])}</small>${p[5]?`<a class="go" href="${esc(p[5])}" target="_blank" rel="noopener">Buka proyek</a>`:""}</div></article>`).join("");
+const desk = matchMedia("(min-width:900px)").matches;
+function pick(i){
+  document.querySelectorAll(".pj").forEach((r,k) => r.classList.toggle("on", k === i));
+  const p = projects[i], s = $("stage");
+  s.innerHTML = `<div class="win"><div class="wb"><i></i><i></i><i></i><span class="url">${p[5] ? esc(p[5].replace(/^https?:\/\//,"")) : "link segera hadir"}</span></div>${shot(p,i)}</div><h3>${esc(p[2])}</h3><p>${esc(p[3])}</p><div class="stk">${chips(p)}</div>${p[5]?`<a class="go" href="${esc(p[5])}" target="_blank" rel="noopener">Buka proyek \u2197</a>`:""}`;
+  s.classList.remove("fade"); void s.offsetWidth; s.classList.add("fade");
+}
+const box = $("projects");
+if (desk) {
+  pick(0);
+  box.addEventListener("mouseover", e => { const r = e.target.closest(".pj"); if (r && !r.classList.contains("on")) pick(+r.dataset.i); });
+  box.addEventListener("focusin", e => { const r = e.target.closest(".pj"); if (r && !r.classList.contains("on")) pick(+r.dataset.i); });
+}
+box.addEventListener("click", e => {
+  const r = e.target.closest(".pj"); if (!r || e.target.closest("a")) return;
+  if (desk) { if (r.dataset.url) window.open(r.dataset.url, "_blank", "noopener"); }
+  else r.classList.toggle("open");
+});
+box.addEventListener("keydown", e => { if (e.key === "Enter" && e.target.classList.contains("pj")) e.target.click(); });
+
+/* perjalanan */
+$("tl").innerHTML = timeline.map((t,i) => `<li class="${t[4]==="edu"?"edu":""}${i>=SHOW?" hide":""}"><div class="dt">${esc(t[0])}${t[4]==="edu"?'<span class="k">Pendidikan</span>':""}</div><h3>${esc(t[1])}</h3><div class="pl">${esc(t[2])}</div>${t[3]?`<p>${esc(t[3])}</p>`:""}</li>`).join("");
+let expanded = false;
+const setMore = () => { $("more").textContent = expanded ? "Ringkas" : `Tampilkan semua (${timeline.length})`; };
+setMore();
+$("more").onclick = () => { expanded = !expanded; document.querySelectorAll(".tl li").forEach((li,i) => li.classList.toggle("hide", !expanded && i >= SHOW)); setMore(); };
+$("certs").innerHTML = certs.map(c => `<div class="ct"><span>${c[0]}</span><b>${esc(c[1])}</b><small>${esc(c[2])}</small></div>`).join("");
+
+/* dock */
+const menu = [["profil","Profil","home"],["proyek","Proyek","grid"],["perjalanan","Perjalanan","path"],["sertifikat","Sertifikat","badge"],["kontak","Kontak","chat"]];
+$("dock").innerHTML = menu.map(m => `<a href="#${m[0]}" data-k="${m[0]}" aria-label="${m[1]}">${ico(m[2])}<span>${m[1]}</span></a>`).join("");
+const links = [...document.querySelectorAll("#dock a")];
+const setOn = id => links.forEach(a => a.classList.toggle("on", a.dataset.k === id));
+setOn("profil");
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) setOn(e.target.id); }), {rootMargin: "-45% 0px -50% 0px"});
+menu.forEach(m => io.observe($(m[0])));
+
+/* kontak */
+$("chips").innerHTML = needs.map(n => `<button class="chip" type="button" aria-pressed="false">${esc(n)}</button>`).join("");
+let need = "";
+$("chips").addEventListener("click", e => {
+  const c = e.target.closest(".chip"); if (!c) return;
+  const on = c.getAttribute("aria-pressed") === "true";
+  document.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", "false"));
+  c.setAttribute("aria-pressed", String(!on)); need = on ? "" : c.textContent;
+});
+$("send").onclick = () => {
+  const t = $("txt").value.trim();
+  const msg = "Halo Miftah, saya butuh " + (need || "bantuan proyek web") + "." + (t ? " " + t : "");
+  window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
+};
+if (CV_URL) $("cv").href = CV_URL; else $("cv").style.display = "none";
+$("share").onclick = async () => {
+  try { navigator.share ? await navigator.share({title: document.title, url: location.href}) : (await navigator.clipboard.writeText(location.href), $("share").textContent = "Link disalin"); } catch(e){}
+};
+$("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
