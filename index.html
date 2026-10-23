@@ -374,6 +374,10 @@
             background: var(--line);
         }
 
+        .hidden {
+            display: none !important;
+        }
+
         /* Projects: Interactive List + Sticky Stage Showcase */
         .pjw {
             display: grid;
@@ -934,7 +938,7 @@
                     </div>
 
                     <!-- Experience Timeline List -->
-                    <ol class="space-y-6 relative pl-6 timeline-line">
+                    <ol class="space-y-6 relative pl-6 timeline-line" id="exp-list">
                         
                         <!-- 1. Ruangguru Coding (Sragen) -->
                         <li class="relative group">
@@ -988,7 +992,7 @@
                         </li>
 
                         <!-- 4. IT Helpdesk DSTI UMS -->
-                        <li class="relative group">
+                        <li class="relative group exp-extra hidden">
                             <span class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-v border-2 border-white ring-2 ring-purple-200"></span>
                             <div class="flex flex-wrap items-baseline gap-2 mb-1">
                                 <span class="text-xs font-bold font-mono text-v bg-soft px-2 py-0.5 rounded-full">
@@ -1005,7 +1009,7 @@
                         </li>
 
                         <!-- 5. Asisten Lab Basis Data -->
-                        <li class="relative group">
+                        <li class="relative group exp-extra hidden">
                             <span class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-v border-2 border-white ring-2 ring-purple-200"></span>
                             <div class="flex flex-wrap items-baseline gap-2 mb-1">
                                 <span class="text-xs font-bold font-mono text-v bg-soft px-2 py-0.5 rounded-full">
@@ -1022,7 +1026,7 @@
                         </li>
 
                         <!-- 6. Website Dev MIM Gambiranom -->
-                        <li class="relative group">
+                        <li class="relative group exp-extra hidden">
                             <span class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-v border-2 border-white ring-2 ring-purple-200"></span>
                             <div class="flex flex-wrap items-baseline gap-2 mb-1">
                                 <span class="text-xs font-bold font-mono text-v bg-soft px-2 py-0.5 rounded-full">
@@ -1039,7 +1043,7 @@
                         </li>
 
                         <!-- 7. Website Dev IMM SIMUN -->
-                        <li class="relative group">
+                        <li class="relative group exp-extra hidden">
                             <span class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-v border-2 border-white ring-2 ring-purple-200"></span>
                             <div class="flex flex-wrap items-baseline gap-2 mb-1">
                                 <span class="text-xs font-bold font-mono text-v bg-soft px-2 py-0.5 rounded-full">
@@ -1056,7 +1060,7 @@
                         </li>
 
                         <!-- 8. Asisten Lab Sistem Operasi -->
-                        <li class="relative group">
+                        <li class="relative group exp-extra hidden">
                             <span class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-v border-2 border-white ring-2 ring-purple-200"></span>
                             <div class="flex flex-wrap items-baseline gap-2 mb-1">
                                 <span class="text-xs font-bold font-mono text-v bg-soft px-2 py-0.5 rounded-full">
@@ -1073,6 +1077,16 @@
                         </li>
 
                     </ol>
+
+                    <!-- Toggle Button for Extra Experience -->
+                    <div class="pt-4 pl-6">
+                        <button id="btn-toggle-exp" type="button" class="inline-flex items-center gap-2 text-xs font-bold text-v hover:text-white bg-soft hover:bg-v px-4 py-2.5 rounded-full transition-all border border-purple-200/60 shadow-sm cursor-pointer group">
+                            <span id="btn-toggle-exp-text">Lihat 5 Pengalaman Lainnya</span>
+                            <svg id="btn-toggle-exp-icon" class="w-3.5 h-3.5 transform transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Right Column: Education & Certifications (5 cols) -->
@@ -1395,11 +1409,14 @@
         const projectsContainer = document.getElementById("projects-list");
         if (projectsContainer) {
             const isDesk = window.matchMedia("(min-width: 900px)").matches;
+            const initialVisible = 4;
+            const extraCount = projectsData.length - initialVisible;
             
-            projectsContainer.innerHTML = projectsData.map((p, i) => {
+            const projectsHtml = projectsData.map((p, i) => {
                 const cleanUrl = p.url ? p.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : '';
+                const isExtra = i >= initialVisible;
                 return `
-                <article class="pj ${!isDesk && i === 0 ? 'open' : ''}" tabindex="0" data-i="${i}" data-url="${p.url}">
+                <article class="pj ${!isDesk && i === 0 ? 'open' : ''} ${isExtra ? 'pj-extra hidden' : ''}" tabindex="0" data-i="${i}" data-url="${p.url}">
                     <div class="pj-header-row">
                         <div style="min-width:0; flex:1">
                             <div class="flex items-center gap-2 mb-1">
@@ -1425,6 +1442,35 @@
                     </div>
                 </article>
             `}).join("");
+
+            const toggleBtnHtml = extraCount > 0 ? `
+                <div class="pt-3">
+                    <button id="btn-toggle-projects" type="button" class="w-full py-3 px-4 rounded-xl border border-line bg-soft hover:bg-purple-100/70 text-ink hover:text-v font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer group">
+                        <span id="btn-toggle-pj-text">Lihat ${extraCount} Proyek Lainnya</span>
+                        <svg id="btn-toggle-pj-icon" class="w-4 h-4 transform transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                </div>
+            ` : '';
+
+            projectsContainer.innerHTML = projectsHtml + toggleBtnHtml;
+
+            const btnTogglePj = document.getElementById("btn-toggle-projects");
+            if (btnTogglePj) {
+                let isPjExpanded = false;
+                btnTogglePj.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    isPjExpanded = !isPjExpanded;
+                    document.querySelectorAll(".pj-extra").forEach(el => {
+                        el.classList.toggle("hidden", !isPjExpanded);
+                    });
+                    const txt = document.getElementById("btn-toggle-pj-text");
+                    const icon = document.getElementById("btn-toggle-pj-icon");
+                    if (txt) txt.textContent = isPjExpanded ? "Tampilkan Lebih Sedikit" : `Lihat ${extraCount} Proyek Lainnya`;
+                    if (icon) icon.style.transform = isPjExpanded ? "rotate(180deg)" : "rotate(0deg)";
+                });
+            }
 
             function pickProject(i) {
                 document.querySelectorAll(".pj").forEach((r, k) => r.classList.toggle("on", k === i));
@@ -1484,6 +1530,22 @@
                 if (e.key === "Enter" && e.target.classList.contains("pj")) {
                     e.target.click();
                 }
+            });
+        }
+
+        // Toggle Experience Timeline
+        const btnToggleExp = document.getElementById("btn-toggle-exp");
+        if (btnToggleExp) {
+            let isExpExpanded = false;
+            btnToggleExp.addEventListener("click", () => {
+                isExpExpanded = !isExpExpanded;
+                document.querySelectorAll(".exp-extra").forEach(el => {
+                    el.classList.toggle("hidden", !isExpExpanded);
+                });
+                const txt = document.getElementById("btn-toggle-exp-text");
+                const icon = document.getElementById("btn-toggle-exp-icon");
+                if (txt) txt.textContent = isExpExpanded ? "Tampilkan Lebih Sedikit" : "Lihat 5 Pengalaman Lainnya";
+                if (icon) icon.style.transform = isExpExpanded ? "rotate(180deg)" : "rotate(0deg)";
             });
         }
 
