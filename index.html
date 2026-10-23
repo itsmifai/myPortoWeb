@@ -1734,7 +1734,7 @@
 
             projectsContainer.innerHTML = projectsHtml + toggleBtnHtml;
             updateStage(activeProjectIndex);
-            attachProjectEvents();
+            initProjectsEvents();
         }
 
         function updateStage(i) {
@@ -1768,14 +1768,18 @@
             stage.classList.add("fade");
         }
 
-        function attachProjectEvents() {
+        let projectsEventsAttached = false;
+        function initProjectsEvents() {
+            if (projectsEventsAttached) return;
             const projectsContainer = document.getElementById("projects-list");
             if (!projectsContainer) return;
-            const isDesk = window.matchMedia("(min-width: 900px)").matches;
+            projectsEventsAttached = true;
 
-            const btnTogglePj = document.getElementById("btn-toggle-projects");
-            if (btnTogglePj) {
-                btnTogglePj.addEventListener("click", (e) => {
+            projectsContainer.addEventListener("click", e => {
+                // 1. Toggle button click
+                const btnTogglePj = e.target.closest("#btn-toggle-projects");
+                if (btnTogglePj) {
+                    e.preventDefault();
                     e.stopPropagation();
                     isPjExpanded = !isPjExpanded;
                     document.querySelectorAll(".pj-extra").forEach(el => {
@@ -1786,39 +1790,49 @@
                     const icon = document.getElementById("btn-toggle-pj-icon");
                     if (txt) txt.textContent = isPjExpanded ? t.projLess : t.projMore.replace('{count}', projectsData.length - 4);
                     if (icon) icon.style.transform = isPjExpanded ? "rotate(180deg)" : "rotate(0deg)";
-                });
-            }
+                    return;
+                }
 
-            if (isDesk) {
-                projectsContainer.querySelectorAll(".pj").forEach(r => {
-                    r.addEventListener("mouseover", () => {
-                        const idx = +r.dataset.i;
-                        if (activeProjectIndex !== idx) {
-                            document.querySelectorAll(".pj").forEach((el, k) => el.classList.toggle("on", k === idx));
-                            updateStage(idx);
-                        }
-                    });
-                    r.addEventListener("focusin", () => {
-                        const idx = +r.dataset.i;
-                        if (activeProjectIndex !== idx) {
-                            document.querySelectorAll(".pj").forEach((el, k) => el.classList.toggle("on", k === idx));
-                            updateStage(idx);
-                        }
-                    });
-                });
-            }
+                // 2. Ignore anchor clicks
+                if (e.target.closest("a")) return;
 
-            projectsContainer.addEventListener("click", e => {
+                // 3. Project card click
                 const r = e.target.closest(".pj");
-                if (!r || e.target.closest("a")) return;
-                if (window.matchMedia("(min-width: 900px)").matches) {
+                if (!r) return;
+
+                const isDesk = window.matchMedia("(min-width: 900px)").matches;
+                if (isDesk) {
                     if (r.dataset.url) window.open(r.dataset.url, "_blank", "noopener");
                 } else {
-                    const isOpen = r.classList.contains("open");
+                    const wasOpen = r.classList.contains("open");
                     document.querySelectorAll(".pj").forEach(el => el.classList.remove("open"));
-                    if (!isOpen) {
+                    if (!wasOpen) {
                         r.classList.add("open");
                         activeProjectIndex = +r.dataset.i;
+                    }
+                }
+            });
+
+            projectsContainer.addEventListener("mouseover", e => {
+                if (!window.matchMedia("(min-width: 900px)").matches) return;
+                const r = e.target.closest(".pj");
+                if (r) {
+                    const idx = +r.dataset.i;
+                    if (activeProjectIndex !== idx) {
+                        document.querySelectorAll(".pj").forEach((el, k) => el.classList.toggle("on", k === idx));
+                        updateStage(idx);
+                    }
+                }
+            });
+
+            projectsContainer.addEventListener("focusin", e => {
+                if (!window.matchMedia("(min-width: 900px)").matches) return;
+                const r = e.target.closest(".pj");
+                if (r) {
+                    const idx = +r.dataset.i;
+                    if (activeProjectIndex !== idx) {
+                        document.querySelectorAll(".pj").forEach((el, k) => el.classList.toggle("on", k === idx));
+                        updateStage(idx);
                     }
                 }
             });
@@ -1921,7 +1935,7 @@
         }
 
         // Initialize projects & language
-        renderProjects();
+        initProjectsEvents();
         setLanguage(currentLang);
 
         // Language button event listeners
