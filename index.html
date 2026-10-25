@@ -6,13 +6,13 @@
     <title>Miftahul Amri — Web Developer & AI Enthusiast</title>
     
     <!-- Meta SEO -->
-    <meta name="description" content="Portofolio resmi Miftahul Amri — Web Developer & AI Enthusiast yang membangun aplikasi web modern dan solusi digital cerdas.">
-    <meta name="keywords" content="Miftahul Amri, Web Developer, Next.js, React, Tailwind CSS, Surakarta, AI Enthusiast, Full Stack Developer">
+    <meta name="description" content="Portofolio resmi Miftahul Amri — Web Developer & AI Enthusiast. Aplikasi web modern, platform interaktif, dan integrasi kecerdasan buatan.">
+    <meta name="keywords" content="Miftahul Amri, Web Developer, Next.js, React, Tailwind CSS, Surakarta, AI Enthusiast">
     <meta name="author" content="Miftahul Amri">
     
-    <!-- Open Graph / Meta Social -->
+    <!-- Open Graph -->
     <meta property="og:title" content="Miftahul Amri — Web Developer & AI Enthusiast">
-    <meta property="og:description" content="Portofolio produk digital, website instansi, platform edukasi, dan proyek berbasis AI karya Miftahul Amri.">
+    <meta property="og:description" content="Portofolio produk digital, website instansi, platform edukasi, dan proyek berbasis AI.">
     <meta property="og:type" content="website">
     
     <!-- Fonts -->
@@ -20,9 +20,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Devicon Brand Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <script>
@@ -45,7 +42,7 @@
                         mono: ['"JetBrains Mono"', 'monospace']
                     },
                     maxWidth: {
-                        'page': '1180px'
+                        'page': '1140px'
                     }
                 }
             }
@@ -64,31 +61,15 @@
             --line: #ece8f7;
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         html, body {
             overflow-x: hidden;
             width: 100%;
             max-width: 100vw;
-        }
-
-        .mask-marquee {
-            mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 32px;
-        }
-
-        body {
-            font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+            background: #faf8fd;
             color: var(--ink);
-            background: #ffffff;
-            line-height: 1.6;
+            font-family: "Plus Jakarta Sans", system-ui, sans-serif;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -102,248 +83,132 @@
             outline-offset: 2px;
         }
 
-        /* Banner SVG background */
-        .banner-wrap {
-            position: relative;
-            background: var(--deep);
-            overflow: hidden;
-        }
-        .banner-wrap svg {
-            position: absolute;
+        /* Ambient Background Mesh */
+        .ambient-mesh {
+            position: fixed;
             inset: 0;
-            width: 100%;
-            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: 
+                radial-gradient(circle at 10% 15%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 25%, rgba(91, 47, 240, 0.07) 0%, transparent 45%),
+                radial-gradient(circle at 50% 80%, rgba(205, 185, 245, 0.12) 0%, transparent 50%);
+        }
+
+        /* 2D Flat Sticker Micro-Animations */
+        @keyframes stickerFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-6px) rotate(2deg); }
+        }
+        @keyframes stickerWobble {
+            0%, 100% { transform: translateY(0) rotate(-3deg); }
+            50% { transform: translateY(-5px) rotate(3deg); }
+        }
+        @keyframes stickerGentle {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-4px) scale(1.04); }
+        }
+        .sticker-float {
+            animation: stickerFloat 4.5s ease-in-out infinite;
+            user-select: none;
+            pointer-events: none;
+        }
+        .sticker-wobble {
+            animation: stickerWobble 4s ease-in-out infinite;
+            user-select: none;
+            pointer-events: none;
+        }
+        .sticker-gentle {
+            animation: stickerGentle 3.2s ease-in-out infinite;
+            user-select: none;
             pointer-events: none;
         }
 
-        /* Avatar Box */
-        .avatar-box {
-            position: relative;
-            overflow: hidden;
-            border-radius: 9999px;
-            box-shadow: 0 10px 30px rgba(25, 13, 75, 0.18);
-            border: 5px solid #ffffff;
-            background: var(--lilac);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .avatar-box:hover {
-            transform: scale(1.04);
-            box-shadow: 0 14px 36px rgba(25, 13, 75, 0.25);
-        }
-        .avatar-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        /* Dynamic Island */
+        .dynamic-island {
+            background: rgba(25, 13, 75, 0.94);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: 0 16px 36px rgba(25, 13, 75, 0.28), 0 0 0 1px rgba(139, 92, 246, 0.15);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Pill Buttons */
-        .btn-pill {
-            background: #ffffff;
-            color: var(--ink);
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            padding: 8px 18px;
-            font-weight: 700;
-            font-size: 13.5px;
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
+        .island-tab {
             transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(25, 13, 75, 0.04);
-            cursor: pointer;
-            text-decoration: none;
+            color: rgba(255, 255, 255, 0.7);
         }
-        .btn-pill:hover {
-            background: var(--soft);
-            color: var(--v);
-            border-color: var(--lilac);
-            transform: translateY(-1px);
-        }
-        .btn-pill-primary {
-            background: var(--v);
+        .island-tab:hover {
             color: #ffffff;
-            border-color: var(--v);
+            background: rgba(255, 255, 255, 0.1);
         }
-        .btn-pill-primary:hover {
-            background: var(--v2);
+        .island-tab.active {
             color: #ffffff;
-            border-color: var(--v2);
-            box-shadow: 0 6px 16px rgba(91, 47, 240, 0.3);
+            background: linear-gradient(135deg, var(--v2), var(--v));
+            box-shadow: 0 4px 14px rgba(91, 47, 240, 0.4);
         }
 
-        /* Infinite Marquee */
-        @keyframes marquee {
+        /* Bento Card Styles */
+        .bento-card {
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(25, 13, 75, 0.04);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        .bento-card:hover {
+            box-shadow: 0 12px 32px rgba(25, 13, 75, 0.08);
+            border-color: #dcd3f5;
+        }
+
+        /* Marquee */
+        .mask-marquee {
+            mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+        }
+        @keyframes scrollMarquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
-        .marquee-track {
-            display: flex;
-            width: max-content;
-            animation: marquee 35s linear infinite;
+        .animate-marquee {
+            animation: scrollMarquee 26s linear infinite;
         }
-        .marquee-track:hover {
+        .animate-marquee:hover {
             animation-play-state: paused;
         }
-        .partner-logo-item {
-            filter: grayscale(100%);
-            opacity: 0.65;
-            transition: all 0.3s ease;
-        }
-        .partner-logo-item:hover {
-            filter: grayscale(0%);
-            opacity: 1;
-            transform: scale(1.08);
-        }
 
-        /* Floating Right-Side Vertical Rail (Dock) */
-        .dock {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 50;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            padding: 8px 6px;
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+        /* Project Preview Window Mockup */
+        .win-mockup {
             border: 1px solid var(--line);
-            border-radius: 999px;
-            box-shadow: 0 16px 36px rgba(25, 13, 75, 0.12), 0 2px 6px rgba(25, 13, 75, 0.04);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 18px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 12px 36px rgba(25, 13, 75, 0.08);
         }
-        .dock a {
-            position: relative;
+        .win-bar {
             display: flex;
             align-items: center;
-            justify-content: center;
-            width: 42px;
-            height: 42px;
-            border-radius: 999px;
-            color: var(--mut);
-            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-            text-decoration: none;
+            gap: 6px;
+            padding: 9px 14px;
+            background: #faf8fd;
+            border-bottom: 1px solid var(--line);
         }
-        .dock a svg {
-            width: 18px;
-            height: 18px;
-            flex-shrink: 0;
-            transition: transform 0.2s ease;
-        }
-        .dock a:hover {
-            color: var(--v);
-            background: var(--soft);
-        }
-        .dock a:hover svg {
-            transform: scale(1.12);
-        }
-        .dock a.on {
-            background: var(--v);
-            color: #ffffff;
-            box-shadow: 0 6px 18px rgba(91, 47, 240, 0.38);
-        }
-        .dock a.on svg {
-            transform: scale(1.05);
-        }
-
-        /* Tooltip label appearing on the left */
-        .dock a span {
-            position: absolute;
-            right: calc(100% + 10px);
-            top: 50%;
-            transform: translateY(-50%) translateX(6px);
-            opacity: 0;
-            pointer-events: none;
-            background: #1c1733;
-            color: #ffffff;
-            font-size: 11.5px;
-            font-weight: 700;
-            padding: 5px 11px;
-            border-radius: 8px;
-            white-space: nowrap;
-            box-shadow: 0 6px 18px rgba(25, 13, 75, 0.2);
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .dock a span::after {
-            content: "";
-            position: absolute;
-            left: 100%;
-            top: 50%;
-            transform: translateY(-50%);
-            border-width: 4px;
-            border-style: solid;
-            border-color: transparent transparent transparent #1c1733;
-        }
-        .dock a:hover span {
-            opacity: 1;
-            transform: translateY(-50%) translateX(0);
-        }
-
-        /* Responsive on mobile (< 768px): clean compact bottom bar */
-        @media (max-width: 767px) {
-            .dock {
-                right: auto;
-                left: 50%;
-                top: auto;
-                bottom: calc(12px + env(safe-area-inset-bottom, 0px));
-                transform: translateX(-50%);
-                flex-direction: row;
-                padding: 4px 6px;
-                gap: 3px;
-                box-shadow: 0 10px 30px rgba(25, 13, 75, 0.16);
-            }
-            .dock a {
-                width: 38px;
-                height: 38px;
-            }
-            .dock a span {
-                display: none !important;
-            }
-        }
-
-        /* Standout WhatsApp CTA card */
-        .cta-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 28px;
-            padding: 36px 32px;
-            background: linear-gradient(135deg, var(--v2), var(--v));
-            color: #ffffff;
-            box-shadow: 0 20px 48px rgba(91, 47, 240, 0.25);
-        }
-        .cta-card::before {
-            content: "";
-            position: absolute;
-            right: -30px;
-            top: -30px;
-            width: 140px;
-            height: 140px;
+        .win-bar i {
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            border: 26px solid rgba(255, 255, 255, 0.12);
-            pointer-events: none;
-        }
-        .cta-card::after {
-            content: "";
-            position: absolute;
-            left: -40px;
-            bottom: -40px;
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
-            pointer-events: none;
+            background: var(--lilac);
         }
 
-        /* Topic Chips */
+        /* Chips */
         .chip {
-            border: 1px solid rgba(255, 255, 255, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             background: rgba(255, 255, 255, 0.08);
             color: #ffffff;
             border-radius: 999px;
-            padding: 7px 16px;
-            font: 600 13px "Plus Jakarta Sans", sans-serif;
+            padding: 6px 14px;
+            font-size: 12.5px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
             backdrop-filter: blur(4px);
@@ -357,790 +222,297 @@
             color: var(--v);
             border-color: #ffffff;
             font-weight: 700;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
-        /* Timeline */
-        .timeline-line {
-            padding-left: 28px !important;
-        }
-        .timeline-line::before {
-            content: "";
-            position: absolute;
-            left: 7px;
-            top: 14px;
-            bottom: 14px;
-            width: 2px;
-            background: var(--line);
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        /* Projects: Interactive List + Sticky Stage Showcase */
-        .pjw {
-            display: grid;
-            grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
-            gap: 48px;
-            align-items: start;
-            margin-top: 24px;
-        }
-        .pj {
-            position: relative;
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) auto;
-            gap: 12px;
-            align-items: center;
-            padding: 18px 16px 18px 22px;
-            border-bottom: 1px solid var(--line);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border-radius: 16px;
-        }
-        .pj:before {
-            content: "";
-            position: absolute;
-            left: 6px;
-            top: 16px;
-            bottom: 16px;
-            width: 3.5px;
-            border-radius: 999px;
-            background: transparent;
-            transition: background 0.2s ease;
-        }
-        .pj.on:before {
-            background: var(--v);
-        }
-        .pj:hover {
-            background: var(--soft);
-        }
-        .pj.on {
-            background: var(--soft);
-        }
-        .pj h3 {
-            font-size: 16.5px;
-            font-weight: 800;
-            letter-spacing: -0.015em;
-            line-height: 1.3;
-            transition: color 0.15s;
-            color: var(--ink);
-        }
-        .pj p.pj-short {
-            font-size: 13px;
-            color: var(--mut);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin-top: 3px;
-        }
-        .pj .ar {
-            font-weight: 800;
-            color: var(--lilac);
-            transition: transform 0.2s, color 0.2s;
-            font-size: 16px;
-            padding-right: 4px;
-        }
-        .pj.on h3, .pj.on .ar {
-            color: var(--v);
-        }
-        .pj.on .ar {
-            transform: translate(3px, -3px);
-        }
-        .stage {
-            position: sticky;
-            top: 32px;
-            padding-top: 4px;
-        }
-        .fade {
-            animation: fd 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        @keyframes fd {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* 2D Flat Sticker Animations */
-        @keyframes stickerFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-7px) rotate(2.5deg); }
-        }
-        @keyframes stickerWobble {
-            0%, 100% { transform: translateY(0) rotate(-3deg); }
-            50% { transform: translateY(-6px) rotate(3deg); }
-        }
-        @keyframes stickerGentle {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-5px) scale(1.05); }
-        }
-        .sticker-float {
-            animation: stickerFloat 4.2s ease-in-out infinite;
-            user-select: none;
-            pointer-events: none;
-        }
-        .sticker-wobble {
-            animation: stickerWobble 3.8s ease-in-out infinite;
-            user-select: none;
-            pointer-events: none;
-        }
-        .sticker-gentle {
-            animation: stickerGentle 3s ease-in-out infinite;
-            user-select: none;
-            pointer-events: none;
-        }
-        .win {
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            overflow: hidden;
-            background: #fff;
-            box-shadow: 0 24px 60px rgba(25, 13, 75, 0.12);
-        }
-        .wb {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 12px 18px;
-            background: #faf8fd;
-            border-bottom: 1px solid var(--line);
-        }
-        .wb i {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: var(--lilac);
-        }
-        .url {
-            margin-left: 12px;
-            flex: 1;
-            background: #fff;
-            border-radius: 999px;
-            font-size: 11.5px;
-            font-family: "JetBrains Mono", monospace;
-            color: var(--mut);
-            padding: 4px 14px;
-            border: 1px solid var(--line);
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        .shot {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            background: #faf8fd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .shot img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-            display: block;
-            z-index: 1;
-            transition: transform 0.4s ease;
-        }
-        .win:hover .shot img {
-            transform: scale(1.03);
-        }
-        .stage h3 {
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            margin-top: 20px;
-            color: var(--ink);
-        }
-        .stage p {
-            color: #4a4668;
-            margin-top: 8px;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        .stk {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-            margin-top: 14px;
-        }
-        .stk span {
-            font-size: 11.5px;
-            font-weight: 600;
-            font-family: "JetBrains Mono", monospace;
-            color: var(--mut);
-            background: var(--soft);
-            padding: 3px 10px;
-            border-radius: 999px;
-            border: 1px solid var(--line);
-        }
-        .go {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 18px;
-            font-weight: 700;
-            font-size: 13.5px;
-            color: #fff;
-            background: var(--v);
-            padding: 10px 22px;
-            border-radius: 999px;
-            box-shadow: 0 4px 14px rgba(91, 47, 240, 0.3);
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-        .go:hover {
-            background: #7544fa;
-            box-shadow: 0 6px 20px rgba(91, 47, 240, 0.4);
-            transform: translateY(-1px);
-        }
-        .pv {
+        /* View Switching Animations */
+        .view-pane {
             display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .view-pane.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* Mobile responsive for Projects */
-        @media (max-width: 899px) {
-            .pjw {
-                grid-template-columns: 1fr;
-                gap: 12px;
-                margin-top: 16px;
-            }
-            .stage {
-                display: none;
-            }
-            .pj {
-                display: block;
-                padding: 16px;
-                border-radius: 20px;
-                border: 1px solid var(--line);
-                background: #ffffff;
-                box-shadow: 0 2px 8px rgba(25, 13, 75, 0.03);
-                transition: all 0.25s ease;
-            }
-            .pj:before {
-                display: none;
-            }
-            .pj:hover {
-                background: #ffffff;
-            }
-            .pj.open {
-                border-color: var(--v2);
-                box-shadow: 0 10px 28px rgba(91, 47, 240, 0.1);
-            }
-            .pj-header-row {
-                display: flex;
-                align-items: flex-start;
-                justify-content: space-between;
-                gap: 12px;
-            }
-            .pj .ar {
-                width: 30px;
-                height: 30px;
-                border-radius: 50%;
-                background: var(--soft);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: var(--v);
-                font-size: 13px;
-                flex-shrink: 0;
-                transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
-            }
-            .pj.open .ar {
-                transform: rotate(90deg);
-                background: var(--v);
-                color: #ffffff;
-            }
-            .pj .pv {
-                display: none;
-                margin-top: 14px;
-                padding-top: 14px;
-                border-top: 1px dashed var(--line);
-                animation: fd 0.3s ease;
-            }
-            .pj.open .pv {
-                display: block;
-            }
-            .pj p.pj-short {
-                white-space: normal !important;
-                overflow: visible !important;
-                text-overflow: unset !important;
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-                margin-top: 4px;
-                line-height: 1.45;
-            }
-            .pj .pv .shot {
-                width: 100%;
-                aspect-ratio: 16 / 9 !important;
-                border-radius: 12px;
-                border: 1px solid var(--line);
-                background: #faf8fd;
-                overflow: hidden;
-                margin-bottom: 12px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .pj .pv .shot img {
-                width: 100%;
-                height: 100%;
-                object-fit: contain !important;
-                object-position: center !important;
-            }
-            .pj .pv .go {
-                display: flex;
-                width: 100%;
-                justify-content: center;
-                text-align: center;
-                padding: 12px 18px;
-                margin-top: 14px;
-            }
-        }
-
-        /* Mobile responsive for CTA card */
-        @media (max-width: 640px) {
-            .cta-card {
-                padding: 24px 18px !important;
-                border-radius: 22px !important;
-            }
-            .cta-card h2 {
-                font-size: 22px !important;
-                line-height: 1.25 !important;
-            }
-        }
-        /* Line Clamp Utilities */
-        .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        /* Scrollbar */
+        /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
         }
         ::-webkit-scrollbar-track {
             background: #f8f6fc;
         }
         ::-webkit-scrollbar-thumb {
-            background: #dcd3f5;
-            border-radius: 4px;
+            background: #cdb9f5;
+            border-radius: 999px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--v2);
+            background: var(--v);
         }
     </style>
 </head>
-<body class="bg-white text-ink antialiased selection:bg-v selection:text-white pb-28 md:pb-14">
+<body class="relative min-h-screen text-ink pb-12 pt-20 sm:pt-24">
 
-    <!-- Floating Language Switcher Pill (Fixed Top-Right) -->
-    <div class="fixed top-4 right-4 sm:top-5 sm:right-6 z-50 bg-white/95 backdrop-blur-md border border-line shadow-md rounded-full p-1 flex items-center gap-1 transition-all" id="lang-switcher" aria-label="Pilih Bahasa / Language">
-        <button id="btn-lang-id" type="button" class="px-3 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 bg-v text-white shadow-xs cursor-pointer">
-            <span class="text-xs">🇮🇩</span> <span>ID</span>
-        </button>
-        <button id="btn-lang-en" type="button" class="px-3 py-1.5 rounded-full text-xs font-bold text-mut hover:text-ink transition-all flex items-center gap-1.5 cursor-pointer">
-            <span class="text-xs">🇬🇧</span> <span>EN</span>
-        </button>
-    </div>
+    <!-- Ambient Gradient Background -->
+    <div class="ambient-mesh" aria-hidden="true"></div>
 
-    <!-- Top Geometric Banner -->
-    <header class="banner-wrap h-[150px] sm:h-[180px] md:h-[210px]">
-        <!-- Vector Art Shapes -->
-        <svg viewBox="0 0 1440 210" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <defs>
-                <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.9" />
-                    <stop offset="100%" stop-color="#5b2ff0" stop-opacity="0.9" />
-                </linearGradient>
-            </defs>
-            <circle cx="860" cy="70" r="42" fill="none" stroke="#8b5cf6" stroke-width="26" opacity="0.8"/>
-            <path d="M430 160a52 52 0 1 1-10-62 38 38 0 1 0 10 62z" fill="#7c4df0" opacity="0.85"/>
-            <path d="M1120 150a44 44 0 1 0 44 44 35 35 0 0 1-44-44z" fill="#8b5cf6" opacity="0.9"/>
-            <path d="M720 180l60-56v112z" fill="#36199a" opacity="0.8"/>
-            <path d="M1220 84q35-35 70 0t70 0" fill="none" stroke="#cdb9f5" stroke-width="18" stroke-linecap="round" opacity="0.85"/>
-            <path d="M220 60l26 26M246 60l-26 26" stroke="#8b5cf6" stroke-width="9" stroke-linecap="round" opacity="0.8"/>
-            <circle cx="620" cy="50" r="9" fill="#cdb9f5" opacity="0.9"/>
-            <circle cx="140" cy="140" r="14" fill="#5b2ff0" opacity="0.6"/>
-            <rect x="990" y="40" width="22" height="22" rx="6" fill="#8b5cf6" transform="rotate(25 990 40)" opacity="0.7"/>
-        </svg>
+    <!-- ==============================================================
+         CENTERPIECE DYNAMIC ISLAND (Sticky Morphing Capsule Nav)
+         ============================================================== -->
+    <header class="fixed top-3 sm:top-5 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-[760px] pointer-events-none">
+        <nav class="dynamic-island pointer-events-auto rounded-full px-2.5 sm:px-3.5 py-2 flex items-center justify-between gap-1 sm:gap-2" aria-label="Dynamic Island Navigation">
+            
+            <!-- Left: Live Status Pill -->
+            <div class="flex items-center gap-2 pl-2 pr-1">
+                <span class="relative flex h-2.5 w-2.5 flex-shrink-0">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
+                </span>
+                <span id="island-status-txt" class="text-[11.5px] sm:text-xs font-bold text-white/90 hidden md:inline whitespace-nowrap">
+                    Available for Work
+                </span>
+            </div>
+
+            <!-- Center: Interactive View Switcher Tabs -->
+            <div class="flex items-center gap-1 bg-white/10 p-0.5 rounded-full" id="island-tabs" role="tablist">
+                <button type="button" role="tab" aria-selected="true" data-tab="all" class="island-tab active px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
+                    <span>⚡</span> <span id="tab-txt-all" class="hidden xs:inline">Semua</span>
+                </button>
+                <button type="button" role="tab" aria-selected="false" data-tab="projects" class="island-tab px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
+                    <span>💻</span> <span id="tab-txt-projects" class="hidden xs:inline">Proyek</span>
+                </button>
+                <button type="button" role="tab" aria-selected="false" data-tab="journey" class="island-tab px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
+                    <span>🚀</span> <span id="tab-txt-journey" class="hidden xs:inline">Karier</span>
+                </button>
+                <button type="button" role="tab" aria-selected="false" data-tab="contact" class="island-tab px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
+                    <span>💬</span> <span id="tab-txt-contact" class="hidden xs:inline">Kontak</span>
+                </button>
+            </div>
+
+            <!-- Right: Language Switcher Toggle -->
+            <div class="flex items-center bg-white/10 p-0.5 rounded-full flex-shrink-0" id="island-lang">
+                <button id="btn-lang-id" type="button" class="px-2 py-0.5 sm:py-1 rounded-full text-[11px] font-bold transition-all bg-v text-white shadow-xs" title="Bahasa Indonesia">
+                    ID
+                </button>
+                <button id="btn-lang-en" type="button" class="px-2 py-0.5 sm:py-1 rounded-full text-[11px] font-bold text-white/70 hover:text-white transition-all" title="English">
+                    EN
+                </button>
+            </div>
+        </nav>
     </header>
 
-    <!-- Main Container -->
-    <main class="max-w-page mx-auto px-5 md:px-8">
+
+    <!-- ==============================================================
+         MAIN BENTO DASHBOARD CONTAINER
+         ============================================================== -->
+    <main class="relative z-10 max-w-page mx-auto px-4 sm:px-6">
 
         <!-- ==============================================
-             HERO / PROFIL SECTION
+             1. HERO BENTO CARD (Personal Profile & Identity)
              ============================================== -->
-        <section id="profil" class="relative z-20 pt-2 pb-10 max-w-4xl">
-            <!-- Overlapping Avatar -->
-            <div class="flex flex-col sm:flex-row items-start sm:items-end gap-4 sm:gap-5 -mt-14 sm:-mt-16 md:-mt-20 mb-5">
-                <div class="relative inline-block flex-shrink-0">
-                    <div class="avatar-box w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 flex-shrink-0 border-4 border-white" title="Foto Profil Miftahul Amri">
-                        <img src="./profile.png" alt="Foto Profil Miftahul Amri" class="w-full h-full object-cover">
-                    </div>
-                    <!-- Waving Hand Sticker (Tucked onto avatar border, waving outward) -->
-                    <div class="absolute bottom-0 -right-2 sm:bottom-1 sm:-right-3 md:bottom-2 md:-right-3 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 sticker-wobble pointer-events-none select-none z-20">
-                        <img src="./stickers/hand.png" alt="Halo!" class="w-full h-full object-contain filter drop-shadow-md">
-                    </div>
-                </div>
-
-                <!-- Status badge (Active Freelance) -->
-                <div class="pb-2">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-semibold shadow-sm">
-                        <span class="relative flex h-2.5 w-2.5">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-                        </span>
-                        <span id="txt-status">Terbuka untuk proyek freelance & kolaborasi</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Name & Title -->
-            <div class="space-y-2">
-                <div class="flex flex-wrap items-baseline gap-3">
-                    <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-ink">
-                        Miftahul Amri
-                    </h1>
-                    <span class="inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold text-v bg-soft px-3 py-1 rounded-full border border-line">
-                        <span>Surakarta</span>
-                        <span class="inline-flex items-center overflow-hidden rounded-[2px] border border-black/10 shadow-xs" title="Indonesia">
-                            <svg class="w-4 h-2.5" viewBox="0 0 3 2">
-                                <rect width="3" height="1" fill="#e70011"/>
-                                <rect y="1" width="3" height="1" fill="#ffffff"/>
-                            </svg>
-                        </span>
-                    </span>
-                </div>
+        <section id="pane-hero" class="mb-6">
+            <div class="bento-card p-6 sm:p-8 md:p-10 relative overflow-hidden">
                 
-                <p class="text-base sm:text-lg font-semibold text-mut flex items-center gap-2">
-                    <span class="text-ink font-bold">Web Developer</span>
-                    <span class="text-mut/40">•</span>
-                    <span class="inline-flex items-center gap-1.5 text-v font-bold">
-                        <span>AI Enthusiast</span>
-                        <img src="./stickers/sparkle.png" alt="Sparkle" class="w-5 h-5 sm:w-6 sm:h-6 sticker-gentle inline-block drop-shadow-sm -mt-0.5">
-                    </span>
-                </p>
-            </div>
+                <!-- Background Accent Glow -->
+                <div class="absolute -right-20 -top-20 w-72 h-72 rounded-full bg-purple-100/60 blur-3xl pointer-events-none"></div>
 
-            <!-- Bio Paragraph -->
-            <p id="txt-bio" class="mt-4 text-[15px] sm:text-[16px] text-[#3f3b5a] leading-relaxed max-w-2xl">
-                Web developer yang antusias membangun aplikasi web modern dan mengintegrasikan kecerdasan buatan. Berfokus pada perancangan produk digital andal, sistem interaktif, dan solusi praktis yang memecahkan masalah nyata.
-            </p>
-
-            <!-- Social Channels & CV Row -->
-            <div class="flex flex-wrap items-center gap-3 mt-5">
-                <div class="flex items-center gap-2">
-                    <a href="https://github.com/itsmifai" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-line flex items-center justify-center text-mut hover:text-v hover:bg-soft transition-all" title="GitHub itsmifai">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg>
-                    </a>
-                    <a href="https://instagram.com/itsmifai" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-line flex items-center justify-center text-mut hover:text-v hover:bg-soft transition-all" title="Instagram @itsmifai">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
-                    </a>
-                    <a href="https://www.linkedin.com/in/mifamri/" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-line flex items-center justify-center text-mut hover:text-v hover:bg-soft transition-all" title="LinkedIn Profile">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-                    </a>
-                    <a href="mailto:mifthahulamri@gmail.com" class="w-10 h-10 rounded-full border border-line flex items-center justify-center text-mut hover:text-v hover:bg-soft transition-all" title="Kirim Email">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>
-                    </a>
-                    <a href="https://wa.me/6285716823315" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-line flex items-center justify-center text-mut hover:text-emerald-600 hover:bg-emerald-50 transition-all" title="WhatsApp Langsung">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                    </a>
-                </div>
-
-                <div class="h-6 w-px bg-line mx-1 hidden sm:block"></div>
-
-                <a href="./CV Mifthahul Amri.pdf" download class="btn-pill" id="cv-btn" title="Unduh Curriculum Vitae">
-                    <svg class="w-4 h-4 text-v" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/>
-                    </svg>
-                    <span id="txt-cv">Unduh CV</span>
-                </a>
-            </div>
-
-            <!-- Skills & Tech Stack Chips -->
-            <div class="mt-6 pt-5 border-t border-line">
-                <span id="txt-skills-title" class="text-xs font-bold text-mut uppercase tracking-wider block mb-2.5">Keahlian &amp; Tech Stack Utama</span>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs font-semibold text-mut bg-soft hover:bg-v hover:text-white transition-colors px-3 py-1.5 rounded-full border border-line">Next.js 16</span>
-                    <span class="text-xs font-semibold text-mut bg-soft hover:bg-v hover:text-white transition-colors px-3 py-1.5 rounded-full border border-line">React 19</span>
-                    <span class="text-xs font-semibold text-mut bg-soft hover:bg-v hover:text-white transition-colors px-3 py-1.5 rounded-full border border-line">Tailwind CSS v4</span>
-                    <span class="text-xs font-semibold text-mut bg-soft hover:bg-v hover:text-white transition-colors px-3 py-1.5 rounded-full border border-line">Supabase</span>
-                    <span class="text-xs font-semibold text-mut bg-soft hover:bg-v hover:text-white transition-colors px-3 py-1.5 rounded-full border border-line">PostgreSQL</span>
-                    <span class="text-xs font-semibold text-mut bg-soft hover:bg-v hover:text-white transition-colors px-3 py-1.5 rounded-full border border-line">Prisma ORM</span>
-                    <span class="text-xs font-semibold text-mut bg-soft hover:bg-v hover:text-white transition-colors px-3 py-1.5 rounded-full border border-line">Django</span>
-                    <span class="text-xs font-semibold text-mut bg-soft hover:bg-v hover:text-white transition-colors px-3 py-1.5 rounded-full border border-line">JavaScript (ES6+)</span>
-                    <span class="text-xs font-semibold text-mut bg-soft hover:bg-v hover:text-white transition-colors px-3 py-1.5 rounded-full border border-line">Linux CLI &amp; Shell</span>
-                    <span class="text-xs font-semibold text-v bg-purple-50 hover:bg-v hover:text-white transition-colors px-3 py-1.5 rounded-full border border-purple-200">Gemini Flash</span>
-                    <span class="text-xs font-semibold text-v bg-purple-50 hover:bg-v hover:text-white transition-colors px-3 py-1.5 rounded-full border border-purple-200">Groq API</span>
-                    <span class="text-xs font-semibold text-v bg-purple-50 hover:bg-v hover:text-white transition-colors px-3 py-1.5 rounded-full border border-purple-200">DeepSeek AI</span>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ==============================================
-             MITRA & KOLABORASI MARQUEE (Partner Logos)
-             ============================================== -->
-        <section id="kolaborasi" class="py-10 border-y border-line my-4">
-            <div class="text-center mb-6">
-                <span class="text-[11px] font-bold text-mut uppercase tracking-widest block">Mitra, Sekolah, &amp; Ekosistem Kolaborasi</span>
-            </div>
-
-            <!-- Marquee Container -->
-            <div class="overflow-hidden relative w-full mask-marquee">
-                <div class="marquee-track flex items-center gap-14 md:gap-20 py-3">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
                     
-                    <!-- Set 1: Logo Only -->
-                    <div class="partner-logo-item cursor-pointer flex-shrink-0" title="MI Muhammadiyah Gambiranom">
-                        <img src="./partner/mim-gambiranom.webp" alt="MIM Gambiranom" class="h-10 md:h-12 w-auto max-w-[130px] object-contain">
-                    </div>
-                    <div class="partner-logo-item cursor-pointer flex-shrink-0" title="IMM Siti Munjiyah FKIP UMS">
-                        <img src="./partner/imm-simun.webp" alt="IMM SIMUN" class="h-10 md:h-12 w-auto max-w-[130px] object-contain">
-                    </div>
-                    <div class="partner-logo-item cursor-pointer flex-shrink-0" title="VibeCal AI">
-                        <img src="./partner/vibecal.webp" alt="VibeCal AI" class="h-10 md:h-12 w-auto max-w-[130px] object-contain">
-                    </div>
-                    <div class="partner-logo-item cursor-pointer flex-shrink-0" title="Foundry Path">
-                        <img src="./partner/foundry.webp" alt="Foundry Path" class="h-10 md:h-12 w-auto max-w-[130px] object-contain">
-                    </div>
-                    <div class="partner-logo-item cursor-pointer flex-shrink-0" title="Barang-Bareng">
-                        <img src="./partner/barang-bareng.webp" alt="Barang-Bareng" class="h-10 md:h-12 w-auto max-w-[130px] object-contain">
-                    </div>
-                    <div class="partner-logo-item cursor-pointer flex-shrink-0" title="LayakBisnis AI">
-                        <img src="./partner/layakbisnis.webp" alt="LayakBisnis AI" class="h-10 md:h-12 w-auto max-w-[130px] object-contain">
-                    </div>
-                    <div class="partner-logo-item cursor-pointer flex-shrink-0" title="Setara Special Education">
-                        <img src="./partner/setara.webp" alt="Setara Special Ed" class="h-10 md:h-12 w-auto max-w-[130px] object-contain">
-                    </div>
-                    <div class="partner-logo-item cursor-pointer flex-shrink-0" title="CT Quiz Lab">
-                        <img src="./partner/ct-quiz.webp" alt="CT Quiz Lab" class="h-10 md:h-12 w-auto max-w-[130px] object-contain">
+                    <!-- Left: Avatar & Identity -->
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+                        
+                        <!-- Avatar with Waving Hand Sticker -->
+                        <div class="relative flex-shrink-0">
+                            <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-white shadow-lg bg-lilac/30">
+                                <img src="./profile.png" alt="Miftahul Amri" class="w-full h-full object-cover">
+                            </div>
+                            <!-- Waving Hand Sticker (Flipped naturally & anchored) -->
+                            <div class="absolute bottom-0 -right-2 w-11 h-11 sm:w-13 sm:h-13 sticker-wobble pointer-events-none select-none z-20">
+                                <img src="./stickers/hand.png" alt="Halo!" class="w-full h-full object-contain filter drop-shadow-md">
+                            </div>
+                        </div>
+
+                        <!-- Name & Title -->
+                        <div>
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-ink tracking-tight">
+                                    Miftahul Amri
+                                </h1>
+                                <!-- Mini SVG Indonesia Flag Badge -->
+                                <span class="inline-flex items-center gap-1.5 text-xs font-bold text-v bg-soft px-2.5 py-0.5 rounded-full border border-line" title="Surakarta, Indonesia">
+                                    <span>Surakarta</span>
+                                    <span class="inline-flex items-center overflow-hidden rounded-[2px] border border-black/10 shadow-xs">
+                                        <svg class="w-4 h-2.5" viewBox="0 0 3 2">
+                                            <rect width="3" height="1" fill="#e70011"/>
+                                            <rect y="1" width="3" height="1" fill="#ffffff"/>
+                                        </svg>
+                                    </span>
+                                </span>
+                            </div>
+
+                            <p class="text-sm sm:text-base font-semibold text-mut flex items-center gap-2">
+                                <span class="text-ink font-bold">Web Developer</span>
+                                <span class="text-mut/40">•</span>
+                                <span class="inline-flex items-center gap-1 text-v font-bold">
+                                    <span>AI Enthusiast</span>
+                                    <img src="./stickers/sparkle.png" alt="AI Sparkle" class="w-5 h-5 sticker-gentle inline-block drop-shadow-sm">
+                                </span>
+                            </p>
+
+                            <p id="txt-bio" class="text-xs sm:text-sm text-[#4a4668] mt-2.5 max-w-xl leading-relaxed">
+                                Web developer yang antusias membangun aplikasi web modern dan mengintegrasikan kecerdasan buatan. Berfokus pada perancangan produk digital andal, sistem interaktif, dan solusi praktis yang memecahkan masalah nyata.
+                            </p>
+                        </div>
                     </div>
 
-                    <!-- Set 2: Duplicate for Seamless Infinite Loop -->
-                    <div class="partner-logo-item cursor-pointer flex-shrink-0" aria-hidden="true">
-                        <img src="./partner/mim-gambiranom.webp" alt="MIM Gambiranom" class="h-10 md:h-12 w-auto max-w-[130px] object-contain">
-                    </div>
-                    <div class="partner-logo-item cursor-pointer flex-shrink-0" aria-hidden="true">
-                        <img src="./partner/imm-simun.webp" alt="IMM SIMUN" class="h-10 md:h-12 w-auto max-w-[130px] object-contain">
-                    </div>
-                    <div class="partner-logo-item cursor-pointer flex-shrink-0" aria-hidden="true">
-                        <img src="./partner/vibecal.webp" alt="VibeCal AI" class="h-10 md:h-12 w-auto max-w-[130px] object-contain">
-                    </div>
-                    <div class="partner-logo-item cursor-pointer flex-shrink-0" aria-hidden="true">
-                        <img src="./partner/foundry.webp" alt="Foundry Path" class="h-10 md:h-12 w-auto max-w-[130px] object-contain">
-                    </div>
-                    <div class="partner-logo-item cursor-pointer flex-shrink-0" aria-hidden="true">
-                        <img src="./partner/barang-bareng.webp" alt="Barang-Bareng" class="h-10 md:h-12 w-auto max-w-[130px] object-contain">
-                    </div>
-                    <div class="partner-logo-item cursor-pointer flex-shrink-0" aria-hidden="true">
-                        <img src="./partner/layakbisnis.webp" alt="LayakBisnis AI" class="h-10 md:h-12 w-auto max-w-[130px] object-contain">
-                    </div>
-                    <div class="partner-logo-item cursor-pointer flex-shrink-0" aria-hidden="true">
-                        <img src="./partner/setara.webp" alt="Setara Special Ed" class="h-10 md:h-12 w-auto max-w-[130px] object-contain">
-                    </div>
-                    <div class="partner-logo-item cursor-pointer flex-shrink-0" aria-hidden="true">
-                        <img src="./partner/ct-quiz.webp" alt="CT Quiz Lab" class="h-10 md:h-12 w-auto max-w-[130px] object-contain">
-                    </div>
+                    <!-- Right: Quick Actions & Social Channels -->
+                    <div class="flex flex-wrap md:flex-col items-start md:items-end justify-between gap-4 pt-3 md:pt-0 border-t md:border-t-0 border-line">
+                        
+                        <!-- CV Download Button -->
+                        <a href="./CV Mifthahul Amri.pdf" download class="inline-flex items-center gap-2 bg-v hover:bg-deep text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all" id="cv-btn">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/>
+                            </svg>
+                            <span id="txt-cv">Unduh CV</span>
+                        </a>
 
+                        <!-- Social Icon Links -->
+                        <div class="flex items-center gap-1.5">
+                            <a href="https://github.com/itsmifai" target="_blank" rel="noopener" class="w-9 h-9 rounded-full border border-line flex items-center justify-center text-mut hover:text-v hover:bg-soft transition-all" title="GitHub itsmifai">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg>
+                            </a>
+                            <a href="https://instagram.com/itsmifai" target="_blank" rel="noopener" class="w-9 h-9 rounded-full border border-line flex items-center justify-center text-mut hover:text-v hover:bg-soft transition-all" title="Instagram @itsmifai">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/mifamri/" target="_blank" rel="noopener" class="w-9 h-9 rounded-full border border-line flex items-center justify-center text-mut hover:text-v hover:bg-soft transition-all" title="LinkedIn Profile">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                            </a>
+                            <a href="mailto:mifthahulamri@gmail.com" class="w-9 h-9 rounded-full border border-line flex items-center justify-center text-mut hover:text-v hover:bg-soft transition-all" title="Kirim Email">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>
+                            </a>
+                            <a href="https://wa.me/6285716823315" target="_blank" rel="noopener" class="w-9 h-9 rounded-full border border-line flex items-center justify-center text-mut hover:text-emerald-600 hover:bg-emerald-50 transition-all" title="WhatsApp Langsung">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tech Stack Chips Row -->
+                <div class="mt-6 pt-5 border-t border-line flex flex-wrap items-center gap-2">
+                    <span id="txt-skills-title" class="text-xs font-bold text-mut uppercase tracking-wider mr-2">Tech Stack:</span>
+                    <span class="text-xs font-semibold text-ink bg-soft px-3 py-1 rounded-full border border-line">Next.js 16</span>
+                    <span class="text-xs font-semibold text-ink bg-soft px-3 py-1 rounded-full border border-line">React 19</span>
+                    <span class="text-xs font-semibold text-ink bg-soft px-3 py-1 rounded-full border border-line">Tailwind CSS v4</span>
+                    <span class="text-xs font-semibold text-ink bg-soft px-3 py-1 rounded-full border border-line">Supabase</span>
+                    <span class="text-xs font-semibold text-ink bg-soft px-3 py-1 rounded-full border border-line">PostgreSQL</span>
+                    <span class="text-xs font-semibold text-ink bg-soft px-3 py-1 rounded-full border border-line">Prisma ORM</span>
+                    <span class="text-xs font-semibold text-ink bg-soft px-3 py-1 rounded-full border border-line">Django</span>
+                    <span class="text-xs font-semibold text-ink bg-soft px-3 py-1 rounded-full border border-line">Groq &amp; Gemini AI</span>
                 </div>
             </div>
         </section>
 
 
         <!-- ==============================================
-             PROYEK PILIHAN SECTION
+             2. PARTNERS LOGO MARQUEE STRIP
              ============================================== -->
-        <section id="proyek" class="pt-12 pb-16">
-            <div class="pb-5 border-b border-line mb-6 flex items-start sm:items-center justify-between gap-3">
-                <div>
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="w-2.5 h-2.5 rounded-full bg-v animate-pulse"></span>
-                        <span id="txt-proj-badge" class="text-xs font-bold text-v uppercase tracking-widest">Portofolio Produk Digital</span>
-                    </div>
-                    <h2 id="txt-proj-title" class="text-2xl sm:text-3xl font-extrabold text-ink tracking-tight">Proyek Pilihan</h2>
-                    <p id="txt-proj-desc" class="text-xs sm:text-sm text-mut mt-1.5 max-w-lg">Aplikasi web, platform sekolah &amp; organisasi, dan produk berbasis integrasi AI.</p>
-                </div>
-                <div class="flex-shrink-0 sticker-float -mt-1 sm:mt-0">
-                    <img src="./stickers/browser.png" alt="Code Project" class="w-14 sm:w-18 md:w-22 h-auto drop-shadow-md pointer-events-none select-none">
-                </div>
-            </div>
+        <section class="mb-6 overflow-hidden">
+            <div class="bento-card py-4 px-6 mask-marquee overflow-hidden">
+                <div class="flex items-center gap-10 whitespace-nowrap animate-marquee w-max">
+                    <!-- Set 1 -->
+                    <img src="./partner/mim-gambiranom.webp" alt="MIM Gambiranom" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
+                    <img src="./partner/imm-simun.webp" alt="IMM SIMUN" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
+                    <img src="./partner/vibecal.webp" alt="VibeCal" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
+                    <img src="./partner/foundry.webp" alt="Foundry" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
+                    <img src="./partner/barang-bareng.webp" alt="Barang-Bareng" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
+                    <img src="./partner/layakbisnis.webp" alt="LayakBisnis" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
+                    <img src="./partner/setara.webp" alt="Setara" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
+                    <img src="./partner/ct-quiz.webp" alt="CT Quiz" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
 
-            <!-- List + Stage Container (Referebsibaru Style) -->
-            <div class="pjw">
-                <div id="projects-list"></div>
-                <div class="stage" id="stage"></div>
+                    <!-- Set 2 (Duplicate for seamless loop) -->
+                    <img src="./partner/mim-gambiranom.webp" alt="MIM Gambiranom" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100" aria-hidden="true">
+                    <img src="./partner/imm-simun.webp" alt="IMM SIMUN" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100" aria-hidden="true">
+                    <img src="./partner/vibecal.webp" alt="VibeCal" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100" aria-hidden="true">
+                    <img src="./partner/foundry.webp" alt="Foundry" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100" aria-hidden="true">
+                    <img src="./partner/barang-bareng.webp" alt="Barang-Bareng" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100" aria-hidden="true">
+                    <img src="./partner/layakbisnis.webp" alt="LayakBisnis" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100" aria-hidden="true">
+                    <img src="./partner/setara.webp" alt="Setara" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100" aria-hidden="true">
+                    <img src="./partner/ct-quiz.webp" alt="CT Quiz" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100" aria-hidden="true">
+                </div>
             </div>
         </section>
 
 
         <!-- ==============================================
-             PERJALANAN / EXPERIENCE & EDUCATION SECTION (2 Columns)
+             3. SECTION: PROYEK PILIHAN (Interactive Showcase)
              ============================================== -->
-        <section id="perjalanan" class="py-14 border-t border-line">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+        <section id="section-projects" class="mb-6 scroll-mt-24">
+            <div class="bento-card p-6 sm:p-8">
                 
-                <!-- Left Column: Work & Teaching Experience (7 cols) -->
-                <div class="lg:col-span-7">
+                <!-- Section Header -->
+                <div class="flex items-start sm:items-center justify-between pb-5 border-b border-line mb-6 gap-4">
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="w-2.5 h-2.5 rounded-full bg-v animate-pulse"></span>
+                            <span id="txt-proj-badge" class="text-xs font-bold text-v uppercase tracking-widest">Portofolio Produk Digital</span>
+                        </div>
+                        <h2 id="txt-proj-title" class="text-xl sm:text-2xl font-extrabold text-ink tracking-tight">Proyek Pilihan</h2>
+                        <p id="txt-proj-desc" class="text-xs sm:text-sm text-mut mt-1">Aplikasi web, platform sekolah &amp; organisasi, dan produk berbasis integrasi AI.</p>
+                    </div>
+                    <!-- Sticker Browser Window -->
+                    <div class="flex-shrink-0 sticker-float -mt-1 sm:mt-0">
+                        <img src="./stickers/browser.png" alt="Browser" class="w-14 sm:w-18 h-auto drop-shadow-md">
+                    </div>
+                </div>
+
+                <!-- Showcase Grid: Left Selector List / Right Live Stage -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    
+                    <!-- Left Column: Interactive Project Items (5 cols) -->
+                    <div class="lg:col-span-5 space-y-3" id="projects-list">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+
+                    <!-- Right Column: Live Sticky Mockup Stage (7 cols) -->
+                    <div class="lg:col-span-7 sticky top-24" id="project-stage">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==============================================
+             4. SECTION: PERJALANAN & PENDIDIKAN (Career & Credentials)
+             ============================================== -->
+        <section id="section-journey" class="mb-6 scroll-mt-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                
+                <!-- Left: Career Journey Timeline (7 cols) -->
+                <div class="lg:col-span-7 bento-card p-6 sm:p-8">
                     <div class="flex items-center justify-between pb-4 border-b border-line mb-6">
-                        <h2 class="text-2xl font-extrabold text-ink tracking-tight flex items-center gap-2">
+                        <h2 class="text-lg sm:text-xl font-extrabold text-ink tracking-tight flex items-center gap-2">
                             <span id="txt-exp-title">Pengalaman Kerja &amp; Mengajar</span>
-                            <img src="./stickers/rocket.png" alt="Career Journey" class="w-7 h-auto sm:w-8 sticker-wobble inline-block drop-shadow-sm ml-1">
+                            <img src="./stickers/rocket.png" alt="Rocket" class="w-6 h-auto sticker-wobble inline-block drop-shadow-sm">
                         </h2>
                         <span id="txt-exp-badge" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
                             Aktif Terkini di Atas
                         </span>
                     </div>
 
-                    <!-- Experience Timeline List -->
-                    <ol class="space-y-6 relative pl-6 timeline-line" id="exp-list">
-                        
-                        <!-- 1. Ruangguru Coding (Sragen) -->
-                        <li class="relative group">
-                            <span class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-white ring-2 ring-emerald-400"></span>
-                            <div class="flex flex-wrap items-baseline gap-2 mb-1">
-                                <span class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">
-                                    JULI 2026 — SEKARANG
-                                </span>
-                                <span class="text-xs font-semibold text-mut">PT Ruang Raya Indonesia (Ruangguru) &bull; Sragen</span>
-                            </div>
-                            <h3 class="text-base font-bold text-ink group-hover:text-v transition-colors">
-                                Pengajar Akademia Ruangguru Coding
-                            </h3>
-                            <p class="text-xs sm:text-sm text-[#4a4668] mt-1 leading-relaxed">
-                                Mengajar materi coding secara hybrid (offline &amp; online) untuk program Ruangguru Coding di sekolah-sekolah wilayah Kabupaten Sragen, membimbing siswa membangun kompetensi digital melalui kurikulum terstruktur.
-                            </p>
-                        </li>
+                    <!-- Timeline List -->
+                    <div class="space-y-6 relative pl-6 border-l-2 border-line" id="exp-list">
+                        <!-- Populated dynamically via JS -->
+                    </div>
 
-                        <!-- 2. Al Azhar IIBS -->
-                        <li class="relative group">
-                            <span class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-white ring-2 ring-emerald-400"></span>
-                            <div class="flex flex-wrap items-baseline gap-2 mb-1">
-                                <span class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">
-                                    AGT 2026 — SEKARANG
-                                </span>
-                                <span class="text-xs font-semibold text-mut">Al Azhar IIBS (by PT. Alhazen)</span>
-                            </div>
-                            <h3 class="text-base font-bold text-ink group-hover:text-v transition-colors">
-                                Freelance Elite Educator (Coding Teacher)
-                            </h3>
-                            <p class="text-xs sm:text-sm text-[#4a4668] mt-1 leading-relaxed">
-                                Melaksanakan bimbingan dan pengajaran materi dasar-dasar pengembangan web dalam kegiatan ekstrakurikuler coding untuk siswa kelas 7 - 9 SMP guna menumbuhkan daya kreasi teknologi sejak dini.
-                            </p>
-                        </li>
-
-                        <!-- 3. Asisten Lab Pemrograman Web -->
-                        <li class="relative group">
-                            <span class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-white ring-2 ring-emerald-400"></span>
-                            <div class="flex flex-wrap items-baseline gap-2 mb-1">
-                                <span class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">
-                                    SEPT 2026 — SEKARANG
-                                </span>
-                                <span class="text-xs font-semibold text-mut">Laboratorium PTI UMS</span>
-                            </div>
-                            <h3 class="text-base font-bold text-ink group-hover:text-v transition-colors">
-                                Asisten Laboratorium Pemrograman Web
-                            </h3>
-                            <p class="text-xs sm:text-sm text-[#4a4668] mt-1 leading-relaxed">
-                                Membimbing praktikum mahasiswa dalam pengembangan web mulai dari dasar HTML, CSS, JavaScript hingga framework Django, serta membantu evaluasi tugas dan pengelolaan kegiatan praktikum di Laboratorium PTI UMS.
-                            </p>
-                        </li>
-
-                        <!-- 4. IT Helpdesk DSTI UMS -->
-                        <li class="relative group exp-extra hidden">
-                            <span class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-v border-2 border-white ring-2 ring-purple-200"></span>
-                            <div class="flex flex-wrap items-baseline gap-2 mb-1">
-                                <span class="text-xs font-bold font-mono text-v bg-soft px-2 py-0.5 rounded-full">
-                                    2023 — JULI 2026
-                                </span>
-                                <span class="text-xs font-semibold text-mut">DSTI Universitas Muhammadiyah Surakarta</span>
-                            </div>
-                            <h3 class="text-base font-bold text-ink group-hover:text-v transition-colors">
-                                IT Helpdesk Staff (Internship)
-                            </h3>
-                            <p class="text-xs sm:text-sm text-[#4a4668] mt-1 leading-relaxed">
-                                Melayani stakeholder terkait kendala akun SSO login, menangani pengajuan surat masuk dari lembaga terkait website, jaringan, dan IT, serta diberikan hak akses mengedit database mahasiswa UMS sesuai kebutuhan.
-                            </p>
-                        </li>
-
-                        <!-- 5. Asisten Lab Basis Data -->
-                        <li class="relative group exp-extra hidden">
-                            <span class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-v border-2 border-white ring-2 ring-purple-200"></span>
-                            <div class="flex flex-wrap items-baseline gap-2 mb-1">
-                                <span class="text-xs font-bold font-mono text-v bg-soft px-2 py-0.5 rounded-full">
-                                    FEB — JULI 2026
-                                </span>
-                                <span class="text-xs font-semibold text-mut">Laboratorium Basis Data PTI UMS</span>
-                            </div>
-                            <h3 class="text-base font-bold text-ink group-hover:text-v transition-colors">
-                                Asisten Laboratorium Basis Data
-                            </h3>
-                            <p class="text-xs sm:text-sm text-[#4a4668] mt-1 leading-relaxed">
-                                Membimbing praktikum pemodelan ERD, SQL query lanjutan, perancangan skema relasional, dan asistensi proyek database mahasiswa.
-                            </p>
-                        </li>
-
-                        <!-- 6. Website Dev MIM Gambiranom -->
-                        <li class="relative group exp-extra hidden">
-                            <span class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-v border-2 border-white ring-2 ring-purple-200"></span>
-                            <div class="flex flex-wrap items-baseline gap-2 mb-1">
-                                <span class="text-xs font-bold font-mono text-v bg-soft px-2 py-0.5 rounded-full">
-                                    JAN — FEB 2026
-                                </span>
-                                <span class="text-xs font-semibold text-mut">MI Muhammadiyah Gambiranom</span>
-                            </div>
-                            <h3 class="text-base font-bold text-ink group-hover:text-v transition-colors">
-                                Website Developer — Institusi Pendidikan
-                            </h3>
-                            <p class="text-xs sm:text-sm text-[#4a4668] mt-1 leading-relaxed">
-                                Membangun kembali website profil sekolah dasar dari nol menggunakan Next.js dan PostgreSQL untuk promosi publik dan pelatihan konten guru.
-                            </p>
-                        </li>
-
-                        <!-- 7. Website Dev IMM SIMUN -->
-                        <li class="relative group exp-extra hidden">
-                            <span class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-v border-2 border-white ring-2 ring-purple-200"></span>
-                            <div class="flex flex-wrap items-baseline gap-2 mb-1">
-                                <span class="text-xs font-bold font-mono text-v bg-soft px-2 py-0.5 rounded-full">
-                                    2026
-                                </span>
-                                <span class="text-xs font-semibold text-mut">IMM Siti Munjiyah FKIP UMS</span>
-                            </div>
-                            <h3 class="text-base font-bold text-ink group-hover:text-v transition-colors">
-                                Website Developer — Organisasi Mahasiswa
-                            </h3>
-                            <p class="text-xs sm:text-sm text-[#4a4668] mt-1 leading-relaxed">
-                                Membangun portal naskah, struktur pengurus, dan arsip digital kaderisasi berbasis Next.js dan Supabase.
-                            </p>
-                        </li>
-
-                        <!-- 8. Asisten Lab Sistem Operasi -->
-                        <li class="relative group exp-extra hidden">
-                            <span class="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-v border-2 border-white ring-2 ring-purple-200"></span>
-                            <div class="flex flex-wrap items-baseline gap-2 mb-1">
-                                <span class="text-xs font-bold font-mono text-v bg-soft px-2 py-0.5 rounded-full">
-                                    SEPT 2025 — JAN 2026
-                                </span>
-                                <span class="text-xs font-semibold text-mut">Laboratorium PTI UMS</span>
-                            </div>
-                            <h3 class="text-base font-bold text-ink group-hover:text-v transition-colors">
-                                Asisten Laboratorium Sistem Operasi
-                            </h3>
-                            <p class="text-xs sm:text-sm text-[#4a4668] mt-1 leading-relaxed">
-                                Mengajar praktikum Linux OS, struktur file, permission, manajemen proses, perintah terminal CLI, dan shell scripting.
-                            </p>
-                        </li>
-
-                    </ol>
-
-                    <!-- Toggle Button for Extra Experience -->
-                    <div class="pt-4 pl-6">
-                        <button id="btn-toggle-exp" type="button" class="inline-flex items-center gap-2 text-xs font-bold text-v hover:text-white bg-soft hover:bg-v px-4 py-2.5 rounded-full transition-all border border-purple-200/60 shadow-sm cursor-pointer group">
+                    <!-- Toggle Button for Older Experience -->
+                    <div class="pt-5 pl-1">
+                        <button id="btn-toggle-exp" type="button" class="inline-flex items-center gap-2 text-xs font-bold text-v hover:text-white bg-soft hover:bg-v px-4 py-2.5 rounded-full transition-all border border-purple-200/60 shadow-xs cursor-pointer group">
                             <span id="btn-toggle-exp-text">Lihat 5 Pengalaman Lainnya</span>
                             <svg id="btn-toggle-exp-icon" class="w-3.5 h-3.5 transform transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
@@ -1149,103 +521,67 @@
                     </div>
                 </div>
 
-                <!-- Right Column: Education & Certifications (5 cols) -->
-                <div class="lg:col-span-5 space-y-10">
+                <!-- Right: Education & Certifications (5 cols) -->
+                <div class="lg:col-span-5 space-y-6">
                     
-                    <!-- Education Section -->
-                    <div>
-                        <div class="pb-4 border-b border-line mb-6">
-                            <h2 id="txt-edu-title" class="text-xl font-extrabold text-ink tracking-tight">Pendidikan Formal</h2>
-                        </div>
-
-                        <div class="space-y-4">
-                            <!-- UMS -->
-                            <div class="p-4 rounded-2xl bg-[#faf8fc] border border-line">
+                    <!-- Education Bento -->
+                    <div class="bento-card p-6">
+                        <h3 id="txt-edu-title" class="text-base font-extrabold text-ink pb-3 border-b border-line mb-4">Pendidikan Formal</h3>
+                        <div class="space-y-3">
+                            <div class="p-3.5 rounded-xl bg-soft border border-line">
                                 <div class="flex items-center justify-between mb-1">
                                     <span class="text-xs font-bold text-v font-mono">2023 — SEKARANG</span>
                                     <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">Ongoing</span>
                                 </div>
-                                <h3 class="text-sm font-bold text-ink">S1 Pendidikan Teknik Informatika</h3>
+                                <h4 class="text-sm font-bold text-ink">S1 Pendidikan Teknik Informatika</h4>
                                 <p class="text-xs text-mut mt-0.5">Universitas Muhammadiyah Surakarta</p>
                             </div>
 
-                            <!-- MA -->
-                            <div class="p-4 rounded-2xl bg-[#faf8fc] border border-line">
-                                <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-mut font-mono">2019 — 2022</span>
-                                </div>
-                                <h3 class="text-sm font-bold text-ink">Madrasah Aliyah</h3>
+                            <div class="p-3.5 rounded-xl bg-soft border border-line">
+                                <span class="text-xs font-bold text-mut font-mono">2019 — 2022</span>
+                                <h4 class="text-sm font-bold text-ink mt-0.5">Madrasah Aliyah</h4>
                                 <p class="text-xs text-mut mt-0.5">MAs Ibnu Taimiyah Bogor</p>
-                            </div>
-
-                            <!-- MTs -->
-                            <div class="p-4 rounded-2xl bg-[#faf8fc] border border-line">
-                                <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-mut font-mono">2016 — 2019</span>
-                                </div>
-                                <h3 class="text-sm font-bold text-ink">Madrasah Tsanawiyah</h3>
-                                <p class="text-xs text-mut mt-0.5">MTs Arafah Bitung</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Certifications Section -->
-                    <div id="sertifikat">
-                        <div class="pb-4 border-b border-line mb-6 flex items-center justify-between">
-                            <h2 id="txt-cert-title" class="text-xl font-extrabold text-ink tracking-tight">Sertifikasi &amp; Lisensi</h2>
+                    <!-- Certifications Bento -->
+                    <div class="bento-card p-6">
+                        <div class="flex items-center justify-between pb-3 border-b border-line mb-4">
+                            <h3 id="txt-cert-title" class="text-base font-extrabold text-ink">Sertifikasi &amp; Lisensi</h3>
                             <span id="txt-cert-badge" class="text-xs font-bold text-v bg-soft px-2.5 py-0.5 rounded-full">3 Lisensi</span>
                         </div>
-
                         <div class="space-y-3">
-                            
-                            <!-- Cert 1: AWS Academy -->
-                            <div class="p-4 rounded-2xl bg-white border border-line hover:border-v2 hover:shadow-md transition-all flex items-center justify-between gap-3">
-                                <div class="flex items-start gap-3">
-                                    <div class="w-8 h-8 rounded-lg bg-purple-50 text-v flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-xs md:text-sm font-bold text-ink leading-snug">Cloud Web App Builder</h4>
-                                        <p class="text-[11px] text-mut">AWS Academy Graduate &bull; 2026</p>
-                                    </div>
+                            <!-- Cert 1 -->
+                            <div class="p-3 rounded-xl border border-line hover:border-v2 transition-all flex items-center justify-between gap-2">
+                                <div>
+                                    <span class="text-[10px] font-mono font-bold text-v uppercase">AWS ACADEMY</span>
+                                    <h4 class="text-xs font-bold text-ink leading-tight">Cloud Foundations</h4>
                                 </div>
-                                <button onclick="openPdfModal('./sertif/AWS_Academy_Graduate___Cloud_Web_Application_Builder___Training_Badge_Badge20260712-20-tyns3j.pdf', 'Cloud Web Application Builder - AWS Academy Graduate')" class="btn-pill py-1.5 px-3 text-xs font-bold text-v flex-shrink-0">
+                                <button onclick="openPdf('./sertif/aws-academy-graduate-aws-academy-cloud-foundations-completion-certificate.pdf', 'AWS Academy Cloud Foundations')" class="text-xs font-bold text-v bg-soft hover:bg-v hover:text-white px-2.5 py-1.5 rounded-lg transition-all flex-shrink-0">
                                     PDF
                                 </button>
                             </div>
-
-                            <!-- Cert 2: Dicoding -->
-                            <div class="p-4 rounded-2xl bg-white border border-line hover:border-v2 hover:shadow-md transition-all flex items-center justify-between gap-3">
-                                <div class="flex items-start gap-3">
-                                    <div class="w-8 h-8 rounded-lg bg-purple-50 text-v flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-xs md:text-sm font-bold text-ink leading-snug">Dasar Pemrograman Web</h4>
-                                        <p class="text-[11px] text-mut">Dicoding Indonesia &bull; 2024</p>
-                                    </div>
+                            <!-- Cert 2 -->
+                            <div class="p-3 rounded-xl border border-line hover:border-v2 transition-all flex items-center justify-between gap-2">
+                                <div>
+                                    <span class="text-[10px] font-mono font-bold text-v uppercase">DICODING</span>
+                                    <h4 class="text-xs font-bold text-ink leading-tight">Dasar Pemrograman Web</h4>
                                 </div>
-                                <button onclick="openPdfModal('./sertif/dasar-pemrogaram-web-dicoding.pdf', 'Dasar Pemrograman Web - Dicoding Indonesia')" class="btn-pill py-1.5 px-3 text-xs font-bold text-v flex-shrink-0">
+                                <button onclick="openPdf('./sertif/sertifikat_course_123_4040182_210924195159.pdf', 'Dasar Pemrograman Web - Dicoding')" class="text-xs font-bold text-v bg-soft hover:bg-v hover:text-white px-2.5 py-1.5 rounded-lg transition-all flex-shrink-0">
                                     PDF
                                 </button>
                             </div>
-
-                            <!-- Cert 3: Harisenin -->
-                            <div class="p-4 rounded-2xl bg-white border border-line hover:border-v2 hover:shadow-md transition-all flex items-center justify-between gap-3">
-                                <div class="flex items-start gap-3">
-                                    <div class="w-8 h-8 rounded-lg bg-purple-50 text-v flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-xs md:text-sm font-bold text-ink leading-snug">Intro to JavaScript Beginner</h4>
-                                        <p class="text-[11px] text-mut">Harisenin.com &bull; 2023</p>
-                                    </div>
+                            <!-- Cert 3 -->
+                            <div class="p-3 rounded-xl border border-line hover:border-v2 transition-all flex items-center justify-between gap-2">
+                                <div>
+                                    <span class="text-[10px] font-mono font-bold text-v uppercase">HARISENIN</span>
+                                    <h4 class="text-xs font-bold text-ink leading-tight">Intro to JavaScript</h4>
                                 </div>
-                                <button onclick="openPdfModal('./sertif/introduction-to-javascript-for-beginner-harisenin.pdf', 'Introduction to JavaScript for Beginner - Harisenin.com')" class="btn-pill py-1.5 px-3 text-xs font-bold text-v flex-shrink-0">
+                                <button onclick="openPdf('./sertif/introduction-to-javascript-for-beginner-harisenin.pdf', 'Intro to JavaScript - Harisenin')" class="text-xs font-bold text-v bg-soft hover:bg-v hover:text-white px-2.5 py-1.5 rounded-lg transition-all flex-shrink-0">
                                     PDF
                                 </button>
                             </div>
-
                         </div>
                     </div>
 
@@ -1256,25 +592,26 @@
 
 
         <!-- ==============================================
-             KONTAK & CTA WHATSAPP (Standout Card)
+             5. SECTION: KONTAK & WHATSAPP CTA
              ============================================== -->
-        <section id="kontak" class="pt-8 pb-12">
-            <div class="cta-card relative">
-                <!-- Flying Paper Airplane Sticker (Visible on mobile & desktop) -->
-                <img src="./stickers/plane.png" alt="Kirim Pesan" class="absolute top-4 right-4 sm:top-5 sm:right-6 w-16 sm:w-24 md:w-32 h-auto sticker-wobble opacity-95 drop-shadow-xl pointer-events-none select-none z-20 block">
+        <section id="section-contact" class="mb-6 scroll-mt-24">
+            <div class="rounded-3xl p-6 sm:p-9 relative overflow-hidden bg-gradient-to-br from-v2 to-v text-white shadow-xl shadow-purple-500/15">
+                
+                <!-- Flying Paper Airplane Sticker -->
+                <img src="./stickers/plane.png" alt="Plane" class="absolute top-4 right-4 sm:top-6 sm:right-8 w-16 sm:w-24 md:w-32 h-auto sticker-wobble opacity-95 drop-shadow-xl pointer-events-none select-none z-20">
 
-                <div class="max-w-2xl relative z-10">
+                <div class="max-w-xl relative z-10">
                     <span id="txt-cta-badge" class="text-xs font-bold text-lilac uppercase tracking-wider block mb-2">Konsultasi &amp; Kolaborasi</span>
-                    <h2 id="txt-cta-title" class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-3">
+                    <h2 id="txt-cta-title" class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-2.5 text-white">
                         Punya rencana proyek? Ceritakan.
                     </h2>
-                    <p id="txt-cta-desc" class="text-sm sm:text-base text-white/90 leading-relaxed mb-6">
+                    <p id="txt-cta-desc" class="text-xs sm:text-sm text-white/90 leading-relaxed mb-5">
                         Website instansi sekolah, platform organisasi mahasiswa, portofolio personal, maupun solusi otomatisasi berbasis AI. Pesan akan langsung diarahkan ke WhatsApp.
                     </p>
 
-                    <!-- Interactive Topic Chips -->
+                    <!-- Interactive Needs Chips -->
                     <div class="mb-5">
-                        <span id="txt-cta-needs" class="text-xs font-semibold text-white/80 block mb-2.5">Pilih Kebutuhan Anda:</span>
+                        <span id="txt-cta-needs" class="text-xs font-semibold text-white/80 block mb-2">Pilih Kebutuhan Anda:</span>
                         <div class="flex flex-wrap gap-2" id="needs-chips">
                             <button class="chip" type="button" aria-pressed="true">Website Sekolah</button>
                             <button class="chip" type="button" aria-pressed="false">Platform Organisasi</button>
@@ -1285,17 +622,17 @@
                         </div>
                     </div>
 
-                    <!-- Input Textarea + Direct Send Button -->
-                    <div class="bg-white rounded-2xl p-2 sm:p-2.5 flex flex-col sm:flex-row gap-2 shadow-lg items-stretch sm:items-center">
+                    <!-- Input + Direct Send Button -->
+                    <div class="bg-white rounded-2xl p-2 flex flex-col sm:flex-row gap-2 shadow-lg items-stretch sm:items-center">
                         <input type="text" id="wa-text-input" placeholder="Tulis catatan singkat kebutuhan Anda..." class="flex-1 border-0 outline-none text-ink text-sm px-3.5 py-2 font-medium bg-transparent focus:ring-0 placeholder:text-mut">
-                        <button id="wa-send-btn" type="button" class="btn-pill btn-pill-primary py-3 px-6 text-sm font-bold justify-center rounded-xl sm:rounded-full">
+                        <button id="wa-send-btn" type="button" class="bg-v hover:bg-deep text-white font-bold text-xs sm:text-sm py-2.5 px-5 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm">
                             <span id="txt-cta-send">Kirim ke WhatsApp</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                         </button>
                     </div>
 
                     <!-- Direct Alternative Contacts -->
-                    <div class="flex flex-wrap items-center gap-6 mt-6 text-xs text-white/80 font-medium">
+                    <div class="flex flex-wrap items-center gap-5 mt-5 text-xs text-white/80 font-medium">
                         <a href="mailto:mifthahulamri@gmail.com" class="hover:text-white flex items-center gap-1.5 transition-colors">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>
                             <span>mifthahulamri@gmail.com</span>
@@ -1304,16 +641,18 @@
                             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                             <span>+62 857-1682-3315</span>
                         </a>
-                        <span class="text-white/60">Surakarta, Indonesia (Remote Ready)</span>
+                        <span class="text-white/60">Surakarta, ID</span>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="pt-8 pb-14 text-center text-xs text-mut border-t border-line">
-            <p>© <span id="current-year">2026</span> Miftahul Amri · Surakarta, Indonesia</p>
+
+        <!-- ==============================================
+             6. FOOTER (Strict User Requirement)
+             ============================================== -->
+        <footer class="pt-8 pb-12 text-center text-xs text-mut border-t border-line">
+            <p>&copy; <span id="current-year">2026</span> Miftahul Amri &middot; Surakarta, Indonesia</p>
             <p class="mt-1 text-[11px] text-mut/80">
                 Web Developer &bull; AI Enthusiast
             </p>
@@ -1327,80 +666,39 @@
 
 
     <!-- ==============================================
-         FLOATING DOCK NAVIGATION (Interactive Bottom Dock)
-         ============================================== -->
-    <!-- ==============================================
-         FLOATING DOCK NAVIGATION (Interactive Bottom Dock)
-         ============================================== -->
-    <nav class="dock" id="dock" aria-label="Navigasi Halaman">
-        <a href="#profil" data-key="profil" class="on">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7v9H4z"/></svg>
-            <span id="dock-txt-profil">Profil</span>
-        </a>
-        <a href="#kolaborasi" data-key="kolaborasi">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            <span id="dock-txt-mitra">Mitra</span>
-        </a>
-        <a href="#proyek" data-key="proyek">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>
-            <span id="dock-txt-proyek">Proyek</span>
-        </a>
-        <a href="#perjalanan" data-key="perjalanan">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 6H15a3 3 0 010 6H9a3 3 0 000 6h6.5"/></svg>
-            <span id="dock-txt-perjalanan">Perjalanan</span>
-        </a>
-        <a href="#sertifikat" data-key="sertifikat">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg>
-            <span id="dock-txt-sertifikat">Sertifikat</span>
-        </a>
-        <a href="#kontak" data-key="kontak">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>
-            <span id="dock-txt-kontak">Kontak</span>
-        </a>
-    </nav>
-
-
-    <!-- ==============================================
          PDF CERTIFICATE PREVIEW MODAL
          ============================================== -->
     <div id="pdf-modal" class="fixed inset-0 z-50 bg-[#101828]/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 opacity-0 pointer-events-none transition-all duration-300">
-        <div class="bg-white w-full max-w-4xl rounded-2xl border border-line shadow-2xl flex flex-col overflow-hidden h-[85vh] transform scale-95 transition-transform duration-300" id="pdf-window">
-            
-            <div class="bg-[#faf8fc] px-5 py-3.5 flex justify-between items-center border-b border-line select-none">
-                <div class="flex items-center gap-2.5">
-                    <span class="w-2.5 h-2.5 rounded-full bg-v"></span>
-                    <span id="pdf-title" class="font-bold text-ink text-sm sm:text-base">Pratinjau Sertifikat</span>
-                </div>
-                <button onclick="closePdfModal()" class="text-mut hover:text-ink w-8 h-8 rounded-full hover:bg-soft flex items-center justify-center transition-all cursor-pointer">
-                    ✕
+        <div class="bg-white rounded-2xl w-full max-w-4xl h-[85vh] flex flex-col overflow-hidden shadow-2xl border border-line">
+            <div class="flex items-center justify-between px-5 py-3.5 border-b border-line bg-soft">
+                <h3 id="pdf-modal-title" class="font-bold text-sm text-ink truncate pr-4">Sertifikat</h3>
+                <button id="pdf-modal-close" class="w-8 h-8 rounded-full hover:bg-line text-mut hover:text-ink flex items-center justify-center transition-all cursor-pointer">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
             </div>
-
-            <div class="flex-1 bg-[#f4f2f8] relative">
-                <iframe id="pdf-iframe" class="w-full h-full border-0" src=""></iframe>
-                <div id="pdf-loading" class="absolute inset-0 flex items-center justify-center bg-white/80 transition-opacity">
-                    <div class="flex items-center gap-2 text-xs font-semibold text-v font-mono">
-                        <span>Memuat berkas PDF...</span>
-                    </div>
-                </div>
+            <div class="flex-1 w-full bg-slate-50 relative">
+                <iframe id="pdf-viewer" src="" class="w-full h-full border-0"></iframe>
             </div>
-
         </div>
     </div>
 
 
     <!-- ==============================================
-         JAVASCRIPT LOGIC (With Bilingual i18n ID / EN)
+         JAVASCRIPT LOGIC (Interactive Bilingual Island)
          ============================================== -->
     <script>
         let currentLang = localStorage.getItem('portfolio_lang') || 'id';
 
         const i18n = {
             id: {
-                status: "Terbuka untuk proyek freelance & kolaborasi",
+                status: "Available for Work",
+                tabAll: "Semua",
+                tabProjects: "Proyek",
+                tabJourney: "Karier",
+                tabContact: "Kontak",
                 bio: "Web developer yang antusias membangun aplikasi web modern dan mengintegrasikan kecerdasan buatan. Berfokus pada perancangan produk digital andal, sistem interaktif, dan solusi praktis yang memecahkan masalah nyata.",
                 cv: "Unduh CV",
-                skillsTitle: "Keahlian & Tech Stack Utama",
+                skillsTitle: "Tech Stack:",
                 projBadge: "Portofolio Produk Digital",
                 projTitle: "Proyek Pilihan",
                 projDesc: "Aplikasi web, platform sekolah & organisasi, dan produk berbasis integrasi AI.",
@@ -1414,19 +712,12 @@
                 eduTitle: "Pendidikan Formal",
                 certTitle: "Sertifikasi & Lisensi",
                 certBadge: "3 Lisensi",
-                viewCred: "Lihat Kredensial",
                 ctaBadge: "Konsultasi & Kolaborasi",
                 ctaTitle: "Punya rencana proyek? Ceritakan.",
                 ctaDesc: "Website instansi sekolah, platform organisasi mahasiswa, portofolio personal, maupun solusi otomatisasi berbasis AI. Pesan akan langsung diarahkan ke WhatsApp.",
                 ctaNeeds: "Pilih Kebutuhan Anda:",
                 ctaPlaceholder: "Tulis catatan singkat kebutuhan Anda...",
                 ctaSend: "Kirim ke WhatsApp",
-                dockProfil: "Profil",
-                dockMitra: "Mitra",
-                dockProyek: "Proyek",
-                dockPerjalanan: "Perjalanan",
-                dockSertifikat: "Sertifikat",
-                dockKontak: "Kontak",
                 experiences: [
                     {
                         date: "JULI 2026 — SEKARANG",
@@ -1487,10 +778,14 @@
                 ]
             },
             en: {
-                status: "Open for freelance projects & collaboration",
+                status: "Available for Work",
+                tabAll: "All",
+                tabProjects: "Projects",
+                tabJourney: "Career",
+                tabContact: "Contact",
                 bio: "Web developer passionate about building modern web applications and integrating artificial intelligence. Focused on crafting reliable digital products, interactive systems, and practical solutions that solve real-world problems.",
                 cv: "Download CV",
-                skillsTitle: "Key Skills & Core Tech Stack",
+                skillsTitle: "Tech Stack:",
                 projBadge: "Digital Product Portfolio",
                 projTitle: "Featured Projects",
                 projDesc: "Web applications, educational & community platforms, and AI-integrated products.",
@@ -1504,19 +799,12 @@
                 eduTitle: "Formal Education",
                 certTitle: "Certifications & Licenses",
                 certBadge: "3 Licenses",
-                viewCred: "View Credential",
                 ctaBadge: "Consultation & Collaboration",
                 ctaTitle: "Have a project in mind? Let's talk.",
                 ctaDesc: "School websites, student organization platforms, personal portfolios, or AI automation solutions. Messages will be directed straight to WhatsApp.",
                 ctaNeeds: "Select Your Needs:",
                 ctaPlaceholder: "Write a brief note about your project needs...",
                 ctaSend: "Send to WhatsApp",
-                dockProfil: "Profile",
-                dockMitra: "Partners",
-                dockProyek: "Projects",
-                dockPerjalanan: "Journey",
-                dockSertifikat: "Certificates",
-                dockKontak: "Contact",
                 experiences: [
                     {
                         date: "JULY 2026 — PRESENT",
@@ -1669,76 +957,52 @@
             }
         ];
 
-        const shotHtml = p => `<div class="shot"><img src="${p.banner}" alt="Tampilan ${p.title}" loading="lazy"></div>`;
-        const chipsHtml = tags => tags.map(t => `<span>${t}</span>`).join("");
-
+        let activeProjectIndex = 0;
         let isPjExpanded = false;
         let isExpExpanded = false;
-        let activeProjectIndex = 0;
 
         function renderProjects() {
             const projectsContainer = document.getElementById("projects-list");
             if (!projectsContainer) return;
-            const isDesk = window.matchMedia("(min-width: 900px)").matches;
+            const t = i18n[currentLang];
             const initialVisible = 4;
             const extraCount = projectsData.length - initialVisible;
-            const t = i18n[currentLang];
 
             const projectsHtml = projectsData.map((p, i) => {
-                const cleanUrl = p.url ? p.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : '';
                 const isExtra = i >= initialVisible;
-                const pShort = currentLang === 'en' ? p.short_en : p.short_id;
-                const pDesc = currentLang === 'en' ? p.desc_en : p.desc_id;
                 const isHidden = isExtra && !isPjExpanded;
-                const isOpen = !isDesk && i === activeProjectIndex;
+                const pShort = currentLang === 'en' ? p.short_en : p.short_id;
+                const isSelected = i === activeProjectIndex;
 
                 return `
-                <article class="pj ${isOpen ? 'open' : ''} ${isDesk && i === activeProjectIndex ? 'on' : ''} ${isHidden ? 'pj-extra hidden' : (isExtra ? 'pj-extra' : '')}" tabindex="0" data-i="${i}" data-url="${p.url}">
-                    <div class="pj-header-row">
-                        <div style="min-width:0; flex:1">
-                            <div class="flex items-center gap-2 mb-1">
-                                <img src="${p.partner}" alt="" class="w-4 h-4 object-contain flex-shrink-0" onerror="this.style.display='none'">
-                                <span class="text-[10px] font-mono font-bold text-v uppercase">${p.tags[0]}</span>
-                            </div>
-                            <h3>${p.title}</h3>
-                            <p class="pj-short">${pShort}</p>
+                <div class="p-3.5 rounded-2xl border transition-all cursor-pointer ${isSelected ? 'border-v bg-soft/70 shadow-sm' : 'border-line hover:border-v2/60 bg-white'} ${isHidden ? 'hidden' : ''}" data-project-idx="${i}">
+                    <div class="flex items-center justify-between gap-2">
+                        <div class="flex items-center gap-2 min-w-0">
+                            <img src="${p.partner}" alt="" class="w-4 h-4 object-contain flex-shrink-0" onerror="this.style.display='none'">
+                            <span class="text-[10px] font-mono font-bold text-v uppercase truncate">${p.tags[0]}</span>
                         </div>
-                        <span class="ar" aria-hidden="true">&#x2197;</span>
+                        <span class="text-xs text-mut ${isSelected ? 'text-v font-bold' : ''}">↗</span>
                     </div>
-                    <div class="pv">
-                        <div class="win" style="border-radius:12px; margin-bottom:12px; box-shadow:0 4px 14px rgba(25,13,75,0.06);">
-                            <div class="wb" style="padding:7px 12px">
-                                <i></i><i></i><i></i>
-                                <span class="url" style="font-size:10.5px; padding:2px 8px; margin-left:8px">${cleanUrl}</span>
-                            </div>
-                            ${shotHtml(p)}
-                        </div>
-                        <p class="text-[13px] text-[#4a4668] leading-relaxed mb-3">${pDesc}</p>
-                        <div class="stk mb-3">${chipsHtml(p.tags)}</div>
-                        ${p.url ? `<a class="go" href="${p.url}" target="_blank" rel="noopener">${t.projOpen} <svg class="w-4 h-4 ml-1 inline" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></a>` : ''}
-                    </div>
-                </article>
-            `}).join("");
+                    <h4 class="text-sm font-bold text-ink mt-1 truncate ${isSelected ? 'text-v' : ''}">${p.title}</h4>
+                    <p class="text-xs text-mut mt-0.5 line-clamp-1">${pShort}</p>
+                </div>
+                `;
+            }).join("");
 
             const toggleBtnText = isPjExpanded ? t.projLess : t.projMore.replace('{count}', extraCount);
             const toggleBtnHtml = extraCount > 0 ? `
-                <div class="pt-3">
-                    <button id="btn-toggle-projects" type="button" class="w-full py-3 px-4 rounded-xl border border-line bg-soft hover:bg-purple-100/70 text-ink hover:text-v font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer group">
-                        <span id="btn-toggle-pj-text">${toggleBtnText}</span>
-                        <svg id="btn-toggle-pj-icon" class="w-4 h-4 transform transition-transform group-hover:translate-y-0.5" style="transform: ${isPjExpanded ? 'rotate(180deg)' : 'rotate(0deg)'}" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-                        </svg>
-                    </button>
-                </div>
+                <button id="btn-toggle-projects" type="button" class="w-full py-2.5 px-3 rounded-xl border border-line bg-soft hover:bg-purple-100/70 text-ink hover:text-v font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer">
+                    <span id="btn-toggle-pj-text">${toggleBtnText}</span>
+                    <svg id="btn-toggle-pj-icon" class="w-3.5 h-3.5 transform transition-transform" style="transform: ${isPjExpanded ? 'rotate(180deg)' : 'rotate(0deg)'}" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                </button>
             ` : '';
 
             projectsContainer.innerHTML = projectsHtml + toggleBtnHtml;
             updateStage(activeProjectIndex);
-            initProjectsEvents();
         }
 
         function updateStage(i) {
-            const stage = document.getElementById("stage");
+            const stage = document.getElementById("project-stage");
             if (!stage) return;
             activeProjectIndex = i;
             const p = projectsData[i];
@@ -1747,129 +1011,64 @@
             const cleanUrl = p.url ? p.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : '';
 
             stage.innerHTML = `
-                <div class="win">
-                    <div class="wb">
+                <div class="win-mockup">
+                    <div class="win-bar">
                         <i></i><i></i><i></i>
-                        <span class="url">${cleanUrl}</span>
+                        <span class="ml-2 flex-1 bg-white border border-line rounded-full px-3 py-1 font-mono text-[11px] text-mut truncate">
+                            ${cleanUrl}
+                        </span>
                     </div>
-                    ${shotHtml(p)}
+                    <div class="aspect-video w-full bg-[#f8f6fc] overflow-hidden flex items-center justify-center">
+                        <img src="${p.banner}" alt="${p.title}" class="w-full h-full object-cover">
+                    </div>
                 </div>
-                <div class="flex items-center gap-2 mt-5 mb-1">
-                    <img src="${p.partner}" alt="" class="w-5 h-5 object-contain flex-shrink-0" onerror="this.style.display='none'">
-                    <span class="text-xs font-mono font-bold text-v uppercase">${p.tags[0]}</span>
+                
+                <div class="mt-4 flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-2">
+                        <img src="${p.partner}" alt="" class="w-5 h-5 object-contain flex-shrink-0" onerror="this.style.display='none'">
+                        <h3 class="text-base sm:text-lg font-extrabold text-ink">${p.title}</h3>
+                    </div>
+                    ${p.url ? `<a href="${p.url}" target="_blank" rel="noopener" class="text-xs font-bold text-white bg-v hover:bg-deep px-3.5 py-1.5 rounded-full transition-all inline-flex items-center gap-1 shadow-sm flex-shrink-0">${t.projOpen} ↗</a>` : ''}
                 </div>
-                <h3>${p.title}</h3>
-                <p>${pDesc}</p>
-                <div class="stk">${chipsHtml(p.tags)}</div>
-                ${p.url ? `<a class="go" href="${p.url}" target="_blank" rel="noopener">${t.projOpen} <svg class="w-4 h-4 ml-1 inline" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></a>` : ''}
+
+                <p class="text-xs sm:text-sm text-[#4a4668] mt-2 leading-relaxed">${pDesc}</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                    ${p.tags.map(tag => `<span class="text-[11px] font-semibold text-mut bg-soft px-2.5 py-0.5 rounded-full border border-line">${tag}</span>`).join('')}
+                </div>
             `;
-            stage.classList.remove("fade");
-            void stage.offsetWidth;
-            stage.classList.add("fade");
         }
 
-        let projectsEventsAttached = false;
-        function initProjectsEvents() {
-            if (projectsEventsAttached) return;
-            const projectsContainer = document.getElementById("projects-list");
-            if (!projectsContainer) return;
-            projectsEventsAttached = true;
-
-            projectsContainer.addEventListener("click", e => {
-                // 1. Toggle button click
-                const btnTogglePj = e.target.closest("#btn-toggle-projects");
-                if (btnTogglePj) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    isPjExpanded = !isPjExpanded;
-                    document.querySelectorAll(".pj-extra").forEach(el => {
-                        el.classList.toggle("hidden", !isPjExpanded);
-                    });
-                    const t = i18n[currentLang];
-                    const txt = document.getElementById("btn-toggle-pj-text");
-                    const icon = document.getElementById("btn-toggle-pj-icon");
-                    if (txt) txt.textContent = isPjExpanded ? t.projLess : t.projMore.replace('{count}', projectsData.length - 4);
-                    if (icon) icon.style.transform = isPjExpanded ? "rotate(180deg)" : "rotate(0deg)";
-                    return;
-                }
-
-                // 2. Ignore anchor clicks
-                if (e.target.closest("a")) return;
-
-                // 3. Project card click
-                const r = e.target.closest(".pj");
-                if (!r) return;
-
-                const isDesk = window.matchMedia("(min-width: 900px)").matches;
-                if (isDesk) {
-                    if (r.dataset.url) window.open(r.dataset.url, "_blank", "noopener");
-                } else {
-                    const wasOpen = r.classList.contains("open");
-                    document.querySelectorAll(".pj").forEach(el => el.classList.remove("open"));
-                    if (!wasOpen) {
-                        r.classList.add("open");
-                        activeProjectIndex = +r.dataset.i;
-                    }
-                }
-            });
-
-            projectsContainer.addEventListener("mouseover", e => {
-                if (!window.matchMedia("(min-width: 900px)").matches) return;
-                const r = e.target.closest(".pj");
-                if (r) {
-                    const idx = +r.dataset.i;
-                    if (activeProjectIndex !== idx) {
-                        document.querySelectorAll(".pj").forEach((el, k) => el.classList.toggle("on", k === idx));
-                        updateStage(idx);
-                    }
-                }
-            });
-
-            projectsContainer.addEventListener("focusin", e => {
-                if (!window.matchMedia("(min-width: 900px)").matches) return;
-                const r = e.target.closest(".pj");
-                if (r) {
-                    const idx = +r.dataset.i;
-                    if (activeProjectIndex !== idx) {
-                        document.querySelectorAll(".pj").forEach((el, k) => el.classList.toggle("on", k === idx));
-                        updateStage(idx);
-                    }
-                }
-            });
-
-            projectsContainer.addEventListener("keydown", e => {
-                if (e.key === "Enter" && e.target.classList.contains("pj")) {
-                    e.target.click();
-                }
-            });
-        }
-
-        function updateExperiences() {
+        function renderExperiences() {
             const expList = document.getElementById("exp-list");
             if (!expList) return;
-            const items = expList.querySelectorAll("li");
             const t = i18n[currentLang];
-            items.forEach((li, idx) => {
-                const data = t.experiences[idx];
-                if (!data) return;
-                const dateSpan = li.querySelector(".font-mono");
-                const companySpan = li.querySelector(".text-mut");
-                const roleH3 = li.querySelector("h3");
-                const descP = li.querySelector("p");
-                if (dateSpan) dateSpan.textContent = data.date;
-                if (companySpan) companySpan.textContent = data.company;
-                if (roleH3) roleH3.textContent = data.role;
-                if (descP) descP.textContent = data.desc;
-            });
+
+            expList.innerHTML = t.experiences.map((exp, idx) => {
+                const isExtra = idx >= 3;
+                const isHidden = isExtra && !isExpExpanded;
+                const isRecent = idx < 3;
+
+                return `
+                <div class="relative group ${isHidden ? 'hidden' : ''}">
+                    <span class="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full ${isRecent ? 'bg-emerald-500 ring-2 ring-emerald-300' : 'bg-v ring-2 ring-purple-200'} border-2 border-white"></span>
+                    <div class="flex flex-wrap items-baseline gap-2 mb-1">
+                        <span class="text-[11px] font-bold font-mono ${isRecent ? 'text-emerald-700 bg-emerald-50' : 'text-v bg-soft'} px-2 py-0.5 rounded-full">
+                            ${exp.date}
+                        </span>
+                        <span class="text-xs font-semibold text-mut">${exp.company}</span>
+                    </div>
+                    <h4 class="text-sm font-bold text-ink group-hover:text-v transition-colors">${exp.role}</h4>
+                    <p class="text-xs sm:text-sm text-[#4a4668] mt-1 leading-relaxed">${exp.desc}</p>
+                </div>
+                `;
+            }).join("");
         }
 
         function updateNeedsChips() {
             const chips = document.querySelectorAll('#needs-chips .chip');
             const t = i18n[currentLang];
             chips.forEach((chip, i) => {
-                if (t.needs[i]) {
-                    chip.textContent = t.needs[i];
-                }
+                if (t.needs[i]) chip.textContent = t.needs[i];
             });
         }
 
@@ -1879,22 +1078,26 @@
             document.documentElement.lang = lang;
             const t = i18n[lang];
 
-            // Update Switcher UI
+            // Switcher UI
             const btnId = document.getElementById("btn-lang-id");
             const btnEn = document.getElementById("btn-lang-en");
             if (btnId && btnEn) {
                 if (lang === 'id') {
-                    btnId.className = "px-2.5 py-1 rounded-full text-xs font-bold transition-all flex items-center gap-1 bg-v text-white shadow-xs cursor-pointer";
-                    btnEn.className = "px-2.5 py-1 rounded-full text-xs font-bold text-mut hover:text-ink transition-all flex items-center gap-1 cursor-pointer";
+                    btnId.className = "px-2 py-0.5 sm:py-1 rounded-full text-[11px] font-bold transition-all bg-v text-white shadow-xs";
+                    btnEn.className = "px-2 py-0.5 sm:py-1 rounded-full text-[11px] font-bold text-white/70 hover:text-white transition-all";
                 } else {
-                    btnEn.className = "px-2.5 py-1 rounded-full text-xs font-bold transition-all flex items-center gap-1 bg-v text-white shadow-xs cursor-pointer";
-                    btnId.className = "px-2.5 py-1 rounded-full text-xs font-bold text-mut hover:text-ink transition-all flex items-center gap-1 cursor-pointer";
+                    btnEn.className = "px-2 py-0.5 sm:py-1 rounded-full text-[11px] font-bold transition-all bg-v text-white shadow-xs";
+                    btnId.className = "px-2 py-0.5 sm:py-1 rounded-full text-[11px] font-bold text-white/70 hover:text-white transition-all";
                 }
             }
 
-            // Static Text updates
+            // Static Text
             const map = {
-                "txt-status": t.status,
+                "island-status-txt": t.status,
+                "tab-txt-all": t.tabAll,
+                "tab-txt-projects": t.tabProjects,
+                "tab-txt-journey": t.tabJourney,
+                "tab-txt-contact": t.tabContact,
                 "txt-bio": t.bio,
                 "txt-cv": t.cv,
                 "txt-skills-title": t.skillsTitle,
@@ -1911,13 +1114,7 @@
                 "txt-cta-title": t.ctaTitle,
                 "txt-cta-desc": t.ctaDesc,
                 "txt-cta-needs": t.ctaNeeds,
-                "txt-cta-send": t.ctaSend,
-                "dock-txt-profil": t.dockProfil,
-                "dock-txt-mitra": t.dockMitra,
-                "dock-txt-proyek": t.dockProyek,
-                "dock-txt-perjalanan": t.dockPerjalanan,
-                "dock-txt-sertifikat": t.dockSertifikat,
-                "dock-txt-kontak": t.dockKontak
+                "txt-cta-send": t.ctaSend
             };
 
             for (const [id, val] of Object.entries(map)) {
@@ -1928,30 +1125,41 @@
             const waInput = document.getElementById("wa-text-input");
             if (waInput) waInput.placeholder = t.ctaPlaceholder;
 
-            // Update Dynamic Sections
             renderProjects();
-            updateExperiences();
+            renderExperiences();
             updateNeedsChips();
         }
 
-        // Initialize projects & language
-        initProjectsEvents();
-        setLanguage(currentLang);
-
-        // Language button event listeners
-        const btnLangId = document.getElementById("btn-lang-id");
-        const btnLangEn = document.getElementById("btn-lang-en");
-        if (btnLangId) btnLangId.addEventListener("click", () => setLanguage('id'));
-        if (btnLangEn) btnLangEn.addEventListener("click", () => setLanguage('en'));
+        // Project selector delegation
+        const projectsContainer = document.getElementById("projects-list");
+        if (projectsContainer) {
+            projectsContainer.addEventListener("click", e => {
+                const btnToggle = e.target.closest("#btn-toggle-projects");
+                if (btnToggle) {
+                    isPjExpanded = !isPjExpanded;
+                    renderProjects();
+                    return;
+                }
+                const card = e.target.closest("[data-project-idx]");
+                if (card) {
+                    const idx = +card.dataset.projectIdx;
+                    updateStage(idx);
+                    document.querySelectorAll("[data-project-idx]").forEach((el, k) => {
+                        el.className = el.className.replace(/border-v bg-soft\/70 shadow-sm/g, 'border-line hover:border-v2/60 bg-white');
+                        if (k === idx) {
+                            el.className = el.className.replace(/border-line hover:border-v2\/60 bg-white/g, 'border-v bg-soft/70 shadow-sm');
+                        }
+                    });
+                }
+            });
+        }
 
         // Toggle Experience Timeline
         const btnToggleExp = document.getElementById("btn-toggle-exp");
         if (btnToggleExp) {
             btnToggleExp.addEventListener("click", () => {
                 isExpExpanded = !isExpExpanded;
-                document.querySelectorAll(".exp-extra").forEach(el => {
-                    el.classList.toggle("hidden", !isExpExpanded);
-                });
+                renderExperiences();
                 const t = i18n[currentLang];
                 const txt = document.getElementById("btn-toggle-exp-text");
                 const icon = document.getElementById("btn-toggle-exp-icon");
@@ -1960,13 +1168,9 @@
             });
         }
 
-        // Set dynamic current year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // 1. WhatsApp CTA Interactive Chip Selection
+        // WhatsApp Chips Selection
         const chips = document.querySelectorAll('#needs-chips .chip');
         let selectedNeed = "Website Sekolah";
-        
         chips.forEach(chip => {
             chip.addEventListener('click', () => {
                 chips.forEach(c => c.setAttribute('aria-pressed', 'false'));
@@ -1975,36 +1179,21 @@
             });
         });
 
-        // 2. Direct WhatsApp Dispatch
+        // WhatsApp Dispatch
         const waSendBtn = document.getElementById('wa-send-btn');
         const waTextInput = document.getElementById('wa-text-input');
-
         if (waSendBtn) {
             waSendBtn.addEventListener('click', () => {
                 const customNotes = waTextInput ? waTextInput.value.trim() : '';
                 let message = "";
                 if (currentLang === 'en') {
-                    message = `Hello Miftahul Amri, I am interested in collaborating on: *${selectedNeed}*.`;
-                    if (customNotes) {
-                        message += `
-
-Project Notes:
-"${customNotes}"`;
-                    }
-                    message += `
-
-Sent from your portfolio website.`;
+                    message = `Hello Miftahul Amri, I would like to discuss: *${selectedNeed}*.`;
+                    if (customNotes) message += `\\n\\nProject Notes:\\n"${customNotes}"`;
+                    message += `\\n\\nSent from your portfolio website.`;
                 } else {
                     message = `Halo Miftahul Amri, saya tertarik berdiskusi mengenai proyek: *${selectedNeed}*.`;
-                    if (customNotes) {
-                        message += `
-
-Catatan:
-"${customNotes}"`;
-                    }
-                    message += `
-
-Dikirim dari portofolio web.`;
+                    if (customNotes) message += `\\n\\nCatatan:\\n"${customNotes}"`;
+                    message += `\\n\\nDikirim dari portofolio web.`;
                 }
                 const phone = "6285716823315";
                 const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
@@ -2012,35 +1201,35 @@ Dikirim dari portofolio web.`;
             });
         }
 
-        // 3. Floating Dock Active Section Observer
-        const sections = ['profil', 'kolaborasi', 'proyek', 'perjalanan', 'sertifikat', 'kontak'];
-        const dockLinks = document.querySelectorAll('.dock a');
+        // Dynamic Island Tab Navigation
+        const tabs = document.querySelectorAll('#island-tabs button');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                tab.classList.add('active');
+                tab.setAttribute('aria-selected', 'true');
 
-        window.addEventListener('scroll', () => {
-            let current = 'profil';
-            const scrollPos = window.scrollY + 200;
-
-            sections.forEach(id => {
-                const el = document.getElementById(id);
-                if (el && el.offsetTop <= scrollPos) {
-                    current = id;
+                const target = tab.dataset.tab;
+                if (target === 'all') {
+                    document.getElementById('pane-hero')?.scrollIntoView({ behavior: 'smooth' });
+                } else if (target === 'projects') {
+                    document.getElementById('section-projects')?.scrollIntoView({ behavior: 'smooth' });
+                } else if (target === 'journey') {
+                    document.getElementById('section-journey')?.scrollIntoView({ behavior: 'smooth' });
+                } else if (target === 'contact') {
+                    document.getElementById('section-contact')?.scrollIntoView({ behavior: 'smooth' });
                 }
             });
+        });
 
-            dockLinks.forEach(link => {
-                link.classList.remove('on');
-                if (link.dataset.key === current) {
-                    link.classList.add('on');
-                }
-            });
-        }, { passive: true });
-
-        // 4. PDF Modal Certificate Preview
+        // PDF Modal
         const pdfModal = document.getElementById('pdf-modal');
         const pdfViewer = document.getElementById('pdf-viewer');
         const pdfTitle = document.getElementById('pdf-modal-title');
         const pdfClose = document.getElementById('pdf-modal-close');
-        const certTriggers = document.querySelectorAll('.cert-btn');
 
         function openPdf(url, title) {
             if (!pdfModal || !pdfViewer) return;
@@ -2057,25 +1246,27 @@ Dikirim dari portofolio web.`;
             document.body.style.overflow = '';
         }
 
-        certTriggers.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const pdf = btn.dataset.pdf;
-                const title = btn.dataset.title;
-                openPdf(pdf, title);
-            });
-        });
-
         if (pdfClose) pdfClose.addEventListener('click', closePdf);
         if (pdfModal) {
-            pdfModal.addEventListener('click', (e) => {
+            pdfModal.addEventListener('click', e => {
                 if (e.target === pdfModal) closePdf();
             });
         }
-        document.addEventListener('keydown', (e) => {
+        document.addEventListener('keydown', e => {
             if (e.key === 'Escape' && pdfModal && !pdfModal.classList.contains('pointer-events-none')) {
                 closePdf();
             }
         });
+
+        // Language Buttons
+        document.getElementById("btn-lang-id")?.addEventListener("click", () => setLanguage('id'));
+        document.getElementById("btn-lang-en")?.addEventListener("click", () => setLanguage('en'));
+
+        // Current Year in Footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Boot
+        setLanguage(currentLang);
     </script>
 </body>
 </html>
