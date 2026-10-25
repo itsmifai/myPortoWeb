@@ -186,6 +186,17 @@ main {
 .hero {
   margin-bottom: 56px;
 }
+.hero-handle {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--fg-muted);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+  transition: color 0.15s;
+}
+.hero-handle:hover {
+  color: var(--fg);
+}
 .hero h1 {
   font-size: 26px;
   font-weight: 600;
@@ -712,6 +723,7 @@ main {
 
   <!-- Hero Section -->
   <section class="hero">
+    <a href="https://github.com/itsmifai" target="_blank" rel="noopener" class="hero-handle mono">@itsmifai</a>
     <h1>Miftahul Amri</h1>
     <p class="hero-desc" id="hero-desc">
       <!-- Injected via JavaScript -->
