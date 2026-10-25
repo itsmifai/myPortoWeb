@@ -515,6 +515,40 @@ main {
   height: auto;
   max-height: 90vh;
 }
+.cert-dialog {
+  max-width: 780px;
+  width: 100%;
+  height: auto;
+  max-height: 90vh;
+}
+.cert-body {
+  padding: 16px 20px 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.cert-img-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-subtle);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 6px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+.cert-img-wrapper img {
+  max-width: 100%;
+  max-height: 65vh;
+  width: auto;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  object-fit: contain;
+}
 .support-body {
   padding: 24px 22px;
   text-align: center;
@@ -787,17 +821,29 @@ main {
   </div>
 </div>
 
-<!-- Certificate PDF Preview Modal -->
+<!-- Certificate Image Preview Modal (Instant & Mobile Friendly) -->
 <div class="modal-overlay" id="pdf-modal" onclick="handleOverlayClick(event)">
-  <div class="modal-dialog">
+  <div class="modal-dialog cert-dialog">
     <div class="modal-header">
-      <span class="modal-title" id="pdf-title">Sertifikat</span>
+      <div style="display:flex;align-items:center;gap:7px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        <span class="modal-title" id="pdf-title">Sertifikat</span>
+      </div>
       <div class="modal-header-actions">
-        <a id="pdf-direct" href="#" target="_blank" rel="noopener" class="modal-link">Buka di tab baru ↗</a>
+        <a id="pdf-direct" href="#" target="_blank" rel="noopener" class="modal-link mono" style="font-size:11.5px;">Buka PDF Asli ↗</a>
         <button type="button" class="modal-close" onclick="closePdf()" aria-label="Tutup">&times;</button>
       </div>
     </div>
-    <iframe class="modal-frame" id="pdf-frame" src=""></iframe>
+    <div class="cert-body">
+      <div class="cert-img-wrapper">
+        <img id="cert-img" src="" alt="Pratinjau Sertifikat">
+      </div>
+      <div class="cert-footer">
+        <a id="cert-download-btn" href="#" target="_blank" rel="noopener" class="detail-action-btn mono" style="font-size:12px;padding:4px 12px;border:1px solid var(--border);border-radius:6px;">
+          <span id="cert-dl-text">Buka / Unduh Dokumen PDF Resmi ↗</span>
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -929,9 +975,24 @@ const content = {
 
     labelCerts: 'Certifications',
     certs: [
-      { title: 'AWS Cloud Web App Builder', desc: 'AWS Academy Graduate · 2026', action: 'pdf', file: './sertif/AWS_Academy_Graduate___Cloud_Web_Application_Builder___Training_Badge_Badge20260712-20-tyns3j.pdf' },
-      { title: 'Dasar Pemrograman Web', desc: 'Dicoding Indonesia · 2024', action: 'pdf', file: './sertif/dasar-pemrogaram-web-dicoding.pdf' },
-      { title: 'Intro to JavaScript', desc: 'Harisenin.com · 2023', action: 'pdf', file: './sertif/introduction-to-javascript-for-beginner-harisenin.pdf' }
+      {
+        title: 'AWS Cloud Web App Builder',
+        desc: 'AWS Academy Graduate · 2026',
+        image: './sertif/aws-cloud-builder.webp',
+        file: './sertif/AWS_Academy_Graduate___Cloud_Web_Application_Builder___Training_Badge_Badge20260712-20-tyns3j.pdf'
+      },
+      {
+        title: 'Dasar Pemrograman Web',
+        desc: 'Dicoding Indonesia · 2024',
+        image: './sertif/dicoding-web-dasar.webp',
+        file: './sertif/dasar-pemrogaram-web-dicoding.pdf'
+      },
+      {
+        title: 'Intro to JavaScript',
+        desc: 'Harisenin.com · 2023',
+        image: './sertif/harisenin-js-intro.webp',
+        file: './sertif/introduction-to-javascript-for-beginner-harisenin.pdf'
+      }
     ],
 
     labelConnect: 'Connect',
@@ -948,7 +1009,9 @@ const content = {
     footerSupport: 'Buy me a coffee / Dukung ↗',
     supportTitle: 'Dukung Karya & Traktir Kopi',
     supportDesc: 'Scan QRIS di bawah ini melalui GoPay, OVO, Dana, ShopeePay, BCA, atau aplikasi mobile banking apapun. Dukunganmu sangat berarti!',
-    supportDl: 'Unduh QR Code ↗'
+    supportDl: 'Unduh QR Code ↗',
+    certDlText: 'Buka / Unduh Dokumen PDF Resmi ↗',
+    certDirectText: 'Buka PDF Asli ↗'
   },
   en: {
     heroP1: '<span class="serif-italic">Crafting web applications & purposeful AI.</span> Based in Surakarta, Indonesia <span class="flag-icon" title="Indonesia"><svg viewBox="0 0 3 2"><rect width="3" height="1" fill="#e70011"/><rect y="1" width="3" height="1" fill="#ffffff"/></svg></span>, I focus on exploring artificial intelligence, engineering reliable modern web products, and experimenting with thoughtful digital interfaces.',
@@ -979,9 +1042,24 @@ const content = {
 
     labelCerts: 'Certifications',
     certs: [
-      { title: 'AWS Cloud Web App Builder', desc: 'AWS Academy Graduate · 2026', action: 'pdf', file: './sertif/AWS_Academy_Graduate___Cloud_Web_Application_Builder___Training_Badge_Badge20260712-20-tyns3j.pdf' },
-      { title: 'Web Development Fundamentals', desc: 'Dicoding Indonesia · 2024', action: 'pdf', file: './sertif/dasar-pemrogaram-web-dicoding.pdf' },
-      { title: 'Intro to JavaScript', desc: 'Harisenin.com · 2023', action: 'pdf', file: './sertif/introduction-to-javascript-for-beginner-harisenin.pdf' }
+      {
+        title: 'AWS Cloud Web App Builder',
+        desc: 'AWS Academy Graduate · 2026',
+        image: './sertif/aws-cloud-builder.webp',
+        file: './sertif/AWS_Academy_Graduate___Cloud_Web_Application_Builder___Training_Badge_Badge20260712-20-tyns3j.pdf'
+      },
+      {
+        title: 'Web Development Fundamentals',
+        desc: 'Dicoding Indonesia · 2024',
+        image: './sertif/dicoding-web-dasar.webp',
+        file: './sertif/dasar-pemrogaram-web-dicoding.pdf'
+      },
+      {
+        title: 'Intro to JavaScript',
+        desc: 'Harisenin.com · 2023',
+        image: './sertif/harisenin-js-intro.webp',
+        file: './sertif/introduction-to-javascript-for-beginner-harisenin.pdf'
+      }
     ],
 
     labelConnect: 'Connect',
@@ -998,7 +1076,9 @@ const content = {
     footerSupport: 'Buy me a coffee / Support ↗',
     supportTitle: 'Support & Buy Me a Coffee',
     supportDesc: 'Scan the QRIS code below using any e-wallet or banking app (GoPay, OVO, Dana, ShopeePay, BCA, etc.). Your support is deeply appreciated!',
-    supportDl: 'Download QR Code ↗'
+    supportDl: 'Download QR Code ↗',
+    certDlText: 'Open / Download Official PDF Document ↗',
+    certDirectText: 'Open PDF ↗'
   }
 };
 
@@ -1076,24 +1156,14 @@ function render() {
   document.getElementById('label-certs').textContent = c.labelCerts;
   const listCerts = document.getElementById('list-certs');
   if (listCerts) {
-    listCerts.innerHTML = c.certs.map(item => {
-      if (item.action === 'pdf') {
-        return `
-          <div class="entry">
-            <button type="button" class="entry-title clickable u-link" onclick="openPdf('${item.file}', '${esc(item.title)}')">
-              ${esc(item.title)} ↗
-            </button>
-            <span class="entry-desc">${esc(item.desc)}</span>
-          </div>
-        `;
-      }
-      return `
-        <div class="entry">
-          <span class="entry-title static">${esc(item.title)}</span>
-          <span class="entry-desc">${esc(item.desc)}</span>
-        </div>
-      `;
-    }).join('');
+    listCerts.innerHTML = c.certs.map(item => `
+      <div class="entry">
+        <button type="button" class="entry-title clickable u-link" onclick="openCertModal('${item.image}', '${item.file}', '${esc(item.title)}')">
+          ${esc(item.title)} ↗
+        </button>
+        <span class="entry-desc">${esc(item.desc)}</span>
+      </div>
+    `).join('');
   }
 
   // Section: Connect
@@ -1124,6 +1194,12 @@ function render() {
   if (supportDesc) supportDesc.textContent = c.supportDesc;
   const supportDl = document.getElementById('support-dl-text');
   if (supportDl) supportDl.textContent = c.supportDl;
+
+  // Certificate modal texts
+  const certDlText = document.getElementById('cert-dl-text');
+  if (certDlText) certDlText.textContent = c.certDlText;
+  const pdfDirect = document.getElementById('pdf-direct');
+  if (pdfDirect) pdfDirect.textContent = c.certDirectText;
 }
 
 /* ==============================================================
@@ -1324,24 +1400,33 @@ function toggleTheme(event) {
 }
 
 /* ==============================================================
-   PDF MODAL CONTROLLER
+   CERTIFICATE PREVIEW MODAL CONTROLLER (Image-based for Mobile & Desktop)
    ============================================================== */
 const pdfModal = document.getElementById('pdf-modal');
-const pdfFrame = document.getElementById('pdf-frame');
+const certImg = document.getElementById('cert-img');
 const pdfTitle = document.getElementById('pdf-title');
 const pdfDirect = document.getElementById('pdf-direct');
+const certDlBtn = document.getElementById('cert-download-btn');
 
-function openPdf(file, title) {
+function openCertModal(image, file, title) {
   if (pdfTitle) pdfTitle.textContent = title;
-  if (pdfFrame) pdfFrame.src = file;
+  if (certImg) {
+    certImg.src = image;
+    certImg.alt = title;
+  }
   if (pdfDirect) pdfDirect.href = file;
+  if (certDlBtn) certDlBtn.href = file;
   if (pdfModal) pdfModal.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
 
+function openPdf(file, title) {
+  openCertModal('', file, title);
+}
+
 function closePdf() {
   if (pdfModal) pdfModal.classList.remove('active');
-  if (pdfFrame) pdfFrame.src = '';
+  if (certImg) certImg.src = '';
   document.body.style.overflow = '';
 }
 
