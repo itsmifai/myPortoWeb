@@ -1273,50 +1273,66 @@ function render() {
   `).join('');
 
   // Experience Section
-  document.getElementById('sec-exp').textContent = c.secExp;
-  document.getElementById('exp-container').innerHTML = c.experiences.map(e => `
-    <div class="timeline-row">
-      <div class="timeline-year mono">${esc(e.year)}</div>
-      <div class="timeline-content">
-        <h3>${esc(e.role)}</h3>
-        <div class="timeline-sub">${esc(e.sub)}</div>
-        <p>${esc(e.desc)}</p>
-      </div>
-    </div>
-  `).join('');
-
-  // Education Section
-  document.getElementById('sec-education').textContent = c.secEdu;
-  document.getElementById('edu-container').innerHTML = c.educations.map(ed => `
-    <div class="edu-row">
-      <div class="edu-year mono">${esc(ed.year)}</div>
-      <div class="edu-info">
-        <b>${esc(ed.name)}</b>
-        <span>${esc(ed.desc)}</span>
-      </div>
-    </div>
-  `).join('');
-
-  // Certifications Section
-  document.getElementById('sec-certs').textContent = c.secCerts;
-  document.getElementById('cert-container').innerHTML = c.certs.map(ct => `
-    <div class="cert-row">
-      <div class="cert-left">
-        <span class="cert-year mono">${ct.year}</span>
-        <div>
-          <span class="cert-name">${esc(ct.name)}</span>
-          <span class="cert-issuer">&middot; ${esc(ct.issuer)}</span>
+  const expHeading = document.getElementById('sec-experience');
+  if (expHeading) expHeading.textContent = c.secExp;
+  const expContainer = document.getElementById('exp-container');
+  if (expContainer) {
+    expContainer.innerHTML = c.experiences.map(e => `
+      <div class="timeline-row">
+        <div class="timeline-year mono">${esc(e.year)}</div>
+        <div class="timeline-content">
+          <h3>${esc(e.role)}</h3>
+          <div class="timeline-sub">${esc(e.sub)}</div>
+          <p>${esc(e.desc)}</p>
         </div>
       </div>
-      <button type="button" class="cert-btn mono" onclick="openPdf('${ct.file}', '${esc(ct.name)}')">${esc(c.openPdfText)}</button>
-    </div>
-  `).join('');
+    `).join('');
+  }
+
+  // Education Section
+  const eduHeading = document.getElementById('sec-education');
+  if (eduHeading) eduHeading.textContent = c.secEdu;
+  const eduContainer = document.getElementById('edu-container');
+  if (eduContainer) {
+    eduContainer.innerHTML = c.educations.map(ed => `
+      <div class="edu-row">
+        <div class="edu-year mono">${esc(ed.year)}</div>
+        <div class="edu-info">
+          <b>${esc(ed.name)}</b>
+          <span>${esc(ed.desc)}</span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Certifications Section
+  const certHeading = document.getElementById('sec-certs');
+  if (certHeading) certHeading.textContent = c.secCerts;
+  const certContainer = document.getElementById('cert-container');
+  if (certContainer) {
+    certContainer.innerHTML = c.certs.map(ct => `
+      <div class="cert-row">
+        <div class="cert-left">
+          <span class="cert-year mono">${ct.year}</span>
+          <div>
+            <span class="cert-name">${esc(ct.name)}</span>
+            <span class="cert-issuer">&middot; ${esc(ct.issuer)}</span>
+          </div>
+        </div>
+        <button type="button" class="cert-btn mono" onclick="openPdf('${ct.file}', '${esc(ct.name)}')">${esc(c.openPdfText)}</button>
+      </div>
+    `).join('');
+  }
 
   // Contact Section
-  document.getElementById('sec-contact').textContent = c.secContact;
-  document.getElementById('contact-heading').textContent = c.contactHeading;
-  document.getElementById('contact-sub').textContent = c.contactSub;
-  document.getElementById('btn-wa').textContent = c.btnWa;
+  const contactHeadingEl = document.getElementById('sec-contact');
+  if (contactHeadingEl) contactHeadingEl.textContent = c.secContact;
+  const contactTitleEl = document.getElementById('contact-heading');
+  if (contactTitleEl) contactTitleEl.textContent = c.contactHeading;
+  const contactSubEl = document.getElementById('contact-sub');
+  if (contactSubEl) contactSubEl.textContent = c.contactSub;
+  const btnWaEl = document.getElementById('btn-wa');
+  if (btnWaEl) btnWaEl.textContent = c.btnWa;
 }
 
 /* ==============================================================
@@ -1411,8 +1427,8 @@ function toggleTheme(event) {
         clipPath: clipPath
       },
       {
-        duration: 520,
-        easing: 'cubic-bezier(0.2, 0, 0, 1)',
+        duration: 750,
+        easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
         pseudoElement: '::view-transition-new(root)'
       }
     );
