@@ -592,6 +592,12 @@ main {
       <h1 class="hero-name">Miftahul Amri</h1>
       <p class="hero-bio" id="hero-p1"></p>
       <p class="hero-bio" id="hero-p2"></p>
+      <div style="margin-top: 20px;">
+        <a id="hero-cv" href="./CV Mifthahul Amri.pdf" target="_blank" rel="noopener" class="u-link mono" style="font-size: 12.5px; display: inline-flex; align-items: center; gap: 4px; color: var(--fg-muted);">
+          <span id="hero-cv-text">Curriculum Vitae (PDF)</span>
+          <span>↗</span>
+        </a>
+      </div>
     </section>
 
     <!-- Section: Now / Active Roles -->
@@ -842,12 +848,12 @@ const content = {
     labelConnect: 'Connect',
     connect: [
       { title: 'WhatsApp', link: 'https://wa.me/6285716823315?text=Halo%20Miftahul%20Amri%2C%20saya%20tertarik%20berdiskusi%20mengenai%20proyek%20web%20%2F%20AI.' },
-      { title: 'Email', link: 'mailto:mifthahulamri@gmail.com' },
+      { title: 'Instagram', link: 'https://www.instagram.com/itsmifai/' },
       { title: 'GitHub', link: 'https://github.com/itsmifai' },
-      { title: 'LinkedIn', link: 'https://www.linkedin.com/in/mifamri/' },
-      { title: 'Curriculum Vitae', link: './CV Mifthahul Amri.pdf', download: true }
+      { title: 'Email', link: 'mailto:mifthahulamri@gmail.com' }
     ],
 
+    heroCv: 'Curriculum Vitae (PDF)',
     backText: 'Kembali',
     visitText: 'Kunjungi ↗'
   },
@@ -888,12 +894,12 @@ const content = {
     labelConnect: 'Connect',
     connect: [
       { title: 'WhatsApp', link: 'https://wa.me/6285716823315?text=Hello%20Miftahul%20Amri%2C%20I%20am%20interested%20in%20discussing%20a%20project.' },
-      { title: 'Email', link: 'mailto:mifthahulamri@gmail.com' },
+      { title: 'Instagram', link: 'https://www.instagram.com/itsmifai/' },
       { title: 'GitHub', link: 'https://github.com/itsmifai' },
-      { title: 'LinkedIn', link: 'https://www.linkedin.com/in/mifamri/' },
-      { title: 'Curriculum Vitae', link: './CV Mifthahul Amri.pdf', download: true }
+      { title: 'Email', link: 'mailto:mifthahulamri@gmail.com' }
     ],
 
+    heroCv: 'Curriculum Vitae (PDF)',
     backText: 'Back',
     visitText: 'Visit ↗'
   }
@@ -912,6 +918,8 @@ function render() {
   if (p1) p1.innerHTML = c.heroP1;
   const p2 = document.getElementById('hero-p2');
   if (p2) p2.innerHTML = c.heroP2;
+  const heroCv = document.getElementById('hero-cv-text');
+  if (heroCv) heroCv.textContent = c.heroCv;
 
   // Section: Now (Roles with pulse dots)
   document.getElementById('label-now').textContent = c.labelNow;
