@@ -965,9 +965,12 @@ function render() {
   const l1 = document.getElementById('col1-list');
   if (l1) {
     l1.innerHTML = c.col1Roles.map(item => `
-      <div class="entry">
-        <span class="entry-title">${esc(item.title)}</span>
-        <p class="entry-desc">${esc(item.desc)}</p>
+      <div class="entry" style="flex-direction:row;align-items:flex-start;gap:8px;">
+        <span class="pulse-dot" style="margin-top:7.5px;"></span>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <span class="entry-title" style="cursor:default;">${esc(item.title)}</span>
+          <p class="entry-desc">${esc(item.desc)}</p>
+        </div>
       </div>
     `).join('');
   }
