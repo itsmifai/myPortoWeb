@@ -487,6 +487,38 @@ main {
   overflow: hidden;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
 }
+.support-card {
+  max-width: 400px;
+  height: auto;
+  max-height: 90vh;
+}
+.support-body {
+  padding: 24px 22px;
+  text-align: center;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.support-qr-box {
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 12px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  max-width: 270px;
+  width: 100%;
+  margin: 16px 0;
+}
+.support-qr-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
 .modal-header {
   display: flex;
   align-items: center;
@@ -690,13 +722,46 @@ main {
   <div class="container">
     <div>&copy; 2026 Miftahul Amri &middot; Surakarta, Indonesia</div>
     <div style="color:var(--fg-subtle);margin-top:2px;">Web Developer &bull; AI Enthusiast</div>
-    <div>
-      <a href="https://yapp.ink/itsmifai" target="_blank" rel="noopener" class="footer-support">
-        Support via Yapp
-      </a>
+    <div style="margin-top:4px;">
+      <button type="button" class="footer-support u-link" onclick="openSupportModal()">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:2px;"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        <span id="footer-support-text">Buy me a coffee / Support ↗</span>
+      </button>
     </div>
   </div>
 </footer>
+
+<!-- Support / Buy Me a Coffee Modal -->
+<div class="modal-overlay" id="support-modal" onclick="handleSupportOverlayClick(event)">
+  <div class="modal-dialog support-card">
+    <div class="modal-header">
+      <div style="display:flex;align-items:center;gap:7px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        <span class="modal-title" id="support-title">Dukung Karya & Traktir Kopi</span>
+      </div>
+      <button type="button" class="modal-close" onclick="closeSupportModal()" aria-label="Tutup">&times;</button>
+    </div>
+    <div class="support-body">
+      <p id="support-desc" style="font-size: 13px; color: var(--fg-muted); line-height: 1.6; max-width: 320px;">
+        <!-- Injected via JS -->
+      </p>
+
+      <div class="support-qr-box">
+        <img src="./qris-itsmifai.png" alt="QRIS Miftahul Amri">
+      </div>
+
+      <div class="mono" style="font-size: 11.5px; color: var(--fg-muted); margin-bottom: 16px;">
+        <span style="color: var(--fg); font-weight: 500;">MIFTAHUL AMRI</span> · Surakarta
+      </div>
+
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <a href="./qris-itsmifai.png" download="qris-miftahul-amri.png" class="detail-action-btn mono" style="font-size: 12px; padding: 4px 12px; border: 1px solid var(--border); border-radius: 6px;">
+          <span id="support-dl-text">Unduh QR Code ↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Certificate PDF Preview Modal -->
 <div class="modal-overlay" id="pdf-modal" onclick="handleOverlayClick(event)">
@@ -855,7 +920,11 @@ const content = {
 
     heroCv: 'Curriculum Vitae (PDF)',
     backText: 'Kembali',
-    visitText: 'Kunjungi ↗'
+    visitText: 'Kunjungi ↗',
+    footerSupport: 'Buy me a coffee / Dukung ↗',
+    supportTitle: 'Dukung Karya & Traktir Kopi',
+    supportDesc: 'Scan QRIS di bawah ini melalui GoPay, OVO, Dana, ShopeePay, BCA, atau aplikasi mobile banking apapun. Dukunganmu sangat berarti!',
+    supportDl: 'Unduh QR Code ↗'
   },
   en: {
     heroP1: '<span class="serif-italic">Crafting web applications & purposeful AI.</span> Based in Surakarta, Indonesia <span class="flag-icon" title="Indonesia"><svg viewBox="0 0 3 2"><rect width="3" height="1" fill="#e70011"/><rect y="1" width="3" height="1" fill="#ffffff"/></svg></span>, I focus on exploring artificial intelligence, engineering reliable modern web products, and experimenting with thoughtful digital interfaces.',
@@ -901,7 +970,11 @@ const content = {
 
     heroCv: 'Curriculum Vitae (PDF)',
     backText: 'Back',
-    visitText: 'Visit ↗'
+    visitText: 'Visit ↗',
+    footerSupport: 'Buy me a coffee / Support ↗',
+    supportTitle: 'Support & Buy Me a Coffee',
+    supportDesc: 'Scan the QRIS code below using any e-wallet or banking app (GoPay, OVO, Dana, ShopeePay, BCA, etc.). Your support is deeply appreciated!',
+    supportDl: 'Download QR Code ↗'
   }
 };
 
@@ -1017,6 +1090,16 @@ function render() {
   if (backText) backText.textContent = c.backText;
   const visitText = document.getElementById('detail-link-text');
   if (visitText) visitText.textContent = c.visitText;
+
+  // Footer & Support modal texts
+  const footerSupport = document.getElementById('footer-support-text');
+  if (footerSupport) footerSupport.textContent = c.footerSupport;
+  const supportTitle = document.getElementById('support-title');
+  if (supportTitle) supportTitle.textContent = c.supportTitle;
+  const supportDesc = document.getElementById('support-desc');
+  if (supportDesc) supportDesc.textContent = c.supportDesc;
+  const supportDl = document.getElementById('support-dl-text');
+  if (supportDl) supportDl.textContent = c.supportDl;
 }
 
 /* ==============================================================
@@ -1059,9 +1142,18 @@ function showHome(e) {
 window.addEventListener('popstate', () => {
   const hash = window.location.hash;
   if (hash.startsWith('#project/')) {
+    closeSupportModal(false);
     const slug = hash.replace('#project/', '');
     openProjectDetail(slug);
+  } else if (hash === '#support') {
+    if (currentSlug) {
+      document.getElementById('project-detail-view').classList.remove('active');
+      document.getElementById('main-view').classList.remove('hidden');
+      currentSlug = null;
+    }
+    openSupportModal(false);
   } else {
+    closeSupportModal(false);
     document.getElementById('project-detail-view').classList.remove('active');
     document.getElementById('main-view').classList.remove('hidden');
   }
@@ -1182,10 +1274,41 @@ function handleOverlayClick(e) {
   if (e.target === pdfModal) closePdf();
 }
 
+/* ==============================================================
+   SUPPORT / BUY ME A COFFEE MODAL CONTROLLER
+   ============================================================== */
+const supportModal = document.getElementById('support-modal');
+
+function openSupportModal(updateHash = true) {
+  if (supportModal) {
+    supportModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    if (updateHash) {
+      window.location.hash = 'support';
+    }
+  }
+}
+
+function closeSupportModal(updateHash = true) {
+  if (supportModal) {
+    supportModal.classList.remove('active');
+    document.body.style.overflow = '';
+    if (updateHash && window.location.hash === '#support') {
+      history.pushState(null, '', window.location.pathname + window.location.search);
+    }
+  }
+}
+
+function handleSupportOverlayClick(e) {
+  if (e.target === supportModal) closeSupportModal();
+}
+
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     if (pdfModal && pdfModal.classList.contains('active')) {
       closePdf();
+    } else if (supportModal && supportModal.classList.contains('active')) {
+      closeSupportModal();
     } else if (currentSlug) {
       showHome();
     }
@@ -1212,10 +1335,12 @@ window.addEventListener('scroll', () => {
 applyTheme(theme);
 setLang(lang);
 
-// Handle direct project URL hash (e.g. #project/imm-simun)
+// Handle direct project URL hash (e.g. #project/imm-simun) or #support
 if (window.location.hash.startsWith('#project/')) {
   const initialSlug = window.location.hash.replace('#project/', '');
   openProjectDetail(initialSlug);
+} else if (window.location.hash === '#support') {
+  openSupportModal(false);
 }
 </script>
 </body>
