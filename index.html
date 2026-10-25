@@ -7,39 +7,33 @@
 <meta name="description" content="Personal site & portfolio of Miftahul Amri, a Web Developer & AI Enthusiast based in Surakarta, Indonesia.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #080808;
-  --bg-subtle: #111111;
-  --fg: #ededed;
+  --bg: #000000;
+  --bg-subtle: #0c0c0c;
+  --fg: #f1f1f1;
   --fg-muted: #888888;
-  --fg-subtle: #555555;
+  --fg-subtle: #4e4e4e;
   --border: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 255, 255, 0.18);
-  --card-bg: rgba(255, 255, 255, 0.02);
-  --card-hover: rgba(255, 255, 255, 0.045);
-  --pill-bg: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.22);
   --selection: rgba(255, 255, 255, 0.2);
   --green: #22c55e;
-  --green-glow: rgba(34, 197, 94, 0.25);
-  --modal-overlay: rgba(0, 0, 0, 0.82);
-  --max-w: 672px;
+  --green-glow: rgba(34, 197, 94, 0.3);
+  --modal-overlay: rgba(0, 0, 0, 0.85);
+  --max-w: 640px;
 }
 
 html.light {
-  --bg: #fdfdfd;
-  --bg-subtle: #f4f4f5;
+  --bg: #ffffff;
+  --bg-subtle: #f8f8f8;
   --fg: #111111;
   --fg-muted: #666666;
-  --fg-subtle: #999999;
+  --fg-subtle: #a0a0a0;
   --border: rgba(0, 0, 0, 0.08);
-  --border-hover: rgba(0, 0, 0, 0.2);
-  --card-bg: rgba(0, 0, 0, 0.015);
-  --card-hover: rgba(0, 0, 0, 0.035);
-  --pill-bg: rgba(0, 0, 0, 0.05);
+  --border-hover: rgba(0, 0, 0, 0.25);
   --selection: rgba(0, 0, 0, 0.12);
-  --modal-overlay: rgba(0, 0, 0, 0.6);
+  --modal-overlay: rgba(0, 0, 0, 0.55);
 }
 
 /* View Transition API Circular Wave */
@@ -59,9 +53,9 @@ html.light {
 ::selection { background: var(--selection); }
 
 html {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 14.5px;
-  line-height: 1.65;
+  line-height: 1.68;
   color: var(--fg);
   background-color: var(--bg);
   scroll-behavior: smooth;
@@ -78,7 +72,7 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-  transition: color 0.15s ease, opacity 0.15s ease;
+  transition: color 0.15s ease;
 }
 
 button {
@@ -87,11 +81,12 @@ button {
   border: none;
   background: none;
   color: inherit;
+  padding: 0;
 }
 
 .mono {
   font-family: "JetBrains Mono", monospace;
-  font-size: 12.5px;
+  font-size: 12px;
 }
 
 .serif-italic {
@@ -101,7 +96,7 @@ button {
   letter-spacing: -0.01em;
 }
 
-/* Container */
+/* Layout Container */
 .container {
   max-width: var(--max-w);
   width: 100%;
@@ -109,7 +104,7 @@ button {
   padding: 0 24px;
 }
 
-/* Nav Header */
+/* Navigation Header */
 .header {
   position: sticky;
   top: 0;
@@ -127,10 +122,10 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 58px;
+  height: 56px;
 }
 .brand {
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--fg-muted);
   letter-spacing: -0.01em;
@@ -152,12 +147,11 @@ button {
   padding: 2px;
   border-radius: 999px;
   border: 1px solid var(--border);
-  background: var(--card-bg);
 }
 .lang-btn {
   padding: 2px 8px;
   border-radius: 999px;
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 600;
   color: var(--fg-muted);
   transition: all 0.15s ease;
@@ -169,8 +163,8 @@ button {
 
 /* Theme Toggle Button */
 .theme-btn {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   border: 1px solid var(--border);
   display: grid;
@@ -181,50 +175,38 @@ button {
 .theme-btn:hover {
   color: var(--fg);
   border-color: var(--border-hover);
-  background: var(--card-hover);
 }
 .theme-btn svg {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
 }
 
 /* Main Content Area */
 main {
   flex: 1;
-  padding-top: 48px;
-  padding-bottom: 96px;
+  padding-top: 56px;
+  padding-bottom: 100px;
 }
 
-/* Hero Section */
+/* Hero Section (No boxes, pure editorial typography) */
 .hero {
-  margin-bottom: 56px;
+  margin-bottom: 52px;
 }
-.hero-handle {
-  display: inline-block;
-  font-size: 13px;
-  color: var(--fg-muted);
-  margin-bottom: 6px;
-  letter-spacing: -0.01em;
-  transition: color 0.15s;
-}
-.hero-handle:hover {
-  color: var(--fg);
-}
-.hero h1 {
-  font-size: 26px;
+.hero-name {
+  font-size: 24px;
   font-weight: 600;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   color: var(--fg);
-  margin-bottom: 12px;
-  line-height: 1.25;
+  margin-bottom: 14px;
+  line-height: 1.2;
 }
-.hero-desc {
-  font-size: 15px;
+.hero-bio {
+  font-size: 14.5px;
   color: var(--fg-muted);
   line-height: 1.7;
   margin-bottom: 22px;
 }
-.hero-desc em {
+.hero-bio em {
   color: var(--fg);
 }
 .flag-icon {
@@ -237,12 +219,12 @@ main {
   margin: 0 2px;
 }
 
-/* Links List (Paco style row) */
+/* Quiet Links Row */
 .links-row {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  font-size: 13.5px;
+  font-size: 13px;
 }
 .link-item {
   color: var(--fg-muted);
@@ -255,56 +237,43 @@ main {
 }
 .link-item:hover {
   color: var(--fg);
-  border-bottom-color: var(--fg);
-}
-.link-item svg {
-  width: 11px;
-  height: 11px;
-  opacity: 0.6;
+  border-bottom-color: var(--fg-muted);
 }
 
-/* Section Divider / Heading */
+/* Section Header (Subtle, calm, unboxed) */
 .section {
-  margin-bottom: 56px;
+  margin-bottom: 48px;
 }
 .section-title {
-  font-size: 12.5px;
-  font-weight: 600;
+  font-size: 11.5px;
+  font-weight: 500;
   color: var(--fg-subtle);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
-/* Now / Live Status Card (Paco / Linear style) */
-.now-card {
-  border: 1px solid var(--border);
-  background: var(--card-bg);
-  border-radius: 12px;
-  padding: 16px 20px;
+/* Now Section (Clean human prose, no card border) */
+.now-flow {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  transition: border-color 0.15s;
+  gap: 10px;
 }
-.now-card:hover {
-  border-color: var(--border-hover);
-}
-.now-item {
+.now-line {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 16px;
   font-size: 13.5px;
 }
-.now-left {
+.now-line-left {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
 }
 .pulse-dot {
-  width: 7px;
-  height: 7px;
+  width: 6.5px;
+  height: 6.5px;
   border-radius: 50%;
   background: var(--green);
   box-shadow: 0 0 0 0 var(--green-glow);
@@ -313,36 +282,36 @@ main {
 }
 @keyframes pulseGreen {
   0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-  70% { box-shadow: 0 0 0 7px rgba(34, 197, 94, 0); }
+  70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
   100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
 }
-.now-title {
+.now-role {
   color: var(--fg);
-  font-weight: 500;
+  font-weight: 450;
 }
 .now-org {
   color: var(--fg-muted);
-  font-size: 12.5px;
 }
-.now-meta {
+.now-date {
   color: var(--fg-subtle);
-  font-size: 12px;
+  font-size: 11.5px;
   white-space: nowrap;
 }
 
-/* Minimalist Project Rows (Paco Coursey style) */
+/* Projects List (Pure Minimalist, No Boxes, Click-to-Expand) */
 .project-list {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid var(--border);
 }
 .project-item {
   border-bottom: 1px solid var(--border);
-  transition: background-color 0.15s;
 }
-.project-row {
+.project-item:first-child {
+  border-top: 1px solid var(--border);
+}
+.project-btn {
   width: 100%;
-  padding: 15px 4px;
+  padding: 13px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -350,52 +319,48 @@ main {
   cursor: pointer;
   text-align: left;
   user-select: none;
-  border: none;
-  background: transparent;
-  color: inherit;
-}
-.project-row:hover .project-title {
-  color: var(--fg);
-}
-.project-row:hover .project-chevron {
-  color: var(--fg);
 }
 .project-title {
-  font-size: 14.5px;
-  font-weight: 550;
+  font-size: 14px;
+  font-weight: 500;
   color: var(--fg-muted);
   transition: color 0.15s;
 }
+.project-item:hover .project-title,
 .project-item.is-open .project-title {
   color: var(--fg);
 }
-.project-meta-right {
+.project-btn-right {
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
+  gap: 10px;
 }
-.project-short-tech {
-  font-size: 12px;
+.project-quick-stack {
+  font-size: 11.5px;
   color: var(--fg-subtle);
 }
-.project-chevron {
-  width: 15px;
-  height: 15px;
+.project-indicator {
+  font-size: 14px;
   color: var(--fg-subtle);
-  transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), color 0.15s;
-  display: block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.15s;
+  width: 14px;
+  text-align: center;
+  display: inline-block;
+  line-height: 1;
 }
-.project-item.is-open .project-chevron {
-  transform: rotate(180deg);
+.project-item:hover .project-indicator {
+  color: var(--fg-muted);
+}
+.project-item.is-open .project-indicator {
+  transform: rotate(45deg);
   color: var(--fg);
 }
 
-/* Accordion Drawer */
+/* Expandable Drawer */
 .project-drawer {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s cubic-bezier(0.2, 0, 0, 1);
+  transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
 }
 .project-item.is-open .project-drawer {
@@ -404,15 +369,15 @@ main {
 .project-drawer-inner {
   min-height: 0;
   overflow: hidden;
-  padding: 4px 4px 22px;
+  padding: 4px 0 24px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 .project-desc {
   font-size: 13.5px;
   color: var(--fg-muted);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 .project-tags {
   display: flex;
@@ -422,55 +387,51 @@ main {
 .project-tag {
   font-size: 11px;
   color: var(--fg-muted);
-  background: var(--pill-bg);
+  background: var(--bg-subtle);
   border: 1px solid var(--border);
-  padding: 2px 8px;
-  border-radius: 6px;
+  padding: 1px 7px;
+  border-radius: 4px;
 }
 .project-img-box {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 8px;
   overflow: hidden;
   border: 1px solid var(--border);
   background: #000;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 .project-img-box img {
   width: 100%;
-  max-height: 380px;
+  max-height: 360px;
   object-fit: cover;
   object-position: top center;
   display: block;
 }
-.project-cta-btn {
+.project-link-out {
   align-self: flex-start;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 4px;
   font-size: 12.5px;
-  font-weight: 550;
+  font-weight: 500;
   color: var(--fg);
-  border: 1px solid var(--border);
-  background: var(--card-bg);
-  padding: 6px 14px;
-  border-radius: 8px;
-  margin-top: 2px;
-  transition: all 0.15s;
+  padding-bottom: 1px;
+  border-bottom: 1px solid var(--fg-subtle);
+  transition: border-color 0.15s;
 }
-.project-cta-btn:hover {
-  border-color: var(--border-hover);
-  background: var(--card-hover);
+.project-link-out:hover {
+  border-bottom-color: var(--fg);
 }
 
-/* Experience List (Paco / Lee Rob Timeline Rows) */
+/* Experience List (Unboxed, clean typographic layout) */
 .timeline-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 .timeline-row {
   display: grid;
-  grid-template-columns: 140px 1fr;
+  grid-template-columns: 130px 1fr;
   gap: 16px;
   align-items: baseline;
 }
@@ -479,31 +440,31 @@ main {
   color: var(--fg-subtle);
 }
 .timeline-content h3 {
-  font-size: 14px;
-  font-weight: 550;
+  font-size: 13.5px;
+  font-weight: 500;
   color: var(--fg);
   margin-bottom: 2px;
 }
 .timeline-content .timeline-sub {
-  font-size: 13px;
+  font-size: 12.5px;
   color: var(--fg-muted);
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
 .timeline-content p {
   font-size: 13px;
   color: var(--fg-muted);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
-/* Education List */
+/* Education List (Unboxed) */
 .edu-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 .edu-row {
   display: grid;
-  grid-template-columns: 140px 1fr;
+  grid-template-columns: 130px 1fr;
   gap: 16px;
   align-items: baseline;
 }
@@ -513,140 +474,76 @@ main {
 }
 .edu-info b {
   display: block;
-  font-size: 14px;
-  font-weight: 550;
+  font-size: 13.5px;
+  font-weight: 500;
   color: var(--fg);
 }
 .edu-info span {
-  font-size: 13px;
+  font-size: 12.5px;
   color: var(--fg-muted);
 }
 
-/* Certificate Stubs */
+/* Certifications List (Unboxed with subtle [pdf] button) */
 .cert-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 .cert-row {
-  border: 1px solid var(--border);
-  background: var(--card-bg);
-  border-radius: 10px;
-  padding: 12px 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  transition: border-color 0.15s, background-color 0.15s;
-}
-.cert-row:hover {
-  border-color: var(--border-hover);
-  background: var(--card-hover);
-}
-.cert-left {
-  display: flex;
-  align-items: baseline;
+  display: grid;
+  grid-template-columns: 130px 1fr auto;
   gap: 16px;
+  align-items: baseline;
 }
 .cert-year {
   font-size: 12px;
   color: var(--fg-subtle);
-  width: 44px;
-  flex-shrink: 0;
+}
+.cert-info {
+  font-size: 13.5px;
 }
 .cert-name {
-  font-size: 13.5px;
-  font-weight: 500;
   color: var(--fg);
+  font-weight: 450;
 }
 .cert-issuer {
-  font-size: 12px;
   color: var(--fg-muted);
-  margin-left: 6px;
+  font-size: 12.5px;
 }
 .cert-btn {
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 11.5px;
   color: var(--fg-muted);
-  border: 1px solid var(--border);
-  padding: 3px 10px;
-  border-radius: 6px;
-  transition: all 0.15s;
-  white-space: nowrap;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
 }
-.cert-row:hover .cert-btn {
+.cert-btn:hover {
   color: var(--fg);
-  border-color: var(--border-hover);
+  border-bottom-color: var(--fg-muted);
 }
 
-/* Contact Module */
-.contact-box {
-  border: 1px solid var(--border);
-  background: var(--card-bg);
-  border-radius: 12px;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.contact-heading {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--fg);
-  letter-spacing: -0.01em;
-}
-.contact-sub {
-  font-size: 13.5px;
+/* Contact Section (Unboxed, pure editorial callout) */
+.contact-prose {
+  font-size: 14px;
   color: var(--fg-muted);
-  line-height: 1.6;
+  line-height: 1.7;
 }
-.contact-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 4px;
-}
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--fg);
-  color: var(--bg);
-  font-size: 13px;
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: 8px;
-  transition: opacity 0.15s;
-}
-.btn-primary:hover {
-  opacity: 0.9;
-}
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--pill-bg);
+.contact-prose a {
   color: var(--fg);
-  border: 1px solid var(--border);
-  font-size: 13px;
-  font-weight: 500;
-  padding: 8px 16px;
-  border-radius: 8px;
-  transition: all 0.15s;
+  border-bottom: 1px solid var(--fg-subtle);
+  transition: border-color 0.15s;
 }
-.btn-secondary:hover {
-  border-color: var(--border-hover);
-  background: var(--card-hover);
+.contact-prose a:hover {
+  border-bottom-color: var(--fg);
 }
 
-/* Strict User Footer */
+/* Required Strict Footer */
 .footer {
   border-top: 1px solid var(--border);
-  padding: 40px 0 60px;
+  padding: 44px 0 64px;
   text-align: center;
   font-size: 12px;
   color: var(--fg-muted);
-  line-height: 1.8;
+  line-height: 1.85;
 }
 .footer a {
   color: var(--fg-muted);
@@ -656,7 +553,7 @@ main {
   color: var(--fg);
 }
 .footer-support {
-  margin-top: 6px;
+  margin-top: 4px;
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -689,7 +586,7 @@ main {
 .modal-dialog {
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 12px;
   width: 100%;
   max-width: 820px;
   height: 82vh;
@@ -704,11 +601,10 @@ main {
   justify-content: space-between;
   padding: 12px 18px;
   border-bottom: 1px solid var(--border);
-  background: var(--card-bg);
 }
 .modal-title {
-  font-size: 13.5px;
-  font-weight: 550;
+  font-size: 13px;
+  font-weight: 500;
   color: var(--fg);
 }
 .modal-header-actions {
@@ -722,8 +618,8 @@ main {
 }
 .modal-link:hover { color: var(--fg); }
 .modal-close {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -744,11 +640,9 @@ main {
 
 /* Responsive */
 @media (max-width: 600px) {
-  main { padding-top: 32px; padding-bottom: 64px; }
-  .timeline-row, .edu-row { grid-template-columns: 1fr; gap: 4px; }
-  .now-item { flex-direction: column; align-items: flex-start; gap: 4px; }
-  .cert-left { flex-direction: column; gap: 4px; }
-  .cert-issuer { margin-left: 0; }
+  main { padding-top: 36px; padding-bottom: 72px; }
+  .timeline-row, .edu-row, .cert-row { grid-template-columns: 1fr; gap: 4px; }
+  .now-line { flex-direction: column; align-items: flex-start; gap: 2px; }
   .links-row { gap: 12px; }
 }
 </style>
@@ -760,7 +654,7 @@ main {
   <div class="container header-inner">
     <a href="#" class="brand mono">@itsmifai</a>
     <div class="nav-actions">
-      <!-- Language Switcher Pill -->
+      <!-- Language Switcher -->
       <div class="lang-toggle" role="group" aria-label="Language selection">
         <button type="button" id="btn-id" class="lang-btn active" onclick="setLang('id')">ID</button>
         <button type="button" id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
@@ -779,48 +673,30 @@ main {
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1>Miftahul Amri</h1>
-    <p class="hero-desc" id="hero-desc">
+    <h1 class="hero-name">Miftahul Amri</h1>
+    <p class="hero-bio" id="hero-desc">
       <!-- Injected via JavaScript -->
     </p>
 
     <div class="links-row">
-      <a class="link-item" href="https://github.com/itsmifai" target="_blank" rel="noopener">
-        <span>GitHub</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-      </a>
-      <a class="link-item" href="https://www.linkedin.com/in/mifamri/" target="_blank" rel="noopener">
-        <span>LinkedIn</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-      </a>
-      <a class="link-item" href="https://instagram.com/itsmifai" target="_blank" rel="noopener">
-        <span>Instagram</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-      </a>
-      <a class="link-item" href="mailto:mifthahulamri@gmail.com">
-        <span>Email</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-      </a>
-      <a class="link-item" href="https://wa.me/6285716823315" target="_blank" rel="noopener">
-        <span>WhatsApp</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-      </a>
-      <a class="link-item" href="./CV Mifthahul Amri.pdf" download>
-        <span>CV (PDF)</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-      </a>
+      <a class="link-item" href="https://github.com/itsmifai" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="link-item" href="https://www.linkedin.com/in/mifamri/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="link-item" href="https://instagram.com/itsmifai" target="_blank" rel="noopener">Instagram ↗</a>
+      <a class="link-item" href="mailto:mifthahulamri@gmail.com">Email ↗</a>
+      <a class="link-item" href="https://wa.me/6285716823315" target="_blank" rel="noopener">WhatsApp ↗</a>
+      <a class="link-item" href="./CV Mifthahul Amri.pdf" download>CV (PDF) ↗</a>
     </div>
   </section>
 
-  <!-- Now Section -->
+  <!-- Now Section (Unboxed, pure prose) -->
   <section class="section">
     <h2 class="section-title mono" id="sec-now">Sedang Aktif</h2>
-    <div class="now-card" id="now-container">
+    <div class="now-flow" id="now-container">
       <!-- Injected via JavaScript -->
     </div>
   </section>
 
-  <!-- Projects Section (Craft & Engineering) -->
+  <!-- Projects Section (Unboxed, Click-to-Expand) -->
   <section class="section">
     <h2 class="section-title mono" id="sec-projects">Proyek Pilihan</h2>
     <div class="project-list" id="project-container">
@@ -828,7 +704,7 @@ main {
     </div>
   </section>
 
-  <!-- Experience Section -->
+  <!-- Experience Section (Unboxed) -->
   <section class="section">
     <h2 class="section-title mono" id="sec-experience">Pengalaman & Mengajar</h2>
     <div class="timeline-list" id="exp-container">
@@ -836,7 +712,7 @@ main {
     </div>
   </section>
 
-  <!-- Education Section -->
+  <!-- Education Section (Unboxed) -->
   <section class="section">
     <h2 class="section-title mono" id="sec-education">Pendidikan</h2>
     <div class="edu-list" id="edu-container">
@@ -844,7 +720,7 @@ main {
     </div>
   </section>
 
-  <!-- Certificates Section -->
+  <!-- Certificates Section (Unboxed) -->
   <section class="section">
     <h2 class="section-title mono" id="sec-certs">Sertifikasi</h2>
     <div class="cert-list" id="cert-container">
@@ -852,25 +728,12 @@ main {
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact Section (Editorial Prose) -->
   <section class="section">
     <h2 class="section-title mono" id="sec-contact">Kontak & Kolaborasi</h2>
-    <div class="contact-box">
-      <h3 class="contact-heading" id="contact-heading">Punya ide proyek atau butuh web?</h3>
-      <p class="contact-sub" id="contact-sub">
-        Terbuka untuk proyek freelance, pembuatan sistem organisasi/sekolah, maupun eksplorasi AI. Mari berdiskusi santai tentang apa yang ingin kamu bangun.
-      </p>
-      <div class="contact-actions">
-        <a href="https://wa.me/6285716823315?text=Halo%20Miftahul%20Amri%2C%20saya%20tertarik%20berdiskusi%20mengenai%20proyek%20web%20%2F%20AI." target="_blank" rel="noopener" class="btn-primary">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-          <span id="btn-wa">Kirim Pesan WhatsApp</span>
-        </a>
-        <a href="mailto:mifthahulamri@gmail.com" class="btn-secondary">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-          <span>mifthahulamri@gmail.com</span>
-        </a>
-      </div>
-    </div>
+    <p class="contact-prose" id="contact-prose">
+      <!-- Injected via JavaScript -->
+    </p>
   </section>
 
 </main>
@@ -882,7 +745,6 @@ main {
     <div style="color:var(--fg-subtle);margin-top:2px;">Web Developer &bull; AI Enthusiast</div>
     <div>
       <a href="https://yapp.ink/itsmifai" target="_blank" rel="noopener" class="footer-support">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
         Support via Yapp
       </a>
     </div>
@@ -1027,12 +889,12 @@ const content = {
       {
         year: '2019 — 2022',
         name: 'MAs Ibnu Taimiyah Bogor',
-        desc: 'Madrasah Aliyah (Senior High)'
+        desc: 'Madrasah Aliyah'
       },
       {
         year: '2016 — 2019',
         name: 'MTs Arafah Bitung',
-        desc: 'Madrasah Tsanawiyah (Junior High)'
+        desc: 'Madrasah Tsanawiyah'
       }
     ],
     secCerts: 'Sertifikasi',
@@ -1056,12 +918,10 @@ const content = {
         file: './sertif/introduction-to-javascript-for-beginner-harisenin.pdf'
       }
     ],
-    secContact: 'Kontak & Kolaborasi',
-    contactHeading: 'Punya ide proyek atau butuh web?',
-    contactSub: 'Terbuka untuk proyek freelance, pembuatan sistem organisasi/sekolah, maupun eksplorasi AI. Mari berdiskusi santai tentang apa yang ingin kamu bangun.',
-    btnWa: 'Kirim Pesan WhatsApp',
-    openPdfText: 'Lihat PDF ↗',
-    viewProjectText: 'Buka proyek ↗'
+    secContact: 'Kontak',
+    contactProse: 'Punya ide proyek, butuh pembuatan website instansi/organisasi, atau ingin berdiskusi seputar AI? Hubungi saya langsung melalui <a href="https://wa.me/6285716823315?text=Halo%20Miftahul%20Amri%2C%20saya%20tertarik%20berdiskusi%20mengenai%20proyek%20web%20%2F%20AI." target="_blank" rel="noopener">WhatsApp ↗</a> atau kirim surel ke <a href="mailto:mifthahulamri@gmail.com">mifthahulamri@gmail.com ↗</a>. Terbuka untuk proyek freelance dan kolaborasi digital.',
+    openPdfText: 'pdf ↗',
+    viewProjectText: 'Kunjungi proyek ↗'
   },
   en: {
     heroDesc: 'Web developer & AI enthusiast based in Surakarta, Indonesia <span class="flag-icon" title="Indonesia"><svg viewBox="0 0 3 2"><rect width="3" height="1" fill="#e70011"/><rect y="1" width="3" height="1" fill="#ffffff"/></svg></span>. Focused on crafting reliable digital products, interactive systems, and <span class="serif-italic">purposeful AI integrations</span> that solve real problems. Currently active as a coding educator and web programming lab assistant.',
@@ -1208,12 +1068,10 @@ const content = {
         file: './sertif/introduction-to-javascript-for-beginner-harisenin.pdf'
       }
     ],
-    secContact: 'Contact & Collaboration',
-    contactHeading: 'Have a project in mind or need a web?',
-    contactSub: 'Open for freelance projects, organizational/school systems, and AI exploration. Let’s talk about what you want to build.',
-    btnWa: 'Contact via WhatsApp',
-    openPdfText: 'View PDF ↗',
-    viewProjectText: 'Open project ↗'
+    secContact: 'Contact',
+    contactProse: 'Have a project in mind, need an organizational website, or want to discuss AI? Reach out via <a href="https://wa.me/6285716823315?text=Hello%20Miftahul%20Amri%2C%20I%20am%20interested%20in%20discussing%20a%20project." target="_blank" rel="noopener">WhatsApp ↗</a> or send an email to <a href="mailto:mifthahulamri@gmail.com">mifthahulamri@gmail.com ↗</a>. Open for freelance projects and digital collaboration.',
+    openPdfText: 'pdf ↗',
+    viewProjectText: 'Visit project ↗'
   }
 };
 
@@ -1226,57 +1084,63 @@ function render() {
   const c = content[lang];
 
   // Hero
-  document.getElementById('hero-desc').innerHTML = c.heroDesc;
+  const heroDescEl = document.getElementById('hero-desc');
+  if (heroDescEl) heroDescEl.innerHTML = c.heroDesc;
 
-  // Now Section
-  document.getElementById('sec-now').textContent = c.secNow;
-  document.getElementById('now-container').innerHTML = c.nowItems.map(item => `
-    <div class="now-item">
-      <div class="now-left">
-        <span class="pulse-dot"></span>
-        <div>
-          <span class="now-title">${esc(item.role)}</span>
-          <span class="now-org"> &middot; ${esc(item.org)}</span>
+  // Now Section (Unboxed, pure prose lines)
+  const nowTitleEl = document.getElementById('sec-now');
+  if (nowTitleEl) nowTitleEl.textContent = c.secNow;
+  const nowContainerEl = document.getElementById('now-container');
+  if (nowContainerEl) {
+    nowContainerEl.innerHTML = c.nowItems.map(item => `
+      <div class="now-line">
+        <div class="now-line-left">
+          <span class="pulse-dot"></span>
+          <span class="now-role">${esc(item.role)}</span>
+          <span class="now-org">&middot; ${esc(item.org)}</span>
+        </div>
+        <span class="now-date mono">${esc(item.date)}</span>
+      </div>
+    `).join('');
+  }
+
+  // Projects Section (Clean Minimalist List, Click-to-Expand)
+  const projTitleEl = document.getElementById('sec-projects');
+  if (projTitleEl) projTitleEl.textContent = c.secProjects;
+  const projContainerEl = document.getElementById('project-container');
+  if (projContainerEl) {
+    projContainerEl.innerHTML = c.projects.map((p, idx) => `
+      <div class="project-item" id="proj-${idx}">
+        <button type="button" class="project-btn" onclick="toggleProject(${idx})" aria-expanded="false">
+          <span class="project-title">${esc(p.title)}</span>
+          <div class="project-btn-right">
+            <span class="project-indicator">+</span>
+          </div>
+        </button>
+        <div class="project-drawer">
+          <div class="project-drawer-inner">
+            <p class="project-desc">${esc(p.desc)}</p>
+            <div class="project-tags">
+              ${p.tags.map(t => `<span class="project-tag mono">${esc(t)}</span>`).join('')}
+            </div>
+            <div class="project-img-box">
+              <img src="${esc(p.img)}" alt="${esc(p.title)}" loading="lazy">
+            </div>
+            <a class="project-link-out mono" href="${esc(p.link)}" target="_blank" rel="noopener">
+              ${esc(c.viewProjectText)}
+            </a>
+          </div>
         </div>
       </div>
-      <span class="now-meta mono">${esc(item.date)}</span>
-    </div>
-  `).join('');
+    `).join('');
+  }
 
-  // Projects Section (Minimalist Rows + Click-to-Expand)
-  document.getElementById('sec-projects').textContent = c.secProjects;
-  document.getElementById('project-container').innerHTML = c.projects.map((p, idx) => `
-    <div class="project-item" id="proj-${idx}">
-      <button type="button" class="project-row" onclick="toggleProject(${idx})" aria-expanded="false">
-        <span class="project-title">${esc(p.title)}</span>
-        <div class="project-meta-right">
-          <span class="project-short-tech mono">${esc(p.tags.slice(0, 2).join(' · '))}</span>
-          <svg class="project-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-        </div>
-      </button>
-      <div class="project-drawer">
-        <div class="project-drawer-inner">
-          <p class="project-desc">${esc(p.desc)}</p>
-          <div class="project-tags">
-            ${p.tags.map(t => `<span class="project-tag mono">${esc(t)}</span>`).join('')}
-          </div>
-          <div class="project-img-box">
-            <img src="${esc(p.img)}" alt="${esc(p.title)}" loading="lazy">
-          </div>
-          <a class="project-cta-btn mono" href="${esc(p.link)}" target="_blank" rel="noopener">
-            ${esc(c.viewProjectText)}
-          </a>
-        </div>
-      </div>
-    </div>
-  `).join('');
-
-  // Experience Section
-  const expHeading = document.getElementById('sec-experience');
-  if (expHeading) expHeading.textContent = c.secExp;
-  const expContainer = document.getElementById('exp-container');
-  if (expContainer) {
-    expContainer.innerHTML = c.experiences.map(e => `
+  // Experience Section (Unboxed)
+  const expTitleEl = document.getElementById('sec-experience');
+  if (expTitleEl) expTitleEl.textContent = c.secExp;
+  const expContainerEl = document.getElementById('exp-container');
+  if (expContainerEl) {
+    expContainerEl.innerHTML = c.experiences.map(e => `
       <div class="timeline-row">
         <div class="timeline-year mono">${esc(e.year)}</div>
         <div class="timeline-content">
@@ -1288,12 +1152,12 @@ function render() {
     `).join('');
   }
 
-  // Education Section
-  const eduHeading = document.getElementById('sec-education');
-  if (eduHeading) eduHeading.textContent = c.secEdu;
-  const eduContainer = document.getElementById('edu-container');
-  if (eduContainer) {
-    eduContainer.innerHTML = c.educations.map(ed => `
+  // Education Section (Unboxed)
+  const eduTitleEl = document.getElementById('sec-education');
+  if (eduTitleEl) eduTitleEl.textContent = c.secEdu;
+  const eduContainerEl = document.getElementById('edu-container');
+  if (eduContainerEl) {
+    eduContainerEl.innerHTML = c.educations.map(ed => `
       <div class="edu-row">
         <div class="edu-year mono">${esc(ed.year)}</div>
         <div class="edu-info">
@@ -1304,48 +1168,28 @@ function render() {
     `).join('');
   }
 
-  // Certifications Section
-  const certHeading = document.getElementById('sec-certs');
-  if (certHeading) certHeading.textContent = c.secCerts;
-  const certContainer = document.getElementById('cert-container');
-  if (certContainer) {
-    certContainer.innerHTML = c.certs.map(ct => `
+  // Certifications Section (Unboxed)
+  const certTitleEl = document.getElementById('sec-certs');
+  if (certTitleEl) certTitleEl.textContent = c.secCerts;
+  const certContainerEl = document.getElementById('cert-container');
+  if (certContainerEl) {
+    certContainerEl.innerHTML = c.certs.map(ct => `
       <div class="cert-row">
-        <div class="cert-left">
-          <span class="cert-year mono">${ct.year}</span>
-          <div>
-            <span class="cert-name">${esc(ct.name)}</span>
-            <span class="cert-issuer">&middot; ${esc(ct.issuer)}</span>
-          </div>
+        <div class="cert-year mono">${ct.year}</div>
+        <div class="cert-info">
+          <span class="cert-name">${esc(ct.name)}</span>
+          <span class="cert-issuer">&middot; ${esc(ct.issuer)}</span>
         </div>
         <button type="button" class="cert-btn mono" onclick="openPdf('${ct.file}', '${esc(ct.name)}')">${esc(c.openPdfText)}</button>
       </div>
     `).join('');
   }
 
-  // Contact Section
-  const contactHeadingEl = document.getElementById('sec-contact');
-  if (contactHeadingEl) contactHeadingEl.textContent = c.secContact;
-  const contactTitleEl = document.getElementById('contact-heading');
-  if (contactTitleEl) contactTitleEl.textContent = c.contactHeading;
-  const contactSubEl = document.getElementById('contact-sub');
-  if (contactSubEl) contactSubEl.textContent = c.contactSub;
-  const btnWaEl = document.getElementById('btn-wa');
-  if (btnWaEl) btnWaEl.textContent = c.btnWa;
-}
-
-/* ==============================================================
-   LANGUAGE CONTROLLER
-   ============================================================== */
-function setLang(newLang) {
-  lang = newLang;
-  localStorage.setItem('portfolio_lang', lang);
-  document.documentElement.lang = lang;
-
-  document.getElementById('btn-id').classList.toggle('active', lang === 'id');
-  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-
-  render();
+  // Contact Section (Editorial Prose)
+  const contactTitleEl = document.getElementById('sec-contact');
+  if (contactTitleEl) contactTitleEl.textContent = c.secContact;
+  const contactProseEl = document.getElementById('contact-prose');
+  if (contactProseEl) contactProseEl.innerHTML = c.contactProse;
 }
 
 /* ==============================================================
@@ -1356,12 +1200,28 @@ function toggleProject(idx) {
   if (!item) return;
   const wasOpen = item.classList.contains('is-open');
   item.classList.toggle('is-open', !wasOpen);
-  const btn = item.querySelector('.project-row');
+  const btn = item.querySelector('.project-btn');
   if (btn) btn.setAttribute('aria-expanded', String(!wasOpen));
 }
 
 /* ==============================================================
-   THEME CONTROLLER (Circular View Transition Wave)
+   LANGUAGE CONTROLLER
+   ============================================================== */
+function setLang(newLang) {
+  lang = newLang;
+  localStorage.setItem('portfolio_lang', lang);
+  document.documentElement.lang = lang;
+
+  const btnId = document.getElementById('btn-id');
+  const btnEn = document.getElementById('btn-en');
+  if (btnId) btnId.classList.toggle('active', lang === 'id');
+  if (btnEn) btnEn.classList.toggle('active', lang === 'en');
+
+  render();
+}
+
+/* ==============================================================
+   THEME CONTROLLER (Silky Circular Ripple Wave)
    ============================================================== */
 function applyTheme(t) {
   theme = t;
@@ -1373,26 +1233,24 @@ function applyTheme(t) {
   if (theme === 'light') {
     root.classList.remove('dark');
     root.classList.add('light');
-    sun.style.display = 'none';
-    moon.style.display = 'block';
+    if (sun) sun.style.display = 'none';
+    if (moon) moon.style.display = 'block';
   } else {
     root.classList.remove('light');
     root.classList.add('dark');
-    sun.style.display = 'block';
-    moon.style.display = 'none';
+    if (sun) sun.style.display = 'block';
+    if (moon) moon.style.display = 'none';
   }
 }
 
 function toggleTheme(event) {
   const nextTheme = theme === 'dark' ? 'light' : 'dark';
 
-  // Fallback if browser doesn't support View Transitions or prefers reduced motion
   if (!document.startViewTransition || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     applyTheme(nextTheme);
     return;
   }
 
-  // Get origin position from the toggle button
   const btn = document.getElementById('theme-btn');
   let x, y;
   if (btn) {
@@ -1443,16 +1301,16 @@ const pdfTitle = document.getElementById('pdf-title');
 const pdfDirect = document.getElementById('pdf-direct');
 
 function openPdf(file, title) {
-  pdfTitle.textContent = title;
-  pdfFrame.src = file;
-  pdfDirect.href = file;
-  pdfModal.classList.add('active');
+  if (pdfTitle) pdfTitle.textContent = title;
+  if (pdfFrame) pdfFrame.src = file;
+  if (pdfDirect) pdfDirect.href = file;
+  if (pdfModal) pdfModal.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
 
 function closePdf() {
-  pdfModal.classList.remove('active');
-  pdfFrame.src = '';
+  if (pdfModal) pdfModal.classList.remove('active');
+  if (pdfFrame) pdfFrame.src = '';
   document.body.style.overflow = '';
 }
 
@@ -1461,7 +1319,7 @@ function handleOverlayClick(e) {
 }
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && pdfModal.classList.contains('active')) {
+  if (e.key === 'Escape' && pdfModal && pdfModal.classList.contains('active')) {
     closePdf();
   }
 });
@@ -1471,10 +1329,12 @@ document.addEventListener('keydown', e => {
    ============================================================== */
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('navbar');
-  if (window.scrollY > 10) {
-    nav.classList.add('scrolled');
-  } else {
-    nav.classList.remove('scrolled');
+  if (nav) {
+    if (window.scrollY > 10) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
   }
 }, { passive: true });
 
