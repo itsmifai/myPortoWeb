@@ -7,31 +7,34 @@
 <meta name="description" content="Personal site & portfolio of Miftahul Amri, a Web Developer & AI Enthusiast based in Surakarta, Indonesia.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #000000;
-  --bg-subtle: #0c0c0c;
-  --fg: #f1f1f1;
-  --fg-muted: #888888;
-  --fg-subtle: #4e4e4e;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 255, 255, 0.22);
-  --selection: rgba(255, 255, 255, 0.2);
+  --bg: #121212;
+  --bg-subtle: #1a1a1a;
+  --fg: #f3f3f3;
+  --fg-muted: #8c8c8c;
+  --fg-subtle: #5a5a5a;
+  --border: rgba(255, 255, 255, 0.09);
+  --border-hover: rgba(255, 255, 255, 0.24);
+  --underline: rgba(255, 255, 255, 0.25);
+  --underline-hover: #ffffff;
+  --selection: rgba(255, 255, 255, 0.22);
   --green: #22c55e;
-  --green-glow: rgba(34, 197, 94, 0.3);
   --modal-overlay: rgba(0, 0, 0, 0.85);
-  --max-w: 640px;
+  --max-w: 920px;
 }
 
 html.light {
-  --bg: #ffffff;
-  --bg-subtle: #f8f8f8;
+  --bg: #fafafa;
+  --bg-subtle: #f0f0f0;
   --fg: #111111;
   --fg-muted: #666666;
-  --fg-subtle: #a0a0a0;
+  --fg-subtle: #999999;
   --border: rgba(0, 0, 0, 0.08);
   --border-hover: rgba(0, 0, 0, 0.25);
+  --underline: rgba(0, 0, 0, 0.22);
+  --underline-hover: #111111;
   --selection: rgba(0, 0, 0, 0.12);
   --modal-overlay: rgba(0, 0, 0, 0.55);
 }
@@ -72,7 +75,18 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.u-link {
+  text-decoration: underline;
+  text-decoration-color: var(--underline);
+  text-underline-offset: 3.5px;
+  transition: text-decoration-color 0.15s ease, color 0.15s ease;
+}
+.u-link:hover {
+  text-decoration-color: var(--underline-hover);
+  color: var(--fg);
 }
 
 button {
@@ -96,15 +110,15 @@ button {
   letter-spacing: -0.01em;
 }
 
-/* Layout Container */
+/* Container */
 .container {
   max-width: var(--max-w);
   width: 100%;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 28px;
 }
 
-/* Navigation Header */
+/* Header */
 .header {
   position: sticky;
   top: 0;
@@ -122,7 +136,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 56px;
+  height: 60px;
 }
 .brand {
   font-size: 13px;
@@ -140,7 +154,7 @@ button {
   gap: 12px;
 }
 
-/* Language Pill */
+/* Language Toggle */
 .lang-toggle {
   display: inline-flex;
   align-items: center;
@@ -161,7 +175,7 @@ button {
   color: var(--bg);
 }
 
-/* Theme Toggle Button */
+/* Theme Button */
 .theme-btn {
   width: 28px;
   height: 28px;
@@ -181,33 +195,36 @@ button {
   height: 13px;
 }
 
-/* Main Content Area */
+/* Main */
 main {
   flex: 1;
   padding-top: 56px;
   padding-bottom: 100px;
 }
 
-/* Hero Section (No boxes, pure editorial typography) */
+/* Hero Section (Matching Paco Coursey's layout) */
 .hero {
-  margin-bottom: 52px;
+  margin-bottom: 60px;
 }
 .hero-name {
-  font-size: 24px;
+  font-size: 17px;
   font-weight: 600;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.02em;
   color: var(--fg);
-  margin-bottom: 14px;
-  line-height: 1.2;
-}
-.hero-bio {
-  font-size: 14.5px;
-  color: var(--fg-muted);
-  line-height: 1.7;
   margin-bottom: 22px;
 }
-.hero-bio em {
+.hero-p1 {
+  font-size: 15px;
   color: var(--fg);
+  line-height: 1.72;
+  margin-bottom: 14px;
+  max-width: 780px;
+}
+.hero-p2 {
+  font-size: 15px;
+  color: var(--fg);
+  line-height: 1.72;
+  max-width: 780px;
 }
 .flag-icon {
   display: inline-block;
@@ -219,321 +236,55 @@ main {
   margin: 0 2px;
 }
 
-/* Quiet Links Row */
-.links-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  font-size: 13px;
+/* 3-Column Asymmetric Layout (Paco's Building | Projects | Writing) */
+.grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 48px;
+  row-gap: 48px;
 }
-.link-item {
+
+.col-header {
+  font-size: 13px;
+  font-weight: 500;
   color: var(--fg-muted);
-  display: inline-flex;
-  align-items: center;
+  margin-bottom: 26px;
+  letter-spacing: -0.01em;
+}
+
+.item-group {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.entry {
+  display: flex;
+  flex-direction: column;
   gap: 3px;
-  padding-bottom: 1px;
-  border-bottom: 1px solid transparent;
-  transition: color 0.15s, border-color 0.15s;
 }
-.link-item:hover {
-  color: var(--fg);
-  border-bottom-color: var(--fg-muted);
-}
-
-/* Section Header (Subtle, calm, unboxed) */
-.section {
-  margin-bottom: 48px;
-}
-.section-title {
-  font-size: 11.5px;
+.entry-title {
+  font-size: 14.5px;
   font-weight: 500;
-  color: var(--fg-subtle);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-/* Now Section (Clean human prose, no card border) */
-.now-flow {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.now-line {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  font-size: 13.5px;
-}
-.now-line-left {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-}
-.pulse-dot {
-  width: 6.5px;
-  height: 6.5px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 0 0 var(--green-glow);
-  animation: pulseGreen 2.4s infinite;
-  flex-shrink: 0;
-}
-@keyframes pulseGreen {
-  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-  70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
-}
-.now-role {
   color: var(--fg);
-  font-weight: 450;
-}
-.now-org {
-  color: var(--fg-muted);
-}
-.now-date {
-  color: var(--fg-subtle);
-  font-size: 11.5px;
-  white-space: nowrap;
-}
-
-/* Projects List (Pure Minimalist, No Boxes, Click-to-Expand) */
-.project-list {
-  display: flex;
-  flex-direction: column;
-}
-.project-item {
-  border-bottom: 1px solid var(--border);
-}
-.project-item:first-child {
-  border-top: 1px solid var(--border);
-}
-.project-btn {
-  width: 100%;
-  padding: 13px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  cursor: pointer;
-  text-align: left;
-  user-select: none;
-}
-.project-title {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--fg-muted);
-  transition: color 0.15s;
-}
-.project-item:hover .project-title,
-.project-item.is-open .project-title {
-  color: var(--fg);
-}
-.project-btn-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.project-quick-stack {
-  font-size: 11.5px;
-  color: var(--fg-subtle);
-}
-.project-indicator {
-  font-size: 14px;
-  color: var(--fg-subtle);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.15s;
-  width: 14px;
-  text-align: center;
-  display: inline-block;
-  line-height: 1;
-}
-.project-item:hover .project-indicator {
-  color: var(--fg-muted);
-}
-.project-item.is-open .project-indicator {
-  transform: rotate(45deg);
-  color: var(--fg);
-}
-
-/* Expandable Drawer */
-.project-drawer {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  overflow: hidden;
-}
-.project-item.is-open .project-drawer {
-  grid-template-rows: 1fr;
-}
-.project-drawer-inner {
-  min-height: 0;
-  overflow: hidden;
-  padding: 4px 0 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.project-desc {
-  font-size: 13.5px;
-  color: var(--fg-muted);
-  line-height: 1.65;
-}
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.project-tag {
-  font-size: 11px;
-  color: var(--fg-muted);
-  background: var(--bg-subtle);
-  border: 1px solid var(--border);
-  padding: 1px 7px;
-  border-radius: 4px;
-}
-.project-img-box {
-  width: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: #000;
-  margin-top: 2px;
-}
-.project-img-box img {
-  width: 100%;
-  max-height: 360px;
-  object-fit: cover;
-  object-position: top center;
-  display: block;
-}
-.project-link-out {
-  align-self: flex-start;
   display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 12.5px;
-  font-weight: 500;
-  color: var(--fg);
-  padding-bottom: 1px;
-  border-bottom: 1px solid var(--fg-subtle);
-  transition: border-color 0.15s;
-}
-.project-link-out:hover {
-  border-bottom-color: var(--fg);
-}
-
-/* Experience List (Unboxed, clean typographic layout) */
-.timeline-list {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-.timeline-row {
-  display: grid;
-  grid-template-columns: 130px 1fr;
-  gap: 16px;
   align-items: baseline;
+  gap: 3px;
 }
-.timeline-year {
-  font-size: 12px;
-  color: var(--fg-subtle);
-}
-.timeline-content h3 {
+.entry-desc {
   font-size: 13.5px;
-  font-weight: 500;
-  color: var(--fg);
-  margin-bottom: 2px;
-}
-.timeline-content .timeline-sub {
-  font-size: 12.5px;
-  color: var(--fg-muted);
-  margin-bottom: 3px;
-}
-.timeline-content p {
-  font-size: 13px;
   color: var(--fg-muted);
   line-height: 1.55;
 }
 
-/* Education List (Unboxed) */
-.edu-list {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.edu-row {
-  display: grid;
-  grid-template-columns: 130px 1fr;
-  gap: 16px;
-  align-items: baseline;
-}
-.edu-year {
-  font-size: 12px;
-  color: var(--fg-subtle);
-}
-.edu-info b {
-  display: block;
-  font-size: 13.5px;
+/* Sub-heading within column */
+.sub-header {
+  font-size: 13px;
   font-weight: 500;
-  color: var(--fg);
-}
-.edu-info span {
-  font-size: 12.5px;
   color: var(--fg-muted);
-}
-
-/* Certifications List (Unboxed with subtle [pdf] button) */
-.cert-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.cert-row {
-  display: grid;
-  grid-template-columns: 130px 1fr auto;
-  gap: 16px;
-  align-items: baseline;
-}
-.cert-year {
-  font-size: 12px;
-  color: var(--fg-subtle);
-}
-.cert-info {
-  font-size: 13.5px;
-}
-.cert-name {
-  color: var(--fg);
-  font-weight: 450;
-}
-.cert-issuer {
-  color: var(--fg-muted);
-  font-size: 12.5px;
-}
-.cert-btn {
-  font-size: 11.5px;
-  color: var(--fg-muted);
-  border-bottom: 1px solid transparent;
-  transition: color 0.15s, border-color 0.15s;
-}
-.cert-btn:hover {
-  color: var(--fg);
-  border-bottom-color: var(--fg-muted);
-}
-
-/* Contact Section (Unboxed, pure editorial callout) */
-.contact-prose {
-  font-size: 14px;
-  color: var(--fg-muted);
-  line-height: 1.7;
-}
-.contact-prose a {
-  color: var(--fg);
-  border-bottom: 1px solid var(--fg-subtle);
-  transition: border-color 0.15s;
-}
-.contact-prose a:hover {
-  border-bottom-color: var(--fg);
+  margin-top: 14px;
+  margin-bottom: 22px;
+  letter-spacing: -0.01em;
 }
 
 /* Required Strict Footer */
@@ -563,7 +314,7 @@ main {
   color: var(--fg);
 }
 
-/* PDF Modal */
+/* Certificate PDF Preview Modal */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -639,11 +390,16 @@ main {
 }
 
 /* Responsive */
-@media (max-width: 600px) {
-  main { padding-top: 36px; padding-bottom: 72px; }
-  .timeline-row, .edu-row, .cert-row { grid-template-columns: 1fr; gap: 4px; }
-  .now-line { flex-direction: column; align-items: flex-start; gap: 2px; }
-  .links-row { gap: 12px; }
+@media (max-width: 768px) {
+  .grid-3col {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 40px;
+  }
+  main {
+    padding-top: 36px;
+    padding-bottom: 72px;
+  }
 }
 </style>
 </head>
@@ -674,67 +430,47 @@ main {
   <!-- Hero Section -->
   <section class="hero">
     <h1 class="hero-name">Miftahul Amri</h1>
-    <p class="hero-bio" id="hero-desc">
-      <!-- Injected via JavaScript -->
+    <p class="hero-p1" id="hero-p1">
+      <!-- Injected via JS -->
     </p>
-
-    <div class="links-row">
-      <a class="link-item" href="https://github.com/itsmifai" target="_blank" rel="noopener">GitHub ↗</a>
-      <a class="link-item" href="https://www.linkedin.com/in/mifamri/" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a class="link-item" href="https://instagram.com/itsmifai" target="_blank" rel="noopener">Instagram ↗</a>
-      <a class="link-item" href="mailto:mifthahulamri@gmail.com">Email ↗</a>
-      <a class="link-item" href="https://wa.me/6285716823315" target="_blank" rel="noopener">WhatsApp ↗</a>
-      <a class="link-item" href="./CV Mifthahul Amri.pdf" download>CV (PDF) ↗</a>
-    </div>
-  </section>
-
-  <!-- Now Section (Unboxed, pure prose) -->
-  <section class="section">
-    <h2 class="section-title mono" id="sec-now">Sedang Aktif</h2>
-    <div class="now-flow" id="now-container">
-      <!-- Injected via JavaScript -->
-    </div>
-  </section>
-
-  <!-- Projects Section (Unboxed, Click-to-Expand) -->
-  <section class="section">
-    <h2 class="section-title mono" id="sec-projects">Proyek Pilihan</h2>
-    <div class="project-list" id="project-container">
-      <!-- Injected via JavaScript -->
-    </div>
-  </section>
-
-  <!-- Experience Section (Unboxed) -->
-  <section class="section">
-    <h2 class="section-title mono" id="sec-experience">Pengalaman & Mengajar</h2>
-    <div class="timeline-list" id="exp-container">
-      <!-- Injected via JavaScript -->
-    </div>
-  </section>
-
-  <!-- Education Section (Unboxed) -->
-  <section class="section">
-    <h2 class="section-title mono" id="sec-education">Pendidikan</h2>
-    <div class="edu-list" id="edu-container">
-      <!-- Injected via JavaScript -->
-    </div>
-  </section>
-
-  <!-- Certificates Section (Unboxed) -->
-  <section class="section">
-    <h2 class="section-title mono" id="sec-certs">Sertifikasi</h2>
-    <div class="cert-list" id="cert-container">
-      <!-- Injected via JavaScript -->
-    </div>
-  </section>
-
-  <!-- Contact Section (Editorial Prose) -->
-  <section class="section">
-    <h2 class="section-title mono" id="sec-contact">Kontak & Kolaborasi</h2>
-    <p class="contact-prose" id="contact-prose">
-      <!-- Injected via JavaScript -->
+    <p class="hero-p2" id="hero-p2">
+      <!-- Injected via JS -->
     </p>
   </section>
+
+  <!-- 3-Column Layout: Column 1 (Craft/Now), Column 2 (Projects), Column 3 (Experience & Connect) -->
+  <div class="grid-3col">
+
+    <!-- Column 1: Projects (Web & AI Craft) -->
+    <div class="col">
+      <div class="col-header" id="col1-header">Projects</div>
+      <div class="item-group" id="col1-list">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+
+    <!-- Column 2: Teaching & Work Experience -->
+    <div class="col">
+      <div class="col-header" id="col2-header">Teaching & Experience</div>
+      <div class="item-group" id="col2-list">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+
+    <!-- Column 3: Credentials & Connect -->
+    <div class="col">
+      <div class="col-header" id="col3-header">Education & Certs</div>
+      <div class="item-group" id="col3-list">
+        <!-- Injected via JS -->
+      </div>
+
+      <div class="sub-header" id="col3-sub-header">Connect</div>
+      <div class="item-group" id="col3-connect">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+
+  </div>
 
 </main>
 
@@ -774,304 +510,282 @@ let theme = localStorage.getItem('portfolio_theme') || 'dark';
 
 const content = {
   id: {
-    heroDesc: 'Web developer & AI enthusiast berbasis di Surakarta, Indonesia <span class="flag-icon" title="Indonesia"><svg viewBox="0 0 3 2"><rect width="3" height="1" fill="#e70011"/><rect y="1" width="3" height="1" fill="#ffffff"/></svg></span>. Berfokus pada perancangan produk digital yang andal, sistem interaktif, dan <span class="serif-italic">integrasi kecerdasan buatan</span> yang memberi manfaat nyata. Saat ini aktif mengajar coding dan mendampingi praktikum pemrograman web.',
-    secNow: 'Sedang Aktif',
-    nowItems: [
-      { role: 'Pengajar Ruangguru Coding', org: 'Ruangguru · Sragen', date: 'sejak Jul 2026' },
-      { role: 'Guru Coding Ekstrakurikuler', org: 'SMP Al Azhar IIBS', date: 'sejak Agu 2026' },
-      { role: 'Asisten Laboratorium', org: 'Pemrograman Web · PTI UMS', date: 'sejak Sep 2026' }
-    ],
-    secProjects: 'Proyek Pilihan',
-    projects: [
+    heroP1: '<span class="serif-italic">Crafting web applications & purposeful AI.</span> Membangun produk digital yang andal, sistem interaktif, dan integrasi kecerdasan buatan dari Surakarta, Indonesia <span class="flag-icon" title="Indonesia"><svg viewBox="0 0 3 2"><rect width="3" height="1" fill="#e70011"/><rect y="1" width="3" height="1" fill="#ffffff"/></svg></span>.',
+    heroP2: 'Saat ini aktif mengajar coding di <a href="https://www.ruangguru.com/" target="_blank" rel="noopener" class="u-link">Ruangguru (Sragen)</a> dan <a href="https://iibs.alazhar.sch.id/" target="_blank" rel="noopener" class="u-link">SMP Al Azhar IIBS</a>, serta mendampingi praktikum mahasiswa di <a href="https://pti.ums.ac.id/" target="_blank" rel="noopener" class="u-link">Laboratorium Pemrograman Web PTI UMS</a>.',
+    
+    col1Header: 'Projects',
+    col1Items: [
       {
-        title: 'Website IMM SIMUN',
-        desc: 'Portal resmi organisasi kemahasiswaan IMM SIMUN FKIP UMS: penerbitan naskah, struktur kepengurusan, dan arsip digital kaderisasi.',
-        tags: ['Next.js 16', 'Supabase', 'Tailwind CSS', 'Vercel'],
-        link: 'https://imm-simun.ums.ac.id/',
-        img: './project-image/imm.webp'
+        title: 'Website IMM SIMUN ↗',
+        desc: 'Portal resmi organisasi kemahasiswaan: naskah, struktur, dan arsip kaderisasi.',
+        link: 'https://imm-simun.ums.ac.id/'
       },
       {
-        title: 'VibeCal AI',
-        desc: 'Kalender pintar cerdas hasil Google Vibe Hackathon yang mengekstrak jadwal otomatis langsung dari bahasa alami.',
-        tags: ['Gemini AI', 'Groq API', 'Next.js', 'NLP'],
-        link: 'https://github.com/itsmifai/vibecal',
-        img: './project-image/vibecal.webp'
+        title: 'VibeCal AI ↗',
+        desc: 'Kalender cerdas ekstraksi jadwal otomatis dari bahasa alami (Google Vibe Hackathon).',
+        link: 'https://github.com/itsmifai/vibecal'
       },
       {
-        title: 'Website MIM Gambiranom',
-        desc: 'Website profil madrasah & CMS mandiri sekolah dasar untuk mengelola artikel, galeri, dan profil sekolah menggantikan blogspot lama.',
-        tags: ['Next.js 16', 'PostgreSQL', 'Prisma ORM'],
-        link: 'https://mimgambiranom.site/',
-        img: './project-image/mim.webp'
+        title: 'Website MIM Gambiranom ↗',
+        desc: 'Website profil madrasah & CMS mandiri sekolah dasar menggantikan blogspot.',
+        link: 'https://mimgambiranom.site/'
       },
       {
-        title: 'Foundry Path',
-        desc: 'Personal learning path builder visual interaktif dengan visualisasi graf dependensi skill tree dan asisten kurikulum AI.',
-        tags: ['React Flow', 'Supabase', 'Next.js', 'AI Advisor'],
-        link: 'https://github.com/itsmifai/foundry',
-        img: './project-image/foundry.webp'
+        title: 'Foundry Path ↗',
+        desc: 'Interactive visual learning path builder dengan graf dependensi skill tree.',
+        link: 'https://github.com/itsmifai/foundry'
       },
       {
-        title: 'Barang-Bareng',
-        desc: 'Platform sewa barang peer-to-peer dua arah lengkap dengan kalender booking, verifikasi, dan chat negosiasi real-time.',
-        tags: ['Next.js 16', 'Supabase Realtime', 'Tailwind CSS'],
-        link: 'https://barang-bareng.vercel.app/',
-        img: './project-image/barang-bareng.webp'
+        title: 'Barang-Bareng ↗',
+        desc: 'Platform sewa barang peer-to-peer dua arah dengan negosiasi chat real-time.',
+        link: 'https://barang-bareng.vercel.app/'
       },
       {
-        title: 'LayakBisnis AI',
-        desc: 'Kalkulator kelayakan finansial UMKM F&B (BEP, ROI, Payback Period) dilengkapi AI Financial Advisor otomatis.',
-        tags: ['DeepSeek API', 'Next.js', 'Midtrans Gateway'],
-        link: 'https://www.layakbisnis.com/',
-        img: './project-image/layakbisnis.webp'
+        title: 'LayakBisnis AI ↗',
+        desc: 'Kalkulator kelayakan finansial UMKM F&B dan AI Financial Advisor otomatis.',
+        link: 'https://www.layakbisnis.com/'
       },
       {
-        title: 'Setara Special Ed',
-        desc: 'Asisten cerdas AI bagi guru pendidikan khusus untuk asesmen kebutuhan siswa dan penyusunan draf Program Pembelajaran Individual (PPI).',
-        tags: ['DeepSeek', 'Supabase', 'Next.js'],
-        link: 'https://setara-deploy.vercel.app/',
-        img: './project-image/incluedu.webp'
+        title: 'Setara Special Ed ↗',
+        desc: 'Asisten AI guru pendidikan khusus untuk penyusunan draf kurikulum PPI.',
+        link: 'https://setara-deploy.vercel.app/'
       },
       {
-        title: 'CT Quiz Lab',
-        desc: 'Platform asesmen Computational Thinking interaktif dengan generator kuis AI dan analitik capaian 4 pilar CT.',
-        tags: ['Groq API', 'Prisma', 'Next.js'],
-        link: 'https://ct-quiz-lab.vercel.app/',
-        img: './project-image/ct-quiz.webp'
+        title: 'CT Quiz Lab ↗',
+        desc: 'Platform asesmen Computational Thinking interaktif dengan generator kuis AI.',
+        link: 'https://ct-quiz-lab.vercel.app/'
       }
     ],
-    secExp: 'Pengalaman & Mengajar',
-    experiences: [
+
+    col2Header: 'Experience',
+    col2Items: [
       {
-        year: '2026 — Sekarang',
-        role: 'Pengajar Ruangguru Coding',
-        sub: 'Ruangguru · Penempatan Kabupaten Sragen',
-        desc: 'Mengajar kurikulum computational thinking, logika pemrograman, dan pengenalan web development di sekolah-sekolah mitra.'
+        title: 'Pengajar Ruangguru ↗',
+        desc: 'Mengajar coding dan computational thinking di sekolah-sekolah Sragen · 2026 – sekarang.',
+        link: 'https://www.ruangguru.com/'
       },
       {
-        year: '2026 — Sekarang',
-        role: 'Guru Coding Ekstrakurikuler',
-        sub: 'SMP Al Azhar IIBS Karanganyar',
-        desc: 'Mengajar dasar-dasar pengembangan web (HTML, CSS, JavaScript) dan pembuatan proyek kreatif untuk siswa kelas 7–9.'
+        title: 'Guru Coding Al Azhar IIBS ↗',
+        desc: 'Mengajar pengembangan web (HTML, CSS, JS) di ekstrakurikuler SMP · 2026 – sekarang.',
+        link: 'https://iibs.alazhar.sch.id/'
       },
       {
-        year: '2026 — Sekarang',
-        role: 'Asisten Lab Pemrograman Web',
-        sub: 'Pendidikan Teknik Informatika · UMS',
-        desc: 'Membimbing praktikum mahasiswa S1 mulai dari fundamental web hingga arsitektur backend Django dan basis data.'
+        title: 'Asisten Lab Pemrograman Web ↗',
+        desc: 'Membimbing praktikum web fullstack & backend Django di PTI UMS · 2026 – sekarang.',
+        link: 'https://pti.ums.ac.id/'
       },
       {
-        year: '2026',
-        role: 'Asisten Lab Basis Data',
-        sub: 'Pendidikan Teknik Informatika · UMS',
-        desc: 'Membimbing pemodelan skema relasional, normalisasi ERD, serta eksekusi kueri SQL lanjutan pada PostgreSQL.'
+        title: 'Asisten Lab Basis Data ↗',
+        desc: 'Praktikum perancangan ERD, normalisasi relasional, dan SQL query · 2026.',
+        link: 'https://pti.ums.ac.id/'
       },
       {
-        year: '2025 — 2026',
-        role: 'Asisten Lab Sistem Operasi',
-        sub: 'Pendidikan Teknik Informatika · UMS',
-        desc: 'Mengajar Linux command line interface (CLI), manajemen proses dan permission, serta shell automation scripting.'
+        title: 'Asisten Lab Sistem Operasi ↗',
+        desc: 'Mengajar Linux CLI, process & permission, serta shell automation · 2025 – 2026.',
+        link: 'https://pti.ums.ac.id/'
       },
       {
-        year: '2023 — 2026',
-        role: 'IT Helpdesk Staff (Intern)',
-        sub: 'DSTI Universitas Muhammadiyah Surakarta',
-        desc: 'Menangani kredensial Single Sign-On (SSO), jaringan kampus, dan integrasi administrasi akun mahasiswa.'
+        title: 'IT Helpdesk DSTI UMS ↗',
+        desc: 'Dukungan kredensial SSO, jaringan kampus, dan administrasi portal · 2023 – 2026.',
+        link: 'https://dsti.ums.ac.id/'
       }
     ],
-    secEdu: 'Pendidikan',
-    educations: [
+
+    col3Header: 'Education & Certs',
+    col3Items: [
       {
-        year: '2023 — Sekarang',
-        name: 'Universitas Muhammadiyah Surakarta',
-        desc: 'S1 Pendidikan Teknik Informatika'
+        title: 'Universitas Muhammadiyah Surakarta ↗',
+        desc: 'S1 Pendidikan Teknik Informatika · 2023 – sekarang.',
+        link: 'https://ums.ac.id/'
       },
       {
-        year: '2019 — 2022',
-        name: 'MAs Ibnu Taimiyah Bogor',
-        desc: 'Madrasah Aliyah'
-      },
-      {
-        year: '2016 — 2019',
-        name: 'MTs Arafah Bitung',
-        desc: 'Madrasah Tsanawiyah'
-      }
-    ],
-    secCerts: 'Sertifikasi',
-    certs: [
-      {
-        year: '2026',
-        name: 'Cloud Web Application Builder',
-        issuer: 'AWS Academy Graduate',
+        title: 'AWS Cloud Web App Builder ↗',
+        desc: 'AWS Academy Graduate · 2026.',
+        action: 'pdf',
         file: './sertif/AWS_Academy_Graduate___Cloud_Web_Application_Builder___Training_Badge_Badge20260712-20-tyns3j.pdf'
       },
       {
-        year: '2024',
-        name: 'Dasar Pemrograman Web',
-        issuer: 'Dicoding Indonesia',
+        title: 'Dasar Pemrograman Web ↗',
+        desc: 'Dicoding Indonesia · 2024.',
+        action: 'pdf',
         file: './sertif/dasar-pemrogaram-web-dicoding.pdf'
       },
       {
-        year: '2023',
-        name: 'Intro to JavaScript for Beginner',
-        issuer: 'Harisenin.com',
+        title: 'Intro to JavaScript for Beginner ↗',
+        desc: 'Harisenin.com · 2023.',
+        action: 'pdf',
         file: './sertif/introduction-to-javascript-for-beginner-harisenin.pdf'
       }
     ],
-    secContact: 'Kontak',
-    contactProse: 'Punya ide proyek, butuh pembuatan website instansi/organisasi, atau ingin berdiskusi seputar AI? Hubungi saya langsung melalui <a href="https://wa.me/6285716823315?text=Halo%20Miftahul%20Amri%2C%20saya%20tertarik%20berdiskusi%20mengenai%20proyek%20web%20%2F%20AI." target="_blank" rel="noopener">WhatsApp ↗</a> atau kirim surel ke <a href="mailto:mifthahulamri@gmail.com">mifthahulamri@gmail.com ↗</a>. Terbuka untuk proyek freelance dan kolaborasi digital.',
-    openPdfText: 'pdf ↗',
-    viewProjectText: 'Kunjungi proyek ↗'
+
+    col3SubHeader: 'Connect',
+    col3Connect: [
+      {
+        title: 'WhatsApp ↗',
+        desc: 'Konsultasi langsung proyek web & AI.',
+        link: 'https://wa.me/6285716823315?text=Halo%20Miftahul%20Amri%2C%20saya%20tertarik%20berdiskusi%20mengenai%20proyek%20web%20%2F%20AI.'
+      },
+      {
+        title: 'Email ↗',
+        desc: 'mifthahulamri@gmail.com',
+        link: 'mailto:mifthahulamri@gmail.com'
+      },
+      {
+        title: 'GitHub ↗',
+        desc: '@itsmifai',
+        link: 'https://github.com/itsmifai'
+      },
+      {
+        title: 'LinkedIn ↗',
+        desc: 'in/mifamri',
+        link: 'https://www.linkedin.com/in/mifamri/'
+      },
+      {
+        title: 'Curriculum Vitae (PDF) ↗',
+        desc: 'Unduh CV resmi terbaru.',
+        link: './CV Mifthahul Amri.pdf',
+        download: true
+      }
+    ]
   },
   en: {
-    heroDesc: 'Web developer & AI enthusiast based in Surakarta, Indonesia <span class="flag-icon" title="Indonesia"><svg viewBox="0 0 3 2"><rect width="3" height="1" fill="#e70011"/><rect y="1" width="3" height="1" fill="#ffffff"/></svg></span>. Focused on crafting reliable digital products, interactive systems, and <span class="serif-italic">purposeful AI integrations</span> that solve real problems. Currently active as a coding educator and web programming lab assistant.',
-    secNow: 'Currently Active',
-    nowItems: [
-      { role: 'Coding Educator', org: 'Ruangguru · Sragen Regency', date: 'since Jul 2026' },
-      { role: 'Coding Extracurricular Teacher', org: 'SMP Al Azhar IIBS', date: 'since Aug 2026' },
-      { role: 'Laboratory Teaching Assistant', org: 'Web Programming · PTI UMS', date: 'since Sep 2026' }
-    ],
-    secProjects: 'Selected Projects',
-    projects: [
+    heroP1: '<span class="serif-italic">Crafting web applications & purposeful AI.</span> Building polished digital products, interactive systems, and practical artificial intelligence from Surakarta, Indonesia <span class="flag-icon" title="Indonesia"><svg viewBox="0 0 3 2"><rect width="3" height="1" fill="#e70011"/><rect y="1" width="3" height="1" fill="#ffffff"/></svg></span>.',
+    heroP2: 'Currently teaching coding at <a href="https://www.ruangguru.com/" target="_blank" rel="noopener" class="u-link">Ruangguru (Sragen)</a> and <a href="https://iibs.alazhar.sch.id/" target="_blank" rel="noopener" class="u-link">SMP Al Azhar IIBS</a>, while mentoring undergraduate students in the <a href="https://pti.ums.ac.id/" target="_blank" rel="noopener" class="u-link">Web Programming Lab at UMS</a>.',
+
+    col1Header: 'Projects',
+    col1Items: [
       {
-        title: 'Website IMM SIMUN',
-        desc: 'Official student organization portal for IMM SIMUN FKIP UMS: publishing, organizational hierarchy, and digital membership archive.',
-        tags: ['Next.js 16', 'Supabase', 'Tailwind CSS', 'Vercel'],
-        link: 'https://imm-simun.ums.ac.id/',
-        img: './project-image/imm.webp'
+        title: 'Website IMM SIMUN ↗',
+        desc: 'Official student organization portal: publishing, structure, and digital archive.',
+        link: 'https://imm-simun.ums.ac.id/'
       },
       {
-        title: 'VibeCal AI',
-        desc: 'Smart calendar engineered at Google Vibe Hackathon that extracts and structures schedules directly from natural language input.',
-        tags: ['Gemini AI', 'Groq API', 'Next.js', 'NLP'],
-        link: 'https://github.com/itsmifai/vibecal',
-        img: './project-image/vibecal.webp'
+        title: 'VibeCal AI ↗',
+        desc: 'Natural language smart schedule extractor (Google Vibe Hackathon).',
+        link: 'https://github.com/itsmifai/vibecal'
       },
       {
-        title: 'Website MIM Gambiranom',
-        desc: 'Primary school profile website and custom independent CMS empowering teachers to publish news, galleries, and school data.',
-        tags: ['Next.js 16', 'PostgreSQL', 'Prisma ORM'],
-        link: 'https://mimgambiranom.site/',
-        img: './project-image/mim.webp'
+        title: 'Website MIM Gambiranom ↗',
+        desc: 'Primary school profile & independent CMS replacing legacy blogspot.',
+        link: 'https://mimgambiranom.site/'
       },
       {
-        title: 'Foundry Path',
-        desc: 'Interactive visual learning path builder with interactive skill-tree dependency graphs and personal AI curriculum advisor.',
-        tags: ['React Flow', 'Supabase', 'Next.js', 'AI Advisor'],
-        link: 'https://github.com/itsmifai/foundry',
-        img: './project-image/foundry.webp'
+        title: 'Foundry Path ↗',
+        desc: 'Interactive visual learning path builder with skill tree dependency graphs.',
+        link: 'https://github.com/itsmifai/foundry'
       },
       {
-        title: 'Barang-Bareng',
-        desc: 'Two-sided P2P gear rental marketplace featuring date-range calendar reservations, identity verification, and real-time chat negotiation.',
-        tags: ['Next.js 16', 'Supabase Realtime', 'Tailwind CSS'],
-        link: 'https://barang-bareng.vercel.app/',
-        img: './project-image/barang-bareng.webp'
+        title: 'Barang-Bareng ↗',
+        desc: 'Two-sided P2P gear rental marketplace with real-time negotiation chat.',
+        link: 'https://barang-bareng.vercel.app/'
       },
       {
-        title: 'LayakBisnis AI',
-        desc: 'Financial feasibility calculator for F&B SMEs (BEP, ROI, Payback Period) paired with an automated AI financial strategy consultant.',
-        tags: ['DeepSeek API', 'Next.js', 'Midtrans Gateway'],
-        link: 'https://www.layakbisnis.com/',
-        img: './project-image/layakbisnis.webp'
+        title: 'LayakBisnis AI ↗',
+        desc: 'F&B SME financial feasibility calculator & automated AI Financial Advisor.',
+        link: 'https://www.layakbisnis.com/'
       },
       {
-        title: 'Setara Special Ed',
-        desc: 'AI platform for special education teachers to assess student profiles and generate tailored Individualized Education Program (IEP) drafts.',
-        tags: ['DeepSeek', 'Supabase', 'Next.js'],
-        link: 'https://setara-deploy.vercel.app/',
-        img: './project-image/incluedu.webp'
+        title: 'Setara Special Ed ↗',
+        desc: 'AI platform for special education teachers to assess needs and generate IEP drafts.',
+        link: 'https://setara-deploy.vercel.app/'
       },
       {
-        title: 'CT Quiz Lab',
-        desc: 'Interactive Computational Thinking assessment platform with AI quiz generator and real-time 4-pillar CT competency diagnostics.',
-        tags: ['Groq API', 'Prisma', 'Next.js'],
-        link: 'https://ct-quiz-lab.vercel.app/',
-        img: './project-image/ct-quiz.webp'
+        title: 'CT Quiz Lab ↗',
+        desc: 'Interactive Computational Thinking assessment platform with AI quiz generator.',
+        link: 'https://ct-quiz-lab.vercel.app/'
       }
     ],
-    secExp: 'Experience & Teaching',
-    experiences: [
+
+    col2Header: 'Experience',
+    col2Items: [
       {
-        year: '2026 — Present',
-        role: 'Coding Educator',
-        sub: 'Ruangguru · Sragen Regency Placement',
-        desc: 'Instructing computational thinking, programming logic, and web development fundamentals across partner schools.'
+        title: 'Coding Educator · Ruangguru ↗',
+        desc: 'Teaching coding & computational thinking across Sragen Regency schools · 2026 – now.',
+        link: 'https://www.ruangguru.com/'
       },
       {
-        year: '2026 — Present',
-        role: 'Coding Extracurricular Teacher',
-        sub: 'SMP Al Azhar IIBS Karanganyar',
-        desc: 'Teaching web development foundations (HTML, CSS, JavaScript) and creative digital projects for grades 7–9.'
+        title: 'Coding Teacher · Al Azhar IIBS ↗',
+        desc: 'Instructing web development (HTML, CSS, JS) in junior high extracurriculars · 2026 – now.',
+        link: 'https://iibs.alazhar.sch.id/'
       },
       {
-        year: '2026 — Present',
-        role: 'Web Programming Lab Assistant',
-        sub: 'Informatics Education · UMS',
-        desc: 'Mentoring undergraduate lab sessions covering web engineering fundamentals, relational databases, and Django backend architecture.'
+        title: 'Web Programming Lab Assistant ↗',
+        desc: 'Guiding undergraduate fullstack web & Django backend lab sessions · 2026 – now.',
+        link: 'https://pti.ums.ac.id/'
       },
       {
-        year: '2026',
-        role: 'Database Lab Assistant',
-        sub: 'Informatics Education · UMS',
-        desc: 'Guiding relational schema design, ERD normalization, and advanced SQL query execution on PostgreSQL.'
+        title: 'Database Lab Assistant ↗',
+        desc: 'Practicum guidance on ERD schema modeling, normalization & advanced SQL · 2026.',
+        link: 'https://pti.ums.ac.id/'
       },
       {
-        year: '2025 — 2026',
-        role: 'Operating Systems Lab Assistant',
-        sub: 'Informatics Education · UMS',
-        desc: 'Taught Linux command line interface (CLI), process and permission management, and shell automation scripting.'
+        title: 'Operating Systems Lab Assistant ↗',
+        desc: 'Taught Linux CLI, process & permissions, and shell automation scripting · 2025 – 2026.',
+        link: 'https://pti.ums.ac.id/'
       },
       {
-        year: '2023 — 2026',
-        role: 'IT Helpdesk Staff (Intern)',
-        sub: 'DSTI Universitas Muhammadiyah Surakarta',
-        desc: 'Supported campus Single Sign-On (SSO) credentials, network troubleshooting, and student database integration.'
+        title: 'IT Helpdesk Staff · DSTI UMS ↗',
+        desc: 'Campus SSO credential support, networking, and student portal administration · 2023 – 2026.',
+        link: 'https://dsti.ums.ac.id/'
       }
     ],
-    secEdu: 'Education',
-    educations: [
+
+    col3Header: 'Education & Certs',
+    col3Items: [
       {
-        year: '2023 — Present',
-        name: 'Universitas Muhammadiyah Surakarta',
-        desc: 'B.Ed in Informatics Education'
+        title: 'Universitas Muhammadiyah Surakarta ↗',
+        desc: 'B.Ed in Informatics Education · 2023 – present.',
+        link: 'https://ums.ac.id/'
       },
       {
-        year: '2019 — 2022',
-        name: 'MAs Ibnu Taimiyah Bogor',
-        desc: 'Islamic Senior High School'
-      },
-      {
-        year: '2016 — 2019',
-        name: 'MTs Arafah Bitung',
-        desc: 'Islamic Junior High School'
-      }
-    ],
-    secCerts: 'Certifications',
-    certs: [
-      {
-        year: '2026',
-        name: 'Cloud Web Application Builder',
-        issuer: 'AWS Academy Graduate',
+        title: 'AWS Cloud Web App Builder ↗',
+        desc: 'AWS Academy Graduate · 2026.',
+        action: 'pdf',
         file: './sertif/AWS_Academy_Graduate___Cloud_Web_Application_Builder___Training_Badge_Badge20260712-20-tyns3j.pdf'
       },
       {
-        year: '2024',
-        name: 'Web Development Fundamentals',
-        issuer: 'Dicoding Indonesia',
+        title: 'Web Development Fundamentals ↗',
+        desc: 'Dicoding Indonesia · 2024.',
+        action: 'pdf',
         file: './sertif/dasar-pemrogaram-web-dicoding.pdf'
       },
       {
-        year: '2023',
-        name: 'Intro to JavaScript for Beginner',
-        issuer: 'Harisenin.com',
+        title: 'Intro to JavaScript for Beginner ↗',
+        desc: 'Harisenin.com · 2023.',
+        action: 'pdf',
         file: './sertif/introduction-to-javascript-for-beginner-harisenin.pdf'
       }
     ],
-    secContact: 'Contact',
-    contactProse: 'Have a project in mind, need an organizational website, or want to discuss AI? Reach out via <a href="https://wa.me/6285716823315?text=Hello%20Miftahul%20Amri%2C%20I%20am%20interested%20in%20discussing%20a%20project." target="_blank" rel="noopener">WhatsApp ↗</a> or send an email to <a href="mailto:mifthahulamri@gmail.com">mifthahulamri@gmail.com ↗</a>. Open for freelance projects and digital collaboration.',
-    openPdfText: 'pdf ↗',
-    viewProjectText: 'Visit project ↗'
+
+    col3SubHeader: 'Connect',
+    col3Connect: [
+      {
+        title: 'WhatsApp ↗',
+        desc: 'Direct consultation for web & AI projects.',
+        link: 'https://wa.me/6285716823315?text=Hello%20Miftahul%20Amri%2C%20I%20am%20interested%20in%20discussing%20a%20project.'
+      },
+      {
+        title: 'Email ↗',
+        desc: 'mifthahulamri@gmail.com',
+        link: 'mailto:mifthahulamri@gmail.com'
+      },
+      {
+        title: 'GitHub ↗',
+        desc: '@itsmifai',
+        link: 'https://github.com/itsmifai'
+      },
+      {
+        title: 'LinkedIn ↗',
+        desc: 'in/mifamri',
+        link: 'https://www.linkedin.com/in/mifamri/'
+      },
+      {
+        title: 'Curriculum Vitae (PDF) ↗',
+        desc: 'Download official resume.',
+        link: './CV Mifthahul Amri.pdf',
+        download: true
+      }
+    ]
   }
 };
 
@@ -1084,124 +798,81 @@ function render() {
   const c = content[lang];
 
   // Hero
-  const heroDescEl = document.getElementById('hero-desc');
-  if (heroDescEl) heroDescEl.innerHTML = c.heroDesc;
+  const p1 = document.getElementById('hero-p1');
+  if (p1) p1.innerHTML = c.heroP1;
+  const p2 = document.getElementById('hero-p2');
+  if (p2) p2.innerHTML = c.heroP2;
 
-  // Now Section (Unboxed, pure prose lines)
-  const nowTitleEl = document.getElementById('sec-now');
-  if (nowTitleEl) nowTitleEl.textContent = c.secNow;
-  const nowContainerEl = document.getElementById('now-container');
-  if (nowContainerEl) {
-    nowContainerEl.innerHTML = c.nowItems.map(item => `
-      <div class="now-line">
-        <div class="now-line-left">
-          <span class="pulse-dot"></span>
-          <span class="now-role">${esc(item.role)}</span>
-          <span class="now-org">&middot; ${esc(item.org)}</span>
-        </div>
-        <span class="now-date mono">${esc(item.date)}</span>
+  // Column 1: Projects
+  const h1 = document.getElementById('col1-header');
+  if (h1) h1.textContent = c.col1Header;
+  const l1 = document.getElementById('col1-list');
+  if (l1) {
+    l1.innerHTML = c.col1Items.map(item => `
+      <div class="entry">
+        <a class="entry-title u-link" href="${esc(item.link)}" target="_blank" rel="noopener">
+          ${esc(item.title)}
+        </a>
+        <p class="entry-desc">${esc(item.desc)}</p>
       </div>
     `).join('');
   }
 
-  // Projects Section (Clean Minimalist List, Click-to-Expand)
-  const projTitleEl = document.getElementById('sec-projects');
-  if (projTitleEl) projTitleEl.textContent = c.secProjects;
-  const projContainerEl = document.getElementById('project-container');
-  if (projContainerEl) {
-    projContainerEl.innerHTML = c.projects.map((p, idx) => `
-      <div class="project-item" id="proj-${idx}">
-        <button type="button" class="project-btn" onclick="toggleProject(${idx})" aria-expanded="false">
-          <span class="project-title">${esc(p.title)}</span>
-          <div class="project-btn-right">
-            <span class="project-indicator">+</span>
+  // Column 2: Experience & Teaching
+  const h2 = document.getElementById('col2-header');
+  if (h2) h2.textContent = c.col2Header;
+  const l2 = document.getElementById('col2-list');
+  if (l2) {
+    l2.innerHTML = c.col2Items.map(item => `
+      <div class="entry">
+        <a class="entry-title u-link" href="${esc(item.link)}" target="_blank" rel="noopener">
+          ${esc(item.title)}
+        </a>
+        <p class="entry-desc">${esc(item.desc)}</p>
+      </div>
+    `).join('');
+  }
+
+  // Column 3: Education & Certs + Connect
+  const h3 = document.getElementById('col3-header');
+  if (h3) h3.textContent = c.col3Header;
+  const l3 = document.getElementById('col3-list');
+  if (l3) {
+    l3.innerHTML = c.col3Items.map(item => {
+      if (item.action === 'pdf') {
+        return `
+          <div class="entry">
+            <button type="button" class="entry-title u-link" onclick="openPdf('${item.file}', '${esc(item.title.replace(' ↗',''))}')">
+              ${esc(item.title)}
+            </button>
+            <p class="entry-desc">${esc(item.desc)}</p>
           </div>
-        </button>
-        <div class="project-drawer">
-          <div class="project-drawer-inner">
-            <p class="project-desc">${esc(p.desc)}</p>
-            <div class="project-tags">
-              ${p.tags.map(t => `<span class="project-tag mono">${esc(t)}</span>`).join('')}
-            </div>
-            <div class="project-img-box">
-              <img src="${esc(p.img)}" alt="${esc(p.title)}" loading="lazy">
-            </div>
-            <a class="project-link-out mono" href="${esc(p.link)}" target="_blank" rel="noopener">
-              ${esc(c.viewProjectText)}
-            </a>
-          </div>
+        `;
+      }
+      return `
+        <div class="entry">
+          <a class="entry-title u-link" href="${esc(item.link)}" target="_blank" rel="noopener">
+            ${esc(item.title)}
+          </a>
+          <p class="entry-desc">${esc(item.desc)}</p>
         </div>
+      `;
+    }).join('');
+  }
+
+  const h3sub = document.getElementById('col3-sub-header');
+  if (h3sub) h3sub.textContent = c.col3SubHeader;
+  const c3 = document.getElementById('col3-connect');
+  if (c3) {
+    c3.innerHTML = c.col3Connect.map(item => `
+      <div class="entry">
+        <a class="entry-title u-link" href="${esc(item.link)}" ${item.download ? 'download' : 'target="_blank" rel="noopener"'}>
+          ${esc(item.title)}
+        </a>
+        <p class="entry-desc">${esc(item.desc)}</p>
       </div>
     `).join('');
   }
-
-  // Experience Section (Unboxed)
-  const expTitleEl = document.getElementById('sec-experience');
-  if (expTitleEl) expTitleEl.textContent = c.secExp;
-  const expContainerEl = document.getElementById('exp-container');
-  if (expContainerEl) {
-    expContainerEl.innerHTML = c.experiences.map(e => `
-      <div class="timeline-row">
-        <div class="timeline-year mono">${esc(e.year)}</div>
-        <div class="timeline-content">
-          <h3>${esc(e.role)}</h3>
-          <div class="timeline-sub">${esc(e.sub)}</div>
-          <p>${esc(e.desc)}</p>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  // Education Section (Unboxed)
-  const eduTitleEl = document.getElementById('sec-education');
-  if (eduTitleEl) eduTitleEl.textContent = c.secEdu;
-  const eduContainerEl = document.getElementById('edu-container');
-  if (eduContainerEl) {
-    eduContainerEl.innerHTML = c.educations.map(ed => `
-      <div class="edu-row">
-        <div class="edu-year mono">${esc(ed.year)}</div>
-        <div class="edu-info">
-          <b>${esc(ed.name)}</b>
-          <span>${esc(ed.desc)}</span>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  // Certifications Section (Unboxed)
-  const certTitleEl = document.getElementById('sec-certs');
-  if (certTitleEl) certTitleEl.textContent = c.secCerts;
-  const certContainerEl = document.getElementById('cert-container');
-  if (certContainerEl) {
-    certContainerEl.innerHTML = c.certs.map(ct => `
-      <div class="cert-row">
-        <div class="cert-year mono">${ct.year}</div>
-        <div class="cert-info">
-          <span class="cert-name">${esc(ct.name)}</span>
-          <span class="cert-issuer">&middot; ${esc(ct.issuer)}</span>
-        </div>
-        <button type="button" class="cert-btn mono" onclick="openPdf('${ct.file}', '${esc(ct.name)}')">${esc(c.openPdfText)}</button>
-      </div>
-    `).join('');
-  }
-
-  // Contact Section (Editorial Prose)
-  const contactTitleEl = document.getElementById('sec-contact');
-  if (contactTitleEl) contactTitleEl.textContent = c.secContact;
-  const contactProseEl = document.getElementById('contact-prose');
-  if (contactProseEl) contactProseEl.innerHTML = c.contactProse;
-}
-
-/* ==============================================================
-   PROJECT DRAWER CONTROLLER
-   ============================================================== */
-function toggleProject(idx) {
-  const item = document.getElementById(`proj-${idx}`);
-  if (!item) return;
-  const wasOpen = item.classList.contains('is-open');
-  item.classList.toggle('is-open', !wasOpen);
-  const btn = item.querySelector('.project-btn');
-  if (btn) btn.setAttribute('aria-expanded', String(!wasOpen));
 }
 
 /* ==============================================================
