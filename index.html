@@ -1,1272 +1,1408 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Miftahul Amri — Web Developer & AI Enthusiast</title>
-    
-    <!-- Meta SEO -->
-    <meta name="description" content="Portofolio resmi Miftahul Amri — Web Developer & AI Enthusiast. Aplikasi web modern, platform interaktif, dan integrasi kecerdasan buatan.">
-    <meta name="keywords" content="Miftahul Amri, Web Developer, Next.js, React, Tailwind CSS, Surakarta, AI Enthusiast">
-    <meta name="author" content="Miftahul Amri">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Miftahul Amri — Web Developer & AI Enthusiast">
-    <meta property="og:description" content="Portofolio produk digital, website instansi, platform edukasi, dan proyek berbasis AI.">
-    <meta property="og:type" content="website">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        deep: "#190d4b",
-                        v: "#5b2ff0",
-                        v2: "#8b5cf6",
-                        lilac: "#cdb9f5",
-                        ink: "#1c1733",
-                        mut: "#6f6b88",
-                        soft: "#f6f3ff",
-                        line: "#ece8f7",
-                        surface: "#ffffff"
-                    },
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-                        mono: ['"JetBrains Mono"', 'monospace']
-                    },
-                    maxWidth: {
-                        'page': '1140px'
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <style>
-        :root {
-            --deep: #190d4b;
-            --v: #5b2ff0;
-            --v2: #8b5cf6;
-            --lilac: #cdb9f5;
-            --ink: #1c1733;
-            --mut: #6f6b88;
-            --soft: #f6f3ff;
-            --line: #ece8f7;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Miftahul Amri — Web Developer & AI Enthusiast</title>
+<meta name="description" content="Portofolio resmi Miftahul Amri — Web Developer & AI Enthusiast dari Surakarta.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --v: #5b2ff0;
+  --v2: #8b5cf6;
+  --lilac: #cdb9f5;
+  --ink: #1c1733;
+  --mut: #6f6b88;
+  --bg: #f3effe;
+  --ib: #0d0826;
+  --im: #a9a2cf;
+  --il: rgba(255, 255, 255, 0.09);
+  --card-bg: #18123f;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 13.5px;
+  color: var(--ink);
+  background-color: var(--bg);
+  background-image: radial-gradient(rgba(91, 47, 240, 0.16) 1.2px, transparent 1.4px);
+  background-size: 26px 26px;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+a { color: inherit; text-decoration: none; }
+button, textarea, input { font-family: inherit; }
+:focus-visible { outline: 2px solid var(--v2); outline-offset: 2px; }
 
-        * { box-sizing: border-box; }
+/* Ambient Glow & Shapes */
+.glow {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: min(920px, 130vw);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side, rgba(139, 92, 246, 0.28), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+.deco { position: fixed; pointer-events: none; opacity: 0.55; z-index: 1; }
 
-        html, body {
-            overflow-x: hidden;
-            width: 100%;
-            max-width: 100vw;
-            background: #faf8fd;
-            color: var(--ink);
-            font-family: "Plus Jakarta Sans", system-ui, sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
+/* Top Header Bar */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 40;
+}
+.brand-lg {
+  font-weight: 800;
+  font-size: 17px;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+.brand-lg b { color: var(--v); }
 
-        ::selection {
-            background: var(--v);
-            color: #ffffff;
-        }
+/* Language Switcher Pill */
+.lang-pill {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(25, 13, 75, 0.1);
+  padding: 3px;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(25, 13, 75, 0.05);
+}
+.lang-btn {
+  border: 0;
+  background: transparent;
+  color: var(--mut);
+  font: 700 11px "Plus Jakarta Sans", sans-serif;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.lang-btn.active {
+  background: var(--v);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(91, 47, 240, 0.3);
+}
 
-        :focus-visible {
-            outline: 3px solid var(--v2);
-            outline-offset: 2px;
-        }
+/* ==============================================
+   DYNAMIC ISLAND CONTAINER
+   ============================================== */
+.isw {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 24px;
+  z-index: 30;
+}
+.isl {
+  position: relative;
+  width: 250px;
+  height: 56px;
+  background: var(--ib);
+  color: #fff;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(13, 8, 38, 0.42), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: width 0.55s cubic-bezier(0.2, 0.9, 0.25, 1.1),
+              height 0.55s cubic-bezier(0.2, 0.9, 0.25, 1.1),
+              border-radius 0.45s;
+}
+.isl.open {
+  width: min(720px, calc(100vw - 24px));
+  height: min(530px, calc(100vh - 120px));
+  border-radius: 36px;
+  cursor: default;
+}
 
-        /* Ambient Background Mesh */
-        .ambient-mesh {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-            background: 
-                radial-gradient(circle at 10% 15%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 85% 25%, rgba(91, 47, 240, 0.07) 0%, transparent 45%),
-                radial-gradient(circle at 50% 80%, rgba(205, 185, 245, 0.12) 0%, transparent 50%);
-        }
+/* Collapsed Mini Island */
+.mini {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+  padding: 0 16px;
+}
+.isl.open .mini {
+  opacity: 0;
+  pointer-events: none;
+}
+.mini-av {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+}
+.mini-av img { width: 100%; height: 100%; object-fit: cover; }
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: pl 2s infinite;
+  flex-shrink: 0;
+}
+@keyframes pl {
+  70% { box-shadow: 0 0 0 7px rgba(34, 197, 94, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+}
 
-        /* 2D Flat Sticker Micro-Animations */
-        @keyframes stickerFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-6px) rotate(2deg); }
-        }
-        @keyframes stickerWobble {
-            0%, 100% { transform: translateY(0) rotate(-3deg); }
-            50% { transform: translateY(-5px) rotate(3deg); }
-        }
-        @keyframes stickerGentle {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-4px) scale(1.04); }
-        }
-        .sticker-float {
-            animation: stickerFloat 4.5s ease-in-out infinite;
-            user-select: none;
-            pointer-events: none;
-        }
-        .sticker-wobble {
-            animation: stickerWobble 4s ease-in-out infinite;
-            user-select: none;
-            pointer-events: none;
-        }
-        .sticker-gentle {
-            animation: stickerGentle 3.2s ease-in-out infinite;
-            user-select: none;
-            pointer-events: none;
-        }
+/* Expanded Full Island */
+.full {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.isl.open .full {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3s 0.18s;
+}
 
-        /* Dynamic Island */
-        .dynamic-island {
-            background: rgba(25, 13, 75, 0.94);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            box-shadow: 0 16px 36px rgba(25, 13, 75, 0.28), 0 0 0 1px rgba(139, 92, 246, 0.15);
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+/* Island Close / Minimize Button */
+.isl-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--il);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--im);
+  font-size: 16px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 10;
+}
+.isl-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
 
-        .island-tab {
-            transition: all 0.2s ease;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        .island-tab:hover {
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.1);
-        }
-        .island-tab.active {
-            color: #ffffff;
-            background: linear-gradient(135deg, var(--v2), var(--v));
-            box-shadow: 0 4px 14px rgba(91, 47, 240, 0.4);
-        }
+/* Navigation Tabs */
+.tabs {
+  display: flex;
+  gap: 4px;
+  padding: 14px 46px 0 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: none;
+  justify-content: flex-start;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  border: 0;
+  background: none;
+  color: var(--im);
+  font: 700 12.5px "Plus Jakarta Sans", sans-serif;
+  padding: 7px 13px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+.tab:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
+.tab[aria-selected="true"] {
+  background: #fff;
+  color: var(--ib);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
 
-        /* Bento Card Styles */
-        .bento-card {
-            background: #ffffff;
-            border: 1px solid var(--line);
-            border-radius: 24px;
-            box-shadow: 0 4px 20px rgba(25, 13, 75, 0.04);
-            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-        }
-        .bento-card:hover {
-            box-shadow: 0 12px 32px rgba(25, 13, 75, 0.08);
-            border-color: #dcd3f5;
-        }
+/* Viewport Carousel */
+.vp {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  touch-action: pan-y;
+  margin-top: 6px;
+}
+.tr {
+  display: flex;
+  height: 100%;
+  transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.sl {
+  flex: none;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 14px 26px 24px;
+  scrollbar-width: thin;
+  scrollbar-color: #3a2f78 transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.sl textarea, .sl input { user-select: text; -webkit-user-select: text; }
 
-        /* Marquee */
-        .mask-marquee {
-            mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-        }
-        @keyframes scrollMarquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-            animation: scrollMarquee 26s linear infinite;
-        }
-        .animate-marquee:hover {
-            animation-play-state: paused;
-        }
+/* Pagination Dots */
+.pg {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 0 12px;
+  flex: none;
+}
+.pg i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--il);
+  transition: all 0.3s;
+}
+.pg i.on {
+  width: 18px;
+  border-radius: 3px;
+  background: var(--v2);
+}
 
-        /* Project Preview Window Mockup */
-        .win-mockup {
-            border: 1px solid var(--line);
-            border-radius: 18px;
-            overflow: hidden;
-            background: #fff;
-            box-shadow: 0 12px 36px rgba(25, 13, 75, 0.08);
-        }
-        .win-bar {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 9px 14px;
-            background: #faf8fd;
-            border-bottom: 1px solid var(--line);
-        }
-        .win-bar i {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--lilac);
-        }
+/* Slide Content Styles */
+.sl h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips span {
+  font-size: 11px;
+  font-weight: 600;
+  color: #cfc8f0;
+  background: var(--il);
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
 
-        /* Chips */
-        .chip {
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            background: rgba(255, 255, 255, 0.08);
-            color: #ffffff;
-            border-radius: 999px;
-            padding: 6px 14px;
-            font-size: 12.5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            backdrop-filter: blur(4px);
-        }
-        .chip:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: #ffffff;
-        }
-        .chip[aria-pressed="true"] {
-            background: #ffffff;
-            color: var(--v);
-            border-color: #ffffff;
-            font-weight: 700;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
+/* 1. TENTANG SLIDE */
+.ab { display: flex; align-items: center; gap: 14px; }
+.ab-av {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
+}
+.ab-av img { width: 100%; height: 100%; object-fit: cover; }
+.abn { flex: 1; min-width: 0; }
+.abn h2 { font-size: 19px; }
+.abn span { display: block; color: var(--im); font-size: 12.5px; line-height: 1.4; }
+.flag-svg {
+  display: inline-block;
+  vertical-align: middle;
+  width: 15px;
+  height: 10px;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-left: 4px;
+}
+.rw { display: flex; gap: 5px; flex-shrink: 0; }
+.rw a {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--il);
+  display: grid;
+  place-items: center;
+  color: #e6e1fa;
+  transition: all 0.2s;
+}
+.rw a:hover { background: rgba(255, 255, 255, 0.15); color: #fff; }
+.rw svg { width: 15px; height: 15px; }
+.rw .cvl {
+  width: auto;
+  padding: 0 12px;
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 999px;
+}
+.hl { margin-top: 16px; font-size: 22px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.25; }
+.hl em { font-style: normal; color: var(--v2); }
+.bio { margin-top: 8px; color: #cfc8f0; line-height: 1.6; max-width: 60ch; font-size: 13px; }
+.lh { margin: 16px 0 8px; font-size: 11.5px; font-weight: 800; color: var(--v2); text-transform: uppercase; letter-spacing: 0.05em; }
+.lv { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.la {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: var(--card-bg);
+  border: 1px solid var(--il);
+  border-radius: 16px;
+  padding: 11px 12px;
+}
+.la b { display: block; font-size: 12px; line-height: 1.3; }
+.la small { display: block; font-size: 11px; color: var(--im); line-height: 1.4; }
+.la small.s { color: #6ee7a8; margin-top: 3px; font-weight: 600; }
+.lr {
+  position: relative;
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+.lr:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid #22c55e;
+  animation: rg 2s infinite;
+}
+@keyframes rg {
+  from { transform: scale(1); opacity: 0.55; }
+  to { transform: scale(1.75); opacity: 0; }
+}
 
-        /* View Switching Animations */
-        .view-pane {
-            display: none;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .view-pane.active {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
+/* 2. PROYEK SLIDE (Interactive Card Stack) */
+.dkw { display: grid; grid-template-columns: 1fr 32px; gap: 12px; height: 100%; }
+.dk { position: relative; min-height: 310px; touch-action: none; }
+.dc {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 290px;
+  display: flex;
+  gap: 16px;
+  padding: 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--il);
+  border-radius: 20px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+  transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s;
+}
+.dc .th {
+  flex: 1.15;
+  height: 100%;
+  min-width: 0;
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #110b2e;
+  border: 1px solid var(--il);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dc .th img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.dt {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 4px 6px 4px 0;
+}
+.dt h3 { font-size: 18px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.25; }
+.dt p { font-size: 12px; color: var(--im); line-height: 1.5; }
+.go {
+  align-self: flex-start;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--ib);
+  background: #fff;
+  padding: 7px 15px;
+  border-radius: 999px;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.go:hover { background: var(--lilac); }
+.dn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+.dn button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--il);
+  background: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dn button:hover { background: rgba(255, 255, 255, 0.15); }
+.dd { display: flex; flex-direction: column; gap: 5px; }
+.dd i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--il);
+  transition: all 0.3s;
+}
+.dd i.on {
+  height: 16px;
+  border-radius: 3px;
+  background: var(--v2);
+}
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f8f6fc;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cdb9f5;
-            border-radius: 999px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--v);
-        }
-    </style>
+/* 3. PENGALAMAN SLIDE (Timeline Gantt) */
+.gt { display: grid; grid-template-columns: 180px 1fr; margin-top: 4px; }
+.gcl > div {
+  height: 27px;
+  line-height: 27px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #d9d3f3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+.gcl > div:first-child { height: 22px; }
+.gp {
+  position: relative;
+  background-image: linear-gradient(to right, var(--il) 1px, transparent 1px);
+  background-size: 25% 100%;
+  border-right: 1px solid var(--il);
+}
+.ax { position: relative; height: 22px; font-size: 10.5px; color: var(--im); font-family: "JetBrains Mono", monospace; }
+.ax span { position: absolute; top: 2px; padding-left: 5px; }
+.ax span:last-child { transform: translateX(-100%); padding: 0 5px 0 0; }
+.gb { position: relative; height: 27px; }
+.bar-track {
+  position: absolute;
+  top: 6px;
+  height: 15px;
+  border-radius: 7px;
+  background: var(--c);
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.sl:not(.act) .bar-track { transform: scaleX(0); transition: none; }
+.sl.act .bar-track { transition-delay: calc(var(--k) * 60ms + 0.15s); }
+.now-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 95.5%;
+  border-left: 1px dashed #6ee7a8;
+}
+.lgd { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 14px; font-size: 11px; color: var(--im); }
+.lgd i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; }
+
+/* 4. PENDIDIKAN SLIDE (Step Ladder) */
+.st2 { display: flex; align-items: flex-end; gap: 10px; height: 320px; }
+.stp {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: var(--h);
+  border-radius: 20px 20px 8px 8px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 3px;
+  background: linear-gradient(180deg, #241a5c, #18123f);
+  border: 1px solid var(--il);
+  overflow: hidden;
+  transition: height 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s;
+  transition-delay: calc(var(--k) * 0.15s + 0.1s);
+}
+.sl:not(.act) .stp { height: 34px; opacity: 0; transition: none; }
+.stp small { font-size: 11px; color: var(--im); line-height: 1.35; }
+.stp b { font-size: 13.5px; line-height: 1.3; }
+.stp .yr { font-size: 18px; font-weight: 800; letter-spacing: -0.03em; color: var(--lilac); margin-top: 4px; }
+.stp.cur { background: linear-gradient(180deg, #6d3df5, #4a22c9); border-color: transparent; }
+.stp.cur small { color: #e0d6ff; }
+.stp.cur .yr { color: #fff; }
+.nw {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+.nw:before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #4ade80; }
+
+/* 5. SERTIFIKAT SLIDE (Ticket Stubs) */
+.tk {
+  position: relative;
+  display: grid;
+  grid-template-columns: 95px 1fr 65px;
+  background: var(--card-bg);
+  border: 1px solid var(--il);
+  border-radius: 16px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  align-items: center;
+}
+.tk:before, .tk:after {
+  content: "";
+  position: absolute;
+  left: 88px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--ib);
+}
+.tk:before { top: -7px; }
+.tk:after { bottom: -7px; }
+.tk .y {
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--lilac);
+  border-right: 2px dashed rgba(255, 255, 255, 0.15);
+  height: 100%;
+}
+.tk .tb { padding: 14px 16px; }
+.tk b { display: block; font-size: 13.5px; line-height: 1.35; }
+.tk small { color: var(--im); font-size: 11.5px; }
+.tk .pdf-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 0;
+  color: #fff;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  margin-right: 14px;
+  transition: all 0.2s;
+}
+.tk .pdf-btn:hover { background: #fff; color: var(--ib); }
+
+/* 6. KONTAK SLIDE (Call / Dispatch) */
+.cl { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; padding: 6px 0 0; }
+.cl h2 { font-size: 18px; }
+.cl .st { font-size: 11.5px; color: #6ee7a8; }
+.nd { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.nd button {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: none;
+  color: #fff;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font: 600 12px "Plus Jakarta Sans", sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.nd button[aria-pressed="true"] { background: #fff; color: var(--ib); border-color: #fff; }
+.tx2 {
+  width: 100%;
+  background: var(--il);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  outline: 0;
+  resize: none;
+  border-radius: 14px;
+  color: #fff;
+  font: 500 13px "Plus Jakarta Sans", sans-serif;
+  padding: 10px 14px;
+  min-height: 56px;
+}
+.tx2::placeholder { color: #8b84b5; }
+.call {
+  width: 100%;
+  margin-top: 10px;
+  border: 0;
+  border-radius: 14px;
+  background: #22c55e;
+  color: #04210f;
+  font: 800 13.5px "Plus Jakarta Sans", sans-serif;
+  padding: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+.call:hover { background: #4ade80; }
+.call svg { width: 17px; height: 17px; }
+.sub { margin-top: 8px; color: var(--im); font-size: 11.5px; text-align: center; }
+
+/* Interactive Hint */
+.hint {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 60px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--mut);
+  transition: opacity 0.5s;
+  pointer-events: none;
+  z-index: 10;
+}
+.hint.off { opacity: 0; }
+
+/* Bottom Footer (Required Strict Wording) */
+.ftr {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 16px 14px;
+  text-align: center;
+  font-size: 11.5px;
+  color: var(--mut);
+  border-top: 1px solid rgba(25, 13, 75, 0.08);
+  background: rgba(243, 239, 254, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.ftr-sub { font-size: 10.5px; color: #8882a8; }
+.yapp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #7b759e;
+  margin-top: 2px;
+  transition: color 0.2s;
+}
+.yapp-link:hover { color: var(--v); }
+
+/* PDF Preview Modal */
+.pdf-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: rgba(13, 8, 38, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.pdf-modal.open { opacity: 1; pointer-events: auto; }
+.pdf-box {
+  background: #ffffff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 800px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+.pdf-hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: #faf8fd;
+  border-bottom: 1px solid var(--il);
+}
+.pdf-hdr h3 { font-size: 13.5px; font-weight: 700; color: var(--ink); }
+.pdf-close {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--mut);
+  line-height: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .lv { grid-template-columns: 1fr; }
+  .ab { flex-wrap: wrap; }
+  .dc { flex-direction: column; height: 320px; }
+  .dc .th { flex: none; height: 135px; }
+  .dt p { display: none; }
+  .gt { grid-template-columns: 120px 1fr; }
+  .tk { grid-template-columns: 80px 1fr 55px; }
+  .tk .y { font-size: 16px; }
+  .isl.open { border-radius: 28px; }
+  .sl { padding: 12px 18px 20px; }
+  .isw { padding: 10px; }
+  .hint { bottom: 68px; }
+}
+</style>
 </head>
-<body class="relative min-h-screen text-ink pb-12 pt-20 sm:pt-24">
+<body>
 
-    <!-- Ambient Gradient Background -->
-    <div class="ambient-mesh" aria-hidden="true"></div>
+<!-- Ambient Mesh Glow -->
+<div class="glow" aria-hidden="true"></div>
 
-    <!-- ==============================================================
-         CENTERPIECE DYNAMIC ISLAND (Sticky Morphing Capsule Nav)
-         ============================================================== -->
-    <header class="fixed top-3 sm:top-5 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-[760px] pointer-events-none">
-        <nav class="dynamic-island pointer-events-auto rounded-full px-2.5 sm:px-3.5 py-2 flex items-center justify-between gap-1 sm:gap-2" aria-label="Dynamic Island Navigation">
-            
-            <!-- Left: Live Status Pill -->
-            <div class="flex items-center gap-2 pl-2 pr-1">
-                <span class="relative flex h-2.5 w-2.5 flex-shrink-0">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
-                </span>
-                <span id="island-status-txt" class="text-[11.5px] sm:text-xs font-bold text-white/90 hidden md:inline whitespace-nowrap">
-                    Available for Work
-                </span>
-            </div>
+<!-- Ambient Vector Decos -->
+<svg class="deco" style="left:7vw;bottom:14vh" width="86" height="86" viewBox="0 0 100 100" aria-hidden="true"><path d="M62 12a40 40 0 1 0 26 58 29 29 0 1 1-26-58z" fill="#8b5cf6"/></svg>
+<svg class="deco" style="right:8vw;top:16vh" width="76" height="76" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="31" fill="none" stroke="#8b5cf6" stroke-width="18"/></svg>
+<svg class="deco" style="right:12vw;bottom:18vh" width="56" height="56" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 14l40 68H10z" fill="#4b22a3" stroke="#4b22a3" stroke-width="8" stroke-linejoin="round"/></svg>
+<svg class="deco" style="left:12vw;top:18vh" width="50" height="50" viewBox="0 0 100 100" aria-hidden="true"><path d="M24 24l52 52M76 24L24 76" stroke="#cdb9f5" stroke-width="14" stroke-linecap="round"/></svg>
 
-            <!-- Center: Interactive View Switcher Tabs -->
-            <div class="flex items-center gap-1 bg-white/10 p-0.5 rounded-full" id="island-tabs" role="tablist">
-                <button type="button" role="tab" aria-selected="true" data-tab="all" class="island-tab active px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
-                    <span>⚡</span> <span id="tab-txt-all" class="hidden xs:inline">Semua</span>
-                </button>
-                <button type="button" role="tab" aria-selected="false" data-tab="projects" class="island-tab px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
-                    <span>💻</span> <span id="tab-txt-projects" class="hidden xs:inline">Proyek</span>
-                </button>
-                <button type="button" role="tab" aria-selected="false" data-tab="journey" class="island-tab px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
-                    <span>🚀</span> <span id="tab-txt-journey" class="hidden xs:inline">Karier</span>
-                </button>
-                <button type="button" role="tab" aria-selected="false" data-tab="contact" class="island-tab px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
-                    <span>💬</span> <span id="tab-txt-contact" class="hidden xs:inline">Kontak</span>
-                </button>
-            </div>
+<!-- Top Bar: Brand & Language Switcher -->
+<header class="top-bar">
+  <span class="brand-lg">miftah<b>.</b></span>
+  
+  <div class="lang-pill" aria-label="Pilih Bahasa / Language">
+    <button id="btn-id" type="button" class="lang-btn active" onclick="setLang('id')">ID</button>
+    <button id="btn-en" type="button" class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</header>
 
-            <!-- Right: Language Switcher Toggle -->
-            <div class="flex items-center bg-white/10 p-0.5 rounded-full flex-shrink-0" id="island-lang">
-                <button id="btn-lang-id" type="button" class="px-2 py-0.5 sm:py-1 rounded-full text-[11px] font-bold transition-all bg-v text-white shadow-xs" title="Bahasa Indonesia">
-                    ID
-                </button>
-                <button id="btn-lang-en" type="button" class="px-2 py-0.5 sm:py-1 rounded-full text-[11px] font-bold text-white/70 hover:text-white transition-all" title="English">
-                    EN
-                </button>
-            </div>
-        </nav>
-    </header>
-
-
-    <!-- ==============================================================
-         MAIN BENTO DASHBOARD CONTAINER
-         ============================================================== -->
-    <main class="relative z-10 max-w-page mx-auto px-4 sm:px-6">
-
-        <!-- ==============================================
-             1. HERO BENTO CARD (Personal Profile & Identity)
-             ============================================== -->
-        <section id="pane-hero" class="mb-6">
-            <div class="bento-card p-6 sm:p-8 md:p-10 relative overflow-hidden">
-                
-                <!-- Background Accent Glow -->
-                <div class="absolute -right-20 -top-20 w-72 h-72 rounded-full bg-purple-100/60 blur-3xl pointer-events-none"></div>
-
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
-                    
-                    <!-- Left: Avatar & Identity -->
-                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
-                        
-                        <!-- Avatar with Waving Hand Sticker -->
-                        <div class="relative flex-shrink-0">
-                            <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-white shadow-lg bg-lilac/30">
-                                <img src="./profile.png" alt="Miftahul Amri" class="w-full h-full object-cover">
-                            </div>
-                            <!-- Waving Hand Sticker (Flipped naturally & anchored) -->
-                            <div class="absolute bottom-0 -right-2 w-11 h-11 sm:w-13 sm:h-13 sticker-wobble pointer-events-none select-none z-20">
-                                <img src="./stickers/hand.png" alt="Halo!" class="w-full h-full object-contain filter drop-shadow-md">
-                            </div>
-                        </div>
-
-                        <!-- Name & Title -->
-                        <div>
-                            <div class="flex flex-wrap items-center gap-2 mb-1">
-                                <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-ink tracking-tight">
-                                    Miftahul Amri
-                                </h1>
-                                <!-- Mini SVG Indonesia Flag Badge -->
-                                <span class="inline-flex items-center gap-1.5 text-xs font-bold text-v bg-soft px-2.5 py-0.5 rounded-full border border-line" title="Surakarta, Indonesia">
-                                    <span>Surakarta</span>
-                                    <span class="inline-flex items-center overflow-hidden rounded-[2px] border border-black/10 shadow-xs">
-                                        <svg class="w-4 h-2.5" viewBox="0 0 3 2">
-                                            <rect width="3" height="1" fill="#e70011"/>
-                                            <rect y="1" width="3" height="1" fill="#ffffff"/>
-                                        </svg>
-                                    </span>
-                                </span>
-                            </div>
-
-                            <p class="text-sm sm:text-base font-semibold text-mut flex items-center gap-2">
-                                <span class="text-ink font-bold">Web Developer</span>
-                                <span class="text-mut/40">•</span>
-                                <span class="inline-flex items-center gap-1 text-v font-bold">
-                                    <span>AI Enthusiast</span>
-                                    <img src="./stickers/sparkle.png" alt="AI Sparkle" class="w-5 h-5 sticker-gentle inline-block drop-shadow-sm">
-                                </span>
-                            </p>
-
-                            <p id="txt-bio" class="text-xs sm:text-sm text-[#4a4668] mt-2.5 max-w-xl leading-relaxed">
-                                Web developer yang antusias membangun aplikasi web modern dan mengintegrasikan kecerdasan buatan. Berfokus pada perancangan produk digital andal, sistem interaktif, dan solusi praktis yang memecahkan masalah nyata.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Right: Quick Actions & Social Channels -->
-                    <div class="flex flex-wrap md:flex-col items-start md:items-end justify-between gap-4 pt-3 md:pt-0 border-t md:border-t-0 border-line">
-                        
-                        <!-- CV Download Button -->
-                        <a href="./CV Mifthahul Amri.pdf" download class="inline-flex items-center gap-2 bg-v hover:bg-deep text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all" id="cv-btn">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/>
-                            </svg>
-                            <span id="txt-cv">Unduh CV</span>
-                        </a>
-
-                        <!-- Social Icon Links -->
-                        <div class="flex items-center gap-1.5">
-                            <a href="https://github.com/itsmifai" target="_blank" rel="noopener" class="w-9 h-9 rounded-full border border-line flex items-center justify-center text-mut hover:text-v hover:bg-soft transition-all" title="GitHub itsmifai">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg>
-                            </a>
-                            <a href="https://instagram.com/itsmifai" target="_blank" rel="noopener" class="w-9 h-9 rounded-full border border-line flex items-center justify-center text-mut hover:text-v hover:bg-soft transition-all" title="Instagram @itsmifai">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
-                            </a>
-                            <a href="https://www.linkedin.com/in/mifamri/" target="_blank" rel="noopener" class="w-9 h-9 rounded-full border border-line flex items-center justify-center text-mut hover:text-v hover:bg-soft transition-all" title="LinkedIn Profile">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-                            </a>
-                            <a href="mailto:mifthahulamri@gmail.com" class="w-9 h-9 rounded-full border border-line flex items-center justify-center text-mut hover:text-v hover:bg-soft transition-all" title="Kirim Email">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>
-                            </a>
-                            <a href="https://wa.me/6285716823315" target="_blank" rel="noopener" class="w-9 h-9 rounded-full border border-line flex items-center justify-center text-mut hover:text-emerald-600 hover:bg-emerald-50 transition-all" title="WhatsApp Langsung">
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tech Stack Chips Row -->
-                <div class="mt-6 pt-5 border-t border-line flex flex-wrap items-center gap-2">
-                    <span id="txt-skills-title" class="text-xs font-bold text-mut uppercase tracking-wider mr-2">Tech Stack:</span>
-                    <span class="text-xs font-semibold text-ink bg-soft px-3 py-1 rounded-full border border-line">Next.js 16</span>
-                    <span class="text-xs font-semibold text-ink bg-soft px-3 py-1 rounded-full border border-line">React 19</span>
-                    <span class="text-xs font-semibold text-ink bg-soft px-3 py-1 rounded-full border border-line">Tailwind CSS v4</span>
-                    <span class="text-xs font-semibold text-ink bg-soft px-3 py-1 rounded-full border border-line">Supabase</span>
-                    <span class="text-xs font-semibold text-ink bg-soft px-3 py-1 rounded-full border border-line">PostgreSQL</span>
-                    <span class="text-xs font-semibold text-ink bg-soft px-3 py-1 rounded-full border border-line">Prisma ORM</span>
-                    <span class="text-xs font-semibold text-ink bg-soft px-3 py-1 rounded-full border border-line">Django</span>
-                    <span class="text-xs font-semibold text-ink bg-soft px-3 py-1 rounded-full border border-line">Groq &amp; Gemini AI</span>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ==============================================
-             2. PARTNERS LOGO MARQUEE STRIP
-             ============================================== -->
-        <section class="mb-6 overflow-hidden">
-            <div class="bento-card py-4 px-6 mask-marquee overflow-hidden">
-                <div class="flex items-center gap-10 whitespace-nowrap animate-marquee w-max">
-                    <!-- Set 1 -->
-                    <img src="./partner/mim-gambiranom.webp" alt="MIM Gambiranom" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
-                    <img src="./partner/imm-simun.webp" alt="IMM SIMUN" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
-                    <img src="./partner/vibecal.webp" alt="VibeCal" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
-                    <img src="./partner/foundry.webp" alt="Foundry" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
-                    <img src="./partner/barang-bareng.webp" alt="Barang-Bareng" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
-                    <img src="./partner/layakbisnis.webp" alt="LayakBisnis" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
-                    <img src="./partner/setara.webp" alt="Setara" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
-                    <img src="./partner/ct-quiz.webp" alt="CT Quiz" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
-
-                    <!-- Set 2 (Duplicate for seamless loop) -->
-                    <img src="./partner/mim-gambiranom.webp" alt="MIM Gambiranom" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100" aria-hidden="true">
-                    <img src="./partner/imm-simun.webp" alt="IMM SIMUN" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100" aria-hidden="true">
-                    <img src="./partner/vibecal.webp" alt="VibeCal" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100" aria-hidden="true">
-                    <img src="./partner/foundry.webp" alt="Foundry" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100" aria-hidden="true">
-                    <img src="./partner/barang-bareng.webp" alt="Barang-Bareng" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100" aria-hidden="true">
-                    <img src="./partner/layakbisnis.webp" alt="LayakBisnis" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100" aria-hidden="true">
-                    <img src="./partner/setara.webp" alt="Setara" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100" aria-hidden="true">
-                    <img src="./partner/ct-quiz.webp" alt="CT Quiz" class="h-8 md:h-10 w-auto object-contain flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100" aria-hidden="true">
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ==============================================
-             3. SECTION: PROYEK PILIHAN (Interactive Showcase)
-             ============================================== -->
-        <section id="section-projects" class="mb-6 scroll-mt-24">
-            <div class="bento-card p-6 sm:p-8">
-                
-                <!-- Section Header -->
-                <div class="flex items-start sm:items-center justify-between pb-5 border-b border-line mb-6 gap-4">
-                    <div>
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="w-2.5 h-2.5 rounded-full bg-v animate-pulse"></span>
-                            <span id="txt-proj-badge" class="text-xs font-bold text-v uppercase tracking-widest">Portofolio Produk Digital</span>
-                        </div>
-                        <h2 id="txt-proj-title" class="text-xl sm:text-2xl font-extrabold text-ink tracking-tight">Proyek Pilihan</h2>
-                        <p id="txt-proj-desc" class="text-xs sm:text-sm text-mut mt-1">Aplikasi web, platform sekolah &amp; organisasi, dan produk berbasis integrasi AI.</p>
-                    </div>
-                    <!-- Sticker Browser Window -->
-                    <div class="flex-shrink-0 sticker-float -mt-1 sm:mt-0">
-                        <img src="./stickers/browser.png" alt="Browser" class="w-14 sm:w-18 h-auto drop-shadow-md">
-                    </div>
-                </div>
-
-                <!-- Showcase Grid: Left Selector List / Right Live Stage -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    
-                    <!-- Left Column: Interactive Project Items (5 cols) -->
-                    <div class="lg:col-span-5 space-y-3" id="projects-list">
-                        <!-- Populated dynamically via JS -->
-                    </div>
-
-                    <!-- Right Column: Live Sticky Mockup Stage (7 cols) -->
-                    <div class="lg:col-span-7 sticky top-24" id="project-stage">
-                        <!-- Populated dynamically via JS -->
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ==============================================
-             4. SECTION: PERJALANAN & PENDIDIKAN (Career & Credentials)
-             ============================================== -->
-        <section id="section-journey" class="mb-6 scroll-mt-24">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                
-                <!-- Left: Career Journey Timeline (7 cols) -->
-                <div class="lg:col-span-7 bento-card p-6 sm:p-8">
-                    <div class="flex items-center justify-between pb-4 border-b border-line mb-6">
-                        <h2 class="text-lg sm:text-xl font-extrabold text-ink tracking-tight flex items-center gap-2">
-                            <span id="txt-exp-title">Pengalaman Kerja &amp; Mengajar</span>
-                            <img src="./stickers/rocket.png" alt="Rocket" class="w-6 h-auto sticker-wobble inline-block drop-shadow-sm">
-                        </h2>
-                        <span id="txt-exp-badge" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                            Aktif Terkini di Atas
-                        </span>
-                    </div>
-
-                    <!-- Timeline List -->
-                    <div class="space-y-6 relative pl-6 border-l-2 border-line" id="exp-list">
-                        <!-- Populated dynamically via JS -->
-                    </div>
-
-                    <!-- Toggle Button for Older Experience -->
-                    <div class="pt-5 pl-1">
-                        <button id="btn-toggle-exp" type="button" class="inline-flex items-center gap-2 text-xs font-bold text-v hover:text-white bg-soft hover:bg-v px-4 py-2.5 rounded-full transition-all border border-purple-200/60 shadow-xs cursor-pointer group">
-                            <span id="btn-toggle-exp-text">Lihat 5 Pengalaman Lainnya</span>
-                            <svg id="btn-toggle-exp-icon" class="w-3.5 h-3.5 transform transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Right: Education & Certifications (5 cols) -->
-                <div class="lg:col-span-5 space-y-6">
-                    
-                    <!-- Education Bento -->
-                    <div class="bento-card p-6">
-                        <h3 id="txt-edu-title" class="text-base font-extrabold text-ink pb-3 border-b border-line mb-4">Pendidikan Formal</h3>
-                        <div class="space-y-3">
-                            <div class="p-3.5 rounded-xl bg-soft border border-line">
-                                <div class="flex items-center justify-between mb-1">
-                                    <span class="text-xs font-bold text-v font-mono">2023 — SEKARANG</span>
-                                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">Ongoing</span>
-                                </div>
-                                <h4 class="text-sm font-bold text-ink">S1 Pendidikan Teknik Informatika</h4>
-                                <p class="text-xs text-mut mt-0.5">Universitas Muhammadiyah Surakarta</p>
-                            </div>
-
-                            <div class="p-3.5 rounded-xl bg-soft border border-line">
-                                <span class="text-xs font-bold text-mut font-mono">2019 — 2022</span>
-                                <h4 class="text-sm font-bold text-ink mt-0.5">Madrasah Aliyah</h4>
-                                <p class="text-xs text-mut mt-0.5">MAs Ibnu Taimiyah Bogor</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Certifications Bento -->
-                    <div class="bento-card p-6">
-                        <div class="flex items-center justify-between pb-3 border-b border-line mb-4">
-                            <h3 id="txt-cert-title" class="text-base font-extrabold text-ink">Sertifikasi &amp; Lisensi</h3>
-                            <span id="txt-cert-badge" class="text-xs font-bold text-v bg-soft px-2.5 py-0.5 rounded-full">3 Lisensi</span>
-                        </div>
-                        <div class="space-y-3">
-                            <!-- Cert 1 -->
-                            <div class="p-3 rounded-xl border border-line hover:border-v2 transition-all flex items-center justify-between gap-2">
-                                <div>
-                                    <span class="text-[10px] font-mono font-bold text-v uppercase">AWS ACADEMY</span>
-                                    <h4 class="text-xs font-bold text-ink leading-tight">Cloud Foundations</h4>
-                                </div>
-                                <button onclick="openPdf('./sertif/aws-academy-graduate-aws-academy-cloud-foundations-completion-certificate.pdf', 'AWS Academy Cloud Foundations')" class="text-xs font-bold text-v bg-soft hover:bg-v hover:text-white px-2.5 py-1.5 rounded-lg transition-all flex-shrink-0">
-                                    PDF
-                                </button>
-                            </div>
-                            <!-- Cert 2 -->
-                            <div class="p-3 rounded-xl border border-line hover:border-v2 transition-all flex items-center justify-between gap-2">
-                                <div>
-                                    <span class="text-[10px] font-mono font-bold text-v uppercase">DICODING</span>
-                                    <h4 class="text-xs font-bold text-ink leading-tight">Dasar Pemrograman Web</h4>
-                                </div>
-                                <button onclick="openPdf('./sertif/sertifikat_course_123_4040182_210924195159.pdf', 'Dasar Pemrograman Web - Dicoding')" class="text-xs font-bold text-v bg-soft hover:bg-v hover:text-white px-2.5 py-1.5 rounded-lg transition-all flex-shrink-0">
-                                    PDF
-                                </button>
-                            </div>
-                            <!-- Cert 3 -->
-                            <div class="p-3 rounded-xl border border-line hover:border-v2 transition-all flex items-center justify-between gap-2">
-                                <div>
-                                    <span class="text-[10px] font-mono font-bold text-v uppercase">HARISENIN</span>
-                                    <h4 class="text-xs font-bold text-ink leading-tight">Intro to JavaScript</h4>
-                                </div>
-                                <button onclick="openPdf('./sertif/introduction-to-javascript-for-beginner-harisenin.pdf', 'Intro to JavaScript - Harisenin')" class="text-xs font-bold text-v bg-soft hover:bg-v hover:text-white px-2.5 py-1.5 rounded-lg transition-all flex-shrink-0">
-                                    PDF
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- ==============================================
-             5. SECTION: KONTAK & WHATSAPP CTA
-             ============================================== -->
-        <section id="section-contact" class="mb-6 scroll-mt-24">
-            <div class="rounded-3xl p-6 sm:p-9 relative overflow-hidden bg-gradient-to-br from-v2 to-v text-white shadow-xl shadow-purple-500/15">
-                
-                <!-- Flying Paper Airplane Sticker -->
-                <img src="./stickers/plane.png" alt="Plane" class="absolute top-4 right-4 sm:top-6 sm:right-8 w-16 sm:w-24 md:w-32 h-auto sticker-wobble opacity-95 drop-shadow-xl pointer-events-none select-none z-20">
-
-                <div class="max-w-xl relative z-10">
-                    <span id="txt-cta-badge" class="text-xs font-bold text-lilac uppercase tracking-wider block mb-2">Konsultasi &amp; Kolaborasi</span>
-                    <h2 id="txt-cta-title" class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-2.5 text-white">
-                        Punya rencana proyek? Ceritakan.
-                    </h2>
-                    <p id="txt-cta-desc" class="text-xs sm:text-sm text-white/90 leading-relaxed mb-5">
-                        Website instansi sekolah, platform organisasi mahasiswa, portofolio personal, maupun solusi otomatisasi berbasis AI. Pesan akan langsung diarahkan ke WhatsApp.
-                    </p>
-
-                    <!-- Interactive Needs Chips -->
-                    <div class="mb-5">
-                        <span id="txt-cta-needs" class="text-xs font-semibold text-white/80 block mb-2">Pilih Kebutuhan Anda:</span>
-                        <div class="flex flex-wrap gap-2" id="needs-chips">
-                            <button class="chip" type="button" aria-pressed="true">Website Sekolah</button>
-                            <button class="chip" type="button" aria-pressed="false">Platform Organisasi</button>
-                            <button class="chip" type="button" aria-pressed="false">Web Portofolio</button>
-                            <button class="chip" type="button" aria-pressed="false">Aplikasi AI &amp; Tool</button>
-                            <button class="chip" type="button" aria-pressed="false">Kontrak Freelance</button>
-                            <button class="chip" type="button" aria-pressed="false">Lainnya</button>
-                        </div>
-                    </div>
-
-                    <!-- Input + Direct Send Button -->
-                    <div class="bg-white rounded-2xl p-2 flex flex-col sm:flex-row gap-2 shadow-lg items-stretch sm:items-center">
-                        <input type="text" id="wa-text-input" placeholder="Tulis catatan singkat kebutuhan Anda..." class="flex-1 border-0 outline-none text-ink text-sm px-3.5 py-2 font-medium bg-transparent focus:ring-0 placeholder:text-mut">
-                        <button id="wa-send-btn" type="button" class="bg-v hover:bg-deep text-white font-bold text-xs sm:text-sm py-2.5 px-5 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm">
-                            <span id="txt-cta-send">Kirim ke WhatsApp</span>
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                        </button>
-                    </div>
-
-                    <!-- Direct Alternative Contacts -->
-                    <div class="flex flex-wrap items-center gap-5 mt-5 text-xs text-white/80 font-medium">
-                        <a href="mailto:mifthahulamri@gmail.com" class="hover:text-white flex items-center gap-1.5 transition-colors">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>
-                            <span>mifthahulamri@gmail.com</span>
-                        </a>
-                        <a href="https://wa.me/6285716823315" target="_blank" rel="noopener" class="hover:text-white flex items-center gap-1.5 transition-colors">
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                            <span>+62 857-1682-3315</span>
-                        </a>
-                        <span class="text-white/60">Surakarta, ID</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ==============================================
-             6. FOOTER (Strict User Requirement)
-             ============================================== -->
-        <footer class="pt-8 pb-12 text-center text-xs text-mut border-t border-line">
-            <p>&copy; <span id="current-year">2026</span> Miftahul Amri &middot; Surakarta, Indonesia</p>
-            <p class="mt-1 text-[11px] text-mut/80">
-                Web Developer &bull; AI Enthusiast
-            </p>
-            <a href="https://yapp.ink/itsmifai" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 mt-3 text-[11px] text-mut/60 hover:text-v transition-colors group">
-                <svg class="w-3.5 h-3.5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-                Support via Yapp
-            </a>
-        </footer>
-
-    </main>
-
-
-    <!-- ==============================================
-         PDF CERTIFICATE PREVIEW MODAL
-         ============================================== -->
-    <div id="pdf-modal" class="fixed inset-0 z-50 bg-[#101828]/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 opacity-0 pointer-events-none transition-all duration-300">
-        <div class="bg-white rounded-2xl w-full max-w-4xl h-[85vh] flex flex-col overflow-hidden shadow-2xl border border-line">
-            <div class="flex items-center justify-between px-5 py-3.5 border-b border-line bg-soft">
-                <h3 id="pdf-modal-title" class="font-bold text-sm text-ink truncate pr-4">Sertifikat</h3>
-                <button id="pdf-modal-close" class="w-8 h-8 rounded-full hover:bg-line text-mut hover:text-ink flex items-center justify-center transition-all cursor-pointer">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-                </button>
-            </div>
-            <div class="flex-1 w-full bg-slate-50 relative">
-                <iframe id="pdf-viewer" src="" class="w-full h-full border-0"></iframe>
-            </div>
-        </div>
+<!-- ==============================================
+     CENTERPIECE DYNAMIC ISLAND
+     ============================================== -->
+<div class="isw" id="isw">
+  <div class="isl" id="isl" tabindex="0" role="button" aria-expanded="false" aria-label="Buka portofolio Miftahul Amri">
+    
+    <!-- Collapsed View (Pill Mode) -->
+    <div class="mini">
+      <div class="mini-av">
+        <img src="./profile.png" alt="Miftahul Amri">
+      </div>
+      <span>Miftahul Amri</span>
+      <span class="dot"></span>
     </div>
 
+    <!-- Expanded Full Dashboard View -->
+    <div class="full">
+      <button class="isl-close" type="button" aria-label="Tutup island" title="Tutup" onclick="event.stopPropagation(); setOpen(false);">&times;</button>
+      <div class="tabs" id="tabs" role="tablist"></div>
+      <div class="vp" id="vp">
+        <div class="tr" id="tr"></div>
+      </div>
+      <div class="pg" id="pg"></div>
+    </div>
 
-    <!-- ==============================================
-         JAVASCRIPT LOGIC (Interactive Bilingual Island)
-         ============================================== -->
-    <script>
-        let currentLang = localStorage.getItem('portfolio_lang') || 'id';
+  </div>
+</div>
 
-        const i18n = {
-            id: {
-                status: "Available for Work",
-                tabAll: "Semua",
-                tabProjects: "Proyek",
-                tabJourney: "Karier",
-                tabContact: "Kontak",
-                bio: "Web developer yang antusias membangun aplikasi web modern dan mengintegrasikan kecerdasan buatan. Berfokus pada perancangan produk digital andal, sistem interaktif, dan solusi praktis yang memecahkan masalah nyata.",
-                cv: "Unduh CV",
-                skillsTitle: "Tech Stack:",
-                projBadge: "Portofolio Produk Digital",
-                projTitle: "Proyek Pilihan",
-                projDesc: "Aplikasi web, platform sekolah & organisasi, dan produk berbasis integrasi AI.",
-                projOpen: "Buka Proyek",
-                projMore: "Lihat {count} Proyek Lainnya",
-                projLess: "Tampilkan Lebih Sedikit",
-                expTitle: "Pengalaman Kerja & Mengajar",
-                expBadge: "Aktif Terkini di Atas",
-                expMore: "Lihat 5 Pengalaman Lainnya",
-                expLess: "Tampilkan Lebih Sedikit",
-                eduTitle: "Pendidikan Formal",
-                certTitle: "Sertifikasi & Lisensi",
-                certBadge: "3 Lisensi",
-                ctaBadge: "Konsultasi & Kolaborasi",
-                ctaTitle: "Punya rencana proyek? Ceritakan.",
-                ctaDesc: "Website instansi sekolah, platform organisasi mahasiswa, portofolio personal, maupun solusi otomatisasi berbasis AI. Pesan akan langsung diarahkan ke WhatsApp.",
-                ctaNeeds: "Pilih Kebutuhan Anda:",
-                ctaPlaceholder: "Tulis catatan singkat kebutuhan Anda...",
-                ctaSend: "Kirim ke WhatsApp",
-                experiences: [
-                    {
-                        date: "JULI 2026 — SEKARANG",
-                        role: "Pengajar Akademia Ruangguru Coding",
-                        company: "PT Ruang Raya Indonesia (Ruangguru) • Sragen",
-                        desc: "Mengajar materi coding secara hybrid (offline & online) untuk program Ruangguru Coding di sekolah-sekolah wilayah Kabupaten Sragen, membimbing siswa membangun kompetensi digital melalui kurikulum terstruktur."
-                    },
-                    {
-                        date: "AGT 2026 — SEKARANG",
-                        role: "Freelance Elite Educator (Coding Teacher)",
-                        company: "Al Azhar IIBS (by PT. Alhazen)",
-                        desc: "Melaksanakan bimbingan dan pengajaran materi dasar-dasar pengembangan web dalam kegiatan ekstrakurikuler coding untuk siswa kelas 7 - 9 SMP guna menumbuhkan daya kreasi teknologi sejak dini."
-                    },
-                    {
-                        date: "SEPT 2026 — SEKARANG",
-                        role: "Asisten Laboratorium Pemrograman Web",
-                        company: "Laboratorium PTI UMS",
-                        desc: "Membimbing praktikum mahasiswa dalam pengembangan web mulai dari dasar HTML, CSS, JavaScript hingga framework Django, serta membantu evaluasi tugas dan pengelolaan kegiatan praktikum di Laboratorium PTI UMS."
-                    },
-                    {
-                        date: "2023 — JULI 2026",
-                        role: "IT Helpdesk Staff (Internship)",
-                        company: "DSTI Universitas Muhammadiyah Surakarta",
-                        desc: "Melayani stakeholder terkait kendala akun SSO login, menangani pengajuan surat masuk dari lembaga terkait website, jaringan, dan IT, serta diberikan hak akses mengedit database mahasiswa UMS sesuai kebutuhan."
-                    },
-                    {
-                        date: "FEB — JULI 2026",
-                        role: "Asisten Laboratorium Basis Data",
-                        company: "Laboratorium Basis Data PTI UMS",
-                        desc: "Membimbing praktikum pemodelan ERD, SQL query lanjutan, perancangan skema relasional, dan asistensi proyek database mahasiswa."
-                    },
-                    {
-                        date: "JAN — FEB 2026",
-                        role: "Website Developer — Institusi Pendidikan",
-                        company: "MI Muhammadiyah Gambiranom",
-                        desc: "Membangun kembali website profil sekolah dasar dari nol menggunakan Next.js dan PostgreSQL untuk promosi publik dan pelatihan konten guru."
-                    },
-                    {
-                        date: "2026",
-                        role: "Website Developer — Organisasi Mahasiswa",
-                        company: "IMM Siti Munjiyah FKIP UMS",
-                        desc: "Membangun portal naskah, struktur pengurus, dan arsip digital kaderisasi berbasis Next.js dan Supabase."
-                    },
-                    {
-                        date: "SEPT 2025 — JAN 2026",
-                        role: "Asisten Laboratorium Sistem Operasi",
-                        company: "Laboratorium PTI UMS",
-                        desc: "Mengajar praktikum Linux OS, struktur file, permission, manajemen proses, perintah terminal CLI, dan shell scripting."
-                    }
-                ],
-                needs: [
-                    "Website Sekolah",
-                    "Platform Organisasi",
-                    "Web Portofolio",
-                    "Aplikasi AI & Tool",
-                    "Kontrak Freelance",
-                    "Lainnya"
-                ]
-            },
-            en: {
-                status: "Available for Work",
-                tabAll: "All",
-                tabProjects: "Projects",
-                tabJourney: "Career",
-                tabContact: "Contact",
-                bio: "Web developer passionate about building modern web applications and integrating artificial intelligence. Focused on crafting reliable digital products, interactive systems, and practical solutions that solve real-world problems.",
-                cv: "Download CV",
-                skillsTitle: "Tech Stack:",
-                projBadge: "Digital Product Portfolio",
-                projTitle: "Featured Projects",
-                projDesc: "Web applications, educational & community platforms, and AI-integrated products.",
-                projOpen: "Open Project",
-                projMore: "View {count} More Projects",
-                projLess: "Show Less",
-                expTitle: "Work & Teaching Experience",
-                expBadge: "Current Roles at Top",
-                expMore: "View 5 More Experiences",
-                expLess: "Show Less",
-                eduTitle: "Formal Education",
-                certTitle: "Certifications & Licenses",
-                certBadge: "3 Licenses",
-                ctaBadge: "Consultation & Collaboration",
-                ctaTitle: "Have a project in mind? Let's talk.",
-                ctaDesc: "School websites, student organization platforms, personal portfolios, or AI automation solutions. Messages will be directed straight to WhatsApp.",
-                ctaNeeds: "Select Your Needs:",
-                ctaPlaceholder: "Write a brief note about your project needs...",
-                ctaSend: "Send to WhatsApp",
-                experiences: [
-                    {
-                        date: "JULY 2026 — PRESENT",
-                        role: "Coding Educator — Akademia Ruangguru",
-                        company: "PT Ruang Raya Indonesia (Ruangguru) • Sragen",
-                        desc: "Teaching hybrid coding curriculum (offline & online) for Ruangguru Coding programs across primary & secondary schools in Sragen Regency, mentoring students in core digital skills."
-                    },
-                    {
-                        date: "AUG 2026 — PRESENT",
-                        role: "Freelance Elite Educator (Coding Teacher)",
-                        company: "Al Azhar IIBS (by PT. Alhazen)",
-                        desc: "Guiding junior high school students (grades 7-9) in foundational web development within coding extracurriculars to spark digital creativity and computational problem-solving."
-                    },
-                    {
-                        date: "SEPT 2026 — PRESENT",
-                        role: "Web Programming Teaching Assistant",
-                        company: "PTI UMS Laboratory",
-                        desc: "Supervising undergraduate lab practicums in web development from HTML, CSS, JavaScript fundamentals to Django, evaluating project assignments, and managing laboratory operations."
-                    },
-                    {
-                        date: "2023 — JULY 2026",
-                        role: "IT Helpdesk Staff (Internship)",
-                        company: "Information & Communication Technology Directorate (DSTI) UMS",
-                        desc: "Assisted university stakeholders with SSO credentials, processed official technical inquiries regarding institutional websites and networking, with authorized database administration."
-                    },
-                    {
-                        date: "FEB — JULY 2026",
-                        role: "Database Teaching Assistant",
-                        company: "Database Laboratory PTI UMS",
-                        desc: "Mentored student practicums covering ERD modeling, advanced relational SQL queries, schema normalization, and student capstone database implementations."
-                    },
-                    {
-                        date: "JAN — FEB 2026",
-                        role: "Web Developer — Primary Education",
-                        company: "MI Muhammadiyah Gambiranom",
-                        desc: "Re-engineered primary school profile website from scratch using Next.js and PostgreSQL for public relations, including interactive content management training for teachers."
-                    },
-                    {
-                        date: "2026",
-                        role: "Web Developer — Student Organization",
-                        company: "IMM Siti Munjiyah FKIP UMS",
-                        desc: "Engineered official publishing portal, leadership directory, and cadre digital archive with Next.js and Supabase."
-                    },
-                    {
-                        date: "SEPT 2025 — JAN 2026",
-                        role: "Operating Systems Teaching Assistant",
-                        company: "PTI UMS Laboratory",
-                        desc: "Instructed Linux OS lab modules: filesystem architecture, permissions, process lifecycle management, shell scripting, and terminal workflow."
-                    }
-                ],
-                needs: [
-                    "School Website",
-                    "Org Platform",
-                    "Portfolio Web",
-                    "AI Apps & Tools",
-                    "Freelance Contract",
-                    "Other"
-                ]
-            }
-        };
+<p class="hint" id="hint">Arahkan kursor atau ketuk island untuk membuka portofolio</p>
 
-        const projectsData = [
-            {
-                title: "Website IMM SIMUN",
-                short_id: "Portal organisasi kemahasiswaan IMM SIMUN FKIP UMS",
-                short_en: "Student organization portal for IMM SIMUN FKIP UMS",
-                desc_id: "Portal informasi resmi dan arsip digital kaderisasi PK IMM Siti Munjiyah FKIP UMS berbasis Next.js 16 dan Supabase untuk pengelolaan naskah, agenda, dan struktur organisasi.",
-                desc_en: "Official portal and digital archive for PK IMM Siti Munjiyah FKIP UMS built with Next.js 16 and Supabase for managing agendas, publications, and organization structure.",
-                url: "https://imm-simun.ums.ac.id/",
-                banner: "./project-image/imm.webp",
-                partner: "./partner/imm-simun.webp",
-                tags: ["Next.js 16", "React 19", "Tailwind CSS", "Supabase"]
-            },
-            {
-                title: "VibeCal AI",
-                short_id: "Zero-effort AI calendar dari Google Vibe Hackathon",
-                short_en: "Zero-effort AI calendar built at Google Vibe Hackathon",
-                desc_id: "Kalender pintar cerdas hasil Google Vibe Hackathon yang mengekstrak jadwal otomatis langsung dari kalimat bahasa alami pengguna via Gemini Flash dan Groq API.",
-                desc_en: "Intelligent calendar built during Google Vibe Hackathon that extracts schedule events from natural language input using Gemini Flash and Groq API.",
-                url: "https://github.com/itsmifai/vibecal",
-                banner: "./project-image/vibecal.webp",
-                partner: "./partner/vibecal.webp",
-                tags: ["Gemini Flash", "Groq API", "Next.js 16", "Tailwind CSS"]
-            },
-            {
-                title: "MIM Gambiranom",
-                short_id: "Website profil madrasah & CMS mandiri sekolah dasar",
-                short_en: "Primary school profile website & custom CMS",
-                desc_id: "Website profil dan sistem CMS mandiri untuk MI Muhammadiyah Gambiranom menggantikan blogspot lama, memudahkan dewan guru mempublikasikan prestasi dan kegiatan sekolah.",
-                desc_en: "School profile website and custom CMS for MI Muhammadiyah Gambiranom replacing legacy blogspot, empowering teachers to publish school news and student achievements.",
-                url: "https://mimgambiranom.site/",
-                banner: "./project-image/mim.webp",
-                partner: "./partner/mim-gambiranom.webp",
-                tags: ["Next.js 16", "Prisma ORM", "PostgreSQL", "Custom CMS"]
-            },
-            {
-                title: "Foundry Path",
-                short_id: "Personal learning path builder dengan graf dependensi skill tree",
-                short_en: "Interactive learning roadmap builder with skill tree graphs",
-                desc_id: "Platform visual interaktif untuk merancang roadmap belajar personal dengan graf dependensi skill tree menggunakan React Flow dan didukung asisten AI kontekstual.",
-                desc_en: "Interactive visual platform to design personalized learning roadmaps with skill-tree dependency graphs powered by React Flow and a contextual AI assistant.",
-                url: "https://github.com/itsmifai/foundry",
-                banner: "./project-image/foundry.webp",
-                partner: "./partner/foundry.webp",
-                tags: ["Next.js 14", "React Flow", "Supabase", "DeepSeek AI"]
-            },
-            {
-                title: "Barang-Bareng",
-                short_id: "Platform sewa barang peer-to-peer dua arah",
-                short_en: "Peer-to-peer item rental platform",
-                desc_id: "Platform persewaan barang P2P lengkap dengan negosiasi chat real-time, sistem booking kalender, manajemen deposit, dan alur konfirmasi transaksi dua arah.",
-                desc_en: "P2P equipment rental platform featuring real-time chat negotiation, calendar booking system, security deposit management, and two-way transaction flow.",
-                url: "https://barang-bareng.vercel.app/",
-                banner: "./project-image/barang-bareng.webp",
-                partner: "./partner/barang-bareng.webp",
-                tags: ["Next.js 16", "React 19", "Supabase", "shadcn/ui"]
-            },
-            {
-                title: "LayakBisnis AI",
-                short_id: "Kalkulator kelayakan finansial UMKM F&B + AI Advisor",
-                short_en: "F&B SME financial feasibility calculator + AI Advisor",
-                desc_id: "Tool analisis kelayakan usaha F&B untuk menghitung BEP, ROI, Payback Period otomatis, dilengkapi AI Advisor rekomendasi finansial dan integrasi payment gateway Midtrans.",
-                desc_en: "Financial feasibility tool for F&B businesses calculating automated BEP, ROI, and Payback Period, equipped with an AI financial advisor and Midtrans integration.",
-                url: "https://www.layakbisnis.com/",
-                banner: "./project-image/layakbisnis.webp",
-                partner: "./partner/layakbisnis.webp",
-                tags: ["DeepSeek AI", "Next.js 16", "Supabase", "Midtrans"]
-            },
-            {
-                title: "Setara Special Ed",
-                short_id: "AI asisten guru pendidikan khusus & penyusunan PPI otomatis",
-                short_en: "AI assistant for special education teachers & IEP builder",
-                desc_id: "Platform asisten berbasis AI untuk guru sekolah luar biasa dalam mengidentifikasi kebutuhan belajar siswa berkebutuhan khusus dan menyusun draft Program Pembelajaran Individual (PPI).",
-                desc_en: "AI-powered assistant platform for special education teachers to assess special needs and generate draft Individualized Education Programs (IEP).",
-                url: "https://setara-deploy.vercel.app/",
-                banner: "./project-image/incluedu.webp",
-                partner: "./partner/setara.webp",
-                tags: ["DeepSeek AI", "Next.js 14", "React 18", "Supabase"]
-            },
-            {
-                title: "CT Quiz Lab",
-                short_id: "Platform asesmen Computational Thinking interaktif",
-                short_en: "Interactive Computational Thinking assessment platform",
-                desc_id: "Platform pembelajaran dan asesmen Computational Thinking (CT) interaktif untuk siswa dan guru, dilengkapi generator kuis berbasis AI dan laporan capaian 4 pilar CT.",
-                desc_en: "Interactive Computational Thinking (CT) learning and assessment platform for students and educators with AI quiz generator and 4-pillar analytics.",
-                url: "https://ct-quiz-lab.vercel.app/",
-                banner: "./project-image/ct-quiz.webp",
-                partner: "./partner/ct-quiz.webp",
-                tags: ["Next.js 14", "Prisma ORM", "Groq API", "PostgreSQL"]
-            }
-        ];
+<!-- ==============================================
+     STRICT USER-SPECIFIED FOOTER
+     ============================================== -->
+<footer class="ftr">
+  <div>&copy; 2026 Miftahul Amri &middot; Surakarta, Indonesia</div>
+  <div class="ftr-sub">Web Developer &bull; AI Enthusiast</div>
+  <div>
+    <a href="https://yapp.ink/itsmifai" target="_blank" rel="noopener" class="yapp-link">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+      Support via Yapp
+    </a>
+  </div>
+</footer>
 
-        let activeProjectIndex = 0;
-        let isPjExpanded = false;
-        let isExpExpanded = false;
+<!-- PDF Preview Modal -->
+<div class="pdf-modal" id="pdf-modal">
+  <div class="pdf-box">
+    <div class="pdf-hdr">
+      <h3 id="pdf-title">Sertifikat</h3>
+      <a id="pdf-direct" href="#" target="_blank" rel="noopener" style="font-size:12px;color:var(--v);font-weight:700;margin-left:auto;margin-right:14px;text-decoration:none">Unduh / Buka ↗</a>
+      <button class="pdf-close" onclick="closePdf()">&times;</button>
+    </div>
+    <iframe id="pdf-frame" src="" style="width:100%;height:100%;border:0"></iframe>
+  </div>
+</div>
 
-        function renderProjects() {
-            const projectsContainer = document.getElementById("projects-list");
-            if (!projectsContainer) return;
-            const t = i18n[currentLang];
-            const initialVisible = 4;
-            const extraCount = projectsData.length - initialVisible;
+<script>
+/* ==============================================================
+   DATA DEFINITION (Bilingual ID / EN)
+   ============================================================== */
+let lang = localStorage.getItem('portfolio_lang') || 'id';
 
-            const projectsHtml = projectsData.map((p, i) => {
-                const isExtra = i >= initialVisible;
-                const isHidden = isExtra && !isPjExpanded;
-                const pShort = currentLang === 'en' ? p.short_en : p.short_id;
-                const isSelected = i === activeProjectIndex;
+const WA_PHONE = "6285716823315";
+const CV_FILE = "./CV Mifthahul Amri.pdf";
 
-                return `
-                <div class="p-3.5 rounded-2xl border transition-all cursor-pointer ${isSelected ? 'border-v bg-soft/70 shadow-sm' : 'border-line hover:border-v2/60 bg-white'} ${isHidden ? 'hidden' : ''}" data-project-idx="${i}">
-                    <div class="flex items-center justify-between gap-2">
-                        <div class="flex items-center gap-2 min-w-0">
-                            <img src="${p.partner}" alt="" class="w-4 h-4 object-contain flex-shrink-0" onerror="this.style.display='none'">
-                            <span class="text-[10px] font-mono font-bold text-v uppercase truncate">${p.tags[0]}</span>
-                        </div>
-                        <span class="text-xs text-mut ${isSelected ? 'text-v font-bold' : ''}">↗</span>
-                    </div>
-                    <h4 class="text-sm font-bold text-ink mt-1 truncate ${isSelected ? 'text-v' : ''}">${p.title}</h4>
-                    <p class="text-xs text-mut mt-0.5 line-clamp-1">${pShort}</p>
+const content = {
+  id: {
+    tabs: ["Tentang", "Proyek", "Pengalaman", "Pendidikan", "Sertifikat", "Kontak"],
+    hint: "Arahkan kursor atau ketuk island untuk menjelajah",
+    headline: 'Web yang rapi, <em>AI yang berguna.</em>',
+    bio: "Web developer yang antusias membangun aplikasi web modern dan mengintegrasikan kecerdasan buatan. Berfokus pada perancangan produk digital andal, sistem interaktif, dan solusi praktis yang memecahkan masalah nyata.",
+    activeHeading: "Sedang Aktif",
+    liveRoles: [
+      ["Pengajar Ruangguru Coding", "Ruangguru · Sragen", "sejak Jul 2026"],
+      ["Coding Teacher", "Al Azhar IIBS", "sejak Agu 2026"],
+      ["Asisten Lab", "Pemrograman Web · PTI UMS", "sejak Sep 2026"]
+    ],
+    skills: ["Next.js 16", "React 19", "Tailwind CSS", "Supabase", "PostgreSQL", "Prisma ORM", "Django", "JavaScript", "Linux CLI", "Gemini AI", "Groq API", "DeepSeek"],
+    projects: [
+      ["Website IMM SIMUN", "Portal organisasi kemahasiswaan IMM SIMUN FKIP UMS: naskah, struktur, dan arsip digital kaderisasi.", "Next.js 16, Supabase", "https://imm-simun.ums.ac.id/", "./project-image/imm.webp"],
+      ["VibeCal AI", "Kalender pintar cerdas hasil Google Vibe Hackathon yang mengekstrak jadwal otomatis langsung dari bahasa alami.", "Gemini, Groq, Next.js", "https://github.com/itsmifai/vibecal", "./project-image/vibecal.webp"],
+      ["Website MIM Gambiranom", "Website profil madrasah & CMS mandiri sekolah dasar menggantikan blogspot lama.", "Next.js 16, PostgreSQL", "https://mimgambiranom.site/", "./project-image/mim.webp"],
+      ["Foundry Path", "Personal learning path builder visual interaktif dengan graf dependensi skill tree & asisten AI.", "React Flow, Supabase", "https://github.com/itsmifai/foundry", "./project-image/foundry.webp"],
+      ["Barang-Bareng", "Platform sewa barang peer-to-peer dua arah lengkap dengan chat negosiasi real-time & booking.", "Next.js 16, Supabase", "https://barang-bareng.vercel.app/", "./project-image/barang-bareng.webp"],
+      ["LayakBisnis AI", "Kalkulator kelayakan finansial UMKM F&B (BEP, ROI, Payback Period) + AI Advisor finansial.", "DeepSeek, Midtrans", "https://www.layakbisnis.com/", "./project-image/layakbisnis.webp"],
+      ["Setara Special Ed", "AI asisten guru pendidikan khusus & penyusunan draf Program Pembelajaran Individual (PPI).", "DeepSeek, Supabase", "https://setara-deploy.vercel.app/", "./project-image/incluedu.webp"],
+      ["CT Quiz Lab", "Platform asesmen Computational Thinking interaktif dengan generator kuis AI & laporan 4 pilar.", "Prisma, Groq API", "https://ct-quiz-lab.vercel.app/", "./project-image/ct-quiz.webp"]
+    ],
+    btnOpen: "Buka proyek ↗",
+    bars: [
+      ["IT Helpdesk DSTI UMS", 2023, 2026.5, "#ffffff", "Melayani kendala akun SSO, jaringan & administrasi database mahasiswa."],
+      ["Lab Sistem Operasi", 2025.67, 2026.04, "#8b5cf6", "Mengajar Linux CLI, manajemen file dan permission, serta shell scripting."],
+      ["Web MI Gambiranom", 2026, 2026.17, "#cdb9f5", "Membangun ulang website profil madrasah & pelatihan CMS guru."],
+      ["Web IMM Siti Munjiyah", 2026, 2026.83, "#cdb9f5", "Membangun portal informasi, naskah digital, dan kaderisasi."],
+      ["Lab Basis Data", 2026.08, 2026.5, "#8b5cf6", "Membimbing praktikum pemodelan ERD, SQL query lanjutan, dan skema relasional."],
+      ["Pengajar Ruangguru", 2026.5, 2026.83, "#8b5cf6", "Mengajar coding hybrid di sekolah-sekolah Kabupaten Sragen."],
+      ["Coding Teacher Al Azhar", 2026.58, 2026.83, "#8b5cf6", "Mengajar pengembangan web di ekstrakurikuler coding SMP kelas 7–9."],
+      ["Lab Pemrograman Web", 2026.67, 2026.83, "#8b5cf6", "Membimbing praktikum HTML, CSS, JavaScript, hingga framework Django."]
+    ],
+    timelineLegend: ["Mengajar & asisten lab", "Web developer", "IT support", "sekarang"],
+    edu: [
+      ["S1 Pendidikan Teknik Informatika", "Universitas Muhammadiyah Surakarta · 2023 – sekarang"],
+      ["Madrasah Aliyah", "MAs Ibnu Taimiyah Bogor · 2019 – 2022"],
+      ["Madrasah Tsanawiyah", "MTs Arafah Bitung · 2016 – 2019"]
+    ],
+    nowLabel: "sekarang",
+    certs: [
+      ["2026", "Cloud Foundations", "AWS Academy Graduate", "./sertif/AWS_Academy_Graduate___Cloud_Web_Application_Builder___Training_Badge_Badge20260712-20-tyns3j.pdf"],
+      ["2024", "Dasar Pemrograman Web", "Dicoding Indonesia", "./sertif/dasar-pemrogaram-web-dicoding.pdf"],
+      ["2023", "Intro to JavaScript for Beginner", "Harisenin.com", "./sertif/introduction-to-javascript-for-beginner-harisenin.pdf"]
+    ],
+    contactHeading: "Punya proyek? Ceritakan.",
+    contactSub: "Terbuka untuk proyek freelance & kolaborasi",
+    needs: ["Website sekolah", "Platform organisasi", "Web portofolio", "Aplikasi AI", "Lainnya"],
+    contactPlaceholder: "Tulis singkat kebutuhanmu...",
+    contactBtn: "Hubungi via WhatsApp",
+    contactEmailAlt: "Atau lewat email: mifthahulamri@gmail.com"
+  },
+  en: {
+    tabs: ["About", "Projects", "Experience", "Education", "Certificates", "Contact"],
+    hint: "Hover or tap the island to explore portfolio",
+    headline: 'Crafted web, <em>purposeful AI.</em>',
+    bio: "Web developer passionate about building modern web applications and integrating artificial intelligence. Focused on crafting reliable digital products, interactive systems, and practical solutions that solve real-world problems.",
+    activeHeading: "Currently Active",
+    liveRoles: [
+      ["Coding Educator", "Ruangguru · Sragen", "since Jul 2026"],
+      ["Coding Teacher", "Al Azhar IIBS", "since Aug 2026"],
+      ["Teaching Assistant", "Web Programming · PTI UMS", "since Sep 2026"]
+    ],
+    skills: ["Next.js 16", "React 19", "Tailwind CSS", "Supabase", "PostgreSQL", "Prisma ORM", "Django", "JavaScript", "Linux CLI", "Gemini AI", "Groq API", "DeepSeek"],
+    projects: [
+      ["Website IMM SIMUN", "Student organization portal for IMM SIMUN FKIP UMS: publishing, leadership, and digital archive.", "Next.js 16, Supabase", "https://imm-simun.ums.ac.id/", "./project-image/imm.webp"],
+      ["VibeCal AI", "Intelligent calendar built at Google Vibe Hackathon that automatically extracts schedules from natural speech.", "Gemini, Groq, Next.js", "https://github.com/itsmifai/vibecal", "./project-image/vibecal.webp"],
+      ["Website MIM Gambiranom", "Primary school profile website & custom CMS replacing legacy blogspot.", "Next.js 16, PostgreSQL", "https://mimgambiranom.site/", "./project-image/mim.webp"],
+      ["Foundry Path", "Interactive visual personal roadmap builder with skill tree dependency graphs & AI assistant.", "React Flow, Supabase", "https://github.com/itsmifai/foundry", "./project-image/foundry.webp"],
+      ["Barang-Bareng", "P2P equipment rental marketplace with real-time negotiation chat & calendar booking.", "Next.js 16, Supabase", "https://barang-bareng.vercel.app/", "./project-image/barang-bareng.webp"],
+      ["LayakBisnis AI", "F&B SME financial feasibility calculator (BEP, ROI, Payback Period) + AI Financial Advisor.", "DeepSeek, Midtrans", "https://www.layakbisnis.com/", "./project-image/layakbisnis.webp"],
+      ["Setara Special Ed", "AI-powered assistant platform for special education teachers to assess needs and generate IEP drafts.", "DeepSeek, Supabase", "https://setara-deploy.vercel.app/", "./project-image/incluedu.webp"],
+      ["CT Quiz Lab", "Interactive Computational Thinking assessment platform with AI quiz generation & 4-pillar analytics.", "Prisma, Groq API", "https://ct-quiz-lab.vercel.app/", "./project-image/ct-quiz.webp"]
+    ],
+    btnOpen: "Open project ↗",
+    bars: [
+      ["IT Helpdesk DSTI UMS", 2023, 2026.5, "#ffffff", "Stakeholder SSO credential support & database administration."],
+      ["Operating Systems Lab", 2025.67, 2026.04, "#8b5cf6", "Taught Linux CLI, file permissions, process management, and shell scripting."],
+      ["Web MI Gambiranom", 2026, 2026.17, "#cdb9f5", "Rebuilt school website and trained teachers on CMS administration."],
+      ["Web IMM Siti Munjiyah", 2026, 2026.83, "#cdb9f5", "Engineered official publishing portal, digital archive, and directories."],
+      ["Database Laboratory", 2026.08, 2026.5, "#8b5cf6", "Mentored practicums on ERD modeling, relational SQL, and schema normalization."],
+      ["Coding Teacher Ruangguru", 2026.5, 2026.83, "#8b5cf6", "Teaching hybrid coding curriculum across schools in Sragen Regency."],
+      ["Coding Teacher Al Azhar", 2026.58, 2026.83, "#8b5cf6", "Instructing web fundamentals in junior high school coding extracurriculars."],
+      ["Web Programming Lab", 2026.67, 2026.83, "#8b5cf6", "Supervising undergraduate web development lab sessions from HTML/JS to Django."]
+    ],
+    timelineLegend: ["Teaching & Lab Assistant", "Web Developer", "IT Support", "Present"],
+    edu: [
+      ["B.Ed in Informatics Education", "Universitas Muhammadiyah Surakarta · 2023 – Present"],
+      ["Islamic Senior High School", "MAs Ibnu Taimiyah Bogor · 2019 – 2022"],
+      ["Islamic Junior High School", "MTs Arafah Bitung · 2016 – 2019"]
+    ],
+    nowLabel: "now",
+    certs: [
+      ["2026", "Cloud Foundations", "AWS Academy Graduate", "./sertif/AWS_Academy_Graduate___Cloud_Web_Application_Builder___Training_Badge_Badge20260712-20-tyns3j.pdf"],
+      ["2024", "Web Development Fundamentals", "Dicoding Indonesia", "./sertif/dasar-pemrogaram-web-dicoding.pdf"],
+      ["2023", "Intro to JavaScript for Beginner", "Harisenin.com", "./sertif/introduction-to-javascript-for-beginner-harisenin.pdf"]
+    ],
+    contactHeading: "Have a project in mind? Let's talk.",
+    contactSub: "Open for freelance projects & collaboration",
+    needs: ["School website", "Org platform", "Portfolio web", "AI application", "Other"],
+    contactPlaceholder: "Write a brief note about your project...",
+    contactBtn: "Contact via WhatsApp",
+    contactEmailAlt: "Or via email: mifthahulamri@gmail.com"
+  }
+};
+
+/* Social Icons (Clean Inline SVGs, No Emojis) */
+const icons = {
+  ig: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>',
+  github: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg>',
+  linkedin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>',
+  mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>',
+  wa: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>',
+  arrowUp: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>',
+  arrowDown: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>'
+};
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* ==============================================================
+   RENDER SLIDES
+   ============================================================== */
+const $ = id => document.getElementById(id);
+let slideIdx = 0;
+let deckIdx = 0;
+let selectedNeed = "";
+
+function renderAll() {
+  const c = content[lang];
+  $("hint").textContent = c.hint;
+
+  // 1. Tabs
+  $("tabs").innerHTML = c.tabs.map((name, i) => `
+    <button class="tab" role="tab" type="button" data-i="${i}" aria-selected="${i === slideIdx}">${name}</button>
+  `).join("");
+
+  // 2. Slides
+  const slideTemplates = [
+    // Slide 0: Tentang
+    () => `
+      <div class="ab">
+        <div class="ab-av"><img src="./profile.png" alt="Miftahul Amri"></div>
+        <div class="abn">
+          <h2>Miftahul Amri <span class="flag-svg" title="Indonesia"><svg viewBox="0 0 3 2"><rect width="3" height="1" fill="#e70011"/><rect y="1" width="3" height="1" fill="#ffffff"/></svg></span></h2>
+          <span>Web Developer & AI Enthusiast &middot; Surakarta</span>
+        </div>
+        <div class="rw">
+          <a href="https://github.com/itsmifai" target="_blank" rel="noopener" title="GitHub">${icons.github}</a>
+          <a href="https://instagram.com/itsmifai" target="_blank" rel="noopener" title="Instagram">${icons.ig}</a>
+          <a href="https://www.linkedin.com/in/mifamri/" target="_blank" rel="noopener" title="LinkedIn">${icons.linkedin}</a>
+          <a href="mailto:mifthahulamri@gmail.com" title="Email">${icons.mail}</a>
+          <a href="https://wa.me/${WA_PHONE}" target="_blank" rel="noopener" title="WhatsApp">${icons.wa}</a>
+          <a class="cvl" href="${CV_FILE}" download title="Download CV">CV</a>
+        </div>
+      </div>
+      <p class="hl">${c.headline}</p>
+      <p class="bio">${esc(c.bio)}</p>
+      <div class="lh">${esc(c.activeHeading)}</div>
+      <div class="lv">
+        ${c.liveRoles.map(l => `
+          <div class="la">
+            <span class="lr"></span>
+            <div>
+              <b>${esc(l[0])}</b>
+              <small>${esc(l[1])}</small>
+              <small class="s">${esc(l[2])}</small>
+            </div>
+          </div>
+        `).join("")}
+      </div>
+      <div class="chips" style="margin-top:14px">
+        ${c.skills.map(s => `<span>${esc(s)}</span>`).join("")}
+      </div>
+    `,
+
+    // Slide 1: Proyek
+    () => `
+      <div class="dkw">
+        <div class="dk" id="dk">
+          ${c.projects.map((p, i) => `
+            <article class="dc" data-i="${i}">
+              <div class="th">
+                <img src="${esc(p[4])}" alt="${esc(p[0])}" draggable="false" loading="lazy">
+              </div>
+              <div class="dt">
+                <h3>${esc(p[0])}</h3>
+                <p>${esc(p[1])}</p>
+                <div class="chips">
+                  ${p[2].split(", ").map(t => `<span>${esc(t)}</span>`).join("")}
                 </div>
-                `;
-            }).join("");
+                ${p[3] ? `<a class="go" href="${esc(p[3])}" target="_blank" rel="noopener">${esc(c.btnOpen)}</a>` : ""}
+              </div>
+            </article>
+          `).join("")}
+        </div>
+        <div class="dn">
+          <button type="button" id="dup" aria-label="Previous">${icons.arrowUp}</button>
+          <div class="dd">${c.projects.map(() => "<i></i>").join("")}</div>
+          <button type="button" id="ddn" aria-label="Next">${icons.arrowDown}</button>
+        </div>
+      </div>
+    `,
 
-            const toggleBtnText = isPjExpanded ? t.projLess : t.projMore.replace('{count}', extraCount);
-            const toggleBtnHtml = extraCount > 0 ? `
-                <button id="btn-toggle-projects" type="button" class="w-full py-2.5 px-3 rounded-xl border border-line bg-soft hover:bg-purple-100/70 text-ink hover:text-v font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer">
-                    <span id="btn-toggle-pj-text">${toggleBtnText}</span>
-                    <svg id="btn-toggle-pj-icon" class="w-3.5 h-3.5 transform transition-transform" style="transform: ${isPjExpanded ? 'rotate(180deg)' : 'rotate(0deg)'}" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-                </button>
-            ` : '';
+    // Slide 2: Pengalaman (Gantt Chart)
+    () => `
+      <div class="gt">
+        <div class="gcl">
+          <div></div>
+          ${c.bars.map(b => `<div title="${esc(b[4])}">${esc(b[0])}</div>`).join("")}
+        </div>
+        <div class="gp">
+          <div class="ax">
+            ${[2023, 2024, 2025, 2026, 2027].map((y, i) => `<span style="left:${i * 25}%">${y}</span>`).join("")}
+          </div>
+          ${c.bars.map((b, i) => `
+            <div class="gb" title="${esc(b[4])}">
+              <i class="bar-track" style="--k:${i};--c:${b[3]};left:${((b[1] - 2023) / 4) * 100}%;width:${Math.max(2, ((b[2] - b[1]) / 4) * 100)}%"></i>
+            </div>
+          `).join("")}
+          <i class="now-line"></i>
+        </div>
+      </div>
+      <div class="lgd">
+        <span><i style="background:#8b5cf6"></i>${c.timelineLegend[0]}</span>
+        <span><i style="background:#cdb9f5"></i>${c.timelineLegend[1]}</span>
+        <span><i style="background:#ffffff"></i>${c.timelineLegend[2]}</span>
+        <span><i style="background:#6ee7a8"></i>${c.timelineLegend[3]}</span>
+      </div>
+    `,
 
-            projectsContainer.innerHTML = projectsHtml + toggleBtnHtml;
-            updateStage(activeProjectIndex);
-        }
+    // Slide 3: Pendidikan
+    () => `
+      <div class="st2">
+        ${[...c.edu].reverse().map((e, i) => {
+          const [nm, yr] = e[1].split(" · ");
+          const heights = [130, 190, 260];
+          return `
+            <div class="stp ${i === 2 ? 'cur' : ''}" style="--h:${heights[i]}px;--k:${i}">
+              ${i === 2 ? `<span class="nw">${c.nowLabel}</span>` : ""}
+              <small>${esc(e[0])}</small>
+              <b>${esc(nm)}</b>
+              <span class="yr">${esc(yr)}</span>
+            </div>
+          `;
+        }).join("")}
+      </div>
+    `,
 
-        function updateStage(i) {
-            const stage = document.getElementById("project-stage");
-            if (!stage) return;
-            activeProjectIndex = i;
-            const p = projectsData[i];
-            const t = i18n[currentLang];
-            const pDesc = currentLang === 'en' ? p.desc_en : p.desc_id;
-            const cleanUrl = p.url ? p.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : '';
+    // Slide 4: Sertifikat
+    () => c.certs.map((ct, i) => `
+      <div class="tk">
+        <div class="y">${ct[0]}</div>
+        <div class="tb">
+          <b>${esc(ct[1])}</b>
+          <small>${esc(ct[2])}</small>
+        </div>
+        <button class="pdf-btn" type="button" onclick="openPdf('${ct[3]}', '${esc(ct[1])}')">PDF</button>
+      </div>
+    `).join(""),
 
-            stage.innerHTML = `
-                <div class="win-mockup">
-                    <div class="win-bar">
-                        <i></i><i></i><i></i>
-                        <span class="ml-2 flex-1 bg-white border border-line rounded-full px-3 py-1 font-mono text-[11px] text-mut truncate">
-                            ${cleanUrl}
-                        </span>
-                    </div>
-                    <div class="aspect-video w-full bg-[#f8f6fc] overflow-hidden flex items-center justify-center">
-                        <img src="${p.banner}" alt="${p.title}" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                
-                <div class="mt-4 flex items-center justify-between gap-3">
-                    <div class="flex items-center gap-2">
-                        <img src="${p.partner}" alt="" class="w-5 h-5 object-contain flex-shrink-0" onerror="this.style.display='none'">
-                        <h3 class="text-base sm:text-lg font-extrabold text-ink">${p.title}</h3>
-                    </div>
-                    ${p.url ? `<a href="${p.url}" target="_blank" rel="noopener" class="text-xs font-bold text-white bg-v hover:bg-deep px-3.5 py-1.5 rounded-full transition-all inline-flex items-center gap-1 shadow-sm flex-shrink-0">${t.projOpen} ↗</a>` : ''}
-                </div>
+    // Slide 5: Kontak
+    () => `
+      <div class="cl">
+        <div>
+          <h2>${esc(c.contactHeading)}</h2>
+          <span class="st">${esc(c.contactSub)}</span>
+        </div>
+      </div>
+      <div class="nd" id="nd">
+        ${c.needs.map(n => `<button type="button" aria-pressed="false">${esc(n)}</button>`).join("")}
+      </div>
+      <textarea class="tx2" id="txt" placeholder="${esc(c.contactPlaceholder)}" aria-label="Message"></textarea>
+      <button class="call" id="send" type="button">
+        ${icons.wa} ${esc(c.contactBtn)}
+      </button>
+      <p class="sub">${esc(c.contactEmailAlt)}</p>
+    `
+  ];
 
-                <p class="text-xs sm:text-sm text-[#4a4668] mt-2 leading-relaxed">${pDesc}</p>
-                <div class="flex flex-wrap gap-1.5 mt-3">
-                    ${p.tags.map(tag => `<span class="text-[11px] font-semibold text-mut bg-soft px-2.5 py-0.5 rounded-full border border-line">${tag}</span>`).join('')}
-                </div>
-            `;
-        }
+  $("tr").innerHTML = slideTemplates.map(fn => `<section class="sl">${fn()}</section>`).join("");
+  $("pg").innerHTML = slideTemplates.map(() => "<i></i>").join("");
+  $("pg").querySelectorAll("i").forEach((dot, k) => {
+    dot.style.cursor = "pointer";
+    dot.title = c.tabs[k];
+    dot.onclick = () => goToSlide(k);
+  });
 
-        function renderExperiences() {
-            const expList = document.getElementById("exp-list");
-            if (!expList) return;
-            const t = i18n[currentLang];
+  attachSlideEvents();
+  goToSlide(slideIdx);
+  deckGo(deckIdx);
+}
 
-            expList.innerHTML = t.experiences.map((exp, idx) => {
-                const isExtra = idx >= 3;
-                const isHidden = isExtra && !isExpExpanded;
-                const isRecent = idx < 3;
+/* ==============================================================
+   INTERACTIONS & LOGIC
+   ============================================================== */
+const isl = $("isl"), isw = $("isw"), tr = $("tr"), vp = $("vp"), hint = $("hint");
+let closeTimer;
+let isPinned = false;
 
-                return `
-                <div class="relative group ${isHidden ? 'hidden' : ''}">
-                    <span class="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full ${isRecent ? 'bg-emerald-500 ring-2 ring-emerald-300' : 'bg-v ring-2 ring-purple-200'} border-2 border-white"></span>
-                    <div class="flex flex-wrap items-baseline gap-2 mb-1">
-                        <span class="text-[11px] font-bold font-mono ${isRecent ? 'text-emerald-700 bg-emerald-50' : 'text-v bg-soft'} px-2 py-0.5 rounded-full">
-                            ${exp.date}
-                        </span>
-                        <span class="text-xs font-semibold text-mut">${exp.company}</span>
-                    </div>
-                    <h4 class="text-sm font-bold text-ink group-hover:text-v transition-colors">${exp.role}</h4>
-                    <p class="text-xs sm:text-sm text-[#4a4668] mt-1 leading-relaxed">${exp.desc}</p>
-                </div>
-                `;
-            }).join("");
-        }
+function setOpen(isOpen) {
+  clearTimeout(closeTimer);
+  if (!isOpen) isPinned = false;
+  isl.classList.toggle("open", isOpen);
+  isl.setAttribute("aria-expanded", isOpen);
+  isl.setAttribute("aria-label", isOpen ? "Portofolio Miftahul Amri" : "Buka portofolio Miftahul Amri");
+  if (isOpen) {
+    hint.classList.add("off");
+    const activeSlide = document.querySelectorAll(".sl")[slideIdx];
+    if (activeSlide) {
+      activeSlide.classList.remove("act");
+      void activeSlide.offsetWidth;
+      activeSlide.classList.add("act");
+    }
+  }
+}
 
-        function updateNeedsChips() {
-            const chips = document.querySelectorAll('#needs-chips .chip');
-            const t = i18n[currentLang];
-            chips.forEach((chip, i) => {
-                if (t.needs[i]) chip.textContent = t.needs[i];
-            });
-        }
+const isDesktopFine = matchMedia("(hover:hover) and (pointer:fine)").matches;
+if (isDesktopFine) {
+  isw.addEventListener("pointerenter", () => setOpen(true));
+  isw.addEventListener("pointerleave", () => {
+    if (isPinned) return;
+    closeTimer = setTimeout(() => {
+      if (!isDragging && !isPinned) setOpen(false);
+    }, 450);
+  });
+}
 
-        function setLanguage(lang) {
-            currentLang = lang;
-            localStorage.setItem('portfolio_lang', lang);
-            document.documentElement.lang = lang;
-            const t = i18n[lang];
+isl.addEventListener("click", () => {
+  isPinned = true;
+  if (!isl.classList.contains("open")) setOpen(true);
+});
 
-            // Switcher UI
-            const btnId = document.getElementById("btn-lang-id");
-            const btnEn = document.getElementById("btn-lang-en");
-            if (btnId && btnEn) {
-                if (lang === 'id') {
-                    btnId.className = "px-2 py-0.5 sm:py-1 rounded-full text-[11px] font-bold transition-all bg-v text-white shadow-xs";
-                    btnEn.className = "px-2 py-0.5 sm:py-1 rounded-full text-[11px] font-bold text-white/70 hover:text-white transition-all";
-                } else {
-                    btnEn.className = "px-2 py-0.5 sm:py-1 rounded-full text-[11px] font-bold transition-all bg-v text-white shadow-xs";
-                    btnId.className = "px-2 py-0.5 sm:py-1 rounded-full text-[11px] font-bold text-white/70 hover:text-white transition-all";
-                }
-            }
+document.addEventListener("pointerdown", e => {
+  if (!isw.contains(e.target) && !$("pdf-modal").contains(e.target)) {
+    isPinned = false;
+    setOpen(false);
+  }
+});
 
-            // Static Text
-            const map = {
-                "island-status-txt": t.status,
-                "tab-txt-all": t.tabAll,
-                "tab-txt-projects": t.tabProjects,
-                "tab-txt-journey": t.tabJourney,
-                "tab-txt-contact": t.tabContact,
-                "txt-bio": t.bio,
-                "txt-cv": t.cv,
-                "txt-skills-title": t.skillsTitle,
-                "txt-proj-badge": t.projBadge,
-                "txt-proj-title": t.projTitle,
-                "txt-proj-desc": t.projDesc,
-                "txt-exp-title": t.expTitle,
-                "txt-exp-badge": t.expBadge,
-                "btn-toggle-exp-text": isExpExpanded ? t.expLess : t.expMore,
-                "txt-edu-title": t.eduTitle,
-                "txt-cert-title": t.certTitle,
-                "txt-cert-badge": t.certBadge,
-                "txt-cta-badge": t.ctaBadge,
-                "txt-cta-title": t.ctaTitle,
-                "txt-cta-desc": t.ctaDesc,
-                "txt-cta-needs": t.ctaNeeds,
-                "txt-cta-send": t.ctaSend
-            };
+isl.addEventListener("keydown", e => {
+  if (!isl.classList.contains("open")) {
+    if (e.target === isl && (e.key === "Enter" || e.key === " ")) {
+      e.preventDefault();
+      isPinned = true;
+      setOpen(true);
+    }
+    return;
+  }
+  if (e.key === "Escape") { isPinned = false; setOpen(false); isl.focus(); }
+  if (e.key === "ArrowRight") goToSlide(slideIdx + 1);
+  if (e.key === "ArrowLeft") goToSlide(slideIdx - 1);
+});
 
-            for (const [id, val] of Object.entries(map)) {
-                const el = document.getElementById(id);
-                if (el) el.textContent = val;
-            }
+function goToSlide(i) {
+  slideIdx = Math.max(0, Math.min(content[lang].tabs.length - 1, i));
+  tr.style.transition = "";
+  tr.style.transform = `translateX(${-slideIdx * 100}%)`;
 
-            const waInput = document.getElementById("wa-text-input");
-            if (waInput) waInput.placeholder = t.ctaPlaceholder;
+  document.querySelectorAll(".tab").forEach((t, k) => {
+    t.setAttribute("aria-selected", k === slideIdx);
+    if (k === slideIdx) t.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+  });
+  document.querySelectorAll(".pg i").forEach((d, k) => d.classList.toggle("on", k === slideIdx));
+  document.querySelectorAll(".sl").forEach((s, k) => s.classList.toggle("act", k === slideIdx));
+}
 
-            renderProjects();
-            renderExperiences();
-            updateNeedsChips();
-        }
+$("tabs").addEventListener("click", e => {
+  const t = e.target.closest(".tab");
+  if (t) goToSlide(+t.dataset.i);
+});
 
-        // Project selector delegation
-        const projectsContainer = document.getElementById("projects-list");
-        if (projectsContainer) {
-            projectsContainer.addEventListener("click", e => {
-                const btnToggle = e.target.closest("#btn-toggle-projects");
-                if (btnToggle) {
-                    isPjExpanded = !isPjExpanded;
-                    renderProjects();
-                    return;
-                }
-                const card = e.target.closest("[data-project-idx]");
-                if (card) {
-                    const idx = +card.dataset.projectIdx;
-                    updateStage(idx);
-                    document.querySelectorAll("[data-project-idx]").forEach((el, k) => {
-                        el.className = el.className.replace(/border-v bg-soft\/70 shadow-sm/g, 'border-line hover:border-v2/60 bg-white');
-                        if (k === idx) {
-                            el.className = el.className.replace(/border-line hover:border-v2\/60 bg-white/g, 'border-v bg-soft/70 shadow-sm');
-                        }
-                    });
-                }
-            });
-        }
+/* Touch / Drag Gesture on Island Carousel */
+let isDragging = false, startX = 0, startY = 0, deltaX = 0, timeStart = 0, isArmed = false, justSwiped = false;
 
-        // Toggle Experience Timeline
-        const btnToggleExp = document.getElementById("btn-toggle-exp");
-        if (btnToggleExp) {
-            btnToggleExp.addEventListener("click", () => {
-                isExpExpanded = !isExpExpanded;
-                renderExperiences();
-                const t = i18n[currentLang];
-                const txt = document.getElementById("btn-toggle-exp-text");
-                const icon = document.getElementById("btn-toggle-exp-icon");
-                if (txt) txt.textContent = isExpExpanded ? t.expLess : t.expMore;
-                if (icon) icon.style.transform = isExpExpanded ? "rotate(180deg)" : "rotate(0deg)";
-            });
-        }
+vp.addEventListener("pointerdown", e => {
+  if (e.pointerType === "mouse" && e.button) return;
+  isArmed = true;
+  isDragging = false;
+  startX = e.clientX;
+  startY = e.clientY;
+  deltaX = 0;
+  timeStart = performance.now();
+});
 
-        // WhatsApp Chips Selection
-        const chips = document.querySelectorAll('#needs-chips .chip');
-        let selectedNeed = "Website Sekolah";
-        chips.forEach(chip => {
-            chip.addEventListener('click', () => {
-                chips.forEach(c => c.setAttribute('aria-pressed', 'false'));
-                chip.setAttribute('aria-pressed', 'true');
-                selectedNeed = chip.textContent.trim();
-            });
-        });
+vp.addEventListener("pointermove", e => {
+  if (!isArmed) return;
+  const mx = e.clientX - startX, my = e.clientY - startY;
+  if (!isDragging && Math.abs(mx) > 8 && Math.abs(mx) > Math.abs(my)) {
+    isDragging = true;
+    vp.setPointerCapture(e.pointerId);
+    tr.style.transition = "none";
+  }
+  if (isDragging) {
+    deltaX = mx;
+    const isEdge = (slideIdx === 0 && deltaX > 0) || (slideIdx === content[lang].tabs.length - 1 && deltaX < 0);
+    tr.style.transform = `translateX(calc(${-slideIdx * 100}% + ${isEdge ? deltaX * 0.25 : deltaX}px))`;
+  }
+});
 
-        // WhatsApp Dispatch
-        const waSendBtn = document.getElementById('wa-send-btn');
-        const waTextInput = document.getElementById('wa-text-input');
-        if (waSendBtn) {
-            waSendBtn.addEventListener('click', () => {
-                const customNotes = waTextInput ? waTextInput.value.trim() : '';
-                let message = "";
-                if (currentLang === 'en') {
-                    message = `Hello Miftahul Amri, I would like to discuss: *${selectedNeed}*.`;
-                    if (customNotes) message += `\\n\\nProject Notes:\\n"${customNotes}"`;
-                    message += `\\n\\nSent from your portfolio website.`;
-                } else {
-                    message = `Halo Miftahul Amri, saya tertarik berdiskusi mengenai proyek: *${selectedNeed}*.`;
-                    if (customNotes) message += `\\n\\nCatatan:\\n"${customNotes}"`;
-                    message += `\\n\\nDikirim dari portofolio web.`;
-                }
-                const phone = "6285716823315";
-                const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-                window.open(waUrl, '_blank', 'noopener');
-            });
-        }
+const finishDrag = () => {
+  if (!isArmed) return;
+  isArmed = false;
+  if (isDragging) {
+    const velocity = deltaX / Math.max(1, performance.now() - timeStart);
+    const width = vp.clientWidth;
+    justSwiped = true;
+    setTimeout(() => justSwiped = false, 0);
+    isDragging = false;
+    goToSlide(slideIdx + (deltaX < -width * 0.16 || velocity < -0.5 ? 1 : deltaX > width * 0.16 || velocity > 0.5 ? -1 : 0));
+  }
+};
 
-        // Dynamic Island Tab Navigation
-        const tabs = document.querySelectorAll('#island-tabs button');
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => {
-                    t.classList.remove('active');
-                    t.setAttribute('aria-selected', 'false');
-                });
-                tab.classList.add('active');
-                tab.setAttribute('aria-selected', 'true');
+vp.addEventListener("pointerup", finishDrag);
+vp.addEventListener("pointercancel", finishDrag);
+vp.addEventListener("click", e => {
+  if (justSwiped) { e.preventDefault(); e.stopPropagation(); }
+}, true);
 
-                const target = tab.dataset.tab;
-                if (target === 'all') {
-                    document.getElementById('pane-hero')?.scrollIntoView({ behavior: 'smooth' });
-                } else if (target === 'projects') {
-                    document.getElementById('section-projects')?.scrollIntoView({ behavior: 'smooth' });
-                } else if (target === 'journey') {
-                    document.getElementById('section-journey')?.scrollIntoView({ behavior: 'smooth' });
-                } else if (target === 'contact') {
-                    document.getElementById('section-contact')?.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
+/* Project Card Deck */
+function deckGo(n) {
+  const cards = [...document.querySelectorAll(".dc")];
+  const dots = [...document.querySelectorAll(".dd i")];
+  if (!cards.length) return;
+  deckIdx = Math.max(0, Math.min(cards.length - 1, n));
 
-        // PDF Modal
-        const pdfModal = document.getElementById('pdf-modal');
-        const pdfViewer = document.getElementById('pdf-viewer');
-        const pdfTitle = document.getElementById('pdf-modal-title');
-        const pdfClose = document.getElementById('pdf-modal-close');
+  cards.forEach((c, i) => {
+    const o = i - deckIdx;
+    c.style.transform = o < 0 ? "translateY(-115%) scale(0.9)" : `translateY(${[0, 16, 30, 42][Math.min(o, 3)]}px) scale(${[1, 0.95, 0.9, 0.85][Math.min(o, 3)]})`;
+    c.style.opacity = o < 0 || o > 2 ? 0 : [1, 0.75, 0.5][o];
+    c.style.zIndex = 50 - Math.abs(o);
+    c.style.pointerEvents = (o >= 0 && o <= 2) ? "auto" : "none";
+    c.style.cursor = o === 0 ? "default" : "pointer";
+    c.onclick = (e) => {
+      if (i !== deckIdx) {
+        e.stopPropagation();
+        deckGo(i);
+      }
+    };
+  });
 
-        function openPdf(url, title) {
-            if (!pdfModal || !pdfViewer) return;
-            pdfViewer.src = url;
-            if (pdfTitle) pdfTitle.textContent = title;
-            pdfModal.classList.remove('opacity-0', 'pointer-events-none');
-            document.body.style.overflow = 'hidden';
-        }
+  dots.forEach((d, i) => {
+    d.style.cursor = "pointer";
+    d.onclick = () => deckGo(i);
+    d.classList.toggle("on", i === deckIdx);
+  });
+}
 
-        function closePdf() {
-            if (!pdfModal || !pdfViewer) return;
-            pdfModal.classList.add('opacity-0', 'pointer-events-none');
-            pdfViewer.src = '';
-            document.body.style.overflow = '';
-        }
+function attachSlideEvents() {
+  const dup = $("dup"), ddn = $("ddn");
+  if (dup) dup.onclick = () => deckGo(deckIdx - 1);
+  if (ddn) ddn.onclick = () => deckGo(deckIdx + 1);
 
-        if (pdfClose) pdfClose.addEventListener('click', closePdf);
-        if (pdfModal) {
-            pdfModal.addEventListener('click', e => {
-                if (e.target === pdfModal) closePdf();
-            });
-        }
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape' && pdfModal && !pdfModal.classList.contains('pointer-events-none')) {
-                closePdf();
-            }
-        });
+  const dkEl = $("dk");
+  if (dkEl) {
+    let dy0 = null, dx0 = 0;
+    dkEl.addEventListener("pointerdown", e => { dy0 = e.clientY; dx0 = e.clientX; });
+    dkEl.addEventListener("pointermove", e => {
+      if (dy0 === null) return;
+      const dy = e.clientY - dy0, dx = e.clientX - dx0;
+      if (Math.abs(dy) > 36 && Math.abs(dy) > Math.abs(dx)) {
+        deckGo(deckIdx + (dy < 0 ? 1 : -1));
+        dy0 = null;
+      }
+    });
+    ["pointerup", "pointercancel"].forEach(ev => dkEl.addEventListener(ev, () => dy0 = null));
+  }
 
-        // Language Buttons
-        document.getElementById("btn-lang-id")?.addEventListener("click", () => setLanguage('id'));
-        document.getElementById("btn-lang-en")?.addEventListener("click", () => setLanguage('en'));
+  // Contact Chips
+  const nd = $("nd");
+  if (nd) {
+    nd.addEventListener("click", e => {
+      const b = e.target.closest("button");
+      if (!b) return;
+      const isPressed = b.getAttribute("aria-pressed") === "true";
+      nd.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", "false"));
+      b.setAttribute("aria-pressed", String(!isPressed));
+      selectedNeed = isPressed ? "" : b.textContent;
+    });
+  }
 
-        // Current Year in Footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+  // Contact WhatsApp Send
+  const sendBtn = $("send");
+  if (sendBtn) {
+    sendBtn.onclick = () => {
+      const txtVal = $("txt") ? $("txt").value.trim() : "";
+      let msg = "";
+      if (lang === 'en') {
+        msg = `Hello Miftahul Amri, I am interested in collaborating on: *${selectedNeed || "Web Development / AI"}*.`;
+        if (txtVal) msg += `\n\nNote:\n"${txtVal}"`;
+        msg += `\n\nSent from your dynamic island portfolio.`;
+      } else {
+        msg = `Halo Miftahul Amri, saya tertarik berdiskusi mengenai proyek: *${selectedNeed || "Bantuan Proyek Web"}*.`;
+        if (txtVal) msg += `\n\nCatatan:\n"${txtVal}"`;
+        msg += `\n\nDikirim dari portofolio web.`;
+      }
+      window.open(`https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`, "_blank", "noopener");
+    };
+  }
+}
 
-        // Boot
-        setLanguage(currentLang);
-    </script>
+/* Language Selection */
+function setLang(newLang) {
+  lang = newLang;
+  localStorage.setItem('portfolio_lang', lang);
+  document.documentElement.lang = lang;
+
+  $("btn-id").classList.toggle("active", lang === 'id');
+  $("btn-en").classList.toggle("active", lang === 'en');
+
+  renderAll();
+}
+
+/* PDF Modal */
+const pdfModal = $("pdf-modal");
+const pdfFrame = $("pdf-frame");
+const pdfTitle = $("pdf-title");
+const pdfDirect = $("pdf-direct");
+
+function openPdf(url, title) {
+  if (!pdfModal || !pdfFrame) return;
+  pdfFrame.src = url;
+  if (pdfTitle) pdfTitle.textContent = title;
+  if (pdfDirect) pdfDirect.href = url;
+  pdfModal.classList.add("open");
+}
+
+function closePdf() {
+  if (!pdfModal || !pdfFrame) return;
+  pdfModal.classList.remove("open");
+  pdfFrame.src = "";
+}
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && pdfModal && pdfModal.classList.contains("open")) {
+    closePdf();
+  }
+});
+
+/* Boot Initializer */
+setLang(lang);
+</script>
 </body>
 </html>
