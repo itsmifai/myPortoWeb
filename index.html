@@ -155,25 +155,48 @@ button {
   gap: 10px;
 }
 
-/* Language Toggle */
+/* Language Toggle with Sliding Pill Indicator */
 .lang-toggle {
+  position: relative;
   display: inline-flex;
   align-items: center;
   padding: 2px;
   border-radius: 999px;
   border: 1px solid var(--border);
+  background: transparent;
+  isolation: isolate;
+}
+.lang-indicator {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  width: calc(50% - 2px);
+  background: var(--fg);
+  border-radius: 999px;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0;
+  pointer-events: none;
+}
+.lang-toggle[data-lang="en"] .lang-indicator {
+  transform: translateX(100%);
 }
 .lang-btn {
-  padding: 2px 8px;
+  position: relative;
+  z-index: 1;
+  min-width: 26px;
+  text-align: center;
+  padding: 2px 7px;
   border-radius: 999px;
   font-size: 11px;
   font-weight: 600;
   color: var(--fg-muted);
-  transition: all 0.15s ease;
+  transition: color 0.2s ease;
+  background: transparent;
 }
 .lang-btn.active {
-  background: var(--fg);
   color: var(--bg);
+  background: transparent !important;
 }
 
 /* Theme Button */
@@ -599,8 +622,9 @@ main {
   <div class="container header-inner">
     <a href="#" onclick="showHome(event)" class="brand mono">@itsmifai</a>
     <div class="nav-actions">
-      <!-- Language Switcher -->
-      <div class="lang-toggle" role="group" aria-label="Language selection">
+      <!-- Language Switcher with Animated Sliding Pill -->
+      <div class="lang-toggle" id="lang-toggle" data-lang="id" role="group" aria-label="Language selection">
+        <span class="lang-indicator" aria-hidden="true"></span>
         <button type="button" id="btn-id" class="lang-btn active" onclick="setLang('id')">ID</button>
         <button type="button" id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
       </div>
@@ -1160,20 +1184,71 @@ window.addEventListener('popstate', () => {
 });
 
 /* ==============================================================
-   LANGUAGE CONTROLLER
+   LANGUAGE CONTROLLER (Editorial Blur-Fade Transition)
    ============================================================== */
-function setLang(newLang) {
+let isLangTransitioning = false;
+
+function setLang(newLang, animate = true) {
+  if (isLangTransitioning) return;
+  const isSame = (lang === newLang);
   lang = newLang;
   localStorage.setItem('portfolio_lang', lang);
   document.documentElement.lang = lang;
+
+  const toggle = document.getElementById('lang-toggle');
+  if (toggle) toggle.setAttribute('data-lang', lang);
 
   const btnId = document.getElementById('btn-id');
   const btnEn = document.getElementById('btn-en');
   if (btnId) btnId.classList.toggle('active', lang === 'id');
   if (btnEn) btnEn.classList.toggle('active', lang === 'en');
 
-  render();
-  if (currentSlug) openProjectDetail(currentSlug);
+  if (isSame && animate) return;
+
+  const targetContainer = currentSlug
+    ? document.getElementById('project-detail-view')
+    : document.getElementById('main-view');
+
+  if (!animate || !targetContainer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    render();
+    if (currentSlug) openProjectDetail(currentSlug);
+    return;
+  }
+
+  isLangTransitioning = true;
+
+  // Phase 1: Subtle blur-out & gentle lift
+  const fadeOut = targetContainer.animate([
+    { opacity: 1, filter: 'blur(0px)', transform: 'translateY(0)' },
+    { opacity: 0, filter: 'blur(4px)', transform: 'translateY(-2px)' }
+  ], {
+    duration: 110,
+    easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    fill: 'forwards'
+  });
+
+  fadeOut.onfinish = () => {
+    // Re-render in the new language
+    render();
+    if (currentSlug) openProjectDetail(currentSlug);
+
+    // Phase 2: Gentle entrance with blur clearing
+    const fadeIn = targetContainer.animate([
+      { opacity: 0, filter: 'blur(4px)', transform: 'translateY(3px)' },
+      { opacity: 1, filter: 'blur(0px)', transform: 'translateY(0)' }
+    ], {
+      duration: 200,
+      easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      fill: 'forwards'
+    });
+
+    fadeIn.onfinish = () => {
+      isLangTransitioning = false;
+      targetContainer.style.filter = '';
+      targetContainer.style.opacity = '';
+      targetContainer.style.transform = '';
+    };
+  };
 }
 
 /* ==============================================================
@@ -1333,7 +1408,7 @@ window.addEventListener('scroll', () => {
    INITIALIZATION
    ============================================================== */
 applyTheme(theme);
-setLang(lang);
+setLang(lang, false);
 
 // Handle direct project URL hash (e.g. #project/imm-simun) or #support
 if (window.location.hash.startsWith('#project/')) {
