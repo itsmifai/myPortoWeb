@@ -10,19 +10,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #121212;
-  --bg-subtle: #1a1a1a;
-  --fg: #f3f3f3;
-  --fg-muted: #8c8c8c;
-  --fg-subtle: #5a5a5a;
-  --border: rgba(255, 255, 255, 0.09);
-  --border-hover: rgba(255, 255, 255, 0.24);
+  --bg: #111111;
+  --bg-subtle: #191919;
+  --fg: #f2f2f2;
+  --fg-muted: #8e8e8e;
+  --fg-subtle: #555555;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.22);
   --underline: rgba(255, 255, 255, 0.25);
   --underline-hover: #ffffff;
   --selection: rgba(255, 255, 255, 0.22);
   --green: #22c55e;
   --modal-overlay: rgba(0, 0, 0, 0.85);
-  --max-w: 920px;
+  --max-w: 860px;
 }
 
 html.light {
@@ -115,7 +115,7 @@ button {
   max-width: var(--max-w);
   width: 100%;
   margin: 0 auto;
-  padding: 0 28px;
+  padding: 0 24px;
 }
 
 /* Header */
@@ -136,7 +136,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
+  height: 58px;
 }
 .brand {
   font-size: 13px;
@@ -198,33 +198,33 @@ button {
 /* Main */
 main {
   flex: 1;
-  padding-top: 56px;
-  padding-bottom: 100px;
+  padding-top: 52px;
+  padding-bottom: 96px;
 }
 
-/* Hero Section (Matching Paco Coursey's layout) */
+/* Hero Section */
 .hero {
-  margin-bottom: 60px;
+  margin-bottom: 48px;
 }
 .hero-name {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--fg);
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 .hero-p1 {
   font-size: 15px;
   color: var(--fg);
   line-height: 1.72;
-  margin-bottom: 14px;
-  max-width: 780px;
+  margin-bottom: 12px;
+  max-width: 740px;
 }
 .hero-p2 {
-  font-size: 15px;
-  color: var(--fg);
-  line-height: 1.72;
-  max-width: 780px;
+  font-size: 14.5px;
+  color: var(--fg-muted);
+  line-height: 1.7;
+  max-width: 740px;
 }
 .flag-icon {
   display: inline-block;
@@ -236,55 +236,226 @@ main {
   margin: 0 2px;
 }
 
-/* 3-Column Asymmetric Layout (Paco's Building | Projects | Writing) */
-.grid-3col {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  column-gap: 48px;
-  row-gap: 48px;
-}
-
-.col-header {
+/* Now Status Inline */
+.now-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 13px;
-  font-weight: 500;
   color: var(--fg-muted);
-  margin-bottom: 26px;
-  letter-spacing: -0.01em;
+  margin-top: 14px;
+}
+.pulse-dot {
+  width: 6.5px;
+  height: 6.5px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+  animation: pulseGreen 2.4s infinite;
+  flex-shrink: 0;
+}
+@keyframes pulseGreen {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
 }
 
-.item-group {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
+/* Section Header */
+.section-title {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--fg-subtle);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
 }
 
-.entry {
+/* Projects Showcase: 2-Column Responsive Grid */
+.projects-section {
+  margin-bottom: 56px;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 36px;
+  row-gap: 24px;
+}
+.project-card-btn {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
+  text-align: left;
+  cursor: pointer;
+  padding: 6px 0;
+  border-bottom: 1px solid transparent;
+  transition: opacity 0.15s;
 }
-.entry-title {
+.project-card-title {
   font-size: 14.5px;
   font-weight: 500;
   color: var(--fg);
   display: inline-flex;
   align-items: baseline;
-  gap: 3px;
+  gap: 4px;
 }
-.entry-desc {
-  font-size: 13.5px;
+.project-card-desc {
+  font-size: 13px;
   color: var(--fg-muted);
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
-/* Sub-heading within column */
-.sub-header {
-  font-size: 13px;
+/* Split Section: 2 Columns (Left: Experience, Right: Education & Certs) */
+.split-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 48px;
+  row-gap: 48px;
+  margin-bottom: 56px;
+}
+
+/* Text Lists (No fake links, clean editorial prose) */
+.clean-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.clean-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.clean-entry-header {
+  font-size: 14px;
   font-weight: 500;
+  color: var(--fg);
+}
+.clean-entry-sub {
+  font-size: 12.5px;
   color: var(--fg-muted);
-  margin-top: 14px;
+}
+.clean-entry-desc {
+  font-size: 12.5px;
+  color: var(--fg-subtle);
+  margin-top: 2px;
+  line-height: 1.5;
+}
+
+/* Cert button */
+.cert-btn {
+  font-size: 11.5px;
+  color: var(--fg-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  margin-left: 6px;
+}
+.cert-btn:hover {
+  color: var(--fg);
+}
+
+/* Connect / Contact Section */
+.connect-section {
+  margin-bottom: 48px;
+}
+.connect-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 13.5px;
+  margin-top: 10px;
+}
+
+/* Project Detail In-Site View (Direct View) */
+.project-detail-view {
+  display: none;
+  animation: fadeIn 0.25s ease-out;
+}
+.project-detail-view.active {
+  display: block;
+}
+.main-view.hidden {
+  display: none;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--fg-muted);
+  margin-bottom: 24px;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color 0.15s;
+}
+.back-btn:hover {
+  color: var(--fg);
+}
+.detail-banner {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #000;
+  margin-bottom: 26px;
+}
+.detail-banner img {
+  width: 100%;
+  max-height: 440px;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+.detail-title {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--fg);
+  margin-bottom: 6px;
+}
+.detail-subtitle {
+  font-size: 14px;
+  color: var(--fg-muted);
+  margin-bottom: 18px;
+}
+.detail-desc {
+  font-size: 14.5px;
+  color: var(--fg);
+  line-height: 1.7;
   margin-bottom: 22px;
-  letter-spacing: -0.01em;
+}
+.detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 26px;
+}
+.detail-tag {
+  font-size: 11px;
+  color: var(--fg-muted);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.detail-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 550;
+  color: var(--fg);
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--fg);
+  transition: opacity 0.15s;
+}
+.detail-action-btn:hover {
+  opacity: 0.8;
 }
 
 /* Required Strict Footer */
@@ -314,7 +485,7 @@ main {
   color: var(--fg);
 }
 
-/* Certificate PDF Preview Modal */
+/* PDF Modal */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -391,9 +562,12 @@ main {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .grid-3col {
+  .projects-grid {
     grid-template-columns: 1fr;
-    column-gap: 0;
+    row-gap: 20px;
+  }
+  .split-section {
+    grid-template-columns: 1fr;
     row-gap: 40px;
   }
   main {
@@ -408,7 +582,7 @@ main {
 <!-- Header Navigation -->
 <header class="header" id="navbar">
   <div class="container header-inner">
-    <a href="#" class="brand mono">@itsmifai</a>
+    <a href="#" onclick="showHome(event)" class="brand mono">@itsmifai</a>
     <div class="nav-actions">
       <!-- Language Switcher -->
       <div class="lang-toggle" role="group" aria-label="Language selection">
@@ -427,49 +601,89 @@ main {
 <!-- Main Page Content -->
 <main class="container">
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1 class="hero-name">Miftahul Amri</h1>
-    <p class="hero-p1" id="hero-p1">
-      <!-- Injected via JS -->
-    </p>
-    <p class="hero-p2" id="hero-p2">
-      <!-- Injected via JS -->
-    </p>
-  </section>
+  <!-- HOME VIEW (Dynamic Mixed Layout) -->
+  <div class="main-view" id="main-view">
 
-  <!-- 3-Column Layout: Column 1 (Craft/Now), Column 2 (Projects), Column 3 (Experience & Connect) -->
-  <div class="grid-3col">
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1 class="hero-name">Miftahul Amri</h1>
+      <p class="hero-p1" id="hero-p1">
+        <!-- Injected via JS -->
+      </p>
+      <p class="hero-p2" id="hero-p2">
+        <!-- Injected via JS -->
+      </p>
+      <div class="now-inline">
+        <span class="pulse-dot"></span>
+        <span id="now-text">Pengajar Ruangguru Coding &middot; Guru Al Azhar IIBS &middot; Asisten Lab PTI UMS</span>
+      </div>
+    </section>
 
-    <!-- Column 1: Projects (Web & AI Craft) -->
-    <div class="col">
-      <div class="col-header" id="col1-header">Projects</div>
-      <div class="item-group" id="col1-list">
+    <!-- Projects Section: 2-Column Clean Grid (Direct In-Site Click) -->
+    <section class="projects-section">
+      <h2 class="section-title mono" id="sec-projects">Proyek Pilihan</h2>
+      <div class="projects-grid" id="projects-grid">
         <!-- Injected via JS -->
       </div>
+    </section>
+
+    <!-- Split Section: Left = Experience, Right = Education & Certs -->
+    <div class="split-section">
+
+      <!-- Left Column: Experience & Teaching (Clean text, no forced links) -->
+      <div>
+        <h2 class="section-title mono" id="sec-exp">Pengalaman & Mengajar</h2>
+        <div class="clean-list" id="exp-list">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+      <!-- Right Column: Education & Certifications -->
+      <div>
+        <h2 class="section-title mono" id="sec-edu">Pendidikan</h2>
+        <div class="clean-list" id="edu-list" style="margin-bottom:36px;">
+          <!-- Injected via JS -->
+        </div>
+
+        <h2 class="section-title mono" id="sec-certs">Sertifikasi</h2>
+        <div class="clean-list" id="cert-list">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
     </div>
 
-    <!-- Column 2: Teaching & Work Experience -->
-    <div class="col">
-      <div class="col-header" id="col2-header">Teaching & Experience</div>
-      <div class="item-group" id="col2-list">
+    <!-- Connect / Contact Section -->
+    <section class="connect-section">
+      <h2 class="section-title mono" id="sec-connect">Kontak & Terhubung</h2>
+      <div class="connect-links" id="connect-links">
         <!-- Injected via JS -->
       </div>
+    </section>
+
+  </div>
+
+  <!-- PROJECT DETAIL VIEW (Direct In-Site Case Study with Banner) -->
+  <div class="project-detail-view" id="project-detail-view">
+    <button type="button" class="back-btn mono" onclick="showHome()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      <span id="back-text">Kembali ke beranda</span>
+    </button>
+
+    <div class="detail-banner">
+      <img id="detail-img" src="" alt="Project Banner">
     </div>
 
-    <!-- Column 3: Credentials & Connect -->
-    <div class="col">
-      <div class="col-header" id="col3-header">Education & Certs</div>
-      <div class="item-group" id="col3-list">
-        <!-- Injected via JS -->
-      </div>
+    <h1 class="detail-title" id="detail-title"></h1>
+    <div class="detail-subtitle mono" id="detail-subtitle"></div>
+    <p class="detail-desc" id="detail-desc"></p>
+    <div class="detail-tags" id="detail-tags"></div>
 
-      <div class="sub-header" id="col3-sub-header">Connect</div>
-      <div class="item-group" id="col3-connect">
-        <!-- Injected via JS -->
-      </div>
+    <div>
+      <a class="detail-action-btn mono" id="detail-link" href="#" target="_blank" rel="noopener">
+        <span id="detail-link-text">Kunjungi Website Resmi ↗</span>
+      </a>
     </div>
-
   </div>
 
 </main>
@@ -508,284 +722,247 @@ main {
 let lang = localStorage.getItem('portfolio_lang') || 'id';
 let theme = localStorage.getItem('portfolio_theme') || 'dark';
 
+const projectsData = [
+  {
+    slug: 'imm-simun',
+    title: 'Website IMM SIMUN',
+    subId: 'Portal Organisasi Kemahasiswaan & Arsip Digital Kaderisasi',
+    subEn: 'Student Organization Portal & Digital Membership Archive',
+    descId: 'Portal resmi organisasi kemahasiswaan IMM Siti Munjiyah FKIP UMS yang dirancang untuk penerbitan naskah berkala, struktur kepengurusan, repositori dokumen, serta sistem arsip digital kaderisasi. Menggantikan proses manual dengan arsitektur web modern yang aman dan responsif.',
+    descEn: 'Official student organization portal for IMM Siti Munjiyah FKIP UMS designed for publishing, leadership directories, document repositories, and digital membership records.',
+    tags: ['Next.js 16', 'Supabase', 'Tailwind CSS', 'PostgreSQL', 'Vercel'],
+    link: 'https://imm-simun.ums.ac.id/',
+    img: './project-image/imm.webp'
+  },
+  {
+    slug: 'vibecal-ai',
+    title: 'VibeCal AI',
+    subId: 'Kalender Pintar Ekstraksi Jadwal Otomatis Berbasis Bahasa Alami',
+    subEn: 'Natural Language Smart Schedule Extractor',
+    descId: 'Kalender pintar yang dirancang pada ajang Google Vibe Hackathon. Aplikasi ini mengintegrasikan model Gemini AI dan Groq API untuk memproses percakapan bebas atau catatan bahasa alami langsung menjadi agenda kalender terstruktur.',
+    descEn: 'Intelligent calendar built at the Google Vibe Hackathon integrating Gemini AI and Groq API to extract structured schedules automatically from unstructured natural language.',
+    tags: ['Gemini AI', 'Groq API', 'Next.js', 'NLP', 'TypeScript'],
+    link: 'https://github.com/itsmifai/vibecal',
+    img: './project-image/vibecal.webp'
+  },
+  {
+    slug: 'mim-gambiranom',
+    title: 'Website MIM Gambiranom',
+    subId: 'Website Profil Madrasah & CMS Mandiri Berkelanjutan',
+    subEn: 'Primary School Profile & Independent Custom CMS',
+    descId: 'Website profil resmi dan Content Management System (CMS) mandiri untuk madrasah ibtidaiyah dasar. Dibangun untuk menggantikan blogspot lama, mempermudah guru mempublikasikan berita, galeri, dan transparansi informasi sekolah.',
+    descEn: 'Official primary school profile website and custom independent CMS empowering teachers to publish news, school events, galleries, and academic information.',
+    tags: ['Next.js 16', 'PostgreSQL', 'Prisma ORM', 'Tailwind CSS'],
+    link: 'https://mimgambiranom.site/',
+    img: './project-image/mim.webp'
+  },
+  {
+    slug: 'foundry-path',
+    title: 'Foundry Path',
+    subId: 'Interactive Visual Learning Path Builder & AI Advisor',
+    subEn: 'Interactive Visual Learning Path Builder & Skill Trees',
+    descId: 'Platform pemetaan jalur belajar interaktif berbasis graf visual dependensi skill tree. Pengguna dapat merancang kurikulum kompetensi sendiri dengan bantuan asisten AI rekomendasi materi.',
+    descEn: 'Interactive visual roadmap builder with skill tree dependency graphs and automated AI curriculum guidance.',
+    tags: ['React Flow', 'Supabase', 'Next.js', 'AI Curriculum Engine'],
+    link: 'https://github.com/itsmifai/foundry',
+    img: './project-image/foundry.webp'
+  },
+  {
+    slug: 'barang-bareng',
+    title: 'Barang-Bareng',
+    subId: 'Platform Sewa Barang Peer-to-Peer & Chat Negosiasi',
+    subEn: 'Two-Sided P2P Equipment Rental Marketplace',
+    descId: 'Platform persewaan perlengkapan antar-individu dua arah. Dilengkapi sistem verifikasi identitas, kalender booking multi-hari, dan ruang obrolan negosiasi real-time yang aman.',
+    descEn: 'Two-sided P2P gear rental marketplace featuring multi-day calendar reservations, identity verification, and real-time negotiation chat.',
+    tags: ['Next.js 16', 'Supabase Realtime', 'PostgreSQL', 'Tailwind CSS'],
+    link: 'https://barang-bareng.vercel.app/',
+    img: './project-image/barang-bareng.webp'
+  },
+  {
+    slug: 'layakbisnis-ai',
+    title: 'LayakBisnis AI',
+    subId: 'Kalkulator Kelayakan Finansial UMKM & AI Advisor',
+    subEn: 'F&B SME Financial Feasibility Calculator & AI Advisor',
+    descId: 'Kalkulator finansial otomatis bagi pelaku UMKM kuliner dan retail (BEP, ROI, Payback Period) yang dipadukan dengan analisis strategi finansial cerdas berbasis DeepSeek API.',
+    descEn: 'Financial feasibility calculator for F&B SMEs (BEP, ROI, Payback Period) paired with an automated AI financial strategy consultant via DeepSeek API.',
+    tags: ['DeepSeek API', 'Next.js', 'Midtrans Gateway', 'Tailwind CSS'],
+    link: 'https://www.layakbisnis.com/',
+    img: './project-image/layakbisnis.webp'
+  },
+  {
+    slug: 'setara-special-ed',
+    title: 'Setara Special Ed',
+    subId: 'Asisten AI Guru Pendidikan Khusus & Penyusunan PPI',
+    subEn: 'AI Platform for Special Education Teachers & IEP Drafting',
+    descId: 'Platform asisten cerdas bagi guru pendidikan khusus untuk mengasesmen profil kebutuhan belajar siswa serta menyusun draf Program Pembelajaran Individual (PPI) secara terstandarisasi.',
+    descEn: 'AI-powered platform helping special education teachers assess student learning needs and generate standardized IEP drafts.',
+    tags: ['DeepSeek', 'Supabase', 'Next.js', 'PostgreSQL'],
+    link: 'https://setara-deploy.vercel.app/',
+    img: './project-image/incluedu.webp'
+  },
+  {
+    slug: 'ct-quiz-lab',
+    title: 'CT Quiz Lab',
+    subId: 'Platform Asesmen Computational Thinking & Analitik Capaian',
+    subEn: 'Interactive Computational Thinking Assessment & Analytics',
+    descId: 'Platform asesmen berpikir komputasional interaktif dengan generator kuis otomatis AI dan dasbor capaian kompetensi 4 pilar Computational Thinking.',
+    descEn: 'Interactive Computational Thinking assessment platform with AI quiz generator and 4-pillar CT competency diagnostics.',
+    tags: ['Groq API', 'Prisma ORM', 'Next.js', 'PostgreSQL'],
+    link: 'https://ct-quiz-lab.vercel.app/',
+    img: './project-image/ct-quiz.webp'
+  }
+];
+
 const content = {
   id: {
     heroP1: '<span class="serif-italic">Crafting web applications & purposeful AI.</span> Membangun produk digital yang andal, sistem interaktif, dan integrasi kecerdasan buatan dari Surakarta, Indonesia <span class="flag-icon" title="Indonesia"><svg viewBox="0 0 3 2"><rect width="3" height="1" fill="#e70011"/><rect y="1" width="3" height="1" fill="#ffffff"/></svg></span>.',
-    heroP2: 'Saat ini aktif mengajar coding di <a href="https://www.ruangguru.com/" target="_blank" rel="noopener" class="u-link">Ruangguru (Sragen)</a> dan <a href="https://iibs.alazhar.sch.id/" target="_blank" rel="noopener" class="u-link">SMP Al Azhar IIBS</a>, serta mendampingi praktikum mahasiswa di <a href="https://pti.ums.ac.id/" target="_blank" rel="noopener" class="u-link">Laboratorium Pemrograman Web PTI UMS</a>.',
-    
-    col1Header: 'Projects',
-    col1Items: [
+    heroP2: 'Fokus merancang solusi web yang menyelesaikan masalah nyata instansi dan sekolah, aktif mengajar coding untuk generasi muda, serta mendampingi praktikum pemrograman web di kampus.',
+    nowText: 'Pengajar Ruangguru Coding (Sragen) &middot; Guru Al Azhar IIBS &middot; Asisten Lab PTI UMS',
+    secProjects: 'Proyek Pilihan',
+    secExp: 'Pengalaman & Mengajar',
+    experiences: [
       {
-        title: 'Website IMM SIMUN ↗',
-        desc: 'Portal resmi organisasi kemahasiswaan: naskah, struktur, dan arsip kaderisasi.',
-        link: 'https://imm-simun.ums.ac.id/'
+        role: 'Pengajar Ruangguru Coding',
+        sub: 'Ruangguru · Penempatan Kabupaten Sragen · 2026 – sekarang',
+        desc: 'Mengajar kurikulum computational thinking, logika pemrograman, dan pembuatan proyek web di sekolah-sekolah mitra.'
       },
       {
-        title: 'VibeCal AI ↗',
-        desc: 'Kalender cerdas ekstraksi jadwal otomatis dari bahasa alami (Google Vibe Hackathon).',
-        link: 'https://github.com/itsmifai/vibecal'
+        role: 'Guru Coding Ekstrakurikuler',
+        sub: 'SMP Al Azhar IIBS Karanganyar · 2026 – sekarang',
+        desc: 'Mengajar fundamental HTML, CSS, JavaScript, dan kreasi proyek digital untuk siswa kelas 7–9.'
       },
       {
-        title: 'Website MIM Gambiranom ↗',
-        desc: 'Website profil madrasah & CMS mandiri sekolah dasar menggantikan blogspot.',
-        link: 'https://mimgambiranom.site/'
+        role: 'Asisten Lab Pemrograman Web',
+        sub: 'Pendidikan Teknik Informatika · UMS · 2026 – sekarang',
+        desc: 'Membimbing praktikum web fullstack mahasiswa S1 dari dasar hingga arsitektur framework Django.'
       },
       {
-        title: 'Foundry Path ↗',
-        desc: 'Interactive visual learning path builder dengan graf dependensi skill tree.',
-        link: 'https://github.com/itsmifai/foundry'
+        role: 'Asisten Lab Basis Data',
+        sub: 'Pendidikan Teknik Informatika · UMS · 2026',
+        desc: 'Mendampingi praktikum pemodelan skema relasional, normalisasi ERD, dan query SQL lanjutan.'
       },
       {
-        title: 'Barang-Bareng ↗',
-        desc: 'Platform sewa barang peer-to-peer dua arah dengan negosiasi chat real-time.',
-        link: 'https://barang-bareng.vercel.app/'
+        role: 'Asisten Lab Sistem Operasi',
+        sub: 'Pendidikan Teknik Informatika · UMS · 2025 – 2026',
+        desc: 'Mengajar perintah Linux CLI, manajemen permission, serta shell automation scripting.'
       },
       {
-        title: 'LayakBisnis AI ↗',
-        desc: 'Kalkulator kelayakan finansial UMKM F&B dan AI Financial Advisor otomatis.',
-        link: 'https://www.layakbisnis.com/'
-      },
-      {
-        title: 'Setara Special Ed ↗',
-        desc: 'Asisten AI guru pendidikan khusus untuk penyusunan draf kurikulum PPI.',
-        link: 'https://setara-deploy.vercel.app/'
-      },
-      {
-        title: 'CT Quiz Lab ↗',
-        desc: 'Platform asesmen Computational Thinking interaktif dengan generator kuis AI.',
-        link: 'https://ct-quiz-lab.vercel.app/'
+        role: 'IT Helpdesk Staff (Intern)',
+        sub: 'DSTI Universitas Muhammadiyah Surakarta · 2023 – 2026',
+        desc: 'Menangani kredensial Single Sign-On (SSO), jaringan kampus, dan integrasi administrasi akun mahasiswa.'
       }
     ],
-
-    col2Header: 'Experience',
-    col2Items: [
+    secEdu: 'Pendidikan',
+    educations: [
       {
-        title: 'Pengajar Ruangguru ↗',
-        desc: 'Mengajar coding dan computational thinking di sekolah-sekolah Sragen · 2026 – sekarang.',
-        link: 'https://www.ruangguru.com/'
+        name: 'Universitas Muhammadiyah Surakarta',
+        sub: 'S1 Pendidikan Teknik Informatika · 2023 – sekarang'
       },
       {
-        title: 'Guru Coding Al Azhar IIBS ↗',
-        desc: 'Mengajar pengembangan web (HTML, CSS, JS) di ekstrakurikuler SMP · 2026 – sekarang.',
-        link: 'https://iibs.alazhar.sch.id/'
+        name: 'MAs Ibnu Taimiyah Bogor',
+        sub: 'Madrasah Aliyah · 2019 – 2022'
       },
       {
-        title: 'Asisten Lab Pemrograman Web ↗',
-        desc: 'Membimbing praktikum web fullstack & backend Django di PTI UMS · 2026 – sekarang.',
-        link: 'https://pti.ums.ac.id/'
-      },
-      {
-        title: 'Asisten Lab Basis Data ↗',
-        desc: 'Praktikum perancangan ERD, normalisasi relasional, dan SQL query · 2026.',
-        link: 'https://pti.ums.ac.id/'
-      },
-      {
-        title: 'Asisten Lab Sistem Operasi ↗',
-        desc: 'Mengajar Linux CLI, process & permission, serta shell automation · 2025 – 2026.',
-        link: 'https://pti.ums.ac.id/'
-      },
-      {
-        title: 'IT Helpdesk DSTI UMS ↗',
-        desc: 'Dukungan kredensial SSO, jaringan kampus, dan administrasi portal · 2023 – 2026.',
-        link: 'https://dsti.ums.ac.id/'
+        name: 'MTs Arafah Bitung',
+        sub: 'Madrasah Tsanawiyah · 2016 – 2019'
       }
     ],
-
-    col3Header: 'Education & Certs',
-    col3Items: [
+    secCerts: 'Sertifikasi',
+    certs: [
       {
-        title: 'Universitas Muhammadiyah Surakarta ↗',
-        desc: 'S1 Pendidikan Teknik Informatika · 2023 – sekarang.',
-        link: 'https://ums.ac.id/'
-      },
-      {
-        title: 'AWS Cloud Web App Builder ↗',
-        desc: 'AWS Academy Graduate · 2026.',
-        action: 'pdf',
+        name: 'Cloud Web Application Builder',
+        sub: 'AWS Academy Graduate · 2026',
         file: './sertif/AWS_Academy_Graduate___Cloud_Web_Application_Builder___Training_Badge_Badge20260712-20-tyns3j.pdf'
       },
       {
-        title: 'Dasar Pemrograman Web ↗',
-        desc: 'Dicoding Indonesia · 2024.',
-        action: 'pdf',
+        name: 'Dasar Pemrograman Web',
+        sub: 'Dicoding Indonesia · 2024',
         file: './sertif/dasar-pemrogaram-web-dicoding.pdf'
       },
       {
-        title: 'Intro to JavaScript for Beginner ↗',
-        desc: 'Harisenin.com · 2023.',
-        action: 'pdf',
+        name: 'Intro to JavaScript for Beginner',
+        sub: 'Harisenin.com · 2023',
         file: './sertif/introduction-to-javascript-for-beginner-harisenin.pdf'
       }
     ],
-
-    col3SubHeader: 'Connect',
-    col3Connect: [
-      {
-        title: 'WhatsApp ↗',
-        desc: 'Konsultasi langsung proyek web & AI.',
-        link: 'https://wa.me/6285716823315?text=Halo%20Miftahul%20Amri%2C%20saya%20tertarik%20berdiskusi%20mengenai%20proyek%20web%20%2F%20AI.'
-      },
-      {
-        title: 'Email ↗',
-        desc: 'mifthahulamri@gmail.com',
-        link: 'mailto:mifthahulamri@gmail.com'
-      },
-      {
-        title: 'GitHub ↗',
-        desc: '@itsmifai',
-        link: 'https://github.com/itsmifai'
-      },
-      {
-        title: 'LinkedIn ↗',
-        desc: 'in/mifamri',
-        link: 'https://www.linkedin.com/in/mifamri/'
-      },
-      {
-        title: 'Curriculum Vitae (PDF) ↗',
-        desc: 'Unduh CV resmi terbaru.',
-        link: './CV Mifthahul Amri.pdf',
-        download: true
-      }
-    ]
+    secConnect: 'Kontak & Terhubung',
+    backText: 'Kembali ke beranda',
+    visitText: 'Kunjungi Website Resmi ↗'
   },
   en: {
     heroP1: '<span class="serif-italic">Crafting web applications & purposeful AI.</span> Building polished digital products, interactive systems, and practical artificial intelligence from Surakarta, Indonesia <span class="flag-icon" title="Indonesia"><svg viewBox="0 0 3 2"><rect width="3" height="1" fill="#e70011"/><rect y="1" width="3" height="1" fill="#ffffff"/></svg></span>.',
-    heroP2: 'Currently teaching coding at <a href="https://www.ruangguru.com/" target="_blank" rel="noopener" class="u-link">Ruangguru (Sragen)</a> and <a href="https://iibs.alazhar.sch.id/" target="_blank" rel="noopener" class="u-link">SMP Al Azhar IIBS</a>, while mentoring undergraduate students in the <a href="https://pti.ums.ac.id/" target="_blank" rel="noopener" class="u-link">Web Programming Lab at UMS</a>.',
-
-    col1Header: 'Projects',
-    col1Items: [
+    heroP2: 'Focused on engineering web solutions for schools and organizations, actively teaching coding to the next generation, and assisting undergraduate web programming laboratories.',
+    nowText: 'Coding Educator at Ruangguru (Sragen) &middot; Al Azhar IIBS &middot; Lab Assistant at PTI UMS',
+    secProjects: 'Selected Projects',
+    secExp: 'Teaching & Experience',
+    experiences: [
       {
-        title: 'Website IMM SIMUN ↗',
-        desc: 'Official student organization portal: publishing, structure, and digital archive.',
-        link: 'https://imm-simun.ums.ac.id/'
+        role: 'Coding Educator · Ruangguru',
+        sub: 'Ruangguru · Sragen Regency Placement · 2026 – present',
+        desc: 'Teaching computational thinking, logic, and web development fundamentals across partner schools.'
       },
       {
-        title: 'VibeCal AI ↗',
-        desc: 'Natural language smart schedule extractor (Google Vibe Hackathon).',
-        link: 'https://github.com/itsmifai/vibecal'
+        role: 'Coding Teacher · Al Azhar IIBS',
+        sub: 'SMP Al Azhar IIBS Karanganyar · 2026 – present',
+        desc: 'Instructing web foundations (HTML, CSS, JS) and digital project building for junior high students.'
       },
       {
-        title: 'Website MIM Gambiranom ↗',
-        desc: 'Primary school profile & independent CMS replacing legacy blogspot.',
-        link: 'https://mimgambiranom.site/'
+        role: 'Web Programming Lab Assistant',
+        sub: 'Informatics Education · UMS · 2026 – present',
+        desc: 'Guiding undergraduate lab sessions from web fundamentals to Django backend architectures.'
       },
       {
-        title: 'Foundry Path ↗',
-        desc: 'Interactive visual learning path builder with skill tree dependency graphs.',
-        link: 'https://github.com/itsmifai/foundry'
+        role: 'Database Lab Assistant',
+        sub: 'Informatics Education · UMS · 2026',
+        desc: 'Assisting practicums on relational schema design, ERD normalization, and advanced SQL queries.'
       },
       {
-        title: 'Barang-Bareng ↗',
-        desc: 'Two-sided P2P gear rental marketplace with real-time negotiation chat.',
-        link: 'https://barang-bareng.vercel.app/'
+        role: 'Operating Systems Lab Assistant',
+        sub: 'Informatics Education · UMS · 2025 – 2026',
+        desc: 'Taught Linux CLI, process management, and shell automation scripting.'
       },
       {
-        title: 'LayakBisnis AI ↗',
-        desc: 'F&B SME financial feasibility calculator & automated AI Financial Advisor.',
-        link: 'https://www.layakbisnis.com/'
-      },
-      {
-        title: 'Setara Special Ed ↗',
-        desc: 'AI platform for special education teachers to assess needs and generate IEP drafts.',
-        link: 'https://setara-deploy.vercel.app/'
-      },
-      {
-        title: 'CT Quiz Lab ↗',
-        desc: 'Interactive Computational Thinking assessment platform with AI quiz generator.',
-        link: 'https://ct-quiz-lab.vercel.app/'
+        role: 'IT Helpdesk Staff (Intern)',
+        sub: 'DSTI Universitas Muhammadiyah Surakarta · 2023 – 2026',
+        desc: 'Campus SSO credential support, networking, and student portal administration.'
       }
     ],
-
-    col2Header: 'Experience',
-    col2Items: [
+    secEdu: 'Education',
+    educations: [
       {
-        title: 'Coding Educator · Ruangguru ↗',
-        desc: 'Teaching coding & computational thinking across Sragen Regency schools · 2026 – now.',
-        link: 'https://www.ruangguru.com/'
+        name: 'Universitas Muhammadiyah Surakarta',
+        sub: 'B.Ed in Informatics Education · 2023 – present'
       },
       {
-        title: 'Coding Teacher · Al Azhar IIBS ↗',
-        desc: 'Instructing web development (HTML, CSS, JS) in junior high extracurriculars · 2026 – now.',
-        link: 'https://iibs.alazhar.sch.id/'
+        name: 'MAs Ibnu Taimiyah Bogor',
+        sub: 'Islamic Senior High School · 2019 – 2022'
       },
       {
-        title: 'Web Programming Lab Assistant ↗',
-        desc: 'Guiding undergraduate fullstack web & Django backend lab sessions · 2026 – now.',
-        link: 'https://pti.ums.ac.id/'
-      },
-      {
-        title: 'Database Lab Assistant ↗',
-        desc: 'Practicum guidance on ERD schema modeling, normalization & advanced SQL · 2026.',
-        link: 'https://pti.ums.ac.id/'
-      },
-      {
-        title: 'Operating Systems Lab Assistant ↗',
-        desc: 'Taught Linux CLI, process & permissions, and shell automation scripting · 2025 – 2026.',
-        link: 'https://pti.ums.ac.id/'
-      },
-      {
-        title: 'IT Helpdesk Staff · DSTI UMS ↗',
-        desc: 'Campus SSO credential support, networking, and student portal administration · 2023 – 2026.',
-        link: 'https://dsti.ums.ac.id/'
+        name: 'MTs Arafah Bitung',
+        sub: 'Islamic Junior High School · 2016 – 2019'
       }
     ],
-
-    col3Header: 'Education & Certs',
-    col3Items: [
+    secCerts: 'Certifications',
+    certs: [
       {
-        title: 'Universitas Muhammadiyah Surakarta ↗',
-        desc: 'B.Ed in Informatics Education · 2023 – present.',
-        link: 'https://ums.ac.id/'
-      },
-      {
-        title: 'AWS Cloud Web App Builder ↗',
-        desc: 'AWS Academy Graduate · 2026.',
-        action: 'pdf',
+        name: 'Cloud Web Application Builder',
+        sub: 'AWS Academy Graduate · 2026',
         file: './sertif/AWS_Academy_Graduate___Cloud_Web_Application_Builder___Training_Badge_Badge20260712-20-tyns3j.pdf'
       },
       {
-        title: 'Web Development Fundamentals ↗',
-        desc: 'Dicoding Indonesia · 2024.',
-        action: 'pdf',
+        name: 'Web Development Fundamentals',
+        sub: 'Dicoding Indonesia · 2024',
         file: './sertif/dasar-pemrogaram-web-dicoding.pdf'
       },
       {
-        title: 'Intro to JavaScript for Beginner ↗',
-        desc: 'Harisenin.com · 2023.',
-        action: 'pdf',
+        name: 'Intro to JavaScript for Beginner',
+        sub: 'Harisenin.com · 2023',
         file: './sertif/introduction-to-javascript-for-beginner-harisenin.pdf'
       }
     ],
-
-    col3SubHeader: 'Connect',
-    col3Connect: [
-      {
-        title: 'WhatsApp ↗',
-        desc: 'Direct consultation for web & AI projects.',
-        link: 'https://wa.me/6285716823315?text=Hello%20Miftahul%20Amri%2C%20I%20am%20interested%20in%20discussing%20a%20project.'
-      },
-      {
-        title: 'Email ↗',
-        desc: 'mifthahulamri@gmail.com',
-        link: 'mailto:mifthahulamri@gmail.com'
-      },
-      {
-        title: 'GitHub ↗',
-        desc: '@itsmifai',
-        link: 'https://github.com/itsmifai'
-      },
-      {
-        title: 'LinkedIn ↗',
-        desc: 'in/mifamri',
-        link: 'https://www.linkedin.com/in/mifamri/'
-      },
-      {
-        title: 'Curriculum Vitae (PDF) ↗',
-        desc: 'Download official resume.',
-        link: './CV Mifthahul Amri.pdf',
-        download: true
-      }
-    ]
+    secConnect: 'Connect & Contact',
+    backText: 'Back to overview',
+    visitText: 'Visit Live Website ↗'
   }
 };
 
@@ -802,78 +979,136 @@ function render() {
   if (p1) p1.innerHTML = c.heroP1;
   const p2 = document.getElementById('hero-p2');
   if (p2) p2.innerHTML = c.heroP2;
+  const now = document.getElementById('now-text');
+  if (now) now.innerHTML = c.nowText;
 
-  // Column 1: Projects
-  const h1 = document.getElementById('col1-header');
-  if (h1) h1.textContent = c.col1Header;
-  const l1 = document.getElementById('col1-list');
-  if (l1) {
-    l1.innerHTML = c.col1Items.map(item => `
-      <div class="entry">
-        <a class="entry-title u-link" href="${esc(item.link)}" target="_blank" rel="noopener">
-          ${esc(item.title)}
-        </a>
-        <p class="entry-desc">${esc(item.desc)}</p>
+  // Projects Grid (2-Column clean layout, direct in-site navigation)
+  const projSec = document.getElementById('sec-projects');
+  if (projSec) projSec.textContent = c.secProjects;
+  const projGrid = document.getElementById('projects-grid');
+  if (projGrid) {
+    projGrid.innerHTML = projectsData.map(p => `
+      <div class="project-card-btn" onclick="openProjectDetail('${p.slug}')">
+        <span class="project-card-title u-link">
+          ${esc(p.title)} <span style="font-size:12px;opacity:0.6">&rarr;</span>
+        </span>
+        <span class="project-card-desc">${esc(lang === 'id' ? p.subId : p.subEn)}</span>
       </div>
     `).join('');
   }
 
-  // Column 2: Experience & Teaching
-  const h2 = document.getElementById('col2-header');
-  if (h2) h2.textContent = c.col2Header;
-  const l2 = document.getElementById('col2-list');
-  if (l2) {
-    l2.innerHTML = c.col2Items.map(item => `
-      <div class="entry">
-        <a class="entry-title u-link" href="${esc(item.link)}" target="_blank" rel="noopener">
-          ${esc(item.title)}
-        </a>
-        <p class="entry-desc">${esc(item.desc)}</p>
+  // Left Column: Experience (Clean, no fake links)
+  const expSec = document.getElementById('sec-exp');
+  if (expSec) expSec.textContent = c.secExp;
+  const expList = document.getElementById('exp-list');
+  if (expList) {
+    expList.innerHTML = c.experiences.map(e => `
+      <div class="clean-entry">
+        <span class="clean-entry-header">${esc(e.role)}</span>
+        <span class="clean-entry-sub">${esc(e.sub)}</span>
+        <p class="clean-entry-desc">${esc(e.desc)}</p>
       </div>
     `).join('');
   }
 
-  // Column 3: Education & Certs + Connect
-  const h3 = document.getElementById('col3-header');
-  if (h3) h3.textContent = c.col3Header;
-  const l3 = document.getElementById('col3-list');
-  if (l3) {
-    l3.innerHTML = c.col3Items.map(item => {
-      if (item.action === 'pdf') {
-        return `
-          <div class="entry">
-            <button type="button" class="entry-title u-link" onclick="openPdf('${item.file}', '${esc(item.title.replace(' ↗',''))}')">
-              ${esc(item.title)}
-            </button>
-            <p class="entry-desc">${esc(item.desc)}</p>
-          </div>
-        `;
-      }
-      return `
-        <div class="entry">
-          <a class="entry-title u-link" href="${esc(item.link)}" target="_blank" rel="noopener">
-            ${esc(item.title)}
-          </a>
-          <p class="entry-desc">${esc(item.desc)}</p>
+  // Right Column: Education
+  const eduSec = document.getElementById('sec-edu');
+  if (eduSec) eduSec.textContent = c.secEdu;
+  const eduList = document.getElementById('edu-list');
+  if (eduList) {
+    eduList.innerHTML = c.educations.map(ed => `
+      <div class="clean-entry">
+        <span class="clean-entry-header">${esc(ed.name)}</span>
+        <span class="clean-entry-sub">${esc(ed.sub)}</span>
+      </div>
+    `).join('');
+  }
+
+  // Right Column: Certs
+  const certSec = document.getElementById('sec-certs');
+  if (certSec) certSec.textContent = c.secCerts;
+  const certList = document.getElementById('cert-list');
+  if (certList) {
+    certList.innerHTML = c.certs.map(ct => `
+      <div class="clean-entry">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;">
+          <span class="clean-entry-header">${esc(ct.name)}</span>
+          <button type="button" class="cert-btn mono u-link" onclick="openPdf('${ct.file}', '${esc(ct.name)}')">[pdf ↗]</button>
         </div>
-      `;
-    }).join('');
-  }
-
-  const h3sub = document.getElementById('col3-sub-header');
-  if (h3sub) h3sub.textContent = c.col3SubHeader;
-  const c3 = document.getElementById('col3-connect');
-  if (c3) {
-    c3.innerHTML = c.col3Connect.map(item => `
-      <div class="entry">
-        <a class="entry-title u-link" href="${esc(item.link)}" ${item.download ? 'download' : 'target="_blank" rel="noopener"'}>
-          ${esc(item.title)}
-        </a>
-        <p class="entry-desc">${esc(item.desc)}</p>
+        <span class="clean-entry-sub">${esc(ct.sub)}</span>
       </div>
     `).join('');
   }
+
+  // Connect Section
+  const connSec = document.getElementById('sec-connect');
+  if (connSec) connSec.textContent = c.secConnect;
+  const connLinks = document.getElementById('connect-links');
+  if (connLinks) {
+    connLinks.innerHTML = `
+      <a class="u-link" href="https://wa.me/6285716823315?text=Halo%20Miftahul%20Amri%2C%20saya%20tertarik%20berdiskusi%20mengenai%20proyek%20web%20%2F%20AI." target="_blank" rel="noopener">WhatsApp ↗</a>
+      <a class="u-link" href="mailto:mifthahulamri@gmail.com">Email ↗</a>
+      <a class="u-link" href="https://github.com/itsmifai" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="u-link" href="https://www.linkedin.com/in/mifamri/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="u-link" href="https://instagram.com/itsmifai" target="_blank" rel="noopener">Instagram ↗</a>
+      <a class="u-link" href="./CV Mifthahul Amri.pdf" download>CV (PDF) ↗</a>
+    `;
+  }
+
+  // Back text in detail view
+  const backText = document.getElementById('back-text');
+  if (backText) backText.textContent = c.backText;
+  const visitText = document.getElementById('detail-link-text');
+  if (visitText) visitText.textContent = c.visitText;
 }
+
+/* ==============================================================
+   IN-SITE PROJECT DETAIL VIEW (Direct in website)
+   ============================================================== */
+let currentSlug = null;
+
+function openProjectDetail(slug) {
+  const p = projectsData.find(x => x.slug === slug);
+  if (!p) return;
+
+  currentSlug = slug;
+  window.location.hash = `project/${slug}`;
+
+  document.getElementById('detail-title').textContent = p.title;
+  document.getElementById('detail-subtitle').textContent = lang === 'id' ? p.subId : p.subEn;
+  document.getElementById('detail-desc').textContent = lang === 'id' ? p.descId : p.descEn;
+  document.getElementById('detail-img').src = p.img;
+  document.getElementById('detail-img').alt = p.title;
+  document.getElementById('detail-link').href = p.link;
+  document.getElementById('detail-tags').innerHTML = p.tags.map(t => `<span class="detail-tag mono">${esc(t)}</span>`).join('');
+
+  document.getElementById('main-view').classList.add('hidden');
+  document.getElementById('project-detail-view').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showHome(e) {
+  if (e) e.preventDefault();
+  currentSlug = null;
+  if (window.location.hash.startsWith('#project/')) {
+    history.pushState(null, '', window.location.pathname + window.location.search);
+  }
+  document.getElementById('project-detail-view').classList.remove('active');
+  document.getElementById('main-view').classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Handle browser Back / Forward buttons natively
+window.addEventListener('popstate', () => {
+  const hash = window.location.hash;
+  if (hash.startsWith('#project/')) {
+    const slug = hash.replace('#project/', '');
+    openProjectDetail(slug);
+  } else {
+    document.getElementById('project-detail-view').classList.remove('active');
+    document.getElementById('main-view').classList.remove('hidden');
+  }
+});
 
 /* ==============================================================
    LANGUAGE CONTROLLER
@@ -889,6 +1124,7 @@ function setLang(newLang) {
   if (btnEn) btnEn.classList.toggle('active', lang === 'en');
 
   render();
+  if (currentSlug) openProjectDetail(currentSlug);
 }
 
 /* ==============================================================
@@ -990,8 +1226,12 @@ function handleOverlayClick(e) {
 }
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && pdfModal && pdfModal.classList.contains('active')) {
-    closePdf();
+  if (e.key === 'Escape') {
+    if (pdfModal && pdfModal.classList.contains('active')) {
+      closePdf();
+    } else if (currentSlug) {
+      showHome();
+    }
   }
 });
 
@@ -1014,6 +1254,12 @@ window.addEventListener('scroll', () => {
    ============================================================== */
 applyTheme(theme);
 setLang(lang);
+
+// Check if user entered via direct project URL hash (e.g. #project/imm-simun)
+if (window.location.hash.startsWith('#project/')) {
+  const initialSlug = window.location.hash.replace('#project/', '');
+  openProjectDetail(initialSlug);
+}
 </script>
 </body>
 </html>
