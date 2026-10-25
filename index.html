@@ -42,6 +42,19 @@ html.light {
   --modal-overlay: rgba(0, 0, 0, 0.6);
 }
 
+/* View Transition API Circular Wave */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 ::selection { background: var(--selection); }
 
@@ -317,63 +330,94 @@ main {
   white-space: nowrap;
 }
 
-/* Projects Showcase */
+/* Minimalist Project Rows (Paco Coursey style) */
 .project-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  border-top: 1px solid var(--border);
 }
-.project-card {
-  border: 1px solid var(--border);
-  background: var(--card-bg);
-  border-radius: 12px;
+.project-item {
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.15s;
+}
+.project-row {
+  width: 100%;
+  padding: 15px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  cursor: pointer;
+  text-align: left;
+  user-select: none;
+  border: none;
+  background: transparent;
+  color: inherit;
+}
+.project-row:hover .project-title {
+  color: var(--fg);
+}
+.project-row:hover .project-chevron {
+  color: var(--fg);
+}
+.project-title {
+  font-size: 14.5px;
+  font-weight: 550;
+  color: var(--fg-muted);
+  transition: color 0.15s;
+}
+.project-item.is-open .project-title {
+  color: var(--fg);
+}
+.project-meta-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.project-short-tech {
+  font-size: 12px;
+  color: var(--fg-subtle);
+}
+.project-chevron {
+  width: 15px;
+  height: 15px;
+  color: var(--fg-subtle);
+  transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), color 0.15s;
+  display: block;
+}
+.project-item.is-open .project-chevron {
+  transform: rotate(180deg);
+  color: var(--fg);
+}
+
+/* Accordion Drawer */
+.project-drawer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.2, 0, 0, 1);
   overflow: hidden;
-  transition: border-color 0.2s, background-color 0.2s, transform 0.2s;
 }
-.project-card:hover {
-  border-color: var(--border-hover);
-  background: var(--card-hover);
+.project-item.is-open .project-drawer {
+  grid-template-rows: 1fr;
 }
-.project-inner {
-  padding: 18px 20px;
+.project-drawer-inner {
+  min-height: 0;
+  overflow: hidden;
+  padding: 4px 4px 22px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-}
-.project-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
   gap: 12px;
-}
-.project-name {
-  font-size: 15px;
-  font-weight: 550;
-  color: var(--fg);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-.project-name svg {
-  width: 12px;
-  height: 12px;
-  opacity: 0.5;
-  transition: transform 0.15s, opacity 0.15s;
-}
-.project-card:hover .project-name svg {
-  transform: translate(2px, -2px);
-  opacity: 1;
 }
 .project-desc {
   font-size: 13.5px;
   color: var(--fg-muted);
-  line-height: 1.55;
+  line-height: 1.6;
 }
 .project-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 4px;
 }
 .project-tag {
   font-size: 11px;
@@ -383,27 +427,39 @@ main {
   padding: 2px 8px;
   border-radius: 6px;
 }
-
-/* Collapsible Image Preview */
-.project-preview-wrap {
+.project-img-box {
   width: 100%;
-  border-top: 1px solid var(--border);
+  border-radius: 10px;
   overflow: hidden;
+  border: 1px solid var(--border);
   background: #000;
-  max-height: 220px;
+  margin-top: 4px;
 }
-.project-preview-img {
+.project-img-box img {
   width: 100%;
-  height: 220px;
+  max-height: 380px;
   object-fit: cover;
   object-position: top center;
   display: block;
-  opacity: 0.9;
-  transition: opacity 0.2s, transform 0.3s;
 }
-.project-card:hover .project-preview-img {
-  opacity: 1;
-  transform: scale(1.01);
+.project-cta-btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12.5px;
+  font-weight: 550;
+  color: var(--fg);
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  padding: 6px 14px;
+  border-radius: 8px;
+  margin-top: 2px;
+  transition: all 0.15s;
+}
+.project-cta-btn:hover {
+  border-color: var(--border-hover);
+  background: var(--card-hover);
 }
 
 /* Experience List (Paco / Lee Rob Timeline Rows) */
@@ -710,7 +766,7 @@ main {
         <button type="button" id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
       </div>
       <!-- Theme Switcher -->
-      <button type="button" class="theme-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle theme">
+      <button type="button" class="theme-btn" id="theme-btn" onclick="toggleTheme(event)" aria-label="Toggle theme" title="Toggle theme">
         <svg id="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <svg id="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
@@ -1188,26 +1244,32 @@ function render() {
     </div>
   `).join('');
 
-  // Projects Section
+  // Projects Section (Minimalist Rows + Click-to-Expand)
   document.getElementById('sec-projects').textContent = c.secProjects;
-  document.getElementById('project-container').innerHTML = c.projects.map(p => `
-    <article class="project-card">
-      <div class="project-inner">
-        <div class="project-header">
-          <a class="project-name" href="${esc(p.link)}" target="_blank" rel="noopener">
-            ${esc(p.title)}
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+  document.getElementById('project-container').innerHTML = c.projects.map((p, idx) => `
+    <div class="project-item" id="proj-${idx}">
+      <button type="button" class="project-row" onclick="toggleProject(${idx})" aria-expanded="false">
+        <span class="project-title">${esc(p.title)}</span>
+        <div class="project-meta-right">
+          <span class="project-short-tech mono">${esc(p.tags.slice(0, 2).join(' · '))}</span>
+          <svg class="project-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+      </button>
+      <div class="project-drawer">
+        <div class="project-drawer-inner">
+          <p class="project-desc">${esc(p.desc)}</p>
+          <div class="project-tags">
+            ${p.tags.map(t => `<span class="project-tag mono">${esc(t)}</span>`).join('')}
+          </div>
+          <div class="project-img-box">
+            <img src="${esc(p.img)}" alt="${esc(p.title)}" loading="lazy">
+          </div>
+          <a class="project-cta-btn mono" href="${esc(p.link)}" target="_blank" rel="noopener">
+            ${esc(c.viewProjectText)}
           </a>
         </div>
-        <p class="project-desc">${esc(p.desc)}</p>
-        <div class="project-tags">
-          ${p.tags.map(t => `<span class="project-tag mono">${esc(t)}</span>`).join('')}
-        </div>
       </div>
-      <div class="project-preview-wrap">
-        <img class="project-preview-img" src="${esc(p.img)}" alt="${esc(p.title)}" loading="lazy">
-      </div>
-    </article>
+    </div>
   `).join('');
 
   // Experience Section
@@ -1272,7 +1334,19 @@ function setLang(newLang) {
 }
 
 /* ==============================================================
-   THEME CONTROLLER (Dark / Light Mode)
+   PROJECT DRAWER CONTROLLER
+   ============================================================== */
+function toggleProject(idx) {
+  const item = document.getElementById(`proj-${idx}`);
+  if (!item) return;
+  const wasOpen = item.classList.contains('is-open');
+  item.classList.toggle('is-open', !wasOpen);
+  const btn = item.querySelector('.project-row');
+  if (btn) btn.setAttribute('aria-expanded', String(!wasOpen));
+}
+
+/* ==============================================================
+   THEME CONTROLLER (Circular View Transition Wave)
    ============================================================== */
 function applyTheme(t) {
   theme = t;
@@ -1294,8 +1368,55 @@ function applyTheme(t) {
   }
 }
 
-function toggleTheme() {
-  applyTheme(theme === 'dark' ? 'light' : 'dark');
+function toggleTheme(event) {
+  const nextTheme = theme === 'dark' ? 'light' : 'dark';
+
+  // Fallback if browser doesn't support View Transitions or prefers reduced motion
+  if (!document.startViewTransition || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    applyTheme(nextTheme);
+    return;
+  }
+
+  // Get origin position from the toggle button
+  const btn = document.getElementById('theme-btn');
+  let x, y;
+  if (btn) {
+    const rect = btn.getBoundingClientRect();
+    x = rect.left + rect.width / 2;
+    y = rect.top + rect.height / 2;
+  } else if (event) {
+    x = event.clientX;
+    y = event.clientY;
+  } else {
+    x = window.innerWidth - 40;
+    y = 30;
+  }
+
+  const endRadius = Math.hypot(
+    Math.max(x, window.innerWidth - x),
+    Math.max(y, window.innerHeight - y)
+  );
+
+  const transition = document.startViewTransition(() => {
+    applyTheme(nextTheme);
+  });
+
+  transition.ready.then(() => {
+    const clipPath = [
+      `circle(0px at ${x}px ${y}px)`,
+      `circle(${endRadius}px at ${x}px ${y}px)`
+    ];
+    document.documentElement.animate(
+      {
+        clipPath: clipPath
+      },
+      {
+        duration: 520,
+        easing: 'cubic-bezier(0.2, 0, 0, 1)',
+        pseudoElement: '::view-transition-new(root)'
+      }
+    );
+  });
 }
 
 /* ==============================================================
