@@ -236,14 +236,23 @@ main {
   margin: 0 2px;
 }
 
-/* Now Status Inline */
-.now-inline {
+/* Now Status Block (Distinct separate rows) */
+.now-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 18px;
+}
+.now-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
+  gap: 9px;
+  font-size: 13.5px;
+  color: var(--fg);
+}
+.now-item .now-sub {
   color: var(--fg-muted);
-  margin-top: 14px;
+  font-size: 13px;
 }
 .pulse-dot {
   width: 6.5px;
@@ -613,9 +622,8 @@ main {
       <p class="hero-p2" id="hero-p2">
         <!-- Injected via JS -->
       </p>
-      <div class="now-inline">
-        <span class="pulse-dot"></span>
-        <span id="now-text">Pengajar Ruangguru Coding &middot; Guru Al Azhar IIBS &middot; Asisten Lab PTI UMS</span>
+      <div class="now-list" id="now-list">
+        <!-- Injected via JS as 3 distinct rows -->
       </div>
     </section>
 
@@ -817,7 +825,11 @@ const content = {
   id: {
     heroP1: '<span class="serif-italic">Crafting web applications & purposeful AI.</span> Membangun produk digital yang andal, sistem interaktif, dan integrasi kecerdasan buatan dari Surakarta, Indonesia <span class="flag-icon" title="Indonesia"><svg viewBox="0 0 3 2"><rect width="3" height="1" fill="#e70011"/><rect y="1" width="3" height="1" fill="#ffffff"/></svg></span>.',
     heroP2: 'Fokus merancang solusi web yang menyelesaikan masalah nyata instansi dan sekolah, aktif mengajar coding untuk generasi muda, serta mendampingi praktikum pemrograman web di kampus.',
-    nowText: 'Pengajar Ruangguru Coding (Sragen) &middot; Guru Al Azhar IIBS &middot; Asisten Lab PTI UMS',
+    nowItems: [
+      { role: 'Pengajar Coding', org: 'Ruangguru · Sragen' },
+      { role: 'Guru Coding Ekstrakurikuler', org: 'SMP Al Azhar IIBS Karanganyar' },
+      { role: 'Asisten Lab Pemrograman Web', org: 'PTI Universitas Muhammadiyah Surakarta' }
+    ],
     secProjects: 'Proyek Pilihan',
     secExp: 'Pengalaman & Mengajar',
     experiences: [
@@ -892,7 +904,11 @@ const content = {
   en: {
     heroP1: '<span class="serif-italic">Crafting web applications & purposeful AI.</span> Building polished digital products, interactive systems, and practical artificial intelligence from Surakarta, Indonesia <span class="flag-icon" title="Indonesia"><svg viewBox="0 0 3 2"><rect width="3" height="1" fill="#e70011"/><rect y="1" width="3" height="1" fill="#ffffff"/></svg></span>.',
     heroP2: 'Focused on engineering web solutions for schools and organizations, actively teaching coding to the next generation, and assisting undergraduate web programming laboratories.',
-    nowText: 'Coding Educator at Ruangguru (Sragen) &middot; Al Azhar IIBS &middot; Lab Assistant at PTI UMS',
+    nowItems: [
+      { role: 'Coding Educator', org: 'Ruangguru · Sragen Regency' },
+      { role: 'Coding Extracurricular Teacher', org: 'SMP Al Azhar IIBS Karanganyar' },
+      { role: 'Web Programming Lab Assistant', org: 'PTI Universitas Muhammadiyah Surakarta' }
+    ],
     secProjects: 'Selected Projects',
     secExp: 'Teaching & Experience',
     experiences: [
@@ -979,8 +995,15 @@ function render() {
   if (p1) p1.innerHTML = c.heroP1;
   const p2 = document.getElementById('hero-p2');
   if (p2) p2.innerHTML = c.heroP2;
-  const now = document.getElementById('now-text');
-  if (now) now.innerHTML = c.nowText;
+  const nowList = document.getElementById('now-list');
+  if (nowList && c.nowItems) {
+    nowList.innerHTML = c.nowItems.map(item => `
+      <div class="now-item">
+        <span class="pulse-dot"></span>
+        <span>${esc(item.role)} &middot; <span class="now-sub">${esc(item.org)}</span></span>
+      </div>
+    `).join('');
+  }
 
   // Projects Grid (2-Column clean layout, direct in-site navigation)
   const projSec = document.getElementById('sec-projects');
