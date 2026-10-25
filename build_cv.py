@@ -218,12 +218,6 @@ html_content = f"""<!DOCTYPE html>
     color: #475569;
     line-height: 1.42;
   }}
-  .exp-bullets {{
-    margin-left: 12px;
-    font-size: 8.1pt;
-    color: #475569;
-    line-height: 1.42;
-  }}
 
   /* Projects */
   .proj-grid {{
@@ -246,11 +240,10 @@ html_content = f"""<!DOCTYPE html>
     font-weight: 700;
     color: #0f172a;
   }}
-  .proj-tech {{
-    font-size: 7.2pt;
-    font-family: 'JetBrains Mono', monospace;
+  .proj-category {{
+    font-size: 7.4pt;
     color: #0284c7;
-    font-weight: 500;
+    font-weight: 600;
   }}
   .proj-desc {{
     font-size: 8.1pt;
@@ -315,9 +308,9 @@ html_content = f"""<!DOCTYPE html>
       <div class="section-title">Keahlian Teknis</div>
       
       <div class="skill-group">
-        <div class="skill-group-title">Frontend & UI</div>
+        <div class="skill-group-title">Frontend & Web</div>
         <div class="skill-tags">
-          <span class="skill-tag">Next.js 16</span>
+          <span class="skill-tag">Next.js</span>
           <span class="skill-tag">React.js</span>
           <span class="skill-tag">TypeScript</span>
           <span class="skill-tag">Tailwind CSS</span>
@@ -333,16 +326,15 @@ html_content = f"""<!DOCTYPE html>
           <span class="skill-tag">Supabase</span>
           <span class="skill-tag">Prisma ORM</span>
           <span class="skill-tag">MySQL</span>
-          <span class="skill-tag">Django</span>
+          <span class="skill-tag">RESTful API</span>
         </div>
       </div>
 
       <div class="skill-group">
-        <div class="skill-group-title">AI & Deployment</div>
+        <div class="skill-group-title">AI & Tools</div>
         <div class="skill-tags">
-          <span class="skill-tag">Gemini AI</span>
-          <span class="skill-tag">Groq API</span>
-          <span class="skill-tag">DeepSeek API</span>
+          <span class="skill-tag">AI Model Integration</span>
+          <span class="skill-tag">Prompt Engineering</span>
           <span class="skill-tag">Git / GitHub</span>
           <span class="skill-tag">Vercel</span>
           <span class="skill-tag">Linux CLI</span>
@@ -387,7 +379,7 @@ html_content = f"""<!DOCTYPE html>
       <h1 class="header-name">Miftahul Amri</h1>
       <div class="header-title">Web Developer &bull; AI Enthusiast &bull; Coding Educator</div>
       <p class="summary-text">
-        Mahasiswa Pendidikan Teknik Informatika UMS dan Software Developer yang berfokus pada perancangan aplikasi web modern (Next.js 16, Supabase, PostgreSQL) serta integrasi model Artificial Intelligence (Gemini, Groq, DeepSeek). Berpengalaman membangun portal web nyata instansi, aktif membimbing praktikum pemrograman kampus, serta berdedikasi mengedukasi generasi muda dalam computational thinking dan logika pemrograman.
+        Mahasiswa Pendidikan Teknik Informatika UMS dan Software Developer yang berfokus pada perancangan aplikasi web modern serta integrasi model Artificial Intelligence. Berpengalaman membangun portal web nyata instansi, aktif membimbing praktikum pemrograman kampus, serta berdedikasi mengedukasi generasi muda dalam computational thinking dan logika pemrograman.
       </p>
     </section>
 
@@ -413,7 +405,7 @@ html_content = f"""<!DOCTYPE html>
         </div>
         <div class="exp-org">SMP Al Azhar IIBS Karanganyar</div>
         <p class="exp-desc">
-          Melaksanakan bimbingan dan pengajaran materi dasar-dasar web development (HTML5, CSS3, JavaScript modern) serta mendampingi perancangan proyek web kreatif bagi siswa kelas 7–9.
+          Melaksanakan bimbingan dan pengajaran materi dasar-dasar web development serta mendampingi perancangan proyek digital kreatif bagi siswa kelas 7–9.
         </p>
       </div>
 
@@ -424,7 +416,7 @@ html_content = f"""<!DOCTYPE html>
         </div>
         <div class="exp-org">Pendidikan Teknik Informatika &bull; Universitas Muhammadiyah Surakarta</div>
         <p class="exp-desc">
-          Membimbing praktikum mahasiswa S1 untuk mata kuliah <strong>Pemrograman Web</strong> (backend Django & database), <strong>Basis Data</strong> (perancangan skema relasional, normalisasi ERD, query SQL lanjutan), dan <strong>Sistem Operasi</strong> (Linux CLI & shell automation scripting).
+          Membimbing praktikum mahasiswa S1 untuk mata kuliah <strong>Pemrograman Web</strong>, <strong>Basis Data</strong> (perancangan skema relasional, normalisasi ERD, query SQL), dan <strong>Sistem Operasi</strong> (manajemen proses dan otomasi scripting).
         </p>
       </div>
 
@@ -447,27 +439,27 @@ html_content = f"""<!DOCTYPE html>
         <div class="proj-item">
           <div class="proj-head">
             <span class="proj-name">Website IMM SIMUN</span>
-            <span class="proj-tech">Next.js 16 &bull; Supabase &bull; Tailwind &bull; PostgreSQL</span>
+            <span class="proj-category">Portal Organisasi & Arsip Digital</span>
           </div>
           <p class="proj-desc">
-            Portal resmi organisasi kemahasiswaan IMM Siti Munjiyah FKIP UMS: sistem publikasi naskah digital, direktori pengurus, repositori dokumen, dan arsip kaderisasi terpadu.
+            Portal resmi organisasi kemahasiswaan: memfasilitasi penerbitan naskah digital, direktori pengurus, repositori dokumen, dan arsip kaderisasi terpadu.
           </p>
         </div>
 
         <div class="proj-item">
           <div class="proj-head">
             <span class="proj-name">VibeCal AI (Google Vibe Hackathon)</span>
-            <span class="proj-tech">Gemini AI &bull; Groq API &bull; Next.js &bull; TypeScript</span>
+            <span class="proj-category">Kalender Cerdas & Ekstraksi AI</span>
           </div>
           <p class="proj-desc">
-            Kalender pintar ekstraksi jadwal otomatis yang memproses catatan percakapan bahasa alami bebas menjadi agenda kalender terstruktur berbasis AI model.
+            Aplikasi produktivitas kalender pintar yang memproses percakapan dan catatan bahasa alami secara otomatis menjadi agenda kegiatan terstruktur.
           </p>
         </div>
 
         <div class="proj-item">
           <div class="proj-head">
-            <span class="proj-name">Website MIM Gambiranom & CMS Mandiri</span>
-            <span class="proj-tech">Next.js 16 &bull; PostgreSQL &bull; Prisma ORM</span>
+            <span class="proj-name">Website MIM Gambiranom & CMS</span>
+            <span class="proj-category">Profil Sekolah & CMS Mandiri</span>
           </div>
           <p class="proj-desc">
             Website profil resmi madrasah ibtidaiyah dasar dan Content Management System (CMS) mandiri untuk mempermudah guru mempublikasikan berita, galeri, dan transparansi sekolah.
@@ -477,10 +469,10 @@ html_content = f"""<!DOCTYPE html>
         <div class="proj-item">
           <div class="proj-head">
             <span class="proj-name">LayakBisnis AI & Setara Special Ed</span>
-            <span class="proj-tech">DeepSeek API &bull; Groq &bull; Supabase &bull; Next.js</span>
+            <span class="proj-category">Finansial UMKM & Asisten Edukasi</span>
           </div>
           <p class="proj-desc">
-            Platform kalkulator finansial UMKM dengan konsultasi strategi bisnis AI, serta platform asisten cerdas penyusun draf Program Pembelajaran Individual (PPI) bagi guru pendidikan khusus.
+            Platform kalkulator kelayakan finansial UMKM terpadu dengan konsultasi strategi bisnis AI, serta platform asisten cerdas penyusun draf Program Pembelajaran Individual (PPI).
           </p>
         </div>
       </div>
@@ -495,4 +487,4 @@ html_content = f"""<!DOCTYPE html>
 with open("cv.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 
-print("cv.html updated with calibrated density.")
+print("cv.html updated with generalized descriptions.")
