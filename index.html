@@ -245,10 +245,11 @@ main {
 }
 .now-item {
   display: flex;
-  align-items: center;
-  gap: 9px;
+  align-items: flex-start;
+  gap: 10px;
   font-size: 13.5px;
   color: var(--fg);
+  line-height: 1.5;
 }
 .now-item .now-sub {
   color: var(--fg-muted);
@@ -262,6 +263,7 @@ main {
   box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
   animation: pulseGreen 2.4s infinite;
   flex-shrink: 0;
+  margin-top: 7.5px;
 }
 @keyframes pulseGreen {
   0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
@@ -823,8 +825,8 @@ const projectsData = [
 
 const content = {
   id: {
-    heroP1: '<span class="serif-italic">Crafting web applications & purposeful AI.</span> Membangun produk digital yang andal, sistem interaktif, dan integrasi kecerdasan buatan dari Surakarta, Indonesia <span class="flag-icon" title="Indonesia"><svg viewBox="0 0 3 2"><rect width="3" height="1" fill="#e70011"/><rect y="1" width="3" height="1" fill="#ffffff"/></svg></span>.',
-    heroP2: 'Fokus merancang solusi web yang menyelesaikan masalah nyata instansi dan sekolah, aktif mengajar coding untuk generasi muda, serta mendampingi praktikum pemrograman web di kampus.',
+    heroP1: '<span class="serif-italic">Crafting web applications & purposeful AI.</span> Berbasis di Surakarta, Indonesia <span class="flag-icon" title="Indonesia"><svg viewBox="0 0 3 2"><rect width="3" height="1" fill="#e70011"/><rect y="1" width="3" height="1" fill="#ffffff"/></svg></span>, saya fokus mengeksplorasi kecerdasan buatan, membangun produk web modern yang andal, dan bereksperimen dengan detail antarmuka digital yang bermakna.',
+    heroP2: 'Sangat antusias dengan perkembangan teknologi baru, senang membedah cara kerja sistem cerdas, dan memiliki passion mendalam untuk mengedukasi serta berbagi wawasan tech kepada sesama pembelajar.',
     nowItems: [
       { role: 'Pengajar Coding', org: 'Ruangguru · Sragen' },
       { role: 'Guru Coding Ekstrakurikuler', org: 'SMP Al Azhar IIBS Karanganyar' },
@@ -902,8 +904,8 @@ const content = {
     visitText: 'Kunjungi Website Resmi ↗'
   },
   en: {
-    heroP1: '<span class="serif-italic">Crafting web applications & purposeful AI.</span> Building polished digital products, interactive systems, and practical artificial intelligence from Surakarta, Indonesia <span class="flag-icon" title="Indonesia"><svg viewBox="0 0 3 2"><rect width="3" height="1" fill="#e70011"/><rect y="1" width="3" height="1" fill="#ffffff"/></svg></span>.',
-    heroP2: 'Focused on engineering web solutions for schools and organizations, actively teaching coding to the next generation, and assisting undergraduate web programming laboratories.',
+    heroP1: '<span class="serif-italic">Crafting web applications & purposeful AI.</span> Based in Surakarta, Indonesia <span class="flag-icon" title="Indonesia"><svg viewBox="0 0 3 2"><rect width="3" height="1" fill="#e70011"/><rect y="1" width="3" height="1" fill="#ffffff"/></svg></span>, I focus on exploring artificial intelligence, engineering reliable modern web products, and experimenting with thoughtful digital interfaces.',
+    heroP2: 'Deeply passionate about modern technologies, curious about how intelligent systems work under the hood, and genuinely driven to educate, mentor, and share tech insights with fellow builders.',
     nowItems: [
       { role: 'Coding Educator', org: 'Ruangguru · Sragen Regency' },
       { role: 'Coding Extracurricular Teacher', org: 'SMP Al Azhar IIBS Karanganyar' },
