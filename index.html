@@ -522,12 +522,11 @@ main {
   max-height: 90vh;
 }
 .cert-body {
-  padding: 16px 20px 20px;
+  padding: 16px;
   overflow-y: auto;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 14px;
 }
 .cert-img-wrapper {
   width: 100%;
@@ -829,19 +828,11 @@ main {
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
         <span class="modal-title" id="pdf-title">Sertifikat</span>
       </div>
-      <div class="modal-header-actions">
-        <a id="pdf-direct" href="#" target="_blank" rel="noopener" class="modal-link mono" style="font-size:11.5px;">Buka PDF Asli ↗</a>
-        <button type="button" class="modal-close" onclick="closePdf()" aria-label="Tutup">&times;</button>
-      </div>
+      <button type="button" class="modal-close" onclick="closePdf()" aria-label="Tutup">&times;</button>
     </div>
     <div class="cert-body">
       <div class="cert-img-wrapper">
         <img id="cert-img" src="" alt="Pratinjau Sertifikat">
-      </div>
-      <div class="cert-footer">
-        <a id="cert-download-btn" href="#" target="_blank" rel="noopener" class="detail-action-btn mono" style="font-size:12px;padding:4px 12px;border:1px solid var(--border);border-radius:6px;">
-          <span id="cert-dl-text">Buka / Unduh Dokumen PDF Resmi ↗</span>
-        </a>
       </div>
     </div>
   </div>
@@ -1009,9 +1000,7 @@ const content = {
     footerSupport: 'Buy me a coffee / Dukung ↗',
     supportTitle: 'Dukung Karya & Traktir Kopi',
     supportDesc: 'Scan QRIS di bawah ini melalui GoPay, OVO, Dana, ShopeePay, BCA, atau aplikasi mobile banking apapun. Dukunganmu sangat berarti!',
-    supportDl: 'Unduh QR Code ↗',
-    certDlText: 'Buka / Unduh Dokumen PDF Resmi ↗',
-    certDirectText: 'Buka PDF Asli ↗'
+    supportDl: 'Unduh QR Code ↗'
   },
   en: {
     heroP1: '<span class="serif-italic">Crafting web applications & purposeful AI.</span> Based in Surakarta, Indonesia <span class="flag-icon" title="Indonesia"><svg viewBox="0 0 3 2"><rect width="3" height="1" fill="#e70011"/><rect y="1" width="3" height="1" fill="#ffffff"/></svg></span>, I focus on exploring artificial intelligence, engineering reliable modern web products, and experimenting with thoughtful digital interfaces.',
@@ -1076,9 +1065,7 @@ const content = {
     footerSupport: 'Buy me a coffee / Support ↗',
     supportTitle: 'Support & Buy Me a Coffee',
     supportDesc: 'Scan the QRIS code below using any e-wallet or banking app (GoPay, OVO, Dana, ShopeePay, BCA, etc.). Your support is deeply appreciated!',
-    supportDl: 'Download QR Code ↗',
-    certDlText: 'Open / Download Official PDF Document ↗',
-    certDirectText: 'Open PDF ↗'
+    supportDl: 'Download QR Code ↗'
   }
 };
 
@@ -1158,7 +1145,7 @@ function render() {
   if (listCerts) {
     listCerts.innerHTML = c.certs.map(item => `
       <div class="entry">
-        <button type="button" class="entry-title clickable u-link" onclick="openCertModal('${item.image}', '${item.file}', '${esc(item.title)}')">
+        <button type="button" class="entry-title clickable u-link" onclick="openCertModal('${item.image}', '${esc(item.title)}')">
           ${esc(item.title)} ↗
         </button>
         <span class="entry-desc">${esc(item.desc)}</span>
@@ -1194,12 +1181,6 @@ function render() {
   if (supportDesc) supportDesc.textContent = c.supportDesc;
   const supportDl = document.getElementById('support-dl-text');
   if (supportDl) supportDl.textContent = c.supportDl;
-
-  // Certificate modal texts
-  const certDlText = document.getElementById('cert-dl-text');
-  if (certDlText) certDlText.textContent = c.certDlText;
-  const pdfDirect = document.getElementById('pdf-direct');
-  if (pdfDirect) pdfDirect.textContent = c.certDirectText;
 }
 
 /* ==============================================================
@@ -1400,28 +1381,24 @@ function toggleTheme(event) {
 }
 
 /* ==============================================================
-   CERTIFICATE PREVIEW MODAL CONTROLLER (Image-based for Mobile & Desktop)
+   CERTIFICATE PREVIEW MODAL CONTROLLER (Instant Image Lightbox)
    ============================================================== */
 const pdfModal = document.getElementById('pdf-modal');
 const certImg = document.getElementById('cert-img');
 const pdfTitle = document.getElementById('pdf-title');
-const pdfDirect = document.getElementById('pdf-direct');
-const certDlBtn = document.getElementById('cert-download-btn');
 
-function openCertModal(image, file, title) {
+function openCertModal(image, title) {
   if (pdfTitle) pdfTitle.textContent = title;
   if (certImg) {
     certImg.src = image;
     certImg.alt = title;
   }
-  if (pdfDirect) pdfDirect.href = file;
-  if (certDlBtn) certDlBtn.href = file;
   if (pdfModal) pdfModal.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
 
 function openPdf(file, title) {
-  openCertModal('', file, title);
+  openCertModal('', title);
 }
 
 function closePdf() {
