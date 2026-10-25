@@ -624,11 +624,21 @@ main {
 
     <hr class="section-divider">
 
-    <!-- Section: Education & Certs -->
+    <!-- Section: Education -->
     <section class="section" id="sec-education">
       <div class="section-row">
         <div class="section-label" id="label-education">Education</div>
         <div class="section-content" id="list-education"></div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Section: Certifications -->
+    <section class="section" id="sec-certs">
+      <div class="section-row">
+        <div class="section-label" id="label-certs">Certifications</div>
+        <div class="section-content" id="list-certs"></div>
       </div>
     </section>
 
@@ -816,7 +826,11 @@ const content = {
 
     labelEducation: 'Education',
     education: [
-      { title: 'Universitas Muhammadiyah Surakarta', desc: 'S1 Pendidikan Teknik Informatika · 2023 – sekarang' },
+      { title: 'Universitas Muhammadiyah Surakarta', desc: 'S1 Pendidikan Teknik Informatika · 2023 – sekarang' }
+    ],
+
+    labelCerts: 'Certifications',
+    certs: [
       { title: 'AWS Cloud Web App Builder', desc: 'AWS Academy Graduate · 2026', action: 'pdf', file: './sertif/AWS_Academy_Graduate___Cloud_Web_Application_Builder___Training_Badge_Badge20260712-20-tyns3j.pdf' },
       { title: 'Dasar Pemrograman Web', desc: 'Dicoding Indonesia · 2024', action: 'pdf', file: './sertif/dasar-pemrogaram-web-dicoding.pdf' },
       { title: 'Intro to JavaScript', desc: 'Harisenin.com · 2023', action: 'pdf', file: './sertif/introduction-to-javascript-for-beginner-harisenin.pdf' }
@@ -855,7 +869,11 @@ const content = {
 
     labelEducation: 'Education',
     education: [
-      { title: 'Universitas Muhammadiyah Surakarta', desc: 'B.Ed in Informatics Education · 2023 – present' },
+      { title: 'Universitas Muhammadiyah Surakarta', desc: 'B.Ed in Informatics Education · 2023 – present' }
+    ],
+
+    labelCerts: 'Certifications',
+    certs: [
       { title: 'AWS Cloud Web App Builder', desc: 'AWS Academy Graduate · 2026', action: 'pdf', file: './sertif/AWS_Academy_Graduate___Cloud_Web_Application_Builder___Training_Badge_Badge20260712-20-tyns3j.pdf' },
       { title: 'Web Development Fundamentals', desc: 'Dicoding Indonesia · 2024', action: 'pdf', file: './sertif/dasar-pemrogaram-web-dicoding.pdf' },
       { title: 'Intro to JavaScript', desc: 'Harisenin.com · 2023', action: 'pdf', file: './sertif/introduction-to-javascript-for-beginner-harisenin.pdf' }
@@ -934,7 +952,19 @@ function render() {
   document.getElementById('label-education').textContent = c.labelEducation;
   const listEdu = document.getElementById('list-education');
   if (listEdu) {
-    listEdu.innerHTML = c.education.map(item => {
+    listEdu.innerHTML = c.education.map(item => `
+      <div class="entry">
+        <span class="entry-title static">${esc(item.title)}</span>
+        <span class="entry-desc">${esc(item.desc)}</span>
+      </div>
+    `).join('');
+  }
+
+  // Section: Certifications
+  document.getElementById('label-certs').textContent = c.labelCerts;
+  const listCerts = document.getElementById('list-certs');
+  if (listCerts) {
+    listCerts.innerHTML = c.certs.map(item => {
       if (item.action === 'pdf') {
         return `
           <div class="entry">
