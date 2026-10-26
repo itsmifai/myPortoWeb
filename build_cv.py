@@ -468,7 +468,7 @@ html_content = f"""<!DOCTYPE html>
 
         <div class="proj-item">
           <div class="proj-head">
-            <span class="proj-name">LayakBisnis AI & Setara Special Ed</span>
+            <span class="proj-name">LayakBisnis AI & Setara Platform</span>
             <span class="proj-category">Finansial UMKM & Asisten Edukasi</span>
           </div>
           <p class="proj-desc">
