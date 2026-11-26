@@ -265,6 +265,26 @@
       margin-bottom: 18px;
     }
 
+    .hero-grad {
+      display: inline-block;
+      font-style: italic;
+      padding: 0.04em 0.12em 0.1em 0;
+      margin: -0.04em -0.12em -0.1em 0;
+      background: linear-gradient(125deg, #0f766e 0%, #2563eb 55%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    html.dark .hero-grad {
+      background: linear-gradient(125deg, #5eead4 0%, #60a5fa 55%, #c084fc 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
     .hero-sub {
       font-size: 13.5px;
       line-height: 1.65;
@@ -420,7 +440,7 @@
       to { transform: translateX(-50%); }
     }
 
-    /* Card-style marquee item (logo only) */
+    /* Card-style marquee item (logo only, non-clickable showcase) */
     .partner-card {
       display: flex;
       align-items: center;
@@ -429,7 +449,7 @@
       border: 1px solid var(--line);
       border-radius: 12px;
       background: var(--bg-card);
-      cursor: pointer;
+      cursor: default;
       min-width: 118px;
       transition: border-color 0.22s ease, background 0.22s ease, transform 0.25s cubic-bezier(0.22,1,0.36,1);
     }
@@ -473,45 +493,38 @@
       margin-bottom: 28px;
     }
 
-    /* ================= NOW: FEATURE + COMPACT LIST ================= */
-    /* Hero role (first) — full-width feature card */
-    .now-hero {
+    /* ================= NOW: CLEAN MINIMALIST STATUS STRIP ================= */
+    .now-strip {
       display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 0;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-      margin-bottom: 10px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
     }
 
-    .now-hero-left {
-      padding: 28px 26px;
+    .now-pill-card {
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--bg-card);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 20px;
-      border-right: 1px solid var(--line);
-      background: var(--bg-card);
-    }
-
-    .now-hero-right {
-      padding: 28px 26px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
       gap: 10px;
-      background: var(--bg-subtle);
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .now-hero-kicker {
-      display: inline-flex;
+    .now-pill-card:hover {
+      border-color: var(--line-hover);
+      background: var(--bg-subtle);
+      transform: translateY(-2px);
+    }
+
+    .now-pill-head {
+      display: flex;
       align-items: center;
       gap: 7px;
       font: 500 10.5px var(--mono);
       color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.02em;
     }
 
     .now-live-dot {
@@ -529,105 +542,19 @@
       50% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.0); }
     }
 
-    .now-hero-title {
+    .now-pill-title {
       font-family: var(--serif);
-      font-size: clamp(26px, 3.2vw, 36px);
-      font-weight: 400;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      color: var(--ink);
-    }
-
-    .now-hero-org {
-      font: 500 11px var(--mono);
-      color: var(--subtle);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .now-hero-desc {
-      font-size: 13px;
-      line-height: 1.68;
-      color: var(--ink-soft);
-    }
-
-    .now-hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .now-badge {
-      font: 500 10px var(--mono);
-      color: var(--muted);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 2px 8px;
-    }
-
-    /* Compact role rows (2nd and 3rd) */
-    .now-rows {
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-
-    .now-row {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 16px;
-      padding: 18px 22px;
-      border-bottom: 1px solid var(--line);
-      transition: background 0.18s ease;
-      cursor: default;
-    }
-
-    .now-row:last-child { border-bottom: none; }
-    .now-row:hover { background: var(--bg-subtle); }
-
-    .now-row-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-      flex-shrink: 0;
-    }
-
-    .now-row-body {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-      min-width: 0;
-    }
-
-    .now-row-title {
-      font-family: var(--serif);
-      font-size: 17px;
+      font-size: 18.5px;
       font-weight: 400;
       letter-spacing: -0.015em;
-      color: var(--ink);
       line-height: 1.2;
+      color: var(--ink);
     }
 
-    .now-row-desc {
+    .now-pill-note {
       font-size: 12px;
-      color: var(--muted);
       line-height: 1.5;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .now-row-badge {
-      font: 500 10px var(--mono);
       color: var(--muted);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 3px 9px;
-      flex-shrink: 0;
     }
 
     /* ================= PROJECTS: ACCORDION LIST ================= */
@@ -1371,9 +1298,7 @@
       }
 
       /* Now section */
-      .now-hero { grid-template-columns: 1fr; }
-      .now-hero-left { border-right: none; border-bottom: 1px solid var(--line); padding: 20px 18px; }
-      .now-hero-right { padding: 18px 18px; }
+      .now-strip { grid-template-columns: 1fr; gap: 10px; }
 
       /* Projects accordion — tighten expand panel */
       .proj-row-head { grid-template-columns: 28px 1fr auto; gap: 12px; }
@@ -1423,11 +1348,9 @@
       .section-block { margin-bottom: 48px; }
       .section-center-title { font-size: 16px; margin-bottom: 18px; }
 
-      /* Now hero */
-      .now-hero-title { font-size: clamp(22px, 5.5vw, 28px); }
-      .now-hero-left, .now-hero-right { padding: 16px 14px; }
-      .now-row { gap: 10px; padding: 14px 4px; }
-      .now-row-title { font-size: 15px; }
+      /* Now */
+      .now-pill-card { padding: 14px 16px; }
+      .now-pill-title { font-size: 17px; }
 
       /* Projects accordion */
       .proj-row-head { gap: 10px; padding: 14px 4px; }
@@ -1451,15 +1374,13 @@
       .meadow-cta h3 { font-size: 18px; margin-bottom: 10px; }
     }
 
-    /* Extra small — 375px phones */
+      /* Extra small — 375px phones */
     @media (max-width: 400px) {
       .page-layout { padding: 0 12px; }
       .brand-serif { font-size: 15px; }
       .pill-dark { display: none; }
       .hero-h1 { font-size: clamp(26px, 7.5vw, 34px); }
       .scenic-frame { height: 195px; }
-      .now-hero-title { font-size: 20px; }
-      .now-hero-left, .now-hero-right { padding: 14px 12px; }
       .proj-row-expand { padding: 0 0 14px 28px; }
       .tool-medallion { width: 52px; }
       .tool-icon-orb { width: 38px; height: 38px; padding: 7px; }
@@ -1472,7 +1393,7 @@
     <!-- Left Sidebar Rail -->
     <aside class="sidebar">
       <a href="#top" class="sidebar-print" aria-label="Miftahul Amri">
-        <img src="./miftah-profile.png" alt="Miftahul Amri">
+        <img src="./miftah-profile.webp" alt="Miftahul Amri" decoding="async">
       </a>
 
       <ul class="side-nav" id="side-nav">
@@ -1512,7 +1433,7 @@
 
       <!-- Mobile Profile & Quick Navigation (Hidden on desktop) -->
       <div class="mobile-profile-bar">
-        <img class="mobile-profile-thumb" src="./miftah-profile.png" alt="Miftahul Amri">
+        <img class="mobile-profile-thumb" src="./miftah-profile.webp" alt="Miftahul Amri" decoding="async">
         <nav class="mobile-quick-nav" aria-label="Mobile quick navigation">
           <a href="#now" id="mnav-now">Now</a>
           <a href="#projects" id="mnav-proj">Projects</a>
@@ -1525,7 +1446,7 @@
 
       <!-- Hero -->
       <section class="hero">
-        <h1 class="hero-h1" id="hero-title">Crafting web applications &amp; purposeful AI</h1>
+        <h1 class="hero-h1" id="hero-title">Crafting web applications &amp; <span class="hero-grad">purposeful AI</span></h1>
         <p class="hero-sub" id="hero-sub">
           Berbasis di Surakarta, Indonesia. Fokus merancang aplikasi web modern, integrasi AI yang bermakna, serta mengedukasi generasi muda dalam logika pemrograman.
         </p>
@@ -1537,8 +1458,8 @@
 
       <!-- Scenic Frame 1: Day (Sunrise Mountain Valleys) <-> Night (Moonlit Valley Wildflowers) -->
       <div class="scenic-frame">
-        <img class="scenic-img img-light" src="./ghibli-style/Pastel Sunrise Over Misty Mountain Valleys.png" alt="Pastel Sunrise Over Misty Mountain Valleys">
-        <img class="scenic-img img-dark" src="./ghibli-style/Moonlit Valley Wildflowers.png" alt="Moonlit Valley Wildflowers">
+        <img class="scenic-img img-light" src="./ghibli-style/Pastel Sunrise Over Misty Mountain Valleys.webp" alt="Pastel Sunrise Over Misty Mountain Valleys" decoding="async">
+        <img class="scenic-img img-dark" src="./ghibli-style/Moonlit Valley Wildflowers.webp" alt="Moonlit Valley Wildflowers" loading="lazy" decoding="async">
 
         <div class="frosted-prompt">
           <div class="frosted-prompt-text">
@@ -1559,11 +1480,10 @@
         </div>
       </div>
 
-      <!-- Section: Now (Feature + compact list) -->
+      <!-- Section: Now (Clean Minimalist Status Strip) -->
       <section class="section-block" id="now">
         <h2 class="section-center-title" id="now-heading">Peran aktif saat ini</h2>
-        <div id="now-hero-wrap"></div>
-        <div class="now-rows" id="now-rows"></div>
+        <div class="now-strip" id="now-strip"></div>
       </section>
 
       <!-- Section: Projects (Accordion List) -->
@@ -1667,8 +1587,8 @@
         </div>
 
         <div class="meadow-frame">
-          <img class="meadow-img img-light" src="./ghibli-style/Golden-Hour Wildflower Meadow.png" alt="Golden-Hour Wildflower Meadow">
-          <img class="meadow-img img-dark" src="./ghibli-style/Moonlit Meadow of Fireflies.png" alt="Moonlit Meadow of Fireflies">
+          <img class="meadow-img img-light" src="./ghibli-style/Golden-Hour Wildflower Meadow.webp" alt="Golden-Hour Wildflower Meadow" loading="lazy" decoding="async">
+          <img class="meadow-img img-dark" src="./ghibli-style/Moonlit Meadow of Fireflies.webp" alt="Moonlit Meadow of Fireflies" loading="lazy" decoding="async">
 
           <div class="meadow-cta">
             <h3 id="meadow-title">Punya ide menarik untuk dibangun bersama?</h3>
@@ -1754,7 +1674,7 @@
     let activeProjIdx = 0;
 
     const projectsData = [
-      { slug: 'nalarasa', title: 'Nalarasa', subId: 'Platform Edukasi Holistik & Karakter', subEn: 'Holistic EdTech & SEL Platform', descId: 'Platform belajar dan pendampingan karakter yang menghubungkan siswa, guru, dan orang tua lewat kuis bertimer, refleksi karakter, materi berbantuan AI, dan ruang konseling.', descEn: 'Holistic learning and character-mentoring platform connecting students, teachers, and parents with timed quizzes, reflection journals, AI-assisted materials, and counseling.', tags: ['React 18', 'Node.js', 'MariaDB', 'Vite'], link: '#', img: './project-image/nalarasa.png' },
+      { slug: 'nalarasa', title: 'Nalarasa', subId: 'Platform Edukasi Holistik & Karakter', subEn: 'Holistic EdTech & SEL Platform', descId: 'Platform belajar dan pendampingan karakter yang menghubungkan siswa, guru, dan orang tua lewat kuis bertimer, refleksi karakter, materi berbantuan AI, dan ruang konseling.', descEn: 'Holistic learning and character-mentoring platform connecting students, teachers, and parents with timed quizzes, reflection journals, AI-assisted materials, and counseling.', tags: ['React 18', 'Node.js', 'MariaDB', 'Vite'], link: '#', img: './project-image/nalarasa.webp' },
       { slug: 'imm-simun', title: 'Website IMM SIMUN', subId: 'Portal Organisasi & Arsip Digital', subEn: 'Org Portal & Digital Archive', descId: 'Portal resmi organisasi kemahasiswaan IMM Siti Munjiyah FKIP UMS untuk penerbitan naskah berkala, struktur kepengurusan, repositori dokumen, dan arsip kaderisasi.', descEn: 'Official student organization portal for IMM Siti Munjiyah FKIP UMS for publishing, leadership directories, and digital records.', tags: ['Next.js 16', 'Supabase', 'PostgreSQL'], link: 'https://imm-simun.ums.ac.id/', img: './project-image/imm.webp' },
       { slug: 'vibecal-ai', title: 'VibeCal AI', subId: 'Kalender Pintar Jadwal Otomatis', subEn: 'Smart Schedule Extractor', descId: 'Kalender pintar ajang Google Vibe Hackathon. Mengintegrasikan Gemini AI dan Groq API untuk mengekstrak catatan bebas menjadi agenda kalender terstruktur.', descEn: 'Intelligent calendar built at Google Vibe Hackathon integrating Gemini AI and Groq API to extract structured schedules.', tags: ['Gemini AI', 'Groq API', 'Next.js'], link: 'https://vibecal-lac.vercel.app', img: './project-image/vibecal.webp' },
       { slug: 'mim-gambiranom', title: 'Website MIM Gambiranom', subId: 'Profil Madrasah & CMS Mandiri', subEn: 'School Profile & Custom CMS', descId: 'Website profil resmi dan CMS mandiri untuk madrasah ibtidaiyah agar guru mudah mempublikasikan berita, galeri, dan informasi sekolah.', descEn: 'Official primary school profile website and independent CMS empowering teachers to publish news and galleries.', tags: ['Next.js 16', 'PostgreSQL', 'Prisma ORM'], link: 'https://mimgambiranom.site/', img: './project-image/mim.webp' },
@@ -1766,7 +1686,7 @@
     ];
 
     const partnerLogos = [
-      { name: 'Nalarasa', src: './partner/nalara-logo.png', slug: 'nalarasa' },
+      { name: 'Nalarasa', src: './partner/nalara-logo.webp', slug: 'nalarasa' },
       { name: 'IMM SIMUN', src: './partner/imm-simun.webp', slug: 'imm-simun' },
       { name: 'VibeCal AI', src: './partner/vibecal.webp', slug: 'vibecal-ai' },
       { name: 'MIM Gambiranom', src: './partner/mim-gambiranom.webp', slug: 'mim-gambiranom' },
@@ -1843,21 +1763,24 @@
       id: {
         snavNow: 'Saat Ini', snavProj: 'Proyek', snavExp: 'Riwayat', snavEdu: 'Pendidikan', snavCerts: 'Sertifikasi', snavAch: 'Prestasi', snavTools: 'Tools', snavConn: 'Kontak',
         topConn: 'Hubungi',
-        heroTitle: 'Crafting web applications & purposeful AI',
+        heroTitle: 'Crafting web applications &amp; <span class="hero-grad">purposeful AI</span>',
         heroSub: 'Berbasis di Surakarta, Indonesia. Merancang produk web modern, mengintegrasikan kecerdasan buatan yang solutif, dan membagikan ilmu pemrograman.',
         heroCv: 'Curriculum Vitae (PDF)',
         promptText: 'Membangun antarmuka web yang bersih, sistem AI terapan, dan mengedukasi logika komputasional.',
         marqueeLabel: 'Kolaborasi & Inisiatif',
         nowHeading: 'Peran aktif saat ini',
         roles: [
-          { title: 'Pengajar Ruangguru Coding', desc: 'Mengajar kurikulum computational thinking, fondasi logika pemrograman, dan creative coding untuk siswa sekolah mitra di Kab. Sragen.', badges: ['2026', 'Sragen'] },
-          { title: 'Guru Coding Ekstrakurikuler', desc: 'Membimbing dasar web development (HTML, CSS, JS) dan proyek digital kreatif bagi siswa SMP Al Azhar IIBS Karanganyar.', badges: ['2026', 'SMP'] },
-          { title: 'Asisten Lab Pemrograman Web', desc: 'Mendampingi praktikum mahasiswa S1 Pendidikan Teknik Informatika UMS mulai dari fundamental web hingga backend.', badges: ['2026', 'UMS'] }
+          { title: 'Pengajar Ruangguru Coding', org: 'Ruangguru · Sragen', note: 'Computational thinking & creative coding' },
+          { title: 'Guru Coding Ekstrakurikuler', org: 'Al Azhar IIBS · SMP', note: 'Dasar web development & proyek kreatif' },
+          { title: 'Asisten Lab Pemrograman Web', org: 'PTI UMS · Surakarta', note: 'Praktikum web fundamental hingga backend' }
         ],
         projHeading: 'Karya & proyek terpilih',
         expHeading: 'Riwayat pengalaman, pendidikan & sertifikasi',
-        lblExp: 'Pengalaman Sebelumnya', lblEdu: 'Pendidikan', lblCerts: 'Sertifikasi',
+        lblExp: 'Pengalaman', lblEdu: 'Pendidikan', lblCerts: 'Sertifikasi',
         experience: [
+          { title: 'Pengajar Ruangguru Coding', sub: 'Sragen — Mengajar computational thinking, fondasi logika pemrograman & creative coding untuk siswa sekolah mitra', year: '2026 – skrg' },
+          { title: 'Guru Coding Ekstrakurikuler', sub: 'SMP Al Azhar IIBS Karanganyar — Membimbing dasar web development (HTML, CSS, JS) & proyek digital kreatif', year: '2026 – skrg' },
+          { title: 'Asisten Lab Pemrograman Web', sub: 'PTI UMS — Mendampingi praktikum mahasiswa S1 dari fundamental web hingga backend', year: '2026 – skrg' },
           { title: 'Asisten Lab Basis Data', sub: 'PTI UMS — Pemodelan ERD, normalisasi & SQL lanjutan', year: '2026' },
           { title: 'Asisten Lab Sistem Operasi', sub: 'PTI UMS — Linux CLI, manajemen proses & shell scripting', year: '2025 – 2026' },
           { title: 'IT Helpdesk Staff (Intern)', sub: 'DSTI UMS — Kredensial SSO, jaringan & administrasi akun', year: '2023 – 2026' }
@@ -1901,21 +1824,24 @@
       en: {
         snavNow: 'Now', snavProj: 'Projects', snavExp: 'Experience', snavEdu: 'Education', snavCerts: 'Certifications', snavAch: 'Achievements', snavTools: 'Tools', snavConn: 'Connect',
         topConn: 'Connect',
-        heroTitle: 'Crafting web applications & purposeful AI',
+        heroTitle: 'Crafting web applications &amp; <span class="hero-grad">purposeful AI</span>',
         heroSub: 'Based in Surakarta, Indonesia. Engineering reliable modern web products, purposeful AI integrations, and teaching coding to the next generation.',
         heroCv: 'Curriculum Vitae (PDF)',
         promptText: 'Building clean web interfaces, applied AI systems, and teaching computational thinking.',
         marqueeLabel: 'Collaborations & Initiatives',
         nowHeading: 'Current active roles',
         roles: [
-          { title: 'Coding Educator — Ruangguru', desc: 'Teaching computational thinking, programming logic foundations, and creative coding for partner school students in Sragen.', badges: ['2026', 'Sragen'] },
-          { title: 'Coding Extracurricular Teacher', desc: 'Guiding HTML, CSS, JavaScript basics and creative digital projects for middle schoolers at SMP Al Azhar IIBS Karanganyar.', badges: ['2026', 'Junior High'] },
-          { title: 'Web Programming Lab Assistant', desc: 'Assisting undergraduate Informatics Education practicums at UMS from web fundamentals to backend.', badges: ['2026', 'UMS'] }
+          { title: 'Coding Educator — Ruangguru', org: 'Ruangguru · Sragen', note: 'Computational thinking & creative coding' },
+          { title: 'Coding Extracurricular Teacher', org: 'Al Azhar IIBS · Junior High', note: 'Web development basics & creative projects' },
+          { title: 'Web Programming Lab Assistant', org: 'PTI UMS · Surakarta', note: 'Web fundamentals to backend practicums' }
         ],
         projHeading: 'Selected work & projects',
-        expHeading: 'Prior experience, education & certifications',
-        lblExp: 'Prior Experience', lblEdu: 'Education', lblCerts: 'Certifications',
+        expHeading: 'Experience, education & certifications',
+        lblExp: 'Experience', lblEdu: 'Education', lblCerts: 'Certifications',
         experience: [
+          { title: 'Coding Educator — Ruangguru', sub: 'Sragen — Teaching computational thinking, programming logic foundations & creative coding for partner schools', year: '2026 – present' },
+          { title: 'Coding Extracurricular Teacher', sub: 'SMP Al Azhar IIBS Karanganyar — Guiding HTML, CSS, JavaScript basics & creative digital projects', year: '2026 – present' },
+          { title: 'Web Programming Lab Assistant', sub: 'PTI UMS — Assisting undergraduate Informatics Education practicums from web fundamentals to backend', year: '2026 – present' },
           { title: 'Database Lab Assistant', sub: 'PTI UMS — ERD modeling, normalization & advanced SQL', year: '2026' },
           { title: 'Operating Systems Lab Assistant', sub: 'PTI UMS — Linux CLI, process management & shell scripting', year: '2025 – 2026' },
           { title: 'IT Helpdesk Staff (Intern)', sub: 'DSTI UMS — SSO credentials, networking & account admin', year: '2023 – 2026' }
@@ -2025,54 +1951,30 @@
       document.getElementById('mnav-conn').textContent = t.snavConn;
       document.getElementById('top-connect').textContent = t.topConn;
 
-      document.getElementById('hero-title').textContent = t.heroTitle;
+      document.getElementById('hero-title').innerHTML = t.heroTitle;
       document.getElementById('hero-sub').textContent = t.heroSub;
       document.getElementById('hero-cv-link').textContent = t.heroCv;
       document.getElementById('prompt-text').textContent = t.promptText;
       document.getElementById('marquee-label').textContent = t.marqueeLabel;
 
-      // Render Partner Marquee — card style (logo only)
+      // Render Partner Marquee — non-clickable visual showcase
       const cardsHtml = partnerLogos.map(l =>
-        `<div class="partner-card" onclick="openProject('${l.slug}')" role="button" tabindex="0" title="${l.name}" aria-label="${l.name}">
-          <img class="partner-logo" src="${l.src}" alt="${l.name}">
+        `<div class="partner-card" title="${l.name}">
+          <img class="partner-logo" src="${l.src}" alt="${l.name}" decoding="async">
         </div>`
       ).join('');
       document.getElementById('marquee-track').innerHTML = cardsHtml + cardsHtml;
 
       document.getElementById('now-heading').textContent = t.nowHeading;
-
-      // Now: hero (first role) + compact rows (remaining)
-      const heroRole = t.roles[0];
-      const restRoles = t.roles.slice(1);
-      document.getElementById('now-hero-wrap').innerHTML = `
-        <div class="now-hero" style="margin-bottom:10px;">
-          <div class="now-hero-left">
-            <div>
-              <div class="now-hero-kicker">
-                <span class="now-live-dot"></span>
-                <span>Aktif sekarang</span>
-              </div>
-            </div>
-            <h3 class="now-hero-title">${heroRole.title}</h3>
-            <div class="now-hero-badges">
-              ${heroRole.badges.map(b => `<span class="now-badge">${b}</span>`).join('')}
-            </div>
+      document.getElementById('now-strip').innerHTML = t.roles.map(r => `
+        <article class="now-pill-card">
+          <div class="now-pill-head">
+            <span class="now-live-dot"></span>
+            <span>${r.org}</span>
           </div>
-          <div class="now-hero-right">
-            <div class="now-hero-org">${heroRole.badges[1] || ''}</div>
-            <p class="now-hero-desc">${heroRole.desc}</p>
-          </div>
-        </div>
-      `;
-      document.getElementById('now-rows').innerHTML = restRoles.map(r => `
-        <div class="now-row">
-          <span class="now-row-dot"></span>
-          <div class="now-row-body">
-            <div class="now-row-title">${r.title}</div>
-            <div class="now-row-desc">${r.desc}</div>
-          </div>
-          <span class="now-row-badge">${r.badges[1] || r.badges[0]}</span>
-        </div>
+          <h3 class="now-pill-title">${r.title}</h3>
+          <p class="now-pill-note">${r.note}</p>
+        </article>
       `).join('');
 
       document.getElementById('proj-heading').textContent = t.projHeading;
@@ -2180,8 +2082,8 @@
               <div class="tool-medallion">
                 <div class="tool-icon-orb">
                   ${item.dark
-                    ? `<img class="logo-light" src="${item.light}" alt="${item.name}"><img class="logo-dark" src="${item.dark}" alt="${item.name}">`
-                    : `<img src="${item.light}" alt="${item.name}">`
+                    ? `<img class="logo-light" src="${item.light}" alt="${item.name}" loading="lazy" decoding="async"><img class="logo-dark" src="${item.dark}" alt="${item.name}" loading="lazy" decoding="async">`
+                    : `<img src="${item.light}" alt="${item.name}" loading="lazy" decoding="async">`
                   }
                 </div>
                 <span class="tool-name">${item.name}</span>
