@@ -1130,34 +1130,42 @@
       margin-bottom: 14px;
     }
 
-    .meadow-corner-icon {
-      position: absolute;
-      z-index: 2;
-      right: 14px;
-      bottom: 14px;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: var(--frosted-bg);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid var(--frosted-border);
-      display: grid;
-      place-items: center;
-      color: var(--ink);
-      box-shadow: 0 4px 12px var(--frosted-shadow);
-      transition: transform 0.15s ease;
-    }
-
-    .meadow-corner-icon:hover { transform: scale(1.08); }
-    .meadow-corner-icon svg { width: 14px; height: 14px; }
-
     /* ================= FOOTER ================= */
     .footer-note {
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
       font-size: 11.5px;
       color: var(--muted);
-      padding-top: 8px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-coffee-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font: 500 11.5px var(--mono);
+      color: var(--ink-soft);
+      padding: 6px 13px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--bg-card);
+      transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+    }
+
+    .footer-coffee-btn:hover {
+      border-color: var(--line-hover);
+      background: var(--bg-subtle);
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    .footer-coffee-btn svg {
+      width: 13px;
+      height: 13px;
     }
 
     /* ================= MODALS ================= */
@@ -1240,9 +1248,97 @@
     .cm-body { padding: 14px; background: var(--bg-subtle); display: flex; justify-content: center; }
     .cm-body img { max-width: 100%; max-height: 68dvh; object-fit: contain; border-radius: 8px; }
 
-    .sm-body { padding: 24px; display: flex; flex-direction: column; align-items: center; text-align: center; }
-    .sm-qr { width: 196px; height: 196px; background: #ffffff; border: 1px solid var(--line); border-radius: 10px; padding: 8px; margin: 16px 0 10px; }
+    .coffee-modal-box {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .coffee-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      z-index: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .coffee-bg-img.img-light { opacity: 1; }
+    .coffee-bg-img.img-dark { opacity: 0; }
+    html.dark .coffee-bg-img.img-light { opacity: 0; }
+    html.dark .coffee-bg-img.img-dark { opacity: 1; }
+
+    .coffee-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.55) 0%,
+        rgba(255, 255, 255, 0.18) 45%,
+        rgba(255, 255, 255, 0.68) 100%
+      );
+    }
+
+    html.dark .coffee-scrim {
+      background: linear-gradient(
+        to bottom,
+        rgba(10, 14, 22, 0.55) 0%,
+        rgba(10, 14, 22, 0.18) 45%,
+        rgba(10, 14, 22, 0.72) 100%
+      );
+    }
+
+    .coffee-modal-box .modal-head {
+      position: relative;
+      z-index: 2;
+      background: transparent;
+      border-bottom-color: rgba(128, 128, 128, 0.18);
+    }
+
+    .coffee-modal-box .modal-title {
+      color: var(--ink);
+      text-shadow: 0 1px 8px var(--bg);
+    }
+
+    .sm-body {
+      position: relative;
+      z-index: 2;
+      padding: 20px 24px 26px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .sm-desc-text {
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: var(--ink);
+      font-weight: 500;
+      text-shadow: 0 1px 10px var(--bg), 0 0 18px var(--bg);
+    }
+
+    .sm-qr {
+      width: 192px;
+      height: 192px;
+      background: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: 12px;
+      padding: 8px;
+      margin: 16px 0 12px;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+    }
     .sm-qr img { width: 100%; height: 100%; object-fit: contain; }
+
+    .sm-handle-text {
+      font: 500 11.5px var(--mono);
+      color: var(--ink);
+      margin-bottom: 14px;
+      text-shadow: 0 1px 10px var(--bg), 0 0 16px var(--bg);
+    }
 
     /* ================= MOBILE PROFILE & QUICK NAV ================= */
     .mobile-profile-bar {
@@ -1387,6 +1483,7 @@
       .proj-row-expand { padding: 0 0 14px 28px; }
       .tool-medallion { width: 52px; }
       .tool-icon-orb { width: 38px; height: 38px; padding: 7px; }
+      .footer-note { justify-content: center; text-align: center; }
     }
   </style>
 </head>
@@ -1599,8 +1696,11 @@
               Mulai Diskusi &nearr;
             </a>
           </div>
+        </div>
 
-          <button type="button" class="meadow-corner-icon" onclick="openModal('coffee-modal')" title="Buy me a coffee" aria-label="Buy me a coffee">
+        <footer class="footer-note">
+          <span>&copy; 2026 Miftahul Amri &middot; Surakarta, Indonesia</span>
+          <button type="button" class="footer-coffee-btn" onclick="openModal('coffee-modal')" aria-label="Buy me a coffee">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
               <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
@@ -1608,11 +1708,8 @@
               <line x1="10" y1="1" x2="10" y2="4"/>
               <line x1="14" y1="1" x2="14" y2="4"/>
             </svg>
+            <span id="footer-coffee-label">Buy me a coffee</span>
           </button>
-        </div>
-
-        <footer class="footer-note">
-          &copy; 2026 Miftahul Amri &middot; Surakarta, Indonesia
         </footer>
       </section>
     </main>
@@ -1653,20 +1750,23 @@
 
   <!-- Modal: Buy Me a Coffee / QRIS -->
   <div class="modal-backdrop" id="coffee-modal" onclick="if(event.target === this) closeModal('coffee-modal')">
-    <div class="modal-box" style="max-width:390px;" role="dialog" aria-modal="true">
+    <div class="modal-box coffee-modal-box" style="max-width:410px;" role="dialog" aria-modal="true">
+      <img class="coffee-bg-img img-light" src="./ghibli-style/Morning Cozy Cafe.webp" alt="Morning Cozy Cafe" loading="lazy" decoding="async">
+      <img class="coffee-bg-img img-dark" src="./ghibli-style/Moonlit Cozy Desk.webp" alt="Moonlit Cozy Desk" loading="lazy" decoding="async">
+      <div class="coffee-scrim"></div>
       <div class="modal-head">
         <span class="modal-title" id="sm-title">Buy me a coffee</span>
         <button type="button" class="modal-close" onclick="closeModal('coffee-modal')" aria-label="Close">&times;</button>
       </div>
       <div class="sm-body">
-        <p style="font-size:13px;color:var(--ink-soft);line-height:1.6;" id="sm-desc"></p>
+        <p class="sm-desc-text" id="sm-desc"></p>
         <div class="sm-qr">
           <img src="./qris-itsmifai.png" alt="QRIS itsmifai">
         </div>
-        <div style="font:400 11px var(--mono);color:var(--muted);margin-bottom:16px;">
-          <strong style="color:var(--ink);">itsmifai</strong> &middot; Digital &amp; Kreatif
+        <div class="sm-handle-text">
+          <strong>itsmifai</strong> &middot; Digital &amp; Kreatif
         </div>
-        <a class="pill-dark" href="./qris-itsmifai.png" download="qris-itsmifai.png" id="sm-dl" style="padding:8px 18px;">Unduh QR Code ↗</a>
+        <a class="pill-dark" href="./qris-itsmifai.png" download="qris-itsmifai.png" id="sm-dl" style="padding:8px 18px;box-shadow:0 8px 22px rgba(0,0,0,0.22);">Unduh QR Code ↗</a>
       </div>
     </div>
   </div>
@@ -1677,7 +1777,7 @@
     let activeProjIdx = 0;
 
     const projectsData = [
-      { slug: 'nalarasa', title: 'Nalarasa', subId: 'Platform Edukasi Holistik & Karakter', subEn: 'Holistic EdTech & SEL Platform', descId: 'Platform belajar dan pendampingan karakter yang menghubungkan siswa, guru, dan orang tua lewat kuis bertimer, refleksi karakter, materi berbantuan AI, dan ruang konseling.', descEn: 'Holistic learning and character-mentoring platform connecting students, teachers, and parents with timed quizzes, reflection journals, AI-assisted materials, and counseling.', tags: ['React 18', 'Node.js', 'MariaDB', 'Vite'], link: '#', img: './project-image/nalarasa.webp' },
+      { slug: 'nalarasa', title: 'Nalarasa', subId: 'Platform Edukasi Holistik & Karakter', subEn: 'Holistic EdTech & SEL Platform', descId: 'Platform belajar dan pendampingan karakter yang menghubungkan siswa, guru, dan orang tua lewat kuis bertimer, refleksi karakter, materi berbantuan AI, dan ruang konseling.', descEn: 'Holistic learning and character-mentoring platform connecting students, teachers, and parents with timed quizzes, reflection journals, AI-assisted materials, and counseling.', tags: ['React 18', 'Node.js', 'MariaDB', 'Vite'], link: 'https://nalarasa.org/', img: './project-image/nalarasa.webp' },
       { slug: 'imm-simun', title: 'Website IMM SIMUN', subId: 'Portal Organisasi & Arsip Digital', subEn: 'Org Portal & Digital Archive', descId: 'Portal resmi organisasi kemahasiswaan IMM Siti Munjiyah FKIP UMS untuk penerbitan naskah berkala, struktur kepengurusan, repositori dokumen, dan arsip kaderisasi.', descEn: 'Official student organization portal for IMM Siti Munjiyah FKIP UMS for publishing, leadership directories, and digital records.', tags: ['Next.js 16', 'Supabase', 'PostgreSQL'], link: 'https://imm-simun.ums.ac.id/', img: './project-image/imm.webp' },
       { slug: 'vibecal-ai', title: 'VibeCal AI', subId: 'Kalender Pintar Jadwal Otomatis', subEn: 'Smart Schedule Extractor', descId: 'Kalender pintar ajang Google Vibe Hackathon. Mengintegrasikan Gemini AI dan Groq API untuk mengekstrak catatan bebas menjadi agenda kalender terstruktur.', descEn: 'Intelligent calendar built at Google Vibe Hackathon integrating Gemini AI and Groq API to extract structured schedules.', tags: ['Gemini AI', 'Groq API', 'Next.js'], link: 'https://vibecal-lac.vercel.app', img: './project-image/vibecal.webp' },
       { slug: 'mim-gambiranom', title: 'Website MIM Gambiranom', subId: 'Profil Madrasah & CMS Mandiri', subEn: 'School Profile & Custom CMS', descId: 'Website profil resmi dan CMS mandiri untuk madrasah ibtidaiyah agar guru mudah mempublikasikan berita, galeri, dan informasi sekolah.', descEn: 'Official primary school profile website and independent CMS empowering teachers to publish news and galleries.', tags: ['Next.js 16', 'PostgreSQL', 'Prisma ORM'], link: 'https://mimgambiranom.site/', img: './project-image/mim.webp' },
