@@ -1528,17 +1528,21 @@
       text-shadow: 0 1px 10px var(--bg), 0 0 18px var(--bg);
     }
 
-    .sm-qr {
-      width: 192px;
-      height: 192px;
-      background: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.75);
+    .sm-running-wrap {
+      width: 100%;
+      margin: 16px 0 14px;
       border-radius: 12px;
-      padding: 8px;
-      margin: 16px 0 12px;
-      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+      overflow: hidden;
+      background: rgba(247, 245, 238, 0.9);
+      border: 1px solid rgba(29, 34, 29, 0.14);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
     }
-    .sm-qr img { width: 100%; height: 100%; object-fit: contain; }
+    .sm-running-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 60px;
+      border: 0;
+    }
 
     .sm-handle-text {
       font: 500 11.5px var(--mono);
@@ -1912,9 +1916,9 @@
     </div>
   </div>
 
-  <!-- Modal: Buy Me a Coffee / QRIS -->
+  <!-- Modal: Buy Me a Coffee / Yapp -->
   <div class="modal-backdrop" id="coffee-modal" onclick="if(event.target === this) closeModal('coffee-modal')">
-    <div class="modal-box coffee-modal-box" style="max-width:410px;" role="dialog" aria-modal="true">
+    <div class="modal-box coffee-modal-box" style="max-width:460px;" role="dialog" aria-modal="true">
       <img class="coffee-bg-img img-light" src="./ghibli-style/Morning Cozy Cafe.webp" alt="Morning Cozy Cafe" loading="lazy" decoding="async">
       <img class="coffee-bg-img img-dark" src="./ghibli-style/Moonlit Cozy Desk.webp" alt="Moonlit Cozy Desk" loading="lazy" decoding="async">
       <div class="coffee-scrim"></div>
@@ -1924,13 +1928,13 @@
       </div>
       <div class="sm-body">
         <p class="sm-desc-text" id="sm-desc"></p>
-        <div class="sm-qr">
-          <img src="./qris-itsmifai.png" alt="QRIS itsmifai">
+        <div class="sm-running-wrap">
+          <iframe src="https://widget.yapp.ink/runningtext/0a915bd46ae7bc3bbb7978012a1f13f6" title="Yapp Tip Running Text" loading="lazy"></iframe>
         </div>
         <div class="sm-handle-text">
-          <strong>itsmifai</strong> &middot; Digital &amp; Kreatif
+          <strong>yapp.ink/itsmifai</strong> &middot; Digital &amp; Kreatif
         </div>
-        <a class="pill-dark" href="./qris-itsmifai.png" download="qris-itsmifai.png" id="sm-dl" style="padding:8px 18px;box-shadow:0 8px 22px rgba(0,0,0,0.22);">Unduh QR Code ↗</a>
+        <a class="pill-dark" href="https://yapp.ink/itsmifai" target="_blank" rel="noopener noreferrer" id="sm-dl" style="padding:9px 20px;box-shadow:0 8px 22px rgba(0,0,0,0.22);">Dukung via Yapp ↗</a>
       </div>
     </div>
   </div>
@@ -2096,8 +2100,8 @@
         ariaGh: 'Kunjungi GitHub github.com/itsmifai (buka tab baru)',
         pmKicker: 'Detail Proyek', pmVisit: 'Kunjungi Proyek ↗',
         coffeeTitle: 'Buy me a coffee / Dukung',
-        coffeeDesc: 'Scan QRIS di bawah ini melalui GoPay, OVO, Dana, ShopeePay, BCA, atau mobile banking apa pun. Dukunganmu sangat berarti!',
-        coffeeDl: 'Unduh QR Code ↗'
+        coffeeDesc: 'Dukung karya dan live stream saya lewat Yapp (QRIS, GoPay, OVO, Dana, ShopeePay, atau transfer bank).',
+        coffeeDl: 'Dukung via Yapp ↗'
       },
       en: {
         snavNow: 'Now', snavProj: 'Projects', snavExp: 'Experience', snavEdu: 'Education', snavCerts: 'Certifications', snavAch: 'Achievements', snavTools: 'Tools', snavConn: 'Connect',
@@ -2165,8 +2169,8 @@
         ariaGh: 'Visit GitHub github.com/itsmifai (opens in new tab)',
         pmKicker: 'Project Detail', pmVisit: 'Visit Project ↗',
         coffeeTitle: 'Support & Buy Me a Coffee',
-        coffeeDesc: 'Scan the QRIS code below using any e-wallet or banking app. Your support is deeply appreciated!',
-        coffeeDl: 'Download QR Code ↗'
+        coffeeDesc: 'Support my work and live streams via Yapp (QRIS, e-wallets, or bank transfer).',
+        coffeeDl: 'Support via Yapp ↗'
       }
     };
 
