@@ -402,21 +402,13 @@
 
     .frosted-go:hover { transform: scale(1.08); }
 
-    /* ================= PARTNER LOGOS — DUAL OPPOSING MARQUEE ================= */
-    .dual-marquee-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
+    /* ================= PARTNER LOGOS — CLEAN SINGLE MARQUEE ================= */
+    .marquee-wrap {
       overflow: hidden;
       width: 100%;
       padding: 6px 0;
       mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
       -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    }
-
-    .marquee-row {
-      overflow: hidden;
-      width: 100%;
     }
 
     .marquee-track {
@@ -426,28 +418,16 @@
       padding-right: 48px;
       width: max-content;
       will-change: transform;
+      animation: marqueeLeft 38s linear infinite;
     }
 
-    .marquee-track.dir-left {
-      animation: marqueeLeft 32s linear infinite;
-    }
-
-    .marquee-track.dir-right {
-      animation: marqueeRight 32s linear infinite;
-    }
-
-    .marquee-row:hover .marquee-track {
+    .marquee-wrap:hover .marquee-track {
       animation-play-state: paused;
     }
 
     @keyframes marqueeLeft {
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
-    }
-
-    @keyframes marqueeRight {
-      from { transform: translateX(-50%); }
-      to   { transform: translateX(0); }
     }
 
     .refgrid-item {
@@ -462,7 +442,7 @@
 
     .refgrid-logo {
       max-width: 150px;
-      max-height: 56px;
+      max-height: 54px;
       width: auto;
       height: auto;
       object-fit: contain;
@@ -483,15 +463,15 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .marquee-track.dir-left,
-      .marquee-track.dir-right {
+      .marquee-track {
         animation: none;
         flex-wrap: wrap;
         justify-content: center;
         width: 100%;
+        padding-right: 0;
         gap: 24px 32px;
       }
-      .dual-marquee-wrap {
+      .marquee-wrap {
         mask-image: none;
         -webkit-mask-image: none;
       }
@@ -500,7 +480,6 @@
     }
 
     @media (max-width: 640px) {
-      .dual-marquee-wrap { gap: 18px; }
       .marquee-track { gap: 32px; padding-right: 32px; }
       .refgrid-logo {
         max-width: 115px;
@@ -1036,18 +1015,29 @@
       color: var(--subtle);
     }
 
-    /* ================= TOOLS: CLASSIFIED WORKFLOW DOCK ================= */
+    /* ================= TOOLS: TABLE GRID WORKFLOW DOCK ================= */
     .tools-classified {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       border-top: 1px solid var(--line);
     }
 
     .tool-cat-row {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 24px;
-      align-items: center;
-      padding: 22px 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding: 24px 24px 26px;
       border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+    }
+
+    .tool-cat-row:nth-child(even) {
+      border-right: none;
+    }
+
+    .tool-cat-row:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      border-right: none;
     }
 
     .tool-cat-meta {
@@ -1057,7 +1047,7 @@
     }
 
     .tool-cat-title {
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 600;
       color: var(--ink);
     }
@@ -1071,7 +1061,7 @@
       display: flex;
       flex-wrap: wrap;
       align-items: flex-start;
-      gap: 18px 26px;
+      gap: 16px 20px;
     }
 
     .tool-medallion {
@@ -1120,8 +1110,12 @@
     .tool-name { font-size: 11.5px; font-weight: 600; color: var(--ink); line-height: 1.2; }
 
     @media (max-width: 720px) {
-      .tool-cat-row {
+      .tools-classified {
         grid-template-columns: 1fr;
+      }
+      .tool-cat-row {
+        border-right: none;
+        padding: 18px 4px 20px;
         gap: 14px;
       }
     }
@@ -1591,7 +1585,7 @@
       .proj-row-expand { grid-template-columns: 1fr; gap: 12px; padding: 0 0 16px 36px; }
 
       /* Tools */
-      .tool-cat-row { gap: 10px; padding: 16px 0; }
+      .tool-cat-row { gap: 12px; padding: 16px 2px 18px; }
       .tool-cat-items { gap: 12px 14px; }
       .tool-medallion { width: 58px; }
       .tool-icon-orb { width: 42px; height: 42px; padding: 8px; border-radius: 11px; }
@@ -1753,10 +1747,12 @@
         <div class="tools-classified" id="tools-dock"></div>
       </section>
 
-      <!-- Partner Logos — Dual Opposing Marquee -->
+      <!-- Partner Logos — Clean Single Marquee -->
       <section class="section-block" aria-labelledby="marquee-label">
         <h2 class="section-center-title" id="marquee-label">Kolaborasi &amp; Inisiatif</h2>
-        <div class="dual-marquee-wrap" id="marquee-track"></div>
+        <div class="marquee-wrap">
+          <div class="marquee-track" id="marquee-track"></div>
+        </div>
       </section>
 
       <!-- Section: Connect (Meadow Banner CTA + Secondary Contact Links) -->
@@ -2171,25 +2167,13 @@
       document.getElementById('prompt-text').textContent = t.promptText;
       document.getElementById('marquee-label').textContent = t.marqueeLabel;
 
-      // Render Partner Logos — Dual Opposing Marquee (top: left, bottom: right)
-      const splitIdx = Math.ceil(partnerLogos.length / 2);
-      const row1 = partnerLogos.slice(0, splitIdx);
-      const row2 = partnerLogos.slice(splitIdx);
-      const renderRowItems = (arr) => arr.map(l => `
+      // Render Partner Logos — Clean Single Marquee (seamless loop)
+      const rowHtml = partnerLogos.map(l => `
         <div class="refgrid-item" title="${l.name}">
           <img class="refgrid-logo" src="${l.src}" alt="${l.name}" decoding="async" loading="lazy">
         </div>
       `).join('');
-      const r1Html = renderRowItems(row1);
-      const r2Html = renderRowItems(row2);
-      document.getElementById('marquee-track').innerHTML = `
-        <div class="marquee-row">
-          <div class="marquee-track dir-left">${r1Html}${r1Html}</div>
-        </div>
-        <div class="marquee-row">
-          <div class="marquee-track dir-right">${r2Html}${r2Html}</div>
-        </div>
-      `;
+      document.getElementById('marquee-track').innerHTML = rowHtml + rowHtml;
 
       // Status Board — Now section
       document.getElementById('now-heading').textContent = t.nowHeading;
