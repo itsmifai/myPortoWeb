@@ -1350,29 +1350,32 @@
       border-top: 1px solid var(--line);
     }
 
-    .footer-coffee-btn {
+    .footer-yapp-btn {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
+      gap: 8px;
       font: 500 11.5px var(--mono);
       color: var(--ink-soft);
-      padding: 6px 13px;
+      padding: 5px 13px;
       border-radius: 999px;
       border: 1px solid var(--line);
       background: var(--bg-card);
+      text-decoration: none;
       transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease, transform 0.18s ease;
     }
 
-    .footer-coffee-btn:hover {
+    .footer-yapp-btn:hover {
       border-color: var(--line-hover);
       background: var(--bg-subtle);
       color: var(--ink);
       transform: translateY(-1px);
     }
 
-    .footer-coffee-btn svg {
-      width: 13px;
-      height: 13px;
+    .footer-yapp-btn img {
+      width: 15px;
+      height: 15px;
+      object-fit: contain;
+      border-radius: 3px;
     }
 
     /* ================= MODALS ================= */
@@ -1801,16 +1804,10 @@
 
         <footer class="footer-note">
           <span>&copy; 2026 Miftahul Amri &middot; Surakarta, Indonesia</span>
-          <button type="button" class="footer-coffee-btn" onclick="openModal('coffee-modal')" aria-label="Buy me a coffee">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
-              <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
-              <line x1="6" y1="1" x2="6" y2="4"/>
-              <line x1="10" y1="1" x2="10" y2="4"/>
-              <line x1="14" y1="1" x2="14" y2="4"/>
-            </svg>
-            <span id="footer-coffee-label">Buy me a coffee</span>
-          </button>
+          <a class="footer-yapp-btn" href="https://yapp.ink/itsmifai" target="_blank" rel="noopener noreferrer" aria-label="Support via Yapp">
+            <img src="./yapp-logo.png" alt="Yapp" loading="lazy">
+            <span id="footer-coffee-label">Support via Yapp</span>
+          </a>
         </footer>
       </section>
     </main>
@@ -1850,21 +1847,6 @@
   </div>
 
   <!-- Modal: Buy Me a Coffee / Yapp -->
-  <div class="modal-backdrop" id="coffee-modal" onclick="if(event.target === this) closeModal('coffee-modal')">
-    <div class="modal-box" style="max-width:460px;" role="dialog" aria-modal="true">
-      <div class="modal-head">
-        <span class="modal-title" id="sm-title">Buy me a coffee</span>
-        <button type="button" class="modal-close" onclick="closeModal('coffee-modal')" aria-label="Close">&times;</button>
-      </div>
-      <div class="sm-body">
-        <p class="sm-desc-text" id="sm-desc"></p>
-        <div class="sm-running-wrap">
-          <iframe src="https://widget.yapp.ink/runningtext/0a915bd46ae7bc3bbb7978012a1f13f6" title="Yapp Tip Running Text" loading="lazy"></iframe>
-        </div>
-        <a class="pill-dark" href="https://yapp.ink/itsmifai" target="_blank" rel="noopener noreferrer" id="sm-dl" style="padding:9px 20px;">Dukung via Yapp ↗</a>
-      </div>
-    </div>
-  </div>
 
   <script>
     let lang = localStorage.getItem('portfolio_lang') || 'id';
@@ -2354,9 +2336,6 @@
       document.getElementById('link-email').setAttribute('aria-label', t.ariaEmail);
       document.getElementById('link-ig').setAttribute('aria-label', t.ariaIg);
       document.getElementById('link-gh').setAttribute('aria-label', t.ariaGh);
-      document.getElementById('sm-title').textContent = t.coffeeTitle;
-      document.getElementById('sm-desc').textContent = t.coffeeDesc;
-      document.getElementById('sm-dl').textContent = t.coffeeDl;
     }
 
     function setLang(newLang) {
@@ -2438,7 +2417,6 @@
       if (e.key === 'Escape') {
         closeModal('proj-modal');
         closeModal('cert-modal');
-        closeModal('coffee-modal');
       }
     });
 
