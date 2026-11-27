@@ -402,28 +402,67 @@
 
     .frosted-go:hover { transform: scale(1.08); }
 
-    /* ================= PARTNER LOGOS — CLEAN CENTERED GRID (referensilogodesign2) ================= */
-    .refgrid-logos {
+    /* ================= PARTNER LOGOS — DUAL OPPOSING MARQUEE ================= */
+    .dual-marquee-wrap {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
+      gap: 24px;
+      overflow: hidden;
+      width: 100%;
+      padding: 6px 0;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+
+    .marquee-row {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .marquee-track {
+      display: flex;
       align-items: center;
-      gap: 34px 44px;
+      gap: 48px;
+      padding-right: 48px;
+      width: max-content;
+      will-change: transform;
+    }
+
+    .marquee-track.dir-left {
+      animation: marqueeLeft 32s linear infinite;
+    }
+
+    .marquee-track.dir-right {
+      animation: marqueeRight 32s linear infinite;
+    }
+
+    .marquee-row:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes marqueeLeft {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    @keyframes marqueeRight {
+      from { transform: translateX(-50%); }
+      to   { transform: translateX(0); }
     }
 
     .refgrid-item {
       display: flex;
       align-items: center;
       justify-content: center;
-      flex: 0 1 160px;
-      padding: 6px 4px;
+      flex-shrink: 0;
+      padding: 4px 2px;
       cursor: default;
       user-select: none;
     }
 
     .refgrid-logo {
-      max-width: 155px;
-      max-height: 62px;
+      max-width: 150px;
+      max-height: 56px;
       width: auto;
       height: auto;
       object-fit: contain;
@@ -444,20 +483,28 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+      .marquee-track.dir-left,
+      .marquee-track.dir-right {
+        animation: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 24px 32px;
+      }
+      .dual-marquee-wrap {
+        mask-image: none;
+        -webkit-mask-image: none;
+      }
       .refgrid-logo { transition: none; }
       .refgrid-item:hover .refgrid-logo { transform: none; }
     }
 
     @media (max-width: 640px) {
-      .refgrid-logos {
-        gap: 22px 18px;
-      }
-      .refgrid-item {
-        flex: 0 1 calc(33.333% - 12px);
-      }
+      .dual-marquee-wrap { gap: 18px; }
+      .marquee-track { gap: 32px; padding-right: 32px; }
       .refgrid-logo {
-        max-width: 100%;
-        max-height: 44px;
+        max-width: 115px;
+        max-height: 40px;
       }
     }
     /* ================= CENTERED SECTION HEADING ================= */
@@ -1706,10 +1753,10 @@
         <div class="tools-classified" id="tools-dock"></div>
       </section>
 
-      <!-- Partner Logos — Clean Centered Grid (referensilogodesign2 style) -->
+      <!-- Partner Logos — Dual Opposing Marquee -->
       <section class="section-block" aria-labelledby="marquee-label">
         <h2 class="section-center-title" id="marquee-label">Kolaborasi &amp; Inisiatif</h2>
-        <div class="refgrid-logos" id="marquee-track"></div>
+        <div class="dual-marquee-wrap" id="marquee-track"></div>
       </section>
 
       <!-- Section: Connect (Meadow Banner CTA + Secondary Contact Links) -->
@@ -2124,13 +2171,25 @@
       document.getElementById('prompt-text').textContent = t.promptText;
       document.getElementById('marquee-label').textContent = t.marqueeLabel;
 
-      // Render Partner Logos — Clean 3-col Grid (referensilogodesign2 style)
-      const cardsHtml = partnerLogos.map(l => `
+      // Render Partner Logos — Dual Opposing Marquee (top: left, bottom: right)
+      const splitIdx = Math.ceil(partnerLogos.length / 2);
+      const row1 = partnerLogos.slice(0, splitIdx);
+      const row2 = partnerLogos.slice(splitIdx);
+      const renderRowItems = (arr) => arr.map(l => `
         <div class="refgrid-item" title="${l.name}">
           <img class="refgrid-logo" src="${l.src}" alt="${l.name}" decoding="async" loading="lazy">
         </div>
       `).join('');
-      document.getElementById('marquee-track').innerHTML = cardsHtml;
+      const r1Html = renderRowItems(row1);
+      const r2Html = renderRowItems(row2);
+      document.getElementById('marquee-track').innerHTML = `
+        <div class="marquee-row">
+          <div class="marquee-track dir-left">${r1Html}${r1Html}</div>
+        </div>
+        <div class="marquee-row">
+          <div class="marquee-track dir-right">${r2Html}${r2Html}</div>
+        </div>
+      `;
 
       // Status Board — Now section
       document.getElementById('now-heading').textContent = t.nowHeading;
