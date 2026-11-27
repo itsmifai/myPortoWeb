@@ -252,6 +252,36 @@
     /* ================= HERO ================= */
     .hero {
       padding: 34px 0 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .hero-copy {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hero-pixel {
+      flex-shrink: 0;
+      width: clamp(120px, 15vw, 152px);
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    .hero-pixel img {
+      width: 100%;
+      height: auto;
+      display: block;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+      filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.12));
+    }
+
+    html.dark .hero-pixel img {
+      filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.45));
     }
 
     .hero-h1 {
@@ -1594,7 +1624,8 @@
       .pill-dark { padding: 6px 11px; font-size: 11px; }
 
       /* Hero */
-      .hero { padding: 18px 0 22px; }
+      .hero { padding: 18px 0 22px; flex-direction: column; align-items: flex-start; gap: 18px; }
+      .hero-pixel { width: 112px; align-self: center; }
       .hero-h1 { font-size: clamp(28px, 8vw, 38px); margin-bottom: 10px; }
       .hero-sub { font-size: 13px; }
 
@@ -1707,14 +1738,19 @@
 
       <!-- Hero -->
       <section class="hero">
-        <h1 class="hero-h1" id="hero-title">Crafting web applications &amp; <span class="hero-grad">purposeful AI</span></h1>
-        <p class="hero-sub" id="hero-sub">
-          Berbasis di Surakarta, Indonesia. Fokus merancang aplikasi web modern, integrasi AI yang bermakna, serta mengedukasi generasi muda dalam logika pemrograman.
-        </p>
-        <a href="./CV Mifthahul Amri.pdf" target="_blank" rel="noopener" class="hero-link">
-          <span id="hero-cv-link">Curriculum Vitae (PDF)</span>
-          <span>&rsaquo;</span>
-        </a>
+        <div class="hero-copy">
+          <h1 class="hero-h1" id="hero-title">Crafting web applications &amp; <span class="hero-grad">purposeful AI</span></h1>
+          <p class="hero-sub" id="hero-sub">
+            Berbasis di Surakarta, Indonesia. Fokus merancang aplikasi web modern, integrasi AI yang bermakna, serta mengedukasi generasi muda dalam logika pemrograman.
+          </p>
+          <a href="./CV Mifthahul Amri.pdf" target="_blank" rel="noopener" class="hero-link">
+            <span id="hero-cv-link">Curriculum Vitae (PDF)</span>
+            <span>&rsaquo;</span>
+          </a>
+        </div>
+        <div class="hero-pixel" aria-hidden="true">
+          <img src="./miftah-pixel.webp" alt="Miftahul Amri pixel character" decoding="async">
+        </div>
       </section>
 
       <!-- Scenic Frame 1: Day (Sunrise Mountain Valleys) <-> Night (Moonlit Valley Wildflowers) -->
