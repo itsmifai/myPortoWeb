@@ -263,15 +263,26 @@
       min-width: 0;
     }
 
-    .hero-pixel {
+    .hero-scene {
       flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-pixel {
+      position: relative;
+      z-index: 2;
       display: flex;
       justify-content: center;
       align-items: flex-end;
       gap: 12px;
+      margin-bottom: -30px;
+      padding: 0 18px;
     }
 
-    .hero-pixel img {
+    .hero-pixel img,
+    .hero-ground-img {
       height: auto;
       display: block;
       image-rendering: pixelated;
@@ -287,7 +298,14 @@
       width: clamp(84px, 9.5vw, 104px);
     }
 
-    html.dark .hero-pixel img {
+    .hero-ground-img {
+      position: relative;
+      z-index: 1;
+      width: clamp(255px, 27vw, 315px);
+    }
+
+    html.dark .hero-pixel img,
+    html.dark .hero-ground-img {
       filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.45));
     }
 
@@ -1632,9 +1650,11 @@
 
       /* Hero */
       .hero { padding: 18px 0 22px; flex-direction: column; align-items: flex-start; gap: 18px; }
-      .hero-pixel { align-self: center; gap: 10px; }
+      .hero-scene { align-self: center; }
+      .hero-pixel { gap: 10px; margin-bottom: -23px; padding: 0 14px; }
       .hero-agent-img { width: 130px; }
       .hero-miftah-img { width: 74px; }
+      .hero-ground-img { width: 240px; }
       .hero-h1 { font-size: clamp(28px, 8vw, 38px); margin-bottom: 10px; }
       .hero-sub { font-size: 13px; }
 
@@ -1757,9 +1777,12 @@
             <span>&rsaquo;</span>
           </a>
         </div>
-        <div class="hero-pixel" aria-hidden="true">
-          <img class="hero-agent-img" src="./agent-pixel.webp" alt="AI agent pixel mascots" decoding="async">
-          <img class="hero-miftah-img" src="./miftah-pixel.webp" alt="Miftahul Amri pixel character" decoding="async">
+        <div class="hero-scene" aria-hidden="true">
+          <div class="hero-pixel">
+            <img class="hero-agent-img" src="./agent-pixel.webp" alt="AI agent pixel mascots" decoding="async">
+            <img class="hero-miftah-img" src="./miftah-pixel.webp" alt="Miftahul Amri pixel character" decoding="async">
+          </div>
+          <img class="hero-ground-img" src="./pixel-art-ground.webp" alt="" decoding="async">
         </div>
       </section>
 
