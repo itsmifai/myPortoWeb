@@ -1455,65 +1455,8 @@
     .cm-body { padding: 14px; background: var(--bg-subtle); display: flex; justify-content: center; }
     .cm-body img { max-width: 100%; max-height: 68dvh; object-fit: contain; border-radius: 8px; }
 
-    .coffee-modal-box {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .coffee-bg-img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      z-index: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .coffee-bg-img.img-light { opacity: 1; }
-    .coffee-bg-img.img-dark { opacity: 0; }
-    html.dark .coffee-bg-img.img-light { opacity: 0; }
-    html.dark .coffee-bg-img.img-dark { opacity: 1; }
-
-    .coffee-scrim {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.55) 0%,
-        rgba(255, 255, 255, 0.18) 45%,
-        rgba(255, 255, 255, 0.68) 100%
-      );
-    }
-
-    html.dark .coffee-scrim {
-      background: linear-gradient(
-        to bottom,
-        rgba(10, 14, 22, 0.55) 0%,
-        rgba(10, 14, 22, 0.18) 45%,
-        rgba(10, 14, 22, 0.72) 100%
-      );
-    }
-
-    .coffee-modal-box .modal-head {
-      position: relative;
-      z-index: 2;
-      background: transparent;
-      border-bottom-color: rgba(128, 128, 128, 0.18);
-    }
-
-    .coffee-modal-box .modal-title {
-      color: var(--ink);
-      text-shadow: 0 1px 8px var(--bg);
-    }
-
     .sm-body {
-      position: relative;
-      z-index: 2;
-      padding: 20px 24px 26px;
+      padding: 22px 24px 26px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -1521,34 +1464,24 @@
     }
 
     .sm-desc-text {
-      font-size: 12.5px;
-      line-height: 1.6;
-      color: var(--ink);
-      font-weight: 500;
-      text-shadow: 0 1px 10px var(--bg), 0 0 18px var(--bg);
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--muted);
     }
 
     .sm-running-wrap {
       width: 100%;
-      margin: 16px 0 14px;
-      border-radius: 12px;
+      margin: 16px 0 18px;
+      border-radius: 10px;
       overflow: hidden;
-      background: rgba(247, 245, 238, 0.9);
-      border: 1px solid rgba(29, 34, 29, 0.14);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+      background: #F7F5EE;
+      border: 1px solid var(--line);
     }
     .sm-running-wrap iframe {
       display: block;
       width: 100%;
       height: 60px;
       border: 0;
-    }
-
-    .sm-handle-text {
-      font: 500 11.5px var(--mono);
-      color: var(--ink);
-      margin-bottom: 14px;
-      text-shadow: 0 1px 10px var(--bg), 0 0 16px var(--bg);
     }
 
     /* ================= MOBILE PROFILE & QUICK NAV ================= */
@@ -1918,10 +1851,7 @@
 
   <!-- Modal: Buy Me a Coffee / Yapp -->
   <div class="modal-backdrop" id="coffee-modal" onclick="if(event.target === this) closeModal('coffee-modal')">
-    <div class="modal-box coffee-modal-box" style="max-width:460px;" role="dialog" aria-modal="true">
-      <img class="coffee-bg-img img-light" src="./ghibli-style/Morning Cozy Cafe.webp" alt="Morning Cozy Cafe" loading="lazy" decoding="async">
-      <img class="coffee-bg-img img-dark" src="./ghibli-style/Moonlit Cozy Desk.webp" alt="Moonlit Cozy Desk" loading="lazy" decoding="async">
-      <div class="coffee-scrim"></div>
+    <div class="modal-box" style="max-width:460px;" role="dialog" aria-modal="true">
       <div class="modal-head">
         <span class="modal-title" id="sm-title">Buy me a coffee</span>
         <button type="button" class="modal-close" onclick="closeModal('coffee-modal')" aria-label="Close">&times;</button>
@@ -1931,10 +1861,7 @@
         <div class="sm-running-wrap">
           <iframe src="https://widget.yapp.ink/runningtext/0a915bd46ae7bc3bbb7978012a1f13f6" title="Yapp Tip Running Text" loading="lazy"></iframe>
         </div>
-        <div class="sm-handle-text">
-          <strong>yapp.ink/itsmifai</strong> &middot; Digital &amp; Kreatif
-        </div>
-        <a class="pill-dark" href="https://yapp.ink/itsmifai" target="_blank" rel="noopener noreferrer" id="sm-dl" style="padding:9px 20px;box-shadow:0 8px 22px rgba(0,0,0,0.22);">Dukung via Yapp ↗</a>
+        <a class="pill-dark" href="https://yapp.ink/itsmifai" target="_blank" rel="noopener noreferrer" id="sm-dl" style="padding:9px 20px;">Dukung via Yapp ↗</a>
       </div>
     </div>
   </div>
