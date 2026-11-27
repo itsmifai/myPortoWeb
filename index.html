@@ -402,84 +402,129 @@
 
     .frosted-go:hover { transform: scale(1.08); }
 
-    /* ================= PARTNER LOGO MARQUEE (card style with name label) ================= */
-    .marquee-section {
-      margin: -42px 0 64px;
+    /* ================= PARTNER LOGOS — SCATTERED POLAROID ================= */
+    .polaroid-section {
+      margin: -20px 0 72px;
     }
 
-    .marquee-label {
+    .polaroid-label {
       text-align: center;
       font: 400 11px var(--mono);
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--subtle);
-      margin-bottom: 18px;
+      margin-bottom: 36px;
     }
 
-    .marquee-wrap {
-      overflow: hidden;
-      width: 100%;
-      padding: 6px 0;
-      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-    }
-
-    .marquee-track {
+    .polaroid-table {
       display: flex;
-      align-items: stretch;
-      gap: 10px;
-      width: max-content;
-      animation: marqueeLoop 36s linear infinite;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 14px 10px;
+      padding: 10px 0 24px;
     }
 
-    .marquee-wrap:hover .marquee-track {
-      animation-play-state: paused;
+    .pol-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 3px;
+      padding: 10px 10px 20px;
+      box-shadow: 2px 4px 14px rgba(0,0,0,0.13), 0 1px 3px rgba(0,0,0,0.08);
+      cursor: default;
+      user-select: none;
+      transition: transform 0.32s cubic-bezier(0.22,1,0.36,1),
+                  box-shadow 0.32s cubic-bezier(0.22,1,0.36,1);
+      transform-origin: center center;
+      will-change: transform;
+      position: relative;
     }
 
-    @keyframes marqueeLoop {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
+    html.dark .pol-card {
+      background: #1e1e1e;
+      border-color: rgba(255,255,255,0.08);
+      box-shadow: 2px 4px 18px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3);
     }
 
-    /* Card-style marquee item (logo only, non-clickable showcase) */
-    .partner-card {
+    .pol-card:hover {
+      transform: rotate(0deg) scale(1.1) translateY(-8px) !important;
+      box-shadow: 4px 14px 36px rgba(0,0,0,0.22), 0 2px 6px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+
+    html.dark .pol-card:hover {
+      box-shadow: 4px 14px 40px rgba(0,0,0,0.65), 0 2px 6px rgba(0,0,0,0.4);
+    }
+
+    .pol-img-wrap {
+      width: 92px;
+      height: 68px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 14px 24px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: var(--bg-card);
-      cursor: default;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-      min-width: 118px;
-      transition: border-color 0.22s ease, background 0.22s ease, transform 0.25s cubic-bezier(0.22,1,0.36,1);
+      background: #f0f0f0;
+      border-radius: 1px;
+      overflow: hidden;
     }
 
-    .partner-card:hover {
-      border-color: var(--line-hover);
-      background: var(--bg-subtle);
-      transform: translateY(-3px);
+    html.dark .pol-img-wrap {
+      background: #2a2a2a;
     }
 
-    .partner-logo {
-      height: 48px;
+    .pol-logo {
+      max-width: 76px;
+      max-height: 52px;
       width: auto;
-      max-width: 165px;
+      height: auto;
       object-fit: contain;
       filter: grayscale(1);
-      opacity: 0.55;
-      transition: filter 0.25s ease, opacity 0.25s ease;
+      opacity: 0.52;
+      transition: filter 0.28s ease, opacity 0.28s ease;
     }
 
-    html.dark .partner-logo { opacity: 0.60; }
+    html.dark .pol-logo { opacity: 0.58; }
 
-    .partner-card:hover .partner-logo {
+    .pol-card:hover .pol-logo {
       filter: grayscale(0);
       opacity: 1;
     }
 
+    .pol-name {
+      margin-top: 7px;
+      font: 500 9px var(--mono);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #999;
+      text-align: center;
+      max-width: 90px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: color 0.28s ease;
+    }
+
+    html.dark .pol-name { color: #666; }
+    .pol-card:hover .pol-name { color: var(--accent, #3b82f6); }
+
+    .pol-tape {
+      position: absolute;
+      top: -9px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1.5deg);
+      width: 36px;
+      height: 14px;
+      background: rgba(255,220,100,0.72);
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+      pointer-events: none;
+    }
+
+    html.dark .pol-tape {
+      background: rgba(200,170,60,0.5);
+    }
 
     /* ================= CENTERED SECTION HEADING ================= */
     .section-block {
@@ -1437,10 +1482,7 @@
       .frosted-prompt-text { font-size: 12px; min-height: 32px; margin-bottom: 8px; }
 
       /* Marquee */
-      .marquee-section { margin: -20px 0 40px; }
-      .marquee-track { gap: 8px; }
-      .partner-card { padding: 12px 14px; min-width: 100px; }
-      .partner-logo { height: 32px; }
+      /* polaroid layout handles mobile natively */
       .partner-name { font-size: 9.5px; }
 
       /* Sections */
@@ -1572,12 +1614,10 @@
         </div>
       </div>
 
-      <!-- Partner / Project Logo Marquee (Looping grayscale -> color on hover) -->
-      <div class="marquee-section">
-        <div class="marquee-label" id="marquee-label">Karya &amp; Kolaborasi</div>
-        <div class="marquee-wrap">
-          <div class="marquee-track" id="marquee-track"></div>
-        </div>
+      <!-- Partner Logos — Scattered Polaroid -->
+      <div class="polaroid-section">
+        <div class="polaroid-label" id="marquee-label">Kolaborasi &amp; Inisiatif</div>
+        <div class="polaroid-table" id="marquee-track"></div>
       </div>
 
       <!-- Section: Now (Clean Minimalist Status Strip) -->
@@ -2062,13 +2102,20 @@
       document.getElementById('prompt-text').textContent = t.promptText;
       document.getElementById('marquee-label').textContent = t.marqueeLabel;
 
-      // Render Partner Marquee — non-clickable visual showcase
-      const cardsHtml = partnerLogos.map(l =>
-        `<div class="partner-card" title="${l.name}">
-          <img class="partner-logo" src="${l.src}" alt="${l.name}" decoding="async">
-        </div>`
-      ).join('');
-      document.getElementById('marquee-track').innerHTML = cardsHtml + cardsHtml;
+      // Render Partner Logos — Scattered Polaroid
+      const rotations = ['-4deg','-2deg','1.5deg','3deg','-3.5deg','2.5deg',
+                         '-1deg','4deg','-2.5deg','1deg','3.5deg','-1.5deg'];
+      const cardsHtml = partnerLogos.map((l, i) => {
+        const rot = rotations[i % rotations.length];
+        return `<div class="pol-card" title="${l.name}" style="transform:rotate(${rot})">
+          <div class="pol-tape"></div>
+          <div class="pol-img-wrap">
+            <img class="pol-logo" src="${l.src}" alt="${l.name}" decoding="async">
+          </div>
+          <span class="pol-name">${l.name}</span>
+        </div>`;
+      }).join('');
+      document.getElementById('marquee-track').innerHTML = cardsHtml;
 
       document.getElementById('now-heading').textContent = t.nowHeading;
       document.getElementById('now-strip').innerHTML = t.roles.map(r => `
