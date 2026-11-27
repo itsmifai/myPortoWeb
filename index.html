@@ -1454,6 +1454,15 @@
 
     .cm-body { padding: 14px; background: var(--bg-subtle); display: flex; justify-content: center; }
     .cm-body img { max-width: 100%; max-height: 68dvh; object-fit: contain; border-radius: 8px; }
+    .cm-body iframe { width: 100%; height: 70dvh; border: 0; border-radius: 8px; background: #fff; }
+    .cm-body [hidden], .cm-foot[hidden] { display: none; }
+    .cm-foot {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px 14px 14px;
+      border-top: 1px solid var(--line);
+      background: var(--bg-card);
+    }
 
     .coffee-modal-box {
       position: relative;
@@ -1908,6 +1917,10 @@
       </div>
       <div class="cm-body">
         <img id="cm-img" src="" alt="Certificate preview">
+        <iframe id="cm-pdf" src="" title="Certificate PDF preview" hidden></iframe>
+      </div>
+      <div class="cm-foot" id="cm-foot" hidden>
+        <a id="cm-pdf-link" href="" target="_blank" rel="noopener noreferrer" class="cert-pill ach-cert-link"></a>
       </div>
     </div>
   </div>
@@ -2364,7 +2377,7 @@
       `).join('');
 
       document.getElementById('ach-heading').textContent = t.achHeading;
-      document.getElementById('ach-grid').innerHTML = t.achievements.map(a => `
+      document.getElementById('ach-grid').innerHTML = t.achievements.map((a, idx) => `
         <article class="ach-card">
           <div class="ach-top">
             <span class="ach-medal">
@@ -2386,7 +2399,7 @@
               <span aria-hidden="true">·</span>
               <span>${a.date}</span>
             </div>
-            ${a.cert ? `<a href="${a.cert}" target="_blank" rel="noopener noreferrer" class="cert-pill ach-cert-link">${lang === 'id' ? 'Sertifikat ↗' : 'Certificate ↗'}</a>` : ''}
+            ${a.cert ? `<button type="button" class="cert-pill ach-cert-link" onclick="openAchCert(${idx})">${lang === 'id' ? 'Sertifikat ↗' : 'Certificate ↗'}</button>` : ''}
           </div>
         </article>
       `).join('');
@@ -2459,12 +2472,39 @@
       openModal('proj-modal');
     }
 
+    function showCertPreview(title, src, isPdf) {
+      const imgEl = document.getElementById('cm-img');
+      const pdfEl = document.getElementById('cm-pdf');
+      const footEl = document.getElementById('cm-foot');
+      const linkEl = document.getElementById('cm-pdf-link');
+
+      document.getElementById('cm-title').textContent = title;
+      imgEl.hidden = isPdf;
+      pdfEl.hidden = !isPdf;
+      footEl.hidden = !isPdf;
+
+      if (isPdf) {
+        imgEl.src = '';
+        pdfEl.src = src;
+        linkEl.href = src;
+        linkEl.textContent = lang === 'id' ? 'Buka PDF di tab baru ↗' : 'Open PDF in new tab ↗';
+      } else {
+        pdfEl.src = '';
+        imgEl.src = src;
+      }
+      openModal('cert-modal');
+    }
+
     function openCert(idx) {
       const c = i18n[lang].certs[idx];
       if (!c) return;
-      document.getElementById('cm-title').textContent = c.title;
-      document.getElementById('cm-img').src = c.img;
-      openModal('cert-modal');
+      showCertPreview(c.title, c.img, false);
+    }
+
+    function openAchCert(idx) {
+      const a = i18n[lang].achievements[idx];
+      if (!a || !a.cert) return;
+      showCertPreview(`${a.title} — ${a.medal}`, a.cert, true);
     }
 
     function openModal(id) {
@@ -2475,6 +2515,10 @@
     function closeModal(id) {
       document.getElementById(id).classList.remove('open');
       document.body.style.overflow = '';
+      if (id === 'cert-modal') {
+        document.getElementById('cm-img').src = '';
+        document.getElementById('cm-pdf').src = '';
+      }
     }
 
     const secIds = ['top', 'now', 'projects', 'experience', 'achievements', 'tools', 'connect'];
