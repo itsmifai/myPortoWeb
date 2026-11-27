@@ -1044,11 +1044,28 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      flex-wrap: wrap;
+      gap: 8px 12px;
       padding-top: 10px;
       border-top: 1px solid var(--line);
       font: 400 11px var(--mono);
       color: var(--subtle);
+    }
+
+    .ach-foot-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px 8px;
+    }
+
+    .ach-cert-link {
+      text-decoration: none;
+    }
+
+    .ach-cert-link:hover {
+      border-color: var(--line-hover);
+      color: var(--ink);
     }
 
     /* ================= TOOLS: PRECISION 3+2 BENTO TABLE (INTERNAL DIVIDERS ONLY) ================= */
@@ -2053,7 +2070,8 @@
             event: 'World Invention Competition and Exhibition (8th)',
             venue: 'SEGi University, Malaysia',
             date: '20–24 September 2026',
-            scope: 'Internasional'
+            scope: 'Internasional',
+            cert: './sertif/sertif-wice.pdf'
           },
           {
             medal: 'Silver Medal',
@@ -2062,7 +2080,8 @@
             event: 'Kompetisi Inovasi & Invensi Nasional',
             venue: 'SMESCO Indonesia, Jakarta',
             date: '3–6 Oktober 2026',
-            scope: 'Nasional'
+            scope: 'Nasional',
+            cert: './sertif/sertif-iid.pdf'
           }
         ],
         toolsHeading: 'Perkakas yang sering digunakan',
@@ -2120,7 +2139,8 @@
             event: 'World Invention Competition and Exhibition (8th)',
             venue: 'SEGi University, Malaysia',
             date: '20–24 September 2026',
-            scope: 'International'
+            scope: 'International',
+            cert: './sertif/sertif-wice.pdf'
           },
           {
             medal: 'Silver Medal',
@@ -2129,7 +2149,8 @@
             event: 'National Invention & Innovation Exhibition',
             venue: 'SMESCO Indonesia, Jakarta',
             date: '3–6 October 2026',
-            scope: 'National'
+            scope: 'National',
+            cert: './sertif/sertif-iid.pdf'
           }
         ],
         toolsHeading: 'Tools & daily stack',
@@ -2360,8 +2381,12 @@
             <img class="ach-bg-medal" src="./ghibli-style/${a.tier === 'gold' ? 'gold-medal.webp' : 'silver-medal.webp'}" alt="" aria-hidden="true" loading="lazy" decoding="async">
           </div>
           <div class="ach-foot">
-            <span>${a.venue}</span>
-            <span>${a.date}</span>
+            <div class="ach-foot-meta">
+              <span>${a.venue}</span>
+              <span aria-hidden="true">·</span>
+              <span>${a.date}</span>
+            </div>
+            ${a.cert ? `<a href="${a.cert}" target="_blank" rel="noopener noreferrer" class="cert-pill ach-cert-link">${lang === 'id' ? 'Sertifikat ↗' : 'Certificate ↗'}</a>` : ''}
           </div>
         </article>
       `).join('');
