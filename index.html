@@ -265,19 +265,26 @@
 
     .hero-pixel {
       flex-shrink: 0;
-      width: clamp(84px, 9.5vw, 104px);
       display: flex;
       justify-content: center;
       align-items: flex-end;
+      gap: 12px;
     }
 
     .hero-pixel img {
-      width: 100%;
       height: auto;
       display: block;
       image-rendering: pixelated;
       image-rendering: crisp-edges;
       filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.12));
+    }
+
+    .hero-agent-img {
+      width: clamp(140px, 16vw, 185px);
+    }
+
+    .hero-miftah-img {
+      width: clamp(84px, 9.5vw, 104px);
     }
 
     html.dark .hero-pixel img {
@@ -1625,7 +1632,9 @@
 
       /* Hero */
       .hero { padding: 18px 0 22px; flex-direction: column; align-items: flex-start; gap: 18px; }
-      .hero-pixel { width: 80px; align-self: center; }
+      .hero-pixel { align-self: center; gap: 10px; }
+      .hero-agent-img { width: 130px; }
+      .hero-miftah-img { width: 74px; }
       .hero-h1 { font-size: clamp(28px, 8vw, 38px); margin-bottom: 10px; }
       .hero-sub { font-size: 13px; }
 
@@ -1749,7 +1758,8 @@
           </a>
         </div>
         <div class="hero-pixel" aria-hidden="true">
-          <img src="./miftah-pixel.webp" alt="Miftahul Amri pixel character" decoding="async">
+          <img class="hero-agent-img" src="./agent-pixel.webp" alt="AI agent pixel mascots" decoding="async">
+          <img class="hero-miftah-img" src="./miftah-pixel.webp" alt="Miftahul Amri pixel character" decoding="async">
         </div>
       </section>
 
