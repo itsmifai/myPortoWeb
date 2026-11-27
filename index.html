@@ -1015,29 +1015,35 @@
       color: var(--subtle);
     }
 
-    /* ================= TOOLS: TABLE GRID WORKFLOW DOCK ================= */
+    /* ================= TOOLS: PRECISION 3+2 BENTO TABLE ================= */
     .tools-classified {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
     }
 
     .tool-cat-row {
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       gap: 18px;
-      padding: 24px 24px 26px;
+      padding: 22px 20px 24px;
       border-bottom: 1px solid var(--line);
       border-right: 1px solid var(--line);
     }
 
-    .tool-cat-row:nth-child(even) {
-      border-right: none;
+    /* Row 1: 3 compact categories (2-3 items each) */
+    .tool-cat-row:nth-child(1),
+    .tool-cat-row:nth-child(2),
+    .tool-cat-row:nth-child(3) {
+      grid-column: span 2;
     }
 
-    .tool-cat-row:last-child:nth-child(odd) {
-      grid-column: 1 / -1;
-      border-right: none;
+    /* Row 2: 2 larger categories (5-7 items each) */
+    .tool-cat-row:nth-child(4),
+    .tool-cat-row:nth-child(5) {
+      grid-column: span 3;
     }
 
     .tool-cat-meta {
@@ -1061,7 +1067,7 @@
       display: flex;
       flex-wrap: wrap;
       align-items: flex-start;
-      gap: 16px 20px;
+      gap: 14px 16px;
     }
 
     .tool-medallion {
@@ -1109,11 +1115,13 @@
 
     .tool-name { font-size: 11.5px; font-weight: 600; color: var(--ink); line-height: 1.2; }
 
-    @media (max-width: 720px) {
+    @media (max-width: 760px) {
       .tools-classified {
         grid-template-columns: 1fr;
+        border-left: none;
       }
-      .tool-cat-row {
+      .tool-cat-row:nth-child(n) {
+        grid-column: auto;
         border-right: none;
         padding: 18px 4px 20px;
         gap: 14px;
@@ -1908,6 +1916,27 @@
         ]
       },
       {
+        titleId: 'Database & Backend',
+        titleEn: 'Database & Backend',
+        subId: 'Penyimpanan data & BaaS',
+        subEn: 'Data layer & BaaS',
+        items: [
+          { name: 'PostgreSQL', light: './logo-tools/Postgresql_elephant.svg.webp' },
+          { name: 'MySQL', light: './logo-tools/logo-mysql-170x115.png' },
+          { name: 'Supabase', light: './logo-tools/supabase/brand-assets/supabase-icon-green-transparent.svg' }
+        ]
+      },
+      {
+        titleId: 'Desain & Visual',
+        titleEn: 'Design & Visuals',
+        subId: 'UI/UX, grafis & materi presentasi',
+        subEn: 'UI/UX, graphics & presentation',
+        items: [
+          { name: 'Canva', light: './logo-tools/canva.jpg' },
+          { name: 'Google Stitch', light: './logo-tools/google-stitch.png' }
+        ]
+      },
+      {
         titleId: 'Coding & Agen AI',
         titleEn: 'Coding & AI Agents',
         subId: 'Pengembangan & otomasi kode',
@@ -1918,17 +1947,6 @@
           { name: 'Codex', light: './logo-tools/codex.webp' },
           { name: 'OpenCode', light: './logo-tools/opencode-brand-assets/OpenCode Brand Assets/Logo Transparent/opencode-logo-transparent-light.svg', dark: './logo-tools/opencode-brand-assets/OpenCode Brand Assets/Logo Transparent/opencode-logo-transparent-dark.svg' },
           { name: 'Hermes Agent', light: './logo-tools/hermes-agent-dark.svg', dark: './logo-tools/hermes-agent-light.svg' }
-        ]
-      },
-      {
-        titleId: 'Database & Backend',
-        titleEn: 'Database & Backend',
-        subId: 'Penyimpanan data & BaaS',
-        subEn: 'Data layer & BaaS',
-        items: [
-          { name: 'PostgreSQL', light: './logo-tools/Postgresql_elephant.svg.webp' },
-          { name: 'MySQL', light: './logo-tools/logo-mysql-170x115.png' },
-          { name: 'Supabase', light: './logo-tools/supabase/brand-assets/supabase-icon-green-transparent.svg' }
         ]
       },
       {
@@ -1944,16 +1962,6 @@
           { name: 'GitHub', light: './logo-tools/GitHub_Logos/GitHub Logos/SVG/GitHub_Invertocat_Black.svg', dark: './logo-tools/GitHub_Logos/GitHub Logos/SVG/GitHub_Invertocat_White.svg' },
           { name: 'Vercel', light: './logo-tools/vercel-assets/Vercel/icon/light/vercel-icon-light.svg', dark: './logo-tools/vercel-assets/Vercel/icon/dark/vercel-icon-dark.svg' },
           { name: 'Netlify', light: './logo-tools/Netlify_logo_(2).svg.webp' }
-        ]
-      },
-      {
-        titleId: 'Desain & Visual',
-        titleEn: 'Design & Visuals',
-        subId: 'UI/UX, grafis & materi presentasi',
-        subEn: 'UI/UX, graphics & presentation',
-        items: [
-          { name: 'Canva', light: './logo-tools/canva.jpg' },
-          { name: 'Google Stitch', light: './logo-tools/google-stitch.png' }
         ]
       }
     ];
