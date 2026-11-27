@@ -409,12 +409,12 @@
 
     .polaroid-label {
       text-align: center;
-      font: 600 13px/1 var(--mono);
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      color: var(--fg);
-      margin-bottom: 40px;
-      opacity: 0.75;
+      font-size: 19px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 28px;
+      /* matches .section-center-title */
     }
 
     .polaroid-table {
@@ -580,68 +580,173 @@
       margin-bottom: 28px;
     }
 
-    /* ================= NOW: CLEAN MINIMALIST STATUS STRIP ================= */
-    .now-strip {
+    /* ── STATUS BOARD (Now section) ─────────────────────────── */
+    .sb-section {
+      /* inherits section-block spacing */
+    }
+
+    .sb-eyebrow {
+      font: 700 11px var(--mono);
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--subtle);
+      margin-bottom: 6px;
+    }
+
+    .sb-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .sb-item {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .sb-link {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      grid-template-columns: 20px 1fr auto;
+      align-items: center;
+      gap: 0 16px;
+      padding: 22px 0;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.25s ease, color 0.2s ease;
+      outline-offset: 3px;
+      position: relative;
     }
 
-    .now-pill-card {
-      padding: 18px 20px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: var(--bg-card);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 10px;
-      transition: border-color 0.2s ease, background 0.2s ease, transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+    .sb-link:hover,
+    .sb-link:focus-visible {
+      transform: translateX(6px);
     }
 
-    .now-pill-card:hover {
-      border-color: var(--line-hover);
-      background: var(--bg-subtle);
-      transform: translateY(-2px);
+    .sb-link:focus-visible {
+      outline: 2px solid var(--accent, #3b82f6);
+      border-radius: 2px;
     }
 
-    .now-pill-head {
+    /* col 1: pulse dot */
+    .sb-dot-wrap {
       display: flex;
       align-items: center;
-      gap: 7px;
-      font: 500 10.5px var(--mono);
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .sb-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--green, #22c55e);
+      position: relative;
+      flex-shrink: 0;
+      animation: sbPulse 2s ease-in-out infinite;
+    }
+
+    .sb-dot::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid var(--green, #22c55e);
+      opacity: 0;
+      animation: sbRing 2s ease-in-out infinite;
+    }
+
+    @keyframes sbPulse {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(0.88); }
+    }
+
+    @keyframes sbRing {
+      0%   { transform: scale(0.6); opacity: 0.5; }
+      70%  { transform: scale(1.8); opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sb-dot, .sb-dot::after { animation: none; }
+      .sb-link:hover, .sb-link:focus-visible { transform: none; }
+      .sb-arrow { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* col 2: title + desc */
+    .sb-mid {
+      min-width: 0;
+    }
+
+    .sb-title {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: -0.015em;
+      line-height: 1.25;
+      color: var(--ink);
+      transition: color 0.2s ease;
+    }
+
+    .sb-link:hover .sb-title,
+    .sb-link:focus-visible .sb-title {
+      color: var(--fg);
+    }
+
+    .sb-desc {
+      font-size: 12.5px;
+      line-height: 1.5;
       color: var(--muted);
+      margin-top: 3px;
+    }
+
+    /* col 3: org + arrow */
+    .sb-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      text-align: right;
+    }
+
+    .sb-org {
+      font: 500 11px var(--mono);
+      color: var(--subtle);
+      white-space: nowrap;
       letter-spacing: 0.02em;
     }
 
-    .now-live-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
-      flex-shrink: 0;
-      animation: nowPulse 2.4s ease-in-out infinite;
-    }
-
-    @keyframes nowPulse {
-      0%, 100% { box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18); }
-      50% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.0); }
-    }
-
-    .now-pill-title {
-      font-family: var(--serif);
-      font-size: 18.5px;
-      font-weight: 400;
-      letter-spacing: -0.015em;
-      line-height: 1.2;
-      color: var(--ink);
-    }
-
-    .now-pill-note {
-      font-size: 12px;
-      line-height: 1.5;
+    .sb-arrow {
+      font-size: 15px;
       color: var(--muted);
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .sb-link:hover .sb-arrow,
+    .sb-link:focus-visible .sb-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Mobile: stack org below desc, hide arrow */
+    @media (max-width: 640px) {
+      .sb-link {
+        grid-template-columns: 20px 1fr;
+        grid-template-rows: auto auto;
+        gap: 0 12px;
+        padding: 18px 0;
+      }
+      .sb-right {
+        grid-column: 2;
+        justify-content: flex-start;
+        margin-top: 4px;
+      }
+      .sb-arrow { display: none; }
+      .sb-org   { font-size: 10.5px; }
+      .sb-title { font-size: 16px; }
     }
 
     /* ================= PROJECTS: ACCORDION LIST ================= */
@@ -1481,7 +1586,6 @@
       }
 
       /* Now section */
-      .now-strip { grid-template-columns: 1fr; gap: 10px; }
 
       /* Projects accordion — tighten expand panel */
       .proj-row-head { grid-template-columns: 28px 1fr auto; gap: 12px; }
@@ -1528,9 +1632,6 @@
       .section-block { margin-bottom: 48px; }
       .section-center-title { font-size: 16px; margin-bottom: 18px; }
 
-      /* Now */
-      .now-pill-card { padding: 14px 16px; }
-      .now-pill-title { font-size: 17px; }
 
       /* Projects accordion */
       .proj-row-head { gap: 10px; padding: 14px 4px; }
@@ -1565,6 +1666,12 @@
       .tool-medallion { width: 52px; }
       .tool-icon-orb { width: 38px; height: 38px; padding: 7px; }
       .footer-note { justify-content: center; text-align: center; }
+    }
+  
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
     }
   </style>
 </head>
@@ -1659,10 +1766,12 @@
         <div class="polaroid-table" id="marquee-track"></div>
       </div>
 
-      <!-- Section: Now (Clean Minimalist Status Strip) -->
-      <section class="section-block" id="now">
+      <!-- Section: Now — Status Board -->
+      <section class="section-block sb-section" id="now" aria-labelledby="now-heading">
         <h2 class="section-center-title" id="now-heading">Peran aktif saat ini</h2>
-        <div class="now-strip" id="now-strip"></div>
+        <ul class="sb-list" id="now-strip" role="list">
+          <!-- rows injected by JS -->
+        </ul>
       </section>
 
       <!-- Section: Projects (Accordion List) -->
@@ -1962,9 +2071,9 @@
         expHeading: 'Riwayat pengalaman, pendidikan & sertifikasi',
         lblExp: 'Pengalaman', lblEdu: 'Pendidikan', lblCerts: 'Sertifikasi',
         experience: [
-          { title: 'Pengajar Ruangguru Coding', sub: 'Sragen — Mengajar computational thinking, fondasi logika pemrograman & creative coding untuk siswa sekolah mitra', year: '2026 – skrg' },
-          { title: 'Guru Coding Ekstrakurikuler', sub: 'SMP Al Azhar IIBS Karanganyar — Membimbing dasar web development (HTML, CSS, JS) & proyek digital kreatif', year: '2026 – skrg' },
-          { title: 'Asisten Lab Pemrograman Web', sub: 'PTI UMS — Mendampingi praktikum mahasiswa S1 dari fundamental web hingga backend', year: '2026 – skrg' },
+          { id: 'experience-ruangguru', title: 'Pengajar Ruangguru Coding', sub: 'Sragen — Mengajar computational thinking, fondasi logika pemrograman & creative coding untuk siswa sekolah mitra', year: '2026 – skrg' },
+          { id: 'experience-alazhar', title: 'Guru Coding Ekstrakurikuler', sub: 'SMP Al Azhar IIBS Karanganyar — Membimbing dasar web development (HTML, CSS, JS) & proyek digital kreatif', year: '2026 – skrg' },
+          { id: 'experience-weblab', title: 'Asisten Lab Pemrograman Web', sub: 'PTI UMS — Mendampingi praktikum mahasiswa S1 dari fundamental web hingga backend', year: '2026 – skrg' },
           { title: 'Asisten Lab Basis Data', sub: 'PTI UMS — Pemodelan ERD, normalisasi & SQL lanjutan', year: '2026' },
           { title: 'Asisten Lab Sistem Operasi', sub: 'PTI UMS — Linux CLI, manajemen proses & shell scripting', year: '2025 – 2026' },
           { title: 'IT Helpdesk Staff (Intern)', sub: 'DSTI UMS — Kredensial SSO, jaringan & administrasi akun', year: '2023 – 2026' }
@@ -2023,9 +2132,9 @@
         expHeading: 'Experience, education & certifications',
         lblExp: 'Experience', lblEdu: 'Education', lblCerts: 'Certifications',
         experience: [
-          { title: 'Coding Educator — Ruangguru', sub: 'Sragen — Teaching computational thinking, programming logic foundations & creative coding for partner schools', year: '2026 – present' },
-          { title: 'Coding Extracurricular Teacher', sub: 'SMP Al Azhar IIBS Karanganyar — Guiding HTML, CSS, JavaScript basics & creative digital projects', year: '2026 – present' },
-          { title: 'Web Programming Lab Assistant', sub: 'PTI UMS — Assisting undergraduate Informatics Education practicums from web fundamentals to backend', year: '2026 – present' },
+          { id: 'experience-ruangguru', title: 'Coding Educator — Ruangguru', sub: 'Sragen — Teaching computational thinking, programming logic foundations & creative coding for partner schools', year: '2026 – present' },
+          { id: 'experience-alazhar', title: 'Coding Extracurricular Teacher', sub: 'SMP Al Azhar IIBS Karanganyar — Guiding HTML, CSS, JavaScript basics & creative digital projects', year: '2026 – present' },
+          { id: 'experience-weblab', title: 'Web Programming Lab Assistant', sub: 'PTI UMS — Assisting undergraduate Informatics Education practicums from web fundamentals to backend', year: '2026 – present' },
           { title: 'Database Lab Assistant', sub: 'PTI UMS — ERD modeling, normalization & advanced SQL', year: '2026' },
           { title: 'Operating Systems Lab Assistant', sub: 'PTI UMS — Linux CLI, process management & shell scripting', year: '2025 – 2026' },
           { title: 'IT Helpdesk Staff (Intern)', sub: 'DSTI UMS — SSO credentials, networking & account admin', year: '2023 – 2026' }
@@ -2167,16 +2276,43 @@
       }).join('');
       document.getElementById('marquee-track').innerHTML = cardsHtml;
 
-      document.getElementById('now-heading').textContent = t.nowHeading;
-      document.getElementById('now-strip').innerHTML = t.roles.map(r => `
-        <article class="now-pill-card">
-          <div class="now-pill-head">
-            <span class="now-live-dot"></span>
-            <span>${r.org}</span>
-          </div>
-          <h3 class="now-pill-title">${r.title}</h3>
-          <p class="now-pill-note">${r.note}</p>
-        </article>
+      // Status Board — Now section
+      const sbRows = [
+        {
+          title: lang === 'id' ? 'Pengajar Coding — Ruangguru'       : 'Coding Educator — Ruangguru',
+          desc:  'Computational thinking & creative coding',
+          org:   'Ruangguru · Sragen',
+          href:  '#experience-ruangguru',
+        },
+        {
+          title: lang === 'id' ? 'Guru Ekstra Coding'                : 'Coding Extracurricular Teacher',
+          desc:  lang === 'id' ? 'Dasar web & proyek kreatif'        : 'Web development basics & creative projects',
+          org:   'Al Azhar IIBS · Junior High',
+          href:  '#experience-alazhar',
+        },
+        {
+          title: lang === 'id' ? 'Asisten Lab Pemrograman Web'       : 'Web Programming Lab Assistant',
+          desc:  lang === 'id' ? 'Praktikum web hingga backend'      : 'Web fundamentals to backend practicums',
+          org:   'PTI UMS · Surakarta',
+          href:  '#experience-weblab',
+        },
+      ];
+      document.getElementById('now-strip').innerHTML = sbRows.map(r => `
+        <li class="sb-item">
+          <a class="sb-link" href="${r.href}">
+            <span class="sb-dot-wrap" aria-hidden="true">
+              <span class="sb-dot"></span>
+            </span>
+            <span class="sb-mid">
+              <span class="sb-title">${r.title}</span>
+              <span class="sb-desc">${r.desc}</span>
+            </span>
+            <span class="sb-right">
+              <span class="sb-org">${r.org}</span>
+              <span class="sb-arrow" aria-hidden="true">→</span>
+            </span>
+          </a>
+        </li>
       `).join('');
 
       document.getElementById('proj-heading').textContent = t.projHeading;
@@ -2228,7 +2364,7 @@
       document.getElementById('lbl-certs').textContent = t.lblCerts;
 
       document.getElementById('exp-list').innerHTML = t.experience.map(e => `
-        <div class="tl-node">
+        <div class="tl-node" ${e.id ? `id="${e.id}"` : ''}>
           <span class="tl-yr">${e.year}</span>
           <div class="list-title">${e.title}</div>
           <div class="list-sub">${e.sub}</div>
